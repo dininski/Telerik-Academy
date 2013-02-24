@@ -1,0 +1,9 @@
+words that should have test removed:
+testWord,
+testthing
+test word
+test123
+words that should still have test in them:
+wordtest
+selftest
+@test

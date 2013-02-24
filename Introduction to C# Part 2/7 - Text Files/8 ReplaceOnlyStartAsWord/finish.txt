@@ -1,0 +1,3 @@
+Let's finish this. And where do we finish? From the finish of course. Ready, set, finish! Well that wasn't that hard - starting it was pretty fun.
+finish <- this should be changed.
+starting <- this shouldn't be changed.

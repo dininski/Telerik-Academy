@@ -1,0 +1,8 @@
+first file content
+aaaaaaa
+bbbbbbb
+ccccccc
+SECOND FILE CONTENT
+XXXXXX
+YYYYYY
+ZZZZZZ

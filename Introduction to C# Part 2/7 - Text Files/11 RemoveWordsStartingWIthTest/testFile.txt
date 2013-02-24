@@ -1,0 +1,8 @@
+words that should have  removed:
+,
+
+ word
+
+words that should still have  in them:
+wordtest
+selftest

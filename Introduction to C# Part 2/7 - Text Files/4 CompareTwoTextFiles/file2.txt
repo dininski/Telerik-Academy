@@ -1,0 +1,8 @@
+This line is the same.
+So is this one.
+BUT THIS ONE is DEFINITELY different.
+I love pancakes.
+And bacon.
+And programming.
+C# is AWESOME.
+Java is AWESOME too.

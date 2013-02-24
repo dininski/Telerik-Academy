@@ -1,0 +1,60 @@
+1 Document 1105
+2 BOOTING WITH DR DOS
+3 
+4 Initials:
+5 	BPT
+6 	10/31/91
+7 	GENERAL
+8 
+9 Keywords:
+10 	BOOT
+11 	INSTALL
+12 
+13 Description:
+14         In order to install DR DOS you must make sure that you are
+15         booting from a floppy in drive A:. DR DOS will not install
+16         from drive B:. DR DOS comes on 3 1/2 inch low density
+17         floppies and 5 1/4 inch Hi-density floppies. If you need
+18         5 1/4 inch low-density disks (360K) send in the coupon that
+19         comes with your DR DOS.
+20 
+21         If the boot disk hangs while trying to load, usually it means
+22         there is an incompatible or faulty piece of hardware.
+23 
+24 	One of the things it can be is simply an older floppy 
+25 	drive that is out of alignment.  Sometimes the situation
+26 	can be salvaged by formatting a floppy on the boot drive
+27 	with the old DOS, then doing a diskcopy. The potential 
+28 	problem is that the diskcopy may not be able to read the 
+29 	boot disk either. If you can't make a backup then it may 
+30 	be necessary to get a replacement disk set from Digital
+31 	Research (in case there is an actual error with the disk,
+32 	which does sometime happen) or see about getting the 
+33 	drives aligned.
+34 
+35 	********************************************************
+36 
+37 	Another problem is where you can make valid Diskcopies 
+38 	but all you get is the message "Loading...". Here the
+39 	potential problem may be the computer's bios. DR DOS 
+40 	must be able to direct the system to the area where DOS 
+41 	Kernel files are located. Older bioses are not able to 
+42 	perform this function. If your bios dates from around
+43 	1987 or earlier you may need an update.
+44 
+45 	********************************************************
+46 
+47 	And finally, if you can read the disks but are unable to 
+48 	format a disk or make a diskcopy DR DOS may think you 
+49 	have a different type of floppy than you actually have.
+50 	Another symptom of this is if you are making a floppy
+51 	installation and DR DOS asks you for 5 1/4" floppies
+52 	when you actually have 3 1/2" floppies. If this is an XT
+53         type computer (by which we mean it has no CMOS config-
+54 	uration program) then you can place a DRIVPARM state-
+55 	ment in your CONFIG.SYS. Refer to the DR DOS manual to
+56 	see how to use this parameter. DRIVPARM uses no RAM. It
+57 	merely updates the DR DOS drive tables with the type
+58 	drive you specify. If your computer does have a CMOS 
+59 	setup program then you need to correct the entries for
+60         your floppy drives in CMOS.
