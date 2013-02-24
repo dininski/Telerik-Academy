@@ -4,3 +4,5 @@
 *.suo
 *.csproj
 *.config
+*.ldf
+*.mdf

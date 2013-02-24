@@ -8,7 +8,7 @@ namespace MobilePhone.Tests
     public class GSMTest
    { 
         [TestMethod]
-        public void OnlyRequiredInfo()
+        public void GSMOnlyRequiredInfo()
         {
             GSM somePhone = new GSM("Shiba", "To");
             Console.WriteLine(somePhone);
@@ -38,7 +38,7 @@ namespace MobilePhone.Tests
         }
 
         [TestMethod]
-        public void PrintIPhoneInformation()
+        public void GSMPrintIPhoneInformation()
         {
             Console.WriteLine(GSM.IPhone4s);
         }
