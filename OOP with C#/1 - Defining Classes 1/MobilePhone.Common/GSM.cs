@@ -1,6 +1,7 @@
 ﻿using System;
 using MobilePhone.Common;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GSM
 {
@@ -108,11 +109,18 @@ public class GSM
 
     public decimal CalculateBill(decimal rate)
     {
-        decimal result = 0;
+        decimal bill = 0;
         foreach (Call call in CallHistory)
         {
-            result += (decimal)(Math.Ceiling((decimal)call.Duration / 60))*rate;
+            //the bill is calculated so that for each started minute you
+            //are charged the per minute fee
+            bill += (decimal)(Math.Ceiling((decimal)call.Duration / 60)) * rate;
         }
-        return result;
+        return bill;
     }
+
+    public void RemoveLongestCall() {
+        this.CallHistory.RemoveAll(c => c.Duration == this.CallHistory.Max(b => b.Duration));    
+    }
+
 }

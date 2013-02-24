@@ -2,7 +2,7 @@
 
 namespace MobilePhone.Common
 {
-    public class DisplaySize
+    public struct DisplaySize
     {
         public int? width;
         public int? Width
@@ -33,14 +33,10 @@ namespace MobilePhone.Common
         }
 
         public DisplaySize(int? width, int? height)
+            : this()
         {
             this.Height = height;
             this.Width = width;
-        }
-
-        public DisplaySize()
-            : this(null, null)
-        {
         }
 
         override public string ToString()
