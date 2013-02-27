@@ -3,6 +3,7 @@ using System.IO;
 
 namespace Space
 {
+    [Version(1,0)]
     public static class PathStorage
     {
         private static Path path = new Path();

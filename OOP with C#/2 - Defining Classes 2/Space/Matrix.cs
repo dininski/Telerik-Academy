@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Space
 {
@@ -26,23 +22,29 @@ namespace Space
             }
         }
 
-        public int GetRows()
+        public int Rows
         {
+            get
+            {
             return matrix.GetLength(0);
+            }
         }
 
-        public int GetCols()
+        public int Cols
         {
-            return matrix.GetLength(1);
+            get
+            {
+                return matrix.GetLength(1);
+            }
         }
 
         public static Matrix<T> operator +(Matrix<T> firstMatrix, Matrix<T> secondMatrix) {
-            if (firstMatrix.GetRows() > secondMatrix.GetRows() || (firstMatrix.GetCols() > secondMatrix.GetCols())) 
+            if (firstMatrix.Rows > secondMatrix.Rows || (firstMatrix.Cols > secondMatrix.Cols)) 
             {
                 throw new ArgumentException("Matrices are of different size");
             }
-            int rows = firstMatrix.GetRows();
-            int cols = firstMatrix.GetCols();
+            int rows = firstMatrix.Rows;
+            int cols = firstMatrix.Cols;
 
             Matrix<T> resultMatrix = new Matrix<T>(rows, cols);
             for (int i = 0; i < rows; i++)
@@ -57,12 +59,12 @@ namespace Space
 
         public static Matrix<T> operator -(Matrix<T> firstMatrix, Matrix<T> secondMatrix)
         {
-            if (firstMatrix.GetRows() > secondMatrix.GetRows() || (firstMatrix.GetCols() > secondMatrix.GetCols()))
+            if (firstMatrix.Rows > secondMatrix.Rows || (firstMatrix.Cols > secondMatrix.Cols))
             {
                 throw new ArgumentException("Matrices are of different size");
             }
-            int rows = firstMatrix.GetRows();
-            int cols = firstMatrix.GetCols();
+            int rows = firstMatrix.Rows;
+            int cols = firstMatrix.Cols;
 
             Matrix<T> resultMatrix = new Matrix<T>(rows, cols);
             for (int i = 0; i < rows; i++)
@@ -77,12 +79,12 @@ namespace Space
 
         public static Matrix<T> operator *(Matrix<T> firstMatrix, Matrix<T> secondMatrix)
         {
-            if (firstMatrix.GetRows() > secondMatrix.GetRows() || (firstMatrix.GetCols() > secondMatrix.GetCols()))
+            if (firstMatrix.Rows > secondMatrix.Rows || (firstMatrix.Cols > secondMatrix.Cols))
             {
                 throw new ArgumentException("Matrices are of different size");
             }
-            int rows = firstMatrix.GetRows();
-            int cols = firstMatrix.GetCols();
+            int rows = firstMatrix.Rows;
+            int cols = firstMatrix.Cols;
 
             Matrix<T> resultMatrix = new Matrix<T>(rows, cols);
             for (int i = 0; i < rows; i++)
@@ -97,11 +99,26 @@ namespace Space
 
         public static bool operator true(Matrix<T> matrix)
         {
-            for (int row = 0; row < matrix.GetRows(); row++)
+            for (int row = 0; row < matrix.Rows; row++)
             {
-                for (int col = 0; col < matrix.GetCols(); col++)
+                for (int col = 0; col < matrix.Cols; col++)
                 {
-                    if ((dynamic)matrix[row,col] == 0)
+                    if ((dynamic)matrix[row, col].Equals(default(T)))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static bool operator false(Matrix<T> matrix)
+        {
+            for (int row = 0; row < matrix.Rows; row++)
+            {
+                for (int col = 0; col < matrix.Cols; col++)
+                {
+                    if ((dynamic)matrix[row, col].Equals(default(T)))
                     {
                         return false;
                     }

@@ -6,8 +6,8 @@
     <ProjectGuid>{1CB4EE89-ACD9-4063-97EB-5E4925D2C11E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTestProject1</RootNamespace>
-    <AssemblyName>UnitTestProject1</AssemblyName>
+    <RootNamespace>SpaceTests</RootNamespace>
+    <AssemblyName>SpaceTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,6 +56,8 @@
     <Compile Include="PathTests.cs" />
     <Compile Include="PathStorageTests.cs" />
     <Compile Include="GenericListTests.cs" />
+    <Compile Include="MatrixTests.cs" />
+    <Compile Include="VersionTestClassTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Space\Space.csproj">

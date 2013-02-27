@@ -5,7 +5,7 @@ using Space;
 namespace SpaceTests
 {
     [TestClass]
-    public class MatrixTests
+    public class PointTests
     {
         [TestMethod]
         public void Point3DZeroPointTest()
