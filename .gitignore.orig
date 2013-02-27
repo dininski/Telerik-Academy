@@ -1,0 +1,10 @@
+*\bin
+*\obj
+*\TestResults
+*.suo
+<<<<<<< HEAD
+=======
+*.config
+>>>>>>> f230634e928a887ca303302b2c7f6ede4e228470
+*.ldf
+*.mdf
