@@ -1,9 +1,6 @@
 *\bin
 *\obj
-*\Properties
 *\TestResults
 *.suo
-*.csproj
-*.config
 *.ldf
 *.mdf
