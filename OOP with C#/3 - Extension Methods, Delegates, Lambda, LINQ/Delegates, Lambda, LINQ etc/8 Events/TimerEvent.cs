@@ -10,7 +10,7 @@ class TimerEvent
     static void Main(string[] args)
     {
         Publisher pub = new Publisher();
-        Subscriber sub1 = new Subscriber(pub);
+        //Subscriber sub1 = new Subscriber(pub, 10);
         
         pub.StartTimer();
     }

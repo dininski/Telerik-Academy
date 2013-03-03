@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6 DivisibleBy7and3", "6 Div
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7 TimerDelegate", "7 TimerDelegate\7 TimerDelegate.csproj", "{F5B1F519-0FCF-4812-BC43-CF7B97593961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8 TimerEvent - incomplete", "8 Events\8 TimerEvent - incomplete.csproj", "{4D39DF38-771D-470D-B17D-197993E54380}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8 TimerEvent - incomplete!!!", "8 Events\8 TimerEvent - incomplete!!!.csproj", "{4D39DF38-771D-470D-B17D-197993E54380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 Extend Inumerable", "2 Extend Inumerable\2 Extend Inumerable.csproj", "{4446C6E0-9267-4BF0-92DC-86237E273D1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{4D39DF38-771D-470D-B17D-197993E54380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D39DF38-771D-470D-B17D-197993E54380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D39DF38-771D-470D-B17D-197993E54380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4446C6E0-9267-4BF0-92DC-86237E273D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4446C6E0-9267-4BF0-92DC-86237E273D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4446C6E0-9267-4BF0-92DC-86237E273D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4446C6E0-9267-4BF0-92DC-86237E273D1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
