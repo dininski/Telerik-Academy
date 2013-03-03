@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SchoolLibrary.Discipline">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAMAAAAABAAAAAAAASAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Discipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolLibrary.School">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="studentClasses" Type="SchoolLibrary.ClassOfStudents">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.213" Y="0.31" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAA=</HashCode>
+      <FileName>School.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="studentClasses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SchoolLibrary.Student" BaseTypeListCollapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <InheritanceLine Type="SchoolLibrary.Person" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="1.625" />
+        <Point X="6" Y="1.625" />
+        <Point X="6" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAMAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchoolLibrary.ClassOfStudents">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <AssociationLine Name="teachers" Type="SchoolLibrary.Teacher">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.152" Y="-0.867" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="students" Type="SchoolLibrary.Student">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="-0.846" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAiAAAMAAAQAAAgAAAAAAAAAAAAAAAAAAIAQAACAAI=</HashCode>
+      <FileName>ClassOfStudents.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="students" />
+      <Field Name="teachers" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchoolLibrary.Teacher" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAMAAAAAAAAAAAAAECAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Teacher.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="disciplines" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SchoolLibrary.Person">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SchoolLibrary.IComment">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IComment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
