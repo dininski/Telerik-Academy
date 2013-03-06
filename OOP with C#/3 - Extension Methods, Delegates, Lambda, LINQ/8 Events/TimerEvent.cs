@@ -9,9 +9,9 @@ class TimerEvent
 {
     static void Main(string[] args)
     {
-        Publisher pub = new Publisher();
-        //Subscriber sub1 = new Subscriber(pub, 10);
-        
-        pub.StartTimer();
+        Timer t = new Timer();
+        Listener listen = new Listener();
+        listen.Subscribe(t);
+        t.StartTimer();
     }
 }

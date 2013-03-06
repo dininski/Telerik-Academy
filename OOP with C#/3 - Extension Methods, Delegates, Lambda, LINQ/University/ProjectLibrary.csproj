@@ -39,9 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events\Publisher.cs" />
-    <Compile Include="Events\Subscriber.cs" />
-    <Compile Include="Events\TimerEventArgs.cs" />
+    <Compile Include="Events\Timer.cs" />
+    <Compile Include="Events\Listener.cs" />
     <Compile Include="Students\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
