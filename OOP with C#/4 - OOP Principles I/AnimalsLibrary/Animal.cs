@@ -14,5 +14,15 @@ namespace AnimalsLibrary
             this.Age = Age;
             this.Sex = Sex;
         }
+
+        public static double AverageAge(Animal[] animals)
+        {
+            double ages = 0;
+            for (int i = 0; i < animals.Length; i++)
+            {
+                ages += animals[i].Age;
+            }
+            return ages / animals.Length;
+        }
     }
 }

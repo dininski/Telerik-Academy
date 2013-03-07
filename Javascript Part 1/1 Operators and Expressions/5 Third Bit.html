@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write a boolean expression for finding if the bit 3 (counting from 0) of a given integer is 1 or 0.");
+
+function thirdBit(number) {
+	var bitThree = (number>>3)&1;
+	jsConsole.writeLine("The third bit in " + number + " is "+ bitThree);
+}
+
+thirdBit(28);
+thirdBit(156498);
+thirdBit(8);
+thirdBit(1281);
+
+
+
+</script>
+</body>
+</html>

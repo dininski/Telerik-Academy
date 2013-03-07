@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write an expression that checks for given integer if its third digit (right-to-left) is 7. E. g. 1732 -> true.");
+
+function isThirdDigit7(number) {
+	var thirdDigitIs7 = Math.floor((number/100) % 10) == 7;
+	jsConsole.writeLine("The third digit in " + number + " is 7: "+thirdDigitIs7);
+}
+
+isThirdDigit7(711);
+isThirdDigit7(156498);
+isThirdDigit7(1732);
+isThirdDigit7(7);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write an expression that checks if given positive integer number n (n ≤ 100) is prime. E.g. 37 is prime.");
+
+function checkIfPrime(number) {
+	var isPrime = true;
+	for (var i = 2; i <= Math.sqrt(number); i++) {
+		if (number%i ==0) {
+			isPrime = false;
+			jsConsole.writeLine(number + " isn't prime, because it is divisible by "+ i);
+			return;
+		}
+	};
+	jsConsole.writeLine(number + " is prime");
+}
+
+checkIfPrime(28);
+checkIfPrime(37);
+checkIfPrime(527);
+checkIfPrime(13);
+
+
+
+</script>
+</body>
+</html>

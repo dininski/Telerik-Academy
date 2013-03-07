@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write a boolean expression that checks for given integer if it can be divided (without remainder) by 7 and 5 in the same time.");
+
+function divisibleBy35(number) {
+	if (number % 35 == 0) {
+		jsConsole.writeLine(number + " is divisible by 7 and 5.");
+	} else {
+		jsConsole.writeLine(number + " is NOT divisible by 7 and 5.");
+	}
+}
+
+divisibleBy35(5);
+divisibleBy35(35);
+divisibleBy35(700);
+divisibleBy35(346923);
+
+
+</script>
+</body>
+</html>

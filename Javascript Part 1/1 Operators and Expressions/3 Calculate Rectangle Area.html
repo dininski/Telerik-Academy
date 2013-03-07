@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write an expression that calculates rectangle's area by given width and height");
+
+function calculateRectArea(width, height) {
+	var area = width * height;
+	jsConsole.writeLine("A rectangle with width = " + width + " and height = " + height + " has an area of " + area);
+}
+
+calculateRectArea(3,4);
+calculateRectArea(35, 3);
+calculateRectArea(5,9);
+
+
+</script>
+</body>
+</html>

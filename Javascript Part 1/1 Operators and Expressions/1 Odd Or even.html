@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+jsConsole.writeLine("Write an expression that checks if given integer is odd or even.");
+
+function oddOrEven(number) {
+	if (number % 2 == 0) {
+		jsConsole.writeLine(number + " is even.");
+	} else {
+		jsConsole.writeLine(number + " is odd.");
+	}
+}
+
+oddOrEven(5);
+oddOrEven(6);
+oddOrEven(9);
+
+
+</script>
+</body>
+</html>

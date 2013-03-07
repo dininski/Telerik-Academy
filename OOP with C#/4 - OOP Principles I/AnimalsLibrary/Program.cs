@@ -14,30 +14,34 @@ namespace AnimalsLibrary
 {
     class Program
     {
-        public static void AverageAge(Animal[] animals)
-        {
-            //todo
-        }
-
         public static void Main()
         {
-            Animal[] differentAnimals = new Animal[13];
+            Frog[] frogs = new Frog[5];
+            frogs[0] = new Frog("Kermit", 5, 'M');
+            frogs[1] = new Frog("Piggy", 8, 'F');
+            frogs[2] = new Frog("Cookie Monster", 3, 'F');
+            frogs[3] = new Frog("Oscar the grouch", 15, 'M');
+            frogs[4] = new Frog("Kermit's double", 5, 'M');
 
-            differentAnimals[0] = new Cat("Anastacia", 6, 'F');
-            differentAnimals[1] = new Dog("Tilly", 7, 'F');
-            differentAnimals[2] = new Dog("Babe", 7, 'F');
-            differentAnimals[3] = new Frog("Pipa", 1, 'F');
-            differentAnimals[4] = new Tomcat("Tom", 1);
-            differentAnimals[5] = new Cat("Princeton", 9, 'M');
-            differentAnimals[6] = new Tomcat("Tom", 1);
-            differentAnimals[7] = new Kitten("Milly", 3);
-            differentAnimals[8] = new Frog("Charles", 1, 'M');
-            differentAnimals[9] = new Frog("Wil.I.Am", 3, 'M');
-            differentAnimals[10] = new Frog("Wil.I.Am", 3, 'M');
-            differentAnimals[11] = new Dog("Padme", 9, 'F');
-            differentAnimals[12] = new Kitten("Princess", 1); ;
+            Dog[] dogs = new Dog[5];
+            dogs[0] = new Dog("Rex", 1, 'M');
+            dogs[1] = new Dog("Sergeant Dirty", 6, 'F');
+            dogs[2] = new Dog("Lucky", 7, 'F');
+            dogs[3] = new Dog("Unlucky", 2, 'M');
+            dogs[4] = new Dog("Tramp", 4, 'M');
 
-            AverageAge(differentAnimals);
+            Cat[] cats = new Cat[5];
+            cats[0] = new Cat("Tom", 6, 'M');
+            cats[1] = new Kitten("Princess", 1);
+            cats[2] = new Cat("Jerry", 2, 'F');
+            cats[3] = new Tomcat("Behemoth", 1);
+            cats[4] = new Cat("Pluto", 7, 'M');
+
+
+
+            Console.WriteLine("The average age of the frogs is " + Animal.AverageAge(frogs));
+            Console.WriteLine("The average age of the dogs is " + Animal.AverageAge(dogs));
+            Console.WriteLine("The average age of the cats is " + Animal.AverageAge(cats));
         }
     }
 }
