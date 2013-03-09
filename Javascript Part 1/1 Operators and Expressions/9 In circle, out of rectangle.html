@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Write an expression that checks for given point (x, y) if it is within the circle K( (1,1), 3) and out of the rectangle R(top=1, left=-1, width=6, height=2).");
+
+        function isPointValid(xCoord, yCoord) {
+            if (((xCoord - 1) * (xCoord - 1) + (yCoord - 1) * (yCoord - 1)) <= 9) {
+                if ((yCoord < -1 || yCoord > 1) || (xCoord < -1 || xCoord > 5)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        jsConsole.writeLine("Point A (1,1) is in the circle and out of the rectangle: " + isPointValid(1, 1));
+        jsConsole.writeLine("Point B (2,2) is in the circle and out of the rectangle: " + isPointValid(2, 2));
+        jsConsole.writeLine("Point C (0,1) is in the circle and out of the rectangle: " + isPointValid(0, 1));
+        jsConsole.writeLine("Point D (1,4) is in the circle and out of the rectangle: " + isPointValid(1, 4));
+    </script>
+</body>
+</html>

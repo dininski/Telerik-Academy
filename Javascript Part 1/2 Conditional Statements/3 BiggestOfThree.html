@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+	jsConsole.writeLine("Write a script that finds the biggest of three integers using nested if statements.");
+	jsConsole.writeLine("");
+
+	function biggestOfThree(firstNumber, secondNumber, thirdNumber) {
+		if (firstNumber >= secondNumber) {
+			if (firstNumber >= thirdNumber) {
+				return firstNumber;
+			} else {
+				return thirdNumber;
+			}
+		} else {
+			if (secondNumber >= thirdNumber) {
+				return secondNumber;
+			} else {
+				return thirdNumber;
+			}
+		}
+		
+	}
+
+	jsConsole.writeLine("The biggest of the three numbers (3,2,1) is " + biggestOfThree(3,2,1));
+	jsConsole.writeLine("The biggest of the three numbers (6,4,5) is " + biggestOfThree(6,4,5));
+	jsConsole.writeLine("The biggest of the three numbers (2,7,1) is " + biggestOfThree(2,7,1));
+	jsConsole.writeLine("The biggest of the three numbers (21,1,23) is " + biggestOfThree(21,1,23));
+	jsConsole.writeLine("The biggest of the three numbers (1,2,3) is " + biggestOfThree(1,2,3));
+	jsConsole.writeLine("The biggest of the three numbers (-11,0,-7) is " + biggestOfThree(-11,0,-7));
+</script>
+</body>
+</html>

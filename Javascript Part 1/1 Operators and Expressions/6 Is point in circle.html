@@ -10,8 +10,17 @@
 jsConsole.writeLine("Write an expression that checks if given print (x,  y) is within a circle K(O, 5).");
 
 function isPointInCircle(xCoord, yCoord) {
-//todo
+    //todo
+    if (xCoord * xCoord + yCoord * yCoord <= 25) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
+jsConsole.writeLine("Point A (3,4) is in the circle: " + isPointInCircle(3,4));
+jsConsole.writeLine("Point B (0,5) is in the circle: " + isPointInCircle(0,5));
+jsConsole.writeLine("Point C (4,4) is in the circle: " + isPointInCircle(4,4));
 
 </script>
 </body>

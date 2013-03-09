@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+	jsConsole.writeLine("Write an if statement that examines two integer variables and exchanges their values if the first one is greater than the second one.");
+
+	function ifGreaterThenSwap(firstValue, secondValue) {
+		jsConsole.writeLine("The first value is: " + firstValue + " and the second value is: " + secondValue);
+		if (firstValue > secondValue) {
+			secondValue = firstValue+secondValue;
+			firstValue = secondValue - firstValue;
+			secondValue = secondValue - firstValue;
+		};
+		jsConsole.writeLine("After the check the first value is: " + firstValue + " and the second value is: " + secondValue);
+	}
+
+	ifGreaterThenSwap(4,5);
+	ifGreaterThenSwap(7,3);
+</script>
+</body>
+</html>

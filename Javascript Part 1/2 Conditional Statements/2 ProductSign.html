@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+	jsConsole.writeLine("Write a script that shows the sign (+ or -) of the product of three real numbers without calculating it. Use a sequence of if statements.");
+
+	function productSign(firstNumber, secondNumber, thirdNumber) {
+		
+		if (firstNumber == 0 || secondNumber == 0 || thirdNumber == 0) {
+			return "+";
+		}
+
+
+		if (firstNumber > 0) {
+			if (secondNumber > 0) {
+				if (thirdNumber > 0) {
+					return "+";
+				} else if (thirdNumber < 0) {
+					return "-";
+				}
+			} else if (secondNumber < 0) {
+				if (thirdNumber > 0) {
+					return "-";
+				} else if (thirdNumber < 0) {
+					return "+";
+				}
+			}
+		} else if(firstNumber < 0){
+			if (secondNumber > 0) {
+				if (thirdNumber > 0) {
+					return "-";
+				} else if(thirdNumber < 0){
+					return "+";
+				}
+			} else if (secondNumber < 0) {
+				if (thirdNumber > 0) {
+					return "+";
+				} else if (thirdNumber < 0){
+					return "-";
+				}
+			}
+		}
+
+		
+	}
+
+	jsConsole.writeLine("The product of (1,2,3) has sign " + productSign(1,2,3));
+	jsConsole.writeLine("The product of (-1,2,3) has sign " + productSign(-1,2,3));
+	jsConsole.writeLine("The product of (-1,-2,3) has sign " + productSign(-1,-2,3));
+	jsConsole.writeLine("The product of (-1,-2,-3) has sign " + productSign(-1,-2,-3));
+	jsConsole.writeLine("The product of (1,0,3) has sign " + productSign(1,0,3));
+	jsConsole.writeLine("The product of (-1,0,3) has sign " + productSign(-1,0,3));
+</script>
+</body>
+</html>
