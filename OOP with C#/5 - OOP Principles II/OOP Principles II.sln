@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank", "Bank\Bank.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTest", "BankTest\BankTest.csproj", "{37829270-F013-4581-9BF3-5F7392E911ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Range Exception - incomplete", "Range Exception\Range Exception - incomplete.csproj", "{FEAF5ABF-313A-4150-A669-BBFCCB3666EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{37829270-F013-4581-9BF3-5F7392E911ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37829270-F013-4581-9BF3-5F7392E911ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37829270-F013-4581-9BF3-5F7392E911ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAF5ABF-313A-4150-A669-BBFCCB3666EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAF5ABF-313A-4150-A669-BBFCCB3666EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAF5ABF-313A-4150-A669-BBFCCB3666EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAF5ABF-313A-4150-A669-BBFCCB3666EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
