@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Write a script that enters the coefficients a, b and c of a quadratic equation a*x2 + b*x + c = 0" +
+        "and calculates and prints its real roots. Note that quadratic equations may have 0, 1 or 2 real roots.");
+        jsConsole.writeLine("");
+
+        function solveEquation(a, b, c) {
+            var x1, x2;
+            var Det = Math.sqrt(b * b - 4 * a * c);
+            if (a != 0 && Det >= 0) {
+                x1 = (-b + Det) / (2 * a);
+                x2 = (-b - Det) / (2 * a);
+                if (x1 != x2) {
+                    jsConsole.writeLine("Two roots: x1 = " + x1 + ", x2 = " + x2);
+                } else {
+                    jsConsole.writeLine("One root: x = " + x1);
+                }
+            } else if (a == 0 && Det >= 0) {
+                x1 = -c / b;
+                jsConsole.writeLine("Not a quadratic equation, x = " + x1);
+            } else {
+                jsConsole.writeLine("x1 and x2 are imaginary");
+            }
+        }
+
+        jsConsole.writeLine("x^2 + x + 2 = 0");
+        solveEquation(1, 1, 2);
+        jsConsole.writeLine();
+        jsConsole.writeLine("2*x^2 + 4x + 2 = 0");
+        solveEquation(2, 4, 2);
+        jsConsole.writeLine();
+        jsConsole.writeLine("x^2 - 4x + 1 = 0");
+        solveEquation(1, -4, 1);
+    </script>
+</body>
+</html>

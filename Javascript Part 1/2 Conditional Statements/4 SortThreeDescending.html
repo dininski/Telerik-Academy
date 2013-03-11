@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Sort 3 real values in descending order using nested if statements.");
+        jsConsole.writeLine("");
+
+        function SortDescending(firstNumber, secondNumber, thirdNumber) {
+            if (firstNumber > secondNumber) {
+                if (firstNumber > thirdNumber) {
+                    //determined that firstNumber is larger than the other two - we need to find which one if the bigger
+                    //out of the other two:
+
+                    //firstNumber > secondNumber > thirdNumber
+                    if (secondNumber > thirdNumber) {
+                        jsConsole.writeLine("In descending order: " + firstNumber + ", " + secondNumber + ", " + thirdNumber);
+                    //firstNumber > thirdNumber > secondNumber
+                    } else {
+                        jsConsole.writeLine("In descending order: " + firstNumber + ", " + thirdNumber + ", " + secondNumber);
+                    }
+                //thirdNumber > firstNumber > secondNumber
+                } else {
+                    jsConsole.writeLine("In descending order: " + thirdNumber + ", " + firstNumber + ", " + secondNumber);
+                }
+            } else {
+                if (secondNumber > thirdNumber) {
+                    //secondNumber > thirdNumber > firstNumber
+                    if (thirdNumber > firstNumber) {
+                        jsConsole.writeLine("In descending order: " + secondNumber + ", " + thirdNumber + ", " + firstNumber);
+                    //secondNumber > firstNumber > thirdNumber
+                    } else {
+                        jsConsole.writeLine("In descending order: " + secondNumber + ", " + firstNumber + ", " + thirdNumber);
+                    }
+                //thirdNumber > secondNumber > firstNumber
+                } else {
+                    jsConsole.writeLine("In descending order: " + thirdNumber + ", " + secondNumber + ", " + firstNumber);
+                }
+            }
+
+        }
+
+        jsConsole.writeLine("Numbers to sort(3,2,1)");
+        SortDescending(3, 2, 1);
+        jsConsole.writeLine("Numbers to sort(6,4,5)");
+        SortDescending(6, 4, 5)
+        jsConsole.writeLine("Numbers to sort(2,7,1)");
+        SortDescending(2, 7, 1)
+        jsConsole.writeLine("Numbers to sort(21,1,23)");
+        SortDescending(21, 1, 23)
+        jsConsole.writeLine("Numbers to sort(1,2,3)");
+        SortDescending(1, 2, 3)
+        jsConsole.writeLine("Numbers to sort(-11,0,-7)");
+        SortDescending(-11, 0, -7)
+    </script>
+</body>
+</html>

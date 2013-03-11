@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+	jsConsole.writeLine("Write a script that finds the biggest of three integers using nested if statements.");
+	jsConsole.writeLine("");
+
+	function biggestOfFive(arrayOfNumbers) {
+	    var max = arrayOfNumbers[0];
+	    for (var i = 0; i < arrayOfNumbers.length; i++) {
+	        if (max < arrayOfNumbers[i]) {
+	            max = arrayOfNumbers[i];
+	        }
+	    }
+	    return max;
+	}
+
+	var testValues = new Array();
+	testValues[0] = 7;
+	testValues[1] = 3;
+    testValues[2] = 8;
+    testValues[3] = 0;
+    testValues[4] = 1;
+    
+    jsConsole.writeLine("The biggest of " + testValues + " is: " + biggestOfFive(testValues));
+
+    testValues[0] = -59;
+    testValues[1] = 13;
+    testValues[2] = 81;
+    testValues[3] = 99;
+    testValues[4] = 21;
+
+    jsConsole.writeLine("The biggest of " + testValues + " is: " + biggestOfFive(testValues));
+
+</script>
+</body>
+</html>

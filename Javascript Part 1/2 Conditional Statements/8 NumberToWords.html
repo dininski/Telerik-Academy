@@ -1,0 +1,156 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation. Examples:");
+	    jsConsole.writeLine('0 -> "Zero"');
+        jsConsole.writeLine('273 -> "Two hundred seventy three"');
+	    jsConsole.writeLine('400 -> "Four hundred"');
+	    jsConsole.writeLine('501 -> "Five hundred and one"');
+	    jsConsole.writeLine('711 -> "Seven hundred and eleven"');
+        jsConsole.writeLine("");
+
+        function numberToWord(number) {
+            var result = "";
+            var hundreds = Math.floor(number / 100);
+            var tens = Math.floor((number - hundreds * 100) / 10);
+            var ones = Math.floor((number - hundreds * 100 - tens * 10));
+            if (hundreds > 0) {
+                result += addSingles(hundreds) + " hundred ";
+            }
+
+            if (tens >= 2) {
+                switch (tens) {
+                    case 2:
+                        result += "twenty ";
+                        break;
+                    case 3:
+                        result += "thirty ";
+                        break;
+                    case 4:
+                        result += "fourty ";
+                        break;
+                    case 5:
+                        result += "fifty ";
+                        break;
+                    case 6:
+                        result += "sixty ";
+                        break;
+                    case 7:
+                        result += "seventy ";
+                        break;
+                    case 8:
+                        result += "eighty ";
+                        break;
+                    case 9:
+                        result += "ninety ";
+                        break;
+                }
+                result += addSingles(ones);
+            } else if (tens == 1) {
+                if (hundreds > 0) {
+                    result += "and ";
+                }
+                switch (ones) {
+                    case 0:
+                        result += "ten";
+                        break;
+                    case 1:
+                        result += "eleven";
+                        break;
+                    case 2:
+                        result += "twelve";
+                        break;
+                    case 3:
+                        result += "thirteen";
+                        break;
+                    case 4:
+                        result += "fourteen";
+                        break;
+                    case 5:
+                        result += "fifteen";
+                        break;
+                    case 6:
+                        result += "sixteen";
+                        break;
+                    case 7:
+                        result += "seventeen";
+                        break;
+                    case 8:
+                        result += "eighteen";
+                        break;
+                    case 9:
+                        result += "nineteen";
+                        break;
+                    case 0:
+                        result += "ten";
+                        break;
+                }
+            } else if (tens == 0) {
+
+                if (ones != 0) {
+                    if (hundreds > 0) {
+                        result += "and ";
+                    }
+                    result += addSingles(ones);
+                }
+                if (hundreds == 0 && ones == 0) {
+                    result = "zero";
+                }
+            }
+
+            return result.charAt(0).toUpperCase() + result.slice(1);
+        }
+
+        function addSingles(number) {
+            switch (number) {
+                case 0:
+                    return "zero";
+                    break;
+                case 1:
+                    return "one";
+                    break;
+                case 2:
+                    return "two";
+                    break;
+                case 3:
+                    return "three";
+                    break;
+                case 4:
+                    return "four";
+                    break;
+                case 5:
+                    return "five";
+                    break;
+                case 6:
+                    return "six";
+                    break;
+                case 7:
+                    return "seven";
+                    break;
+                case 8:
+                    return "eight";
+                    break;
+                case 9:
+                    return "nine";
+                    break;
+            }
+        }
+
+        jsConsole.writeLine("0 is " + numberToWord(0));
+        jsConsole.writeLine("273 is " + numberToWord(273));
+        jsConsole.writeLine("400 is " + numberToWord(400));
+        jsConsole.writeLine("501 is " + numberToWord(501));
+        jsConsole.writeLine("711 is " + numberToWord(711));
+        jsConsole.writeLine("843 is " + numberToWord(843));
+        jsConsole.writeLine("21 is " + numberToWord(21));
+        jsConsole.writeLine("999 is " + numberToWord(999));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Write a script that asks for a digit and depending on the input shows the name of that digit (in English) using a switch statement.");
+        jsConsole.writeLine("");
+
+        function DigitToWord(digit) {
+            switch (digit) {
+                case 0:
+                    result +="zero";
+                    break;
+                case 1:
+                    result +="one";
+                    break;
+                case 2:
+                    result +="two";
+                    break;
+                case 3:
+                    result +="three";
+                    break;
+                case 4:
+                    result +="four";
+                    break;
+                case 5:
+                    result +="five";
+                    break;
+                case 6:
+                    result +="six";
+                    break;
+                case 7:
+                    result +="seven";
+                    break;
+                case 8:
+                    result +="eight";
+                    break;
+                case 9:
+                    result +="nine";
+                    break;
+            }
+
+        }
+
+        jsConsole.writeLine("Number: 1, Word: " + DigitToWord(1));
+        jsConsole.writeLine("Number: 2, Word: " + DigitToWord(2));
+        jsConsole.writeLine("Number: 3, Word: " + DigitToWord(3));
+        jsConsole.writeLine("Number: 4, Word: " + DigitToWord(4));
+        jsConsole.writeLine("Number: 5, Word: " + DigitToWord(5));
+        jsConsole.writeLine("Number: 6, Word: " + DigitToWord(6));
+        jsConsole.writeLine("Number: 7, Word: " + DigitToWord(7));
+        jsConsole.writeLine("Number: 8, Word: " + DigitToWord(8));
+        jsConsole.writeLine("Number: 9, Word: " + DigitToWord(9));
+        jsConsole.writeLine("Number: 0, Word: " + DigitToWord(0));
+    </script>
+</body>
+</html>
