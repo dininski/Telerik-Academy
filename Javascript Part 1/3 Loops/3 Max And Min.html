@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a script that finds the max and min number from a sequence of numbers");
+    jsConsole.writeLine();
+    function printMaxAndMin(numbers) {
+        var max = numbers[0];
+        var min = numbers[0];
+        for (var i = 0; i < numbers.length; i++) {
+            if (max < numbers[i]) {
+                max = numbers[i];
+            }
+            if (min > numbers[i]) {
+                min = numbers[i];
+            }
+        }
+        jsConsole.writeLine("From numbers "+numbers + " max = " + max + ", min = " + min);
+	}
+
+    var numbers = new Array();
+    numbers[0] = 6;
+    numbers[1] = 2;
+    numbers[2] = 5;
+    numbers[3] = 3;
+    numbers[4] = 11;
+    numbers[5] = -2;
+    numbers[6] = -7;
+    numbers[7] = 8;
+    numbers[8] = 0;
+    numbers[9] = 6;
+
+    printMaxAndMin(numbers);
+</script>
+</body>
+</html>

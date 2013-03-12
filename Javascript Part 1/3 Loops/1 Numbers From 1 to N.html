@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a script that prints all the numbers from 1 to N");
+
+	function printToN(N) {
+	    for (var i = 1; i < N; i++) {
+	        jsConsole.write(i + ", ");
+	    }
+	    jsConsole.writeLine(N);
+	}
+
+	jsConsole.writeLine("N = 4");
+	printToN(4);
+	jsConsole.writeLine();
+	jsConsole.writeLine("N = 10");
+	printToN(10);
+</script>
+</body>
+</html>
