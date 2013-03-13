@@ -49,7 +49,6 @@
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="ExplodingBlock.cs" />
-    <Compile Include="ExplosionParticles.cs" />
     <Compile Include="ICollidable.cs" />
     <Compile Include="IndestructibleBlock.cs" />
     <Compile Include="IObjectProducer.cs" />

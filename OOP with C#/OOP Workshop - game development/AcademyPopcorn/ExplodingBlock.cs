@@ -21,15 +21,10 @@ namespace AcademyPopcorn
             return true;
         }
 
-        public override IEnumerable<GameObject> ProduceObjects()
-        {
-            List<GameObject> explosionParticles = new List<GameObject>();
-            explosionParticles.Add(new ExplosionParticles(new MatrixCoords(topLeft.Row + 1, topLeft.Col)));
-            explosionParticles.Add(new ExplosionParticles(new MatrixCoords(topLeft.Row - 1, topLeft.Col)));
-            explosionParticles.Add(new ExplosionParticles(new MatrixCoords(topLeft.Row, topLeft.Col + 1)));
-            explosionParticles.Add(new ExplosionParticles(new MatrixCoords(topLeft.Row, topLeft.Col - 1)));
-            return explosionParticles;
-        }
+        //public override IEnumerable<GameObject> ProduceObjects()
+        //{
+            
+        //}
 
         public override void Update()
         {
