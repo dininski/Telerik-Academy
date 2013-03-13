@@ -18,7 +18,8 @@ namespace AcademyPopcorn
 
         public override bool CanCollideWith(string otherCollisionGroupString)
         {
-            return otherCollisionGroupString == "racket" || otherCollisionGroupString == "unpassableBlock" || otherCollisionGroupString == "block";
+            return otherCollisionGroupString == "racket" || otherCollisionGroupString == "unpassableBlock" || 
+                otherCollisionGroupString == "block";
         }
 
         public override void RespondToCollision(CollisionData collisionData)

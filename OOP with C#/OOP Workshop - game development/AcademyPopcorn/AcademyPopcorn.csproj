@@ -43,12 +43,17 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="Block.cs" />
+    <Compile Include="BlockFactory.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="CollisionData.cs" />
     <Compile Include="CollisionDispatcher.cs" />
     <Compile Include="ConsoleInterface.cs" />
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="ExplodingBlock.cs" />
+    <Compile Include="ExplosionParticle.cs" />
+    <Compile Include="Gift.cs" />
+    <Compile Include="GiftBlock.cs" />
     <Compile Include="ICollidable.cs" />
     <Compile Include="IndestructibleBlock.cs" />
     <Compile Include="IObjectProducer.cs" />

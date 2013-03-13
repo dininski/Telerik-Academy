@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace AcademyPopcorn
 {
-    //class ShooterEngine : Engine
-    //{
-    //    void ShootPlayerRacket()
-    //    {
-    //    }
-    //}
+    public class ShooterEngine : Engine
+    {
+        public ShooterEngine(IRenderer renderer, IUserInterface ui, int refreshTime)
+            : base(renderer, ui, refreshTime)
+        {
+        }
+
+        public void ShootPlayerRacket()
+        {
+        }
+    }
 }
