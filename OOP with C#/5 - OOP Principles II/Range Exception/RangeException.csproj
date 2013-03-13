@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InvalidRangeException.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="TestTheException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
