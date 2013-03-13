@@ -18,15 +18,25 @@ namespace AcademyPopcorn
             int startCol = 2;
             int endCol = WorldCols - 2;
 
-            for (int i = startCol; i < endCol; i++)
+            for (int i = startCol; i < endCol-28; i++)
             {
-                Block currBlock = new Block(new MatrixCoords(startRow, i));
+                Block currBlock = new Block(new MatrixCoords(startRow+4, i));
 
                 engine.AddObject(currBlock);
             }
 
+            for (int i = startCol+28; i < endCol; i++)
+            {
+                UnpassableBlock unpassable = new UnpassableBlock(new MatrixCoords(startRow + 1, i));
+                engine.AddObject(unpassable);
+            }
+
             Ball theBall = new MeteoriteBall(new MatrixCoords(WorldRows / 2, 0),
                 new MatrixCoords(-1, 1));
+
+            Ball megaBall = new UnstoppableBall(new MatrixCoords(10, WorldCols-1), new MatrixCoords(-1, -1));
+
+            engine.AddObject(megaBall);
 
             engine.AddObject(theBall);
             
@@ -35,10 +45,6 @@ namespace AcademyPopcorn
             engine.AddObject(theRacket);
         }
 
-        //The AcademyPopcorn class contains an IndestructibleBlock class. 
-        //Use it to create side and ceiling walls to the game. You can ONLY 
-        //edit the AcademyPopcornMain.cs file.
-
         //static method CreateWalls adds the boundaries of the game, using
         //IndestructibleBlock and the variables WorldCol and WorldRow
 
@@ -46,13 +52,24 @@ namespace AcademyPopcorn
         {
             for (int i = 0; i < WorldCols; i++)
             {
-                engine.AddObject(new IndestructibleBlock(new MatrixCoords(0,i)));
+                engine.AddObject(new UnpassableBlock(new MatrixCoords(0,i)));
             }
             for (int i = 0; i < WorldRows; i++)
             {
-                engine.AddObject(new IndestructibleBlock(new MatrixCoords(i, 0)));
-                engine.AddObject(new IndestructibleBlock(new MatrixCoords(i, WorldCols-1)));
+                engine.AddObject(new UnpassableBlock(new MatrixCoords(i, 0)));
+                engine.AddObject(new UnpassableBlock(new MatrixCoords(i, WorldCols - 1)));
             }
+        }
+
+        static void WelcomeScreen()
+        {
+            Console.WriteLine("Rules of the game:");
+            Console.WriteLine("    $ - Unpassable block");
+            Console.WriteLine("    @ - Unstoppable ball");
+            Console.WriteLine("    o - Meteorite ball");
+
+            Console.WriteLine("Press any key to start...");
+            Console.ReadKey();
         }
 
         static void Main(string[] args)
@@ -74,8 +91,11 @@ namespace AcademyPopcorn
 
             Initialize(gameEngine);
             CreateWalls(gameEngine);
+            char[,] welcomeMessage = {{'S','T','A','R','T'}};
+            gameEngine.AddObject(new TrailObject(new MatrixCoords(10,15), welcomeMessage, 4));
             //
-
+            WelcomeScreen();
+            gameEngine.AddObject(new ExplodingBlock(new MatrixCoords(10,10)));
             gameEngine.Run();
         }
     }

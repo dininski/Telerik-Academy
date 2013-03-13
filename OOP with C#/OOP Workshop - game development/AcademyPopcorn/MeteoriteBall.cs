@@ -8,7 +8,7 @@ namespace AcademyPopcorn
 {
     public class MeteoriteBall : Ball
     {
-        List<GameObject> trail = new List<GameObject>();
+        List<GameObject> trail;
         public int TrailLife { get; set; }
         public MeteoriteBall(MatrixCoords topLeft, MatrixCoords speed)
             : base(topLeft, speed)
@@ -19,8 +19,8 @@ namespace AcademyPopcorn
         public override void Update()
         {
             base.Update();
+            trail = new List<GameObject>();
             trail.Add(new TrailObject(this.topLeft, new char[,] { { '.' } }, this.TrailLife));
-            trail.RemoveAll((x) => x.IsDestroyed);
         }
 
         public override IEnumerable<GameObject> ProduceObjects()
