@@ -24,6 +24,7 @@ namespace AcademyPopcorn
             int endCol = WorldCols - 1;
             int endRow = 10;
 
+            //generate level
             for (int i = startCol; i < endCol; i++)
             {
                 for (int j = startRow; j < endRow; j++)
@@ -76,6 +77,8 @@ namespace AcademyPopcorn
             Console.WriteLine("    @ - Unstoppable ball");
             Console.WriteLine("    o - Meteorite ball");
             Console.WriteLine("Press any key to start...");
+            Racket a = new Racket(new MatrixCoords(1, 1), 4);
+
             Console.ReadKey();
             Console.ResetColor();
         }
@@ -85,7 +88,7 @@ namespace AcademyPopcorn
 
             IRenderer renderer = new ConsoleRenderer(WorldRows, WorldCols);
             IUserInterface keyboard = new KeyboardInterface();
-            Engine gameEngine = new Engine(renderer, keyboard, 500);
+            Engine gameEngine = new ShooterEngine(renderer, keyboard, 500);
 
             keyboard.OnLeftPressed += (sender, eventInfo) =>
             {

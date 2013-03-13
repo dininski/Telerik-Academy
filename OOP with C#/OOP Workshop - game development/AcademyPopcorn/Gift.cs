@@ -28,5 +28,20 @@ namespace AcademyPopcorn
                 }
             }
         }
+
+        public override IEnumerable<GameObject> ProduceObjects()
+        {
+            if (this.IsDestroyed)
+            {
+                ShootingRacket shooter = new ShootingRacket(new MatrixCoords(topLeft.Row+1, topLeft.Col-3), 6);
+                List<GameObject> shooterList = new List<GameObject>();
+                shooterList.Add(shooter);
+                return shooterList;
+            }
+            else
+            {
+                return new List<GameObject>();
+            }
+        }
     }
 }

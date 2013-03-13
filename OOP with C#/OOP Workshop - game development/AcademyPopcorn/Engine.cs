@@ -48,7 +48,6 @@ namespace AcademyPopcorn
                 if (obj is Racket)
                 {
                     AddRacket(obj);
-
                 }
                 else
                 {
@@ -61,6 +60,7 @@ namespace AcademyPopcorn
         {
             //TODO: we should remove the previous racket from this.allObjects
             this.playerRacket = obj as Racket;
+            this.allObjects.RemoveAll(x => x is Racket);
             this.AddStaticObject(obj);
         }
 
