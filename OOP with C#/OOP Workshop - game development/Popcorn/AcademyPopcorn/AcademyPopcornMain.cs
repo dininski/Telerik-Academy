@@ -35,13 +35,13 @@ namespace AcademyPopcorn
                 }
             }
 
-            Ball theBall = new MeteoriteBall(new MatrixCoords(WorldRows / 2 + 1 , 0), new MatrixCoords(-1, 1));
+            //Ball theBall = new MeteoriteBall(new MatrixCoords(WorldRows / 2 + 1 , 0), new MatrixCoords(-1, 1));
 
-            Ball megaBall = new UnstoppableBall(new MatrixCoords(10, WorldCols - 1), new MatrixCoords(-1, -1));
+            Ball megaBall = new UnstoppableBall(new MatrixCoords(WorldRows - 1, WorldCols/2 +1), new MatrixCoords(-1, 1));
 
             engine.AddObject(megaBall);
 
-            engine.AddObject(theBall);
+            //engine.AddObject(theBall);
 
             Racket theRacket = new Racket(new MatrixCoords(WorldRows - 1, WorldCols / 2), RacketLength);
 
