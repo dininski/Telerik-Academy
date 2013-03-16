@@ -13,7 +13,7 @@ namespace AcademyPopcorn
         List<MovingObject> movingObjects;
         List<GameObject> staticObjects;
         int SleepTime { get; set; }
-        Racket playerRacket;
+        protected Racket playerRacket;
 
         public Engine(IRenderer renderer, IUserInterface userInterface, int sleepTime)
         {

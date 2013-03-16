@@ -22,7 +22,7 @@ namespace AcademyPopcorn
         {
             foreach (var collisionItem in collisionData.hitObjectsCollisionGroupStrings)
             {
-                if (collisionItem.Equals("racket"))
+                if (collisionItem.Equals(Racket.CollisionGroupString))
                 {
                     this.IsDestroyed = true;
                 }

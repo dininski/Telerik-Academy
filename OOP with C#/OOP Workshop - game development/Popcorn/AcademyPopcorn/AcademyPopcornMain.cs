@@ -63,6 +63,9 @@ namespace AcademyPopcorn
                 engine.AddObject(new UnpassableBlock(new MatrixCoords(i, 0)));
                 engine.AddObject(new UnpassableBlock(new MatrixCoords(i, WorldCols - 1)));
             }
+
+            char[,] welcomeMessage = { { 'S', 'T', 'A', 'R', 'T' } };
+            engine.AddObject(new TrailObject(new MatrixCoords(10, 15), welcomeMessage, 4));
         }
 
         //Welcome screen to show the different types of objects used in the game
@@ -88,7 +91,7 @@ namespace AcademyPopcorn
 
             IRenderer renderer = new ConsoleRenderer(WorldRows, WorldCols);
             IUserInterface keyboard = new KeyboardInterface();
-            Engine gameEngine = new ShooterEngine(renderer, keyboard, 500);
+            ShooterEngine gameEngine = new ShooterEngine(renderer, keyboard, 500);
 
             keyboard.OnLeftPressed += (sender, eventInfo) =>
             {
@@ -100,10 +103,13 @@ namespace AcademyPopcorn
                 gameEngine.MovePlayerRacketRight();
             };
 
+            keyboard.OnActionPressed += (sender, eventInfo) =>
+            {
+                gameEngine.ShootPlayerRacket();
+            };
+
             Initialize(gameEngine);
             CreateWalls(gameEngine);
-            char[,] welcomeMessage = { { 'S', 'T', 'A', 'R', 'T' } };
-            gameEngine.AddObject(new TrailObject(new MatrixCoords(10, 15), welcomeMessage, 4));
             //
             WelcomeScreen();
             gameEngine.Run();

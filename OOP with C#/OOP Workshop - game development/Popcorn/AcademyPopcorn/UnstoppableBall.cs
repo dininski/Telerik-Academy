@@ -27,7 +27,7 @@ namespace AcademyPopcorn
             List<string> collisionObjects = collisionData.hitObjectsCollisionGroupStrings;
             foreach (var item in collisionObjects)
             {
-                if (item.Equals("unpassableBlock") || item.Equals("racket"))
+                if (item.Equals(UnpassableBlock.CollisionGroupString) || item.Equals(Racket.CollisionGroupString))
                 {
                     base.RespondToCollision(collisionData);                               
                 }
