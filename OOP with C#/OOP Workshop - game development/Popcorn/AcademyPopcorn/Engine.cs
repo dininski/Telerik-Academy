@@ -58,7 +58,6 @@ namespace AcademyPopcorn
 
         private void AddRacket(GameObject obj)
         {
-            //TODO: we should remove the previous racket from this.allObjects
             this.playerRacket = obj as Racket;
             this.allObjects.RemoveAll(x => x is Racket);
             this.AddStaticObject(obj);

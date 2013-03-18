@@ -1,9 +1,7 @@
 ﻿(function () {
-
 	function createJsConsole(selector) {
 		var self = this;
-		//var consoleElement = document.querySelector(selector);
-		var consoleElement = document.getElementById(selector)
+		var consoleElement = document.querySelector(selector);
 
 		if (consoleElement.className) {
 			consoleElement.className = consoleElement.className + " js-console";
@@ -16,10 +14,9 @@
 		consoleElement.appendChild(textArea);
 
 		self.write = function jsConsoleWrite(text) {
-			var textLine = document.createElement("span");
-			if (text !== "" && text !== undefined) {
-				var toWrite = text.toString();
-				textLine.innerHTML = toWrite;
+			if(text !== undefined && text !== ""){
+				var textLine = document.createElement("span");
+				textLine.innerHTML = text;
 				textArea.appendChild(textLine);
 				consoleElement.scrollTop = consoleElement.scrollHeight;
 			}
@@ -49,8 +46,24 @@
 			var text = self.read(inputSelector);
 			return parseFloat(text);
 		}
+		
+		self.readArray = function readArray(inputSelector,separator) {
+			var text = self.read(inputSelector);
+			var array = text.split(separator);
+			return array;
+		}
+
+		self.readNumbersArray = function readNumbersArray(inputSelector, separator) {
+			var array = self.readArray(inputSelector, separator);
+			var numbers = new Array(array.length);
+			for (var i = 0; i < array.length; i++) {
+				numbers[i] = parseFloat(array[i]);
+			}
+			return numbers;
+		}
+
 
 		return self;
 	}
-	jsConsole = new createJsConsole("js-console");
+	jsConsole = new createJsConsole("#js-console");
 }).call(this);
