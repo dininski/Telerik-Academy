@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a script that finds the maximal sequence of equal elements in an array. Example: {2, 1, 1, 2, 3, 3, 2, 2, 2, 1} -> {2, 2, 2}.");
+    jsConsole.writeLine();
+
+    var randomElements =[2, 1, 1, 2, 3, 3, 2, 2, 2, 1];
+    var currentSequence = 1;
+    var longestSequence = 1;
+    var indexOfLongest;
+
+    for (var i = 0; i < randomElements.length-1; i++) {
+        if (randomElements[i] == randomElements[i + 1]) {
+            currentSequence++;
+        } else {
+            if (longestSequence < currentSequence) {
+                longestSequence = currentSequence;
+                indexOfLongest = i - currentSequence + 1;
+            }
+            currentSequence = 1;
+        }
+    }
+
+    var result = randomElements.slice(indexOfLongest, indexOfLongest + longestSequence);
+    jsConsole.writeLine('The longest sequence has ' + longestSequence + ' elements');
+    jsConsole.writeLine('It starts at position ' + indexOfLongest + ' and contains the elements [' + result + ']');
+
+
+</script>
+</body>
+</html>

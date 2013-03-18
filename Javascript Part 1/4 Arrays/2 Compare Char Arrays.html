@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a script that compares two char arrays lexicographically (letter by letter).");
+    jsConsole.writeLine();
+
+    var firstCharArray = ['t','h','i','s'];
+    var secondCharArray = ['t', 'h', 'a', 't'];
+    var whichIsFirst;
+    var minimumNumberOfElements = firstCharArray.length > secondCharArray.length ? firstCharArray.length : secondCharArray.length;
+    var i = 0;
+
+    jsConsole.writeLine("Comparing ["+firstCharArray + "] and ["+secondCharArray+"]");
+
+    while (i < minimumNumberOfElements) {
+        if (firstCharArray[i] < secondCharArray[i]) {
+            whichIsFirst = 1;
+            break;
+        } else if (firstCharArray[i] > secondCharArray[i]) {
+            whichIsFirst = 2;
+            break;
+        }
+        i++;
+    }
+
+
+    if (whichIsFirst == 1) {
+        jsConsole.write('[' + firstCharArray + ']');
+    } else {
+        jsConsole.write('[' + secondCharArray + ']');
+    }
+    jsConsole.write(" is first lexicographically.");
+    
+
+</script>
+</body>
+</html>

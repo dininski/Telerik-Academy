@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a program that finds the most frequent number in an array. Example:" + 
+    "{4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3} -> 4 (5 times)");
+    jsConsole.writeLine();
+
+    var someNumbers = [4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3];
+    var values = new Array();
+
+    for (var i = 0; i < someNumbers.length; i++) {
+        if (values[someNumbers[i]] == undefined) {
+            values[someNumbers[i]] = 1;
+        } else {
+            values[someNumbers[i]]++;
+        }
+    }
+
+    var max = 0;
+    var pos = 0;
+    for (var i = 0; i < values.length; i++) {
+        if (max < values[i]) {
+            max = values[i];
+            pos = i;
+        }
+    }
+
+    jsConsole.writeLine(max + " " + (values[pos]-1));
+
+</script>
+</body>
+</html>

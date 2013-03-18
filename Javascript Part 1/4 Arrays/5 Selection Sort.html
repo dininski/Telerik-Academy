@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine('Sorting an array means to arrange its elements in increasing order. Write a script to sort an array. ' +
+            'Use the "selection sort" algorithm: Find the smallest element, move it at the first position, find the smallest from ' +
+            'the rest, move it at the second position, etc.Hint: Use a second array');
+        jsConsole.writeLine();
+
+        var arrayToSort = [2, 6, 3, 2, 7, 9, 1, 56, 12, 89, 0, 85, 42];
+        jsConsole.writeLine("Unsorted array: [" + arrayToSort + "]");
+        for (var i = 0; i < arrayToSort.length-1; i++) {
+            var minElementPos = i;
+            var minElement = arrayToSort[i];
+            for (var j = i + 1; j < arrayToSort.length; j++) {
+                if (minElement > arrayToSort[j]) {
+                    minElementPos = j;
+                    minElement = arrayToSort[j];
+                }
+            }
+            var temp = arrayToSort[i];
+            arrayToSort[i] = arrayToSort[minElementPos];
+            arrayToSort[minElementPos] = temp;
+            //Uncomment to see every the array at every step:
+            //jsConsole.writeLine(arrayToSort);
+        }
+
+        jsConsole.writeLine("Sorted array: [" + arrayToSort + "]");
+    </script>
+</body>
+</html>

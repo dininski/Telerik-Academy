@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+    jsConsole.writeLine("Write a script that allocates array of 20 integers and initializes each element by its index multiplied by 5. Print the obtained array on the console.");
+    jsConsole.writeLine();
+
+    var numbers = new Array();
+
+    for (var i = 0; i < 20; i++) {
+        numbers[i] = i * 5;
+        jsConsole.writeLine("array[" + i + "] = " + numbers[i]);
+    }
+    
+
+</script>
+</body>
+</html>
