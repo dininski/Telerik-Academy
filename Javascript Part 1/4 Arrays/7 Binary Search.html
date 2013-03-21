@@ -1,23 +1,65 @@
 <html>
 <head>
-	<title></title>
+    <title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="styles/js-console.css">
 <body>
-<div id="js-console"></div>
-<script src="scripts/js-console.js"></script>
-<script type="text/javascript">
-    jsConsole.writeLine("Write a script that allocates array of 20 integers and initializes each element by its index multiplied by 5. Print the obtained array on the console.");
-    jsConsole.writeLine();
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        jsConsole.writeLine("Write a program that finds the index of given element in a sorted array of integers by using the binary search algorithm (find it in Wikipedia)");
+        jsConsole.writeLine();
 
-    var numbers = new Array();
+        var numbers = [5, 4, 1, 7, 8, 3, 2, 12, 96, 143, 9, 654, 124, 51];
 
-    for (var i = 0; i < 20; i++) {
-        numbers[i] = i * 5;
-        jsConsole.writeLine("array[" + i + "] = " + numbers[i]);
-    }
-    
+        numbers.sort(function (a, b) {
+            return a - b;
+        });
 
-</script>
+        function binarySearch(numbers, numberToFind) {
+            var min, max;
+            min = 0;
+            max = numbers.length - 1;
+            while (max >= min) {
+                var middle = Math.floor((min + max) / 2);
+                if (numbers[middle] < numberToFind) {
+                    min = middle + 1;
+                } else if (numbers[middle] > numberToFind) {
+                    max = middle - 1;
+                } else {
+                    return middle;
+                }
+            }
+            return -1;
+        }
+
+        function printResult(indexOfElement, numbers) {
+            if (indexOfElement >= 0) {
+                jsConsole.writeLine(numbers[indexOfElement] + " found at position " + indexOfElement);
+            } else {
+                jsConsole.writeLine(searchedElement + " not found in the array");
+            }
+        }
+
+        jsConsole.writeLine("Sorted array: [" + numbers + "]");
+
+        var searchedElement = 96;
+        var indexOfElement = binarySearch(numbers, searchedElement);
+        printResult(indexOfElement, numbers);
+
+        var searchedElement = 654;
+        var indexOfElement = binarySearch(numbers, searchedElement);
+        printResult(indexOfElement, numbers);
+
+        var searchedElement = 1;
+        var indexOfElement = binarySearch(numbers, searchedElement);
+        printResult(indexOfElement, numbers);
+
+        //will not be found
+        var searchedElement = 999;
+        var indexOfElement = binarySearch(numbers, searchedElement);
+        printResult(indexOfElement, numbers);
+        
+    </script>
 </body>
 </html>
