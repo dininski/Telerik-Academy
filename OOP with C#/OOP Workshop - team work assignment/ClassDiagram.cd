@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Galaxian.Common.CollisionDetector" Collapsed="true">
+    <Position X="38.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\CollisionDetector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Common.Coordinates" Collapsed="true">
+    <Position X="38.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAABAAAAAQAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Coordinates.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Common.buffer" Collapsed="true">
+    <Position X="36.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAECACAAAgQAQgQAIAAAAAAEAAAAQAAAABBEAIA=</HashCode>
+      <FileName>Common\DoubleBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Common.GameEngine" Collapsed="true">
+    <Position X="36.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFQAACEQAAAAAAAQAAAAhggBAAAoAAQAAACAgAA=</HashCode>
+      <FileName>Common\GameEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Common.GameObject" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAABAAAAAAAAAAAAgAAAAAEQgAIAAAQIAAgAEAAAA=</HashCode>
+      <FileName>Common\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Galaxian.Common.KeyboardInterface" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="38.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAACAAAAAAAAAAAAAAgAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Common\KeyboardInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Galaxian.Common.MovingObject" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\MovingObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Galaxian.Common.PlayerShip" Collapsed="true">
+    <Position X="29" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAABAAABAAAAAAAAEAAEAgEAAAKQIQAAAAAAAA=</HashCode>
+      <FileName>Common\PlayerShip.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Galaxian.Common.WallBlock" Collapsed="true">
+    <Position X="31.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAEAAEAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\StaticObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Common.ConsoleRenderer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAIAAAAAABACACAAAAEAAAA=</HashCode>
+      <FileName>Renderer\ConsoleRenderer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Galaxian.Common.DoubleBufferConsoleRenderer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAACAAAAAAgAAAAAAAIAAAAAAAAKACAIAAAAAAA=</HashCode>
+      <FileName>Renderer\DoubleBufferConsoleRenderer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Galaxian.Enemies.Bomber" Collapsed="true">
+    <Position X="25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\Bomber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Enemies.Charger" Collapsed="true">
+    <Position X="27.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\Charger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Enemies.Enemy" Collapsed="true">
+    <Position X="21.5" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="Galaxian.Common.MovingObject" FixedToPoint="true">
+      <Path>
+        <Point X="21.25" Y="2.441" />
+        <Point X="21.25" Y="2.875" />
+        <Point X="22.25" Y="2.875" />
+        <Point X="22.25" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAEAAEAgAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Enemies.Horrific" Collapsed="true">
+    <Position X="29.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\Horrific.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Enemies.Sinister" Collapsed="true">
+    <Position X="20.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\Sinister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Enemies.SuperBoss" Collapsed="true">
+    <Position X="22.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Common\Enemies\SuperBoss.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Program.ConsoleGame" Collapsed="true">
+    <Position X="40" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIAAAAAAhAAAAAgAAAAAAAAAAAAAAAACBAQAAAA=</HashCode>
+      <FileName>Executable\ConsoleGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Shot.EnemyExplosion" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Shot\EnemyExplosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Shot.EnemyShot" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Shot\EnemyShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Shot.PlayerShot" Collapsed="true">
+    <Position X="17.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Shot\PlayerShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Galaxian.Shot.Shot" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Shot\Shot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Galaxian.Common.ICollidable" Collapsed="true">
+    <Position X="36.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Common\ICollidable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IControllable" Collapsed="true">
+    <Position X="38.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Common\IControllable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IDrawable" Collapsed="true">
+    <Position X="40" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\IDrawable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IMovable" Collapsed="true">
+    <Position X="36.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IObjectProducer" Collapsed="true">
+    <Position X="38.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Common\IObjectProducer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IRenderer" Collapsed="true">
+    <Position X="40" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACACAAAAAAAAA=</HashCode>
+      <FileName>Common\IRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Galaxian.Common.IUserInterface" Collapsed="true">
+    <Position X="36.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAACAAAAAAAAAAAAAAgAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Common\IUserInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Galaxian.Common.EObjectTypes" Collapsed="true">
+    <Position X="36.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAAAAABAAIgAAAAiABAAAhEAAAAAAEAAAAAAEAAEAA=</HashCode>
+      <FileName>Common\EObjectTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
