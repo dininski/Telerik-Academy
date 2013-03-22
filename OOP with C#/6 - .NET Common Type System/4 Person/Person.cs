@@ -7,10 +7,10 @@ namespace Person
         public int? Age { get; set; }
         public string Name { get; set; }
 
-        public Person()
+        public Person(string name, int? age = null)
         {
-            this.Name = null;
-            this.Age = null;
+            this.Name = name;
+            this.Age = age;
         }
 
         public override string ToString()

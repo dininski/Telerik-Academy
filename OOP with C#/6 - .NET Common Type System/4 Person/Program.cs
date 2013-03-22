@@ -7,13 +7,10 @@ namespace Person
         public static void Main()
         {
 
-            Person someone = new Person();
-            Person someoneElse = new Person();
-            someone.Name = "Ivan";
-            someone.Age = 22;
-            someoneElse.Name = "Petkan";
-            Console.WriteLine(someone);
-            Console.WriteLine(someoneElse);
+            Person ivan = new Person("Ivan", 22);
+            Person petkan = new Person("Petkan");
+            Console.WriteLine(ivan);
+            Console.WriteLine(petkan);
         }
     }
 }

@@ -50,13 +50,13 @@ namespace School
             return sb.ToString();
         }
 
-        public Student(string firstName, string middleName, long ssn, string lastName, string adress, long phone, string email, string course, University university, Faculty faculty, Speciality speciality)
+        public Student(string firstName, string middleName, long ssn, string lastName, string address, long phone, string email, string course, University university, Faculty faculty, Speciality speciality)
         {
             this.FirstName = firstName;
             this.MiddleName = middleName;
             this.Ssn = ssn;
             this.LastName = lastName;
-            this.Address = adress;
+            this.Address = address;
             this.Phone = phone;
             this.Email = email;
             this.Course = course;
@@ -93,28 +93,29 @@ namespace School
 
         public override bool Equals(object obj)
         {
-            Student student = obj as Student;
-            if (student == null)
+            Student someStudent = obj as Student;
+            
+            if ((object)someStudent == null)
             {
                 return false;
             }
 
-            if (!this.FirstName.Equals(student.FirstName))
+            if (!this.FirstName.Equals(someStudent.FirstName))
             {
                 return false;
             }
 
-            if (!this.MiddleName.Equals(student.MiddleName))
+            if (!this.MiddleName.Equals(someStudent.MiddleName))
             {
                 return false;
             }
 
-            if (!this.LastName.Equals(student.LastName))
+            if (!this.LastName.Equals(someStudent.LastName))
             {
                 return false;
             }
 
-            if (!this.Ssn.Equals(student.Ssn))
+            if (!this.Ssn.Equals(someStudent.Ssn))
             {
                 return false;
             }
