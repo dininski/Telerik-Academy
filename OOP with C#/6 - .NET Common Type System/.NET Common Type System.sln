@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentTests", "StudentTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5 BitArray64", "5 BitArray64\5 BitArray64.csproj", "{29741CC9-11D8-438E-8792-C05A706BC6FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6 BinarySearchTree", "6 BinarySearchTree\6 BinarySearchTree.csproj", "{AE7276AF-6AB5-4F7D-A0FF-96BCA024C15E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{29741CC9-11D8-438E-8792-C05A706BC6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29741CC9-11D8-438E-8792-C05A706BC6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29741CC9-11D8-438E-8792-C05A706BC6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7276AF-6AB5-4F7D-A0FF-96BCA024C15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7276AF-6AB5-4F7D-A0FF-96BCA024C15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7276AF-6AB5-4F7D-A0FF-96BCA024C15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7276AF-6AB5-4F7D-A0FF-96BCA024C15E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
