@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a function that reverses the digits of given decimal number. Example: 256 -> 652
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="CalculateResultOnClick()">Calculate</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function CalculateResultOnClick() {
+            var numberAsString = jsConsole.read("#input").toString();
+            jsConsole.writeLine(reverseNumber(numberAsString));
+        }
+
+        function reverseNumber(numberAsString) {
+            var reversed ='';
+            for (var i = numberAsString.length-1; i >= 0; i--) {
+                reversed += numberAsString[i];
+            }
+            return reversed;
+        }
+
+    </script>
+</body>
+</html>

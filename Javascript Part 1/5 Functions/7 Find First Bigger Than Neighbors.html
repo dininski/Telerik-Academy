@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a Function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.
+        <br />
+        Use the function from the previous exercise.
+    </p>
+
+    Enter array:
+    <input type="text" id="arrayNumbers" placeholder="1,2,3,4" />
+
+    <button onclick="CheckNeighborsOnClick()">Calculate</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function CheckNeighborsOnClick() {
+            var numbersArray = jsConsole.readArray("#arrayNumbers", ',');
+            jsConsole.writeLine("The first element, bigger that it's neighbors is: " + firstFirstElementBiggerThanNeighbors(numbersArray));
+        }
+
+        function searchArrayForNumber(numbersArray, positionOfElement) {
+            if (positionOfElement < numbersArray.length - 1 && positionOfElement > 0) {
+                return (parseInt(numbersArray[positionOfElement]) > parseInt(numbersArray[positionOfElement - 1]) &&
+                        parseInt(numbersArray[positionOfElement]) > parseInt(numbersArray[positionOfElement + 1]))
+            } else {
+                return "The position that you are checking is of the first or the last element";
+            }
+        }
+
+        function firstFirstElementBiggerThanNeighbors(numbersArray) {
+            for (var currentIndex = 1; currentIndex < numbersArray.length-1; currentIndex++) {
+                if (searchArrayForNumber(numbersArray, currentIndex)) {
+                    return currentIndex;
+                }
+            }
+            return -1;
+        }
+
+
+    </script>
+</body>
+</html>

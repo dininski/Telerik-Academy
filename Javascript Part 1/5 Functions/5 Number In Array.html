@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a function that counts how many times given number appears in given array. Write a test function to check if the function is working correctly.
+    </p>
+
+    Enter array:
+    <input type="text" id="arrayNumbers" placeholder="1,2,3,4" />
+    Enter number:
+    <input type="text" id="numberToFind" />
+
+    <button onclick="CalculateResultOnClick()">Calculate</button>
+    <button onclick="testSearchOnClick()">Sample Search</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function CalculateResultOnClick() {
+            var arrayWithNumbers = jsConsole.readArray("#arrayNumbers", ',');
+            var numberToFind = jsConsole.read('#numberToFind');
+            jsConsole.writeLine('Number of occurences: ' + searchArrayForNumber(arrayWithNumbers, numberToFind));
+        }
+
+        function searchArrayForNumber(numbersArray, numberToFind) {
+            var occurences = 0;
+            for (var i = 0; i < numbersArray.length; i++) {
+                if (numbersArray[i] == numberToFind) {
+                    occurences++;
+                }
+            }
+            return occurences;
+        }
+
+        function testSearchOnClick() {
+            var someNumbers = [1, 2, 6, 4, 5, 6, 1, 6, 2, 7, 2];
+
+            var numberToFind = 6; //should be found 3 times in the array;
+
+            jsConsole.writeLine("Sample array: ");
+            jsConsole.writeLine(someNumbers);
+            jsConsole.writeLine("number to find: " + numberToFind);
+            jsConsole.writeLine("Occurences: "+ searchArrayForNumber(someNumbers, numberToFind));
+        }
+
+    </script>
+</body>
+</html>

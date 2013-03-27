@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+<p>
+    Write a function that returns the last digit of given integer as an English word. Examples: 512 -> "two", 1024 -> "four", 12309 -> "nine"
+</p>
+
+<input type="text" id="input" />
+<button onclick="CalculateResultOnClick()">Calculate</button>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+
+    function CalculateResultOnClick() {
+        var numberAsString = jsConsole.read("#input").toString();
+        jsConsole.writeLine(numberToWord(numberAsString));
+    }
+
+    function numberToWord(numberAsString) {
+        var lastnumber = parseInt(numberAsString.charAt(numberAsString.length - 1));
+
+        switch (lastnumber) {
+            case 1:
+                return "one";
+            case 2:
+                return "two";
+            case 3:
+                return "three";
+            case 4:
+                return "four";
+            case 5:
+                return "five";
+            case 6:
+                return "six";
+            case 7:
+                return "seven";
+            case 8:
+                return "eight";
+            case 9:
+                return "nine";
+            case 0:
+                return "zero";
+            default:
+                return "invalid number entered";
+        }
+    }
+</script>
+</body>
+</html>

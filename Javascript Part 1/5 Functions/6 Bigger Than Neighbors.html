@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a function that checks if the element at given position in given array of integers is bigger than its two neighbors (when such exist).
+    </p>
+
+    Enter array:
+    <input type="text" id="arrayNumbers" placeholder="1,2,3,4" />
+    Enter position:
+    <input type="text" id="numberToCheck" />
+
+    <button onclick="CheckNeighborsOnClick()">Calculate</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function CheckNeighborsOnClick() {
+            var numbersArray = jsConsole.readArray("#arrayNumbers", ',');
+            var positionOfElement = parseInt(jsConsole.read('#numberToCheck'));
+            jsConsole.writeLine('The number is between two smaller numbers: ' + searchArrayForNumber(numbersArray, positionOfElement));
+        }
+
+        function searchArrayForNumber(numbersArray, positionOfElement) {
+            if (positionOfElement < numbersArray.length - 1 && positionOfElement > 0) {
+                return (parseInt(numbersArray[positionOfElement]) > parseInt(numbersArray[positionOfElement - 1]) &&
+                        parseInt(numbersArray[positionOfElement]) > parseInt(numbersArray[positionOfElement + 1]))
+            } else {
+                return "The position that you are checking is of the first or the last element";
+            }
+        }
+
+
+    </script>
+</body>
+</html>

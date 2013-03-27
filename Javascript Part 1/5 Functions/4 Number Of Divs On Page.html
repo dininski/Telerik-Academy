@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a function to count the number of divs on the web page
+        (jsConsole is placed in a div too!)
+    </p>
+    <button onclick="CountsDivsOnPageOnClick()">Show divs</button>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div id="js-console"></div>
+    
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        function CountsDivsOnPageOnClick() {
+
+            var numberOfDivs = document.getElementsByTagName('div');
+            jsConsole.writeLine('Number of divs: '+numberOfDivs.length);
+        }
+
+    </script>
+</body>
+</html>
