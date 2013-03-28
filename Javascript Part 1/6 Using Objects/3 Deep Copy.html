@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a function that makes a deep copy of an object
+        <br />
+        The function should work for both primitive and reference types
+    </p>
+
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        function deepCopy(obj) {
+            if (obj == null || typeof obj != "object") {
+                return obj;
+            }
+
+            if (obj instanceof Array) {
+                var arrayCopy = new Array();
+                for (var i = 0; i < obj.length; i++) {
+                    arrayCopy[i] = deepCopy(obj[i]);
+                }
+
+                return arrayCopy;
+            }
+
+            if (obj instanceof Object) {
+                var objectCopy = new Object();
+
+                for (var attribute in obj) {
+                    if (obj.hasOwnProperty(attribute)) {
+                        objectCopy[attribute] = deepCopy(obj[attribute]);
+                    }
+                }
+
+                return objectCopy;
+            }
+        }
+
+        var bookCharacter = {
+            name: "Arthur",
+            familyName: "Dent",
+            age: "30",
+            origin: "Earth"
+        }
+
+        var copiedBookCharacter = deepCopy(bookCharacter);
+
+        jsConsole.writeLine("Original object: ");
+        printObject(bookCharacter);
+
+        jsConsole.writeLine("Copied object: ");
+        printObject(copiedBookCharacter);
+
+        jsConsole.writeLine();
+
+        //change a property to demonstrate that we are not passing a reference, but
+        //creating a new object
+        jsConsole.writeLine("Change the copied object age to 50");
+        copiedBookCharacter.age = 50;
+
+        jsConsole.writeLine();
+
+        jsConsole.writeLine("Original object: ");
+        printObject(bookCharacter);
+        jsConsole.writeLine("Copied object: ");
+        printObject(copiedBookCharacter);
+
+        function printObject(obj) {
+            for (var attribute in obj) {
+                jsConsole.write(attribute + ": " + obj[attribute] + ", ");
+            }
+            jsConsole.writeLine();
+        }
+    </script>
+</body>
+</html>

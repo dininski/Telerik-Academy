@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+    <style>
+        p {
+            width: 820px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Write a function that finds all the occurrences of word in a text
+    </p>
+    <ul>
+        <li>The search can case sensitive or case insensitive
+        </li>
+        <li>Use function overloading
+        </li>
+    </ul>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        var text = 'This is just a sample text. Why would you call this a sample text? Text is a sample text when it is used only as a sample...';
+        jsConsole.writeLine(text);
+        function searchForWord(text, word, caseSensitive) {
+            var caseSensitive = caseSensitive || false;
+
+            var wordOccurences = 0;
+
+            if (caseSensitive) {
+                var indexOfWord = text.indexOf(word);
+                while (indexOfWord >= 0) {
+                    wordOccurences++;
+                    indexOfWord = text.indexOf(word, indexOfWord+1);
+                }
+            } else {
+                var wordToFind = text.split(word);
+
+                for (var singleWord in wordToFind) {
+                    wordOccurences++;
+                }
+            }
+
+            return wordOccurences;
+        }
+
+        jsConsole.writeLine('Search for word "this"');
+        jsConsole.writeLine('case insensitive: ' + searchForWord(text,"this") + ' occurences');
+        jsConsole.writeLine('case insensitive: ' + searchForWord(text, "this", true) + ' occurences');
+
+    </script>
+</body>
+</html>
