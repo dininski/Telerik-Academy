@@ -1,0 +1,86 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: white;
+}
+
+nav.menu{
+	display: inline-block;
+	margin: 40px;
+	width: 700px;
+}
+
+a:link {
+	color: #a7162e;
+	text-decoration: none;
+}
+
+a:active {
+	color: #a7162e;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #a7162e;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+div.menuItem {
+	float:left;
+}
+
+.left_border {
+	background: url('../images/menu_left_border.png');
+	height: 50px;
+	width: 14px;
+	float:left;
+}
+
+.right_border {
+	height: 50px;
+	width: 12px;
+	background: url('../images/menu_right_border.png');
+	float: left;
+}
+
+.main_menu {
+	background: url('../images/menu_bg.png');
+	height: 50px;
+	display: inline-block;
+	text-transform: uppercase;
+	list-style-type: none;
+	float:left;
+	line-height: 50px;
+}
+
+.main_menu li {
+	float: left;
+	margin: 0 10px;
+}
+
+.main_menu li:after {
+	float:right;
+	display: block;
+	background: url('../images/menu_separator.png');
+	content: '';
+	height: 50px;
+	width: 2px;
+	margin-left: 20px;
+}
+
+.main_menu li:last-child:after {
+	float:right;
+	display: block;
+	background: none;
+	content: '';
+	height: 50px;
+	width: 2px;
+	margin-left: 5px;
+}

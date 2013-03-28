@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: grey;
+}
+
+div.clearfix {
+	display: inline-block;
+	margin: 40px;
+}
+
+span.btn_left {
+	display: block;
+	height: 55px;
+	width: 27px;
+	background: url('../images/btn_left.png');
+	float:left;
+}
+
+span.btn_right {
+	display: block;
+	height: 55px;
+	width: 32px;
+	background: url('../images/btn_right.png');
+	float: right;
+}
+
+div.btn_bg {
+	height: 55px;
+	min-width: 40px;
+	background: url('../images/btn_bg.png');
+	float: left;
+	line-height: 35px;
+	text-align: center;
+}
+
+a:link {
+	color: grey;
+	text-decoration: none;
+}
+
+a:active {
+	color: grey;
+	text-decoration: none;
+}
+
+a:visited {
+	color: grey;
+}
+
+a:hover {
+	color: black;
+	text-decoration: underline;
+}

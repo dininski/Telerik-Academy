@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title></title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+<body>
+    <p>
+        Write a function that removes all elements with a given value
+        <br />
+        var arr = [1,2,1,4,1,3,4,1,111,3,2,1,"1"];
+        <br />
+        arr.remove(1); //arr = [2,4,3,4,111,3,2,"1"];
+    <ul>
+        <li>Attach it to the array class</li>
+        <li>Read about prototype and how to attach methods</li>
+    </ul>
+    </p>
+
+    <input type="text" id="arrayInput" placeholder="1,2,3,4,5"/>
+    <input type="text" id="elementToRemove" placeholder="Element to remove" />
+    <button onclick="CalculateResultOnClick()">Remove</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function CalculateResultOnClick() {
+            var arrayOfElements = jsConsole.readArray("#arrayInput", ',');
+            var valueToRemove = jsConsole.read('#elementToRemove');
+            jsConsole.writeLine("Before: " + arrayOfElements);
+            arrayOfElements.remove(valueToRemove);
+            jsConsole.writeLine("After: " + arrayOfElements);
+        }
+
+        Array.prototype.remove = function (valueToRemove) {
+            index = this.indexOf(valueToRemove);
+            while (index >= 0) {
+                this.splice(index, 1);
+                index = this.indexOf(valueToRemove);
+            }
+        }
+
+    </script>
+</body>
+</html>
