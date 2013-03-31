@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="parseEmailOnClick()">Get Palindromes</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        var sampleText = "ABBA are meh...aibohphobia is fear of palindromes (which is a palindrome itself).And let's put bob here...";
+
+        String.prototype.trim = function () { return this.replace(/^\s+|\s+$/g, ''); };
+
+        jsConsole.writeLine(sampleText);
+        jsConsole.writeLine('The palindromes are:');
+        jsConsole.writeLine(getPalindromes(sampleText));
+
+        function parseEmailOnClick() {
+            var input = jsConsole.read("#input").toString();
+            jsConsole.writeLine(getPalindromes(input));
+        }
+
+        function getPalindromes(input) {
+            var palindromes = new Array();
+            var wordsInText = input.match(/\s?(\w+)\s?/g);
+            for (var i = 0; i < wordsInText.length; i++) {
+                wordsInText[i] = wordsInText[i].trim();
+                if (isPalindrome(wordsInText[i])) {
+                    palindromes.push(wordsInText[i]);
+                }
+            }
+            return palindromes;
+        }
+
+        function isPalindrome(word) {
+            //only if the word is longer than 1 letter
+            if (word.length > 1) {
+
+                for (var i = 0; i < word.length / 2; i++) {
+                    if (word[i].toLowerCase() !== word[word.length - 1 - i].toLowerCase()) {
+                        return false;
+                    }
+                }
+                return true;
+            } else return false;
+        }
+    </script>
+</body>
+</html>

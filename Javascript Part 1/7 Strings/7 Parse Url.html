@@ -1,0 +1,53 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a script that parses an URL address given in the format:
+        <br />
+        [protocol]://[server]/[resource]
+        <br />
+		and extracts from it the [protocol], [server] and [resource] elements. 
+        <br />
+        Return the elements in a JSON object.For example from the URL http://www.devbg.org/forum/index.php 
+        <br />
+        the following information should be extracted:
+        {protocol: "http", server: "www.devbg.org", resource: "/forum/index.php"}
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="parseUrlOnClick()">Get Data</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        function parseUrlOnClick() {
+            var url = jsConsole.read("#input").toString();
+            jsConsole.writeLine(createObject(url));
+        }
+
+        function createObject(url) {
+            var parsedUrl = {
+                protocol: '',
+                server: '',
+                resource: '',
+                toString: function () {
+                    return '{protocol: "' + this.protocol +
+                           '", server: "' + this.server +
+                           '", resource: "' + this.resource + '"}'
+                }
+            }
+
+            //using regular expressions to grab the different elements
+            parsedUrl.protocol = url.match(/(.*):\/\//)[1];
+            parsedUrl.server = url.match(/:\/\/(.*?)\//)[1];
+            parsedUrl.resource = url.match(/[a-zA-Z](\/.*)/)[1];
+
+            console.log(parsedUrl);
+            return parsedUrl.toString();
+        }
+    </script>
+</body>
+</html>

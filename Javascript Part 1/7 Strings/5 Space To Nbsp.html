@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a function that replaces non breaking white-spaces in a text with &nbsp;
+    </p>
+
+    Sample text&nbsp&nbsp&nbsp&nbsp&nbspwith some spaces
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        (function parseText() {
+            var stringToParse = "Sample text    with some spaces";
+            stringToParse = stringToParse.replace(/\s{1,}/g, '&nbsp');
+            jsConsole.writeLine(stringToParse);
+            jsConsole.writeLine('P.S. check the console.');
+            console.log(stringToParse);
+        })();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a function that extracts the content of a html page given as text. The function should return anything that is in a tag, without the tags:   
+    </p>
+
+    &lt;html&gt;&lt;head&gt;&lt;title&gt;Sample site&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;text&lt;div&gt;more text&lt;/div&gt;and more...&lt;/div&gt;in body&lt;/body&gt;&lt;/html&gt;
+    <br />
+    Expected result:
+    <br />
+    Sample sitetextmore textand more...in body
+
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        (function parseText() {
+            var stringToParse = "<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>";
+            stringToParse = stringToParse.replace(/<.*?>/g, '');
+            jsConsole.writeLine(stringToParse);
+            console.log(stringToParse);
+        })();
+
+    </script>
+</body>
+</html>

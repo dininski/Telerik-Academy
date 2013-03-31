@@ -1,0 +1,78 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        You are given a text. Write a function that changes the text in all regions:
+        
+    </p>
+
+    <ul>
+        <li>&lt;upcase&gt;text/upcase&gt; to uppercase.</li>
+        <li>&lt;lowcase&gt;text&lt;/lowcase&gt; to lowercase</li>
+        <li>&lt;mixcase&gt;text&lt;/mixcase&gt; to mix casing(random)</li>
+    </ul>
+    We are &lt;mixcase&gt;living&lt;/mixcase&gt; in a &lt;upcase&gt;yellow submarine&lt;/upcase&gt;.
+    <br />
+    We &lt;mixcase&gt;don't&lt;/mixcase&gt; have &lt;lowcase&gt;anything&lt;/lowcase&gt; else.
+    <br />
+    The expected result:
+    <br />
+    We are LiVinG in a YELLOW SUBMARINE. We dOn'T have anything else.
+    <br />
+    Regions can be nested
+    <br />
+    <textarea id="input"></textarea>
+    <button onclick="parseStringOnClick()">Parse</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        //it works for NESTED regions
+        var stringToParse = "We are <mixcase>living</mixcase> in a <upcase><lowcase>yellow submarine</lowcase></upcase>. " +
+                   "We <mixcase>don't</mixcase> have <lowcase>ANYTHING</lowcase> else.";
+
+        function parseStringOnClick() {
+            var stringToParse = jsConsole.read("#input").toString();
+            jsConsole.writeLine(parseText(stringToParse));
+        }
+
+        function parseText(stringToParse) {
+            var result = stringToParse;
+
+            //define global regular expressions for catching all the tags by using 'g' at the end
+            var mixcasePattern = /<mixcase>(.*?)<\/mixcase>/g;
+            var upcasePattern = /<upcase>(.*?)<\/upcase>/g;
+            var lowcasePattern = /<lowcase>(.*?)<\/lowcase>/g;
+
+            //replace using an anonymous function for random upper/lower case
+            result = result.replace(mixcasePattern, function (match) {
+                var i = 0;
+                for (i = 0; i < match.length; i++) {
+                    var upperOrLower = Math.round(Math.random());
+                    switch (upperOrLower) {
+                        case 0:
+                            match = match.replace(match[i], match[i].toLowerCase());
+                            break;
+                        case 1:
+                            match = match.replace(match[i], match[i].toUpperCase());
+                            break;
+                    }
+                    console.log(upperOrLower);
+
+                }
+                return match;
+            });
+
+            result = result.replace(upcasePattern, function (match) { return match.toUpperCase() });
+            result = result.replace(lowcasePattern, function (match) { console.log(match); return match.toLowerCase() });
+            
+            return result;
+        }
+
+        jsConsole.writeLine(stringToParse);
+        jsConsole.writeLine(parseText(stringToParse));
+    </script>
+</body>
+</html>

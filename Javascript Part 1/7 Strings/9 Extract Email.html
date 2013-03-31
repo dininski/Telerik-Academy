@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a function for extracting all email addresses from given text. All substrings that match the format 
+        <br />
+        &lt;identifier&gt;@&lt;host&gt;…&lt;domain&gt; should be recognized as emails. Return the emails as array of strings.
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="parseEmailOnClick()">Parse</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        var sampleMail = "Let's say we have the Avengers...and some of their emails are thor@theavengers.com, theHulk@theavengers.com and ironmanLikeABaws69@theavengers.com...";
+
+        jsConsole.writeLine(sampleMail);
+        jsConsole.writeLine('The emails are:');
+        jsConsole.writeLine(getEmails(sampleMail));
+
+        function parseEmailOnClick() {
+            var input = jsConsole.read("#input").toString();
+            jsConsole.writeLine(getEmails(input));
+        }
+
+        function getEmails(input) {
+            var emails = input.match(/\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}/gi);
+            console.log(emails);
+            return emails;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a JavaScript function that replaces in a HTML document given as string all the tags &lt;a href="…"&gt;…&lt;/a&gt; with corresponding tags [URL=…]…/URL].
+        <br />
+        Sample HTML fragment:
+        <br />
+        &lt;p&gt;Please visit &lt;a href="http://academy.telerik. com"&gt;our site&lt;/a&gt; to choose a training course. Also visit &lt;a href="www.devbg.org"&gt;our forum&lt;/a&gt; to discuss the courses.&lt;/p&gt;
+        <br />
+        &lt;p&gt;Please visit [URL=http://academy.telerik. com]our site[/URL] to choose a training course. Also visit [URL=www.devbg.org]our forum[/URL] to discuss the courses.&lt;/p&gt;
+        <br />
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="parseUrlOnClick()">Parse</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        var sampleText = '<p>Please visit <a href="http://academy.telerik.com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</p>';
+
+        function parseUrlOnClick() {
+            var input = jsConsole.read("#input").toString();
+            jsConsole.writeLine('original: ' + input);
+            jsConsole.writeLine(changeHrefToUrl(input));
+        }
+
+        function changeHrefToUrl(input) {
+            input = input.replace(/<a href=(.*?)>/g, '[URL=$1]');
+            input = input.replace(/<\/a>/g, '[/URL]');
+            return input;
+        }
+    </script>
+</body>
+</html>

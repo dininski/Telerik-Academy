@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title></title></head>
+<body>
+    <script>
+        function Solve(args) {
+            var number = args[0];
+            if (number == 0) {
+                return 'A';
+            }
+            function transform(num) {
+                var arr = generateArray();
+                var result = arr[num % 256];
+                var kaspichanNum = '';
+                while (num !== 0) {
+                    kaspichanNum = arr[num % 256] + kaspichanNum;
+                    num = parseInt(num / 256);
+                }
+                return kaspichanNum;
+            }
+
+            function generateArray() {
+                var values = new Array(256);
+                var valuesLen = values.length;
+                var i = 0;
+                var letters = 'abcdefghijklmnopqrstuvwxyz';
+                var result = '';
+                for (var i = 0; i < valuesLen; i++) {
+                    if (i < 26) {
+                        values[i] = letters[i].toUpperCase();
+                    } else {
+                        values[i] = letters[Math.floor(i / 26) - 1] + letters[i % 26].toUpperCase();
+                    }
+                }
+                return values;
+            }
+            return transform(number);
+        }
+
+
+
+        console.log(Solve([20]));
+
+    </script>
+
+</body>
+</html>

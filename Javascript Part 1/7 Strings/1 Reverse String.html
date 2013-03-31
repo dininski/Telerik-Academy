@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<p>
+Write a JavaScript function reverses string and returns itExample: "sample" -> "elpmas".
+</p>
+
+<input type="text" id="input" />
+<button onclick="ReverseStringOnClick()">Reverse</button>
+<div id="js-console"></div>
+<script src="scripts/js-console.js"></script>
+<script type="text/javascript">
+
+    function ReverseStringOnClick() {
+        var wordToReverse = jsConsole.read("#input").toString();
+        jsConsole.writeLine(reverseWord(wordToReverse));
+    }
+
+    function reverseWord(wordToReverse) {
+        var reversedWord = '';
+        
+        for (var char = wordToReverse.length-1; char >= 0; char--) {
+            reversedWord += wordToReverse[char];
+        }
+        return reversedWord;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title></title></head>
+<body>
+    <script>
+        function Solve(args) {
+            var path = args[0].split(', ');
+            var patterns = new Array();
+            for (var i = 0; i < parseInt(args[1]) ; i++) {
+                patterns.push((args[i + 2]).split(','));
+            }
+
+            //console.log(patterns[0]);
+
+            var bestPatternResult = 0;
+            bestPatternResult = runPattern(patterns[0], path);
+            //console.log(bestPatternResult);
+            for (var i = 1; i < patterns.length; i++) {
+                var currentPatternResult = runPattern(patterns[i], path);
+                if (currentPatternResult > bestPatternResult) {
+                    bestPatternResult = currentPatternResult;
+                }
+            }
+
+            return bestPatternResult;
+        }
+
+        function runPattern(patternArray, path) {
+            var visited = new Array(path.length);
+
+            var currentPosition = 0;
+            var score = parseInt(path[currentPosition]);
+
+            while (!visited[currentPosition] && currentPosition >= 0 && currentPosition < path.length) {
+                for (var i = 0; i < patternArray.length; i++) {
+                    if (visited[currentPosition]) {
+                        score -= +path[currentPosition];
+                        break;
+                    }
+                    visited[currentPosition] = true;
+                    currentPosition += +patternArray[i];
+                    score += +path[currentPosition];
+                }
+            }
+            //console.log(path[currentPosition]);
+            return score;
+        }
+
+
+        console.log(Solve([]));
+
+    </script>
+
+</body>
+</html>

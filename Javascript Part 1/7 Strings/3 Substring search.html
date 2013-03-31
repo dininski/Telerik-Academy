@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a JavaScript function that finds how many times a substring is contained 
+        <br />
+        in a given text (perform case insensitive search).
+        <br />
+        Example: The target substring is "in". The text is as follows:
+        <br />
+        <br />
+        We are living in an yellow submarine. We don't have anything else. 
+        <br />
+        Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.
+        <br />
+        The result is: 9.
+    </p>
+
+    <input type="text" id="input" />
+    <button onclick="CheckForSubstringOnClick()">Check For Substring</button>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+        var text = "We are living in an yellow submarine. We don't have anything else. " +
+        "Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days. ";
+
+        function CheckForSubstringOnClick() {
+            var substring = jsConsole.read("#input").toString();
+            jsConsole.writeLine(checkSubstring(substring));
+        }
+
+        function checkSubstring(substring) {
+            var pattern = new RegExp(substring.toString(), "gi");
+            return text.match(pattern).length;
+        }
+    </script>
+</body>
+</html>

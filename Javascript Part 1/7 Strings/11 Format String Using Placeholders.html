@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+    <p>
+        Write a function that formats a string using placeholders.The function should work with up to 30 placeholders and all types
+    </p>
+
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script type="text/javascript">
+
+        var text = "Hello {0}!";
+        jsConsole.writeLine(text + ',"Peter"');
+        jsConsole.writeLine(formatString(text, "Peter"));
+
+        function formatString(str) {
+            var selfArguments = arguments
+
+            return str.replace(/{(\d+)}/g, function (match, p1) {
+                return selfArguments[+p1 + 1]
+            })
+        }
+    </script>
+</body>
+</html>
