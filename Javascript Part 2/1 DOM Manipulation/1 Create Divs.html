@@ -1,0 +1,79 @@
+﻿<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<p>
+Write a script that creates a number of div elements. Each div element must have the following:
+</p>
+<ul>
+    <li>Random width and height between 20px and 100px</li>
+    <li>Random background color</li>
+    <li>Random font color</li>
+    <li>Random position on the screen (position:absolute)</li>
+    <li>A strong element with text "div" inside the div</li>
+    <li>Random border-radius</li>
+    <li>Random border color</li>
+    <li>Random border-width between 1px and 20px</li>
+</ul>
+<button onclick="AddDivOnClick()">Create Div</button>
+<!--<div id="js-console"></div> -->
+<!--<script src="scripts/js-console.js"></script>-->
+<script type="text/javascript">
+
+    function AddDivOnClick() {
+        var newDiv = generateDiv();
+        document.body.appendChild(newDiv);
+    }
+
+    function generateDiv() {
+        var divToCreate = document.createElement('div');
+        var divWidth = +generateRandomIntInRange(20, 100);
+        var divHeight = +generateRandomIntInRange(20,100);
+        var divBackroundColor = generateRandomHexColor();
+        var divFontColor = generateRandomHexColor();
+        var divBorderRadius = +generateRandomIntInRange(0, 20);
+        var divBorderColor = generateRandomHexColor();
+        var divBorderWidth = +generateRandomIntInRange(1,20);
+        var divStyle = divToCreate.style;
+        var divXPosition = +generateRandomIntInRange(0, document.width - divWidth - divBorderWidth * 2);
+        var divYPosition = +generateRandomIntInRange(0, document.height - divHeight - divBorderWidth * 2);
+        divStyle.width = divWidth;
+        divStyle.height = divHeight;
+        divStyle.color = divFontColor;
+        divStyle.top = divYPosition;
+        divStyle.left = divXPosition;
+        divStyle.position = 'absolute';
+        divStyle.background = divBackroundColor;
+        divStyle.borderRadius = divBorderRadius;
+        divStyle.borderColor = divBorderColor;
+        divStyle.borderWidth = divBorderWidth; 
+        divStyle.borderStyle = 'solid'; 
+        divToCreate.appendChild(generateStrongElement());      
+        return divToCreate;
+    }
+
+    function generateRandomHexColor() {
+        var color = '';
+        var allowedCharacters = 'ABCDEF0123456789';
+        for (var i = 0; i < 6; i++) {
+            var randomCharacter = Math.round(Math.random()*15);
+            color += allowedCharacters[randomCharacter];
+        };
+        return color;
+    }
+
+    function generateRandomIntInRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function generateStrongElement() {
+        var newStrongElement = document.createElement('strong');
+        newStrongElement.innerHTML = 'div';
+        return newStrongElement;
+    }
+
+</script>
+</body>
+</html>

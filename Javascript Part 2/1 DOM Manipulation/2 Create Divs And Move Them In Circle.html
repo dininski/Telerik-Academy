@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<p>
+Write a script that creates 5 div elements and moves them in circular path with interval of 100 milliseconds.
+</p>
+<button onclick="createCircularDivsOnClick()">Create Circular Divs</button>
+<!--<div id="js-console"></div> -->
+<!--<script src="scripts/js-console.js"></script>-->
+<script type="text/javascript">
+    var _centerOfCircleXPosition = 100;
+    var _centerOfCircleYPosition = 100;
+    var _circleRadius = 50;
+
+
+    function createCircularDivsOnClick() {
+        createAndAddDivs(5);
+    }
+
+    function createAndAddDivs(numberOfDivs) {
+        for (var i = 0; i < numberOfDivs; i++) {
+            var newDiv = createAndStartNewDiv();
+            document.body.appendChild(newDiv);
+        };
+    }
+
+    function createAndStartNewDiv() {
+       var newDiv = document.addElement('div');
+       newDiv.style.position = 'relative';
+       newDiv.style.top = _centerOfCircleXPosition;
+       newDiv.style.right = _centerOfCircleYPosition;
+
+       return newDiv;
+    }
+
+    function moveDiv(divToMove) {
+    }
+
+</script>
+</body>
+</html>
