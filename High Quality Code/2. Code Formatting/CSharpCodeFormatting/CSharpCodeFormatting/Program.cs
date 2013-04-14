@@ -9,10 +9,9 @@ public class Program
     public static void Main(string[] args)
     {
         while (ExecuteNextCommand()) 
-        { 
+        {
+            Console.WriteLine(Messages.OutputString);
         }
-
-        Console.WriteLine(Messages.OutputString);
     }
 
     private static bool ExecuteNextCommand()
