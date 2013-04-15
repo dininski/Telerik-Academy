@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1 Closure Example", "1 Closure Example\1 Closure Example.csproj", "{3FCAA1E3-0D88-4A61-B5E4-932B51E83A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 Human", "2 Human\2 Human.csproj", "{A319719B-DFB2-4AFE-AC19-21211180FC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 Minesweeper", "3 Minesweeper\3 Minesweeper.csproj", "{A255A7C9-0B3A-43C3-AB04-E06CC1BA5148}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FCAA1E3-0D88-4A61-B5E4-932B51E83A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FCAA1E3-0D88-4A61-B5E4-932B51E83A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FCAA1E3-0D88-4A61-B5E4-932B51E83A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FCAA1E3-0D88-4A61-B5E4-932B51E83A53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A319719B-DFB2-4AFE-AC19-21211180FC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A319719B-DFB2-4AFE-AC19-21211180FC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A319719B-DFB2-4AFE-AC19-21211180FC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A319719B-DFB2-4AFE-AC19-21211180FC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A255A7C9-0B3A-43C3-AB04-E06CC1BA5148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A255A7C9-0B3A-43C3-AB04-E06CC1BA5148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A255A7C9-0B3A-43C3-AB04-E06CC1BA5148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A255A7C9-0B3A-43C3-AB04-E06CC1BA5148}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
