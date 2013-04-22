@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/tag-cloud.css">
+</head>
+<body>
+	<p>
+	Create a tag cloud:
+	</p>
+	<ul>
+	    <li>Visualize a string of tags (strings) in a given container</li>
+	    <li>By given minFontSize and maxFontSize, generate the tags with different font-size, depending on the number of occurrences</li>
+	</ul>
+	<input type='text' id='tags' placeholder='enter tags with comma'>
+	<button onclick="tagCloudOnClickCreate()">Create Cloud</button>
+
+	<div id='tag-cloud'></div>
+	<div id='js-console'></div>
+	<script type="text/javascript" src='scripts/js-console.js'></script>
+	<script type="text/javascript">
+
+	function tagCloudOnClickCreate() {
+		var tags = jsConsole.readArray('#tags',',');
+		document.getElementById('tag-cloud').innerHTML = '';
+		generateTagCloud(tags, 17, 42);
+	};
+
+	function generateTagCloud(tags, minFontSize, maxFontSize) {
+		var tagsBySize = Array();
+		for (var i = 0; i < tags.length; i++) {
+			var tagValue = tags[i].toLowerCase();
+			if (tagsBySize[tagValue] === undefined) {
+				tagsBySize[tagValue] = 17;
+				this.size++;
+			} else {
+				if (tagsBySize[tagValue] < 42) {
+					tagsBySize[tagValue] += 4;
+				};
+			}
+		}
+		drawTags(tagsBySize);
+	};
+
+	function drawTags(tagsBySize) {
+		for (var tagName in tagsBySize) {
+			var newTag = document.createElement('span');
+			newTag.innerText = tagName;
+			newTag.style.fontSize = tagsBySize[tagName];
+			var tagCloud = document.getElementById('tag-cloud');
+			tagCloud.appendChild(newTag);
+		}
+	}
+
+	var sampleTags = ["cms", "javascript", "js", "ASP.NET MVC", ".net", ".net", "css", "wordpress", "xaml", "js", "http", "web", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript", "http", "http", "CMS"];
+
+	generateTagCloud(sampleTags, 17, 42);
+	</script>
+</body>
+</html>

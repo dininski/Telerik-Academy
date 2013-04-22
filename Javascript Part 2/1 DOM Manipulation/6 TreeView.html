@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul id='menu'>
+	<li>Item
+		<ul style="display: none;">
+			<li>submenu item
+				<ul style="display: none;">
+					<li>submenu item</li>
+					<li>submenu item</li>
+					<li>submenu item</li>
+					<li>submenu item</li>
+				</ul>
+			</li>
+			<li>submenu item</li>
+			<li>submenu item</li>
+			<li>submenu item</li>
+		</ul>
+	</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<script type="text/javascript">
+	(function() {
+		'use strict';
+
+		var menu = document.getElementById('menu');
+		var menuItems = menu.getElementsByTagName('li');
+
+		for (var i = 0; i < menuItems.length; i++) {
+			menuItems[i].childrenVisible = false;
+			menuItems[i].addEventListener('click', function(evt) {
+				if (this.childNodes[1] == undefined) {
+					return 0;
+				};
+
+				if (this.childrenVisible === true && this == evt.target) {
+					this.childrenVisible = false;
+					this.childNodes[1].style.display = 'none';
+				} else {
+					this.childrenVisible = true;
+					this.childNodes[1].style.display = '';
+				}
+			})
+		};
+	})();
+</script>
+</body>
+</html>

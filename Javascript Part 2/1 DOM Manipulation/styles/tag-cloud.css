@@ -1,0 +1,10 @@
+#tag-cloud {
+	width: 400px;
+	border: 1px solid black;
+	height: 400px;
+}
+
+span {
+	display: inline-block;
+	margin: 5px;
+}

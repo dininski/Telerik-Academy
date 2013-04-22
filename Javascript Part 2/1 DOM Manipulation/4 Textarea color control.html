@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>Create a text area and two inputs with type="color"</p>
+<ul>
+	<li>Make the font color of the text area as the value of the first color input</li>
+	<li>Make the background color of the text area as the value of the second input</li>
+</ul>
+
+<textarea id='textArea'></textarea>
+<input type='color' id='textColor'>
+<input type='color' id='backgroundColor'>
+<script type="text/javascript">
+	(function() {
+		'use strict';
+		
+		var textArea = document.getElementById('textArea');
+		var textColor = document.getElementById('textColor');
+		var textBackgroundColor = document.getElementById('backgroundColor');
+		
+		textColor.addEventListener("input", function() {
+			textArea.style.color = this.value;
+		});
+
+		textBackgroundColor.addEventListener("input", function(){
+			textArea.style.backgroundColor = this.value;
+		});
+	})();
+</script>
+</body>
+</html>

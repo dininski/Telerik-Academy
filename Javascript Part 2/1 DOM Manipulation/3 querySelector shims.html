@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="styles/js-console.css">
+</head>
+<body>
+<p id='testId'>
+Write a script that shims querySelector and querySelectorAll in older browsers
+</p><p class='testId'>
+Write a script that shims querySelector and querySelectorAll in older browsers
+</p><p class='testId'>
+Write a script that shims querySelector and querySelectorAll in older browsers
+</p>
+<!--<div id="js-console"></div> -->
+<!--<script src="scripts/js-console.js"></script>-->
+<script type="text/javascript">
+(function() {
+     'use strict';
+
+    function querySelectorAll(selector) {
+        switch(selector[0]) {
+            case '.':
+                return document.getElementsByClassName(selector.slice(1));
+            case '#':
+                return document.getElementById(selector.slice(1));
+            default:
+                return document.getElementsByTagName(selector);
+        }
+    }
+
+    //I have to duplicate code, because I am returning the ID element as-is
+    //for compatibility concerns instead of converting the result to an array.
+    //Alternative solution would be to convert the result of querySelectorAll when
+    //selecting an element by ID (on line 25) to an array of 1 element and then use:
+    //
+    //function querySelector(selector) {
+    //  return querySelectorAll(selector)[0];
+    //}
+    function querySelector(selector) {
+        switch (selector[0]) {
+            case '.':
+                return document.getElementsByClassName(selector.slice(1))[0];
+            case '#':
+                return document.getElementById(selector.slice(1));
+            default:
+                return document.getElementsByTagName(selector)[0];
+        }
+    }
+
+    if (typeof document.querySelector !== 'function') {
+        document.querySelector = querySelector;
+    };
+
+    if (typeof document.querySelectorAll !== 'function') {
+        document.querySelectorAll = querySelectorAll;
+    };
+ })();
+</script>
+</body>
+</html>
