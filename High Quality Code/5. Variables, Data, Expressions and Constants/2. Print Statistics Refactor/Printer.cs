@@ -7,11 +7,19 @@
         public static void Main()
         {
             Printer printer = new Printer();
+            // some test valules to check if everything is working correctly
             double[] someValues = new double[] { 1.4, 1.3, 3.8 };
             printer.PrintStatistics(someValues, 3);
         }
 
-        public void PrintStatistics(double[] statistics, int numberOfEntriesToPrint)
+        public void PrintStatistics(double[] statistics, int numberOfEntries)
+        {
+            this.PrintMax(statistics, numberOfEntries);
+            this.PrintMin(statistics, numberOfEntries);
+            this.PrintAvg(statistics, numberOfEntries);
+        }
+
+        public void PrintMax(double[] statistics, int numberOfEntriesToPrint)
         {
             double maxNumberInStatistics;
             maxNumberInStatistics = statistics[0];
@@ -23,7 +31,11 @@
                 }
             }
 
-            this.PrintMax(maxNumberInStatistics);
+            Console.WriteLine(maxNumberInStatistics);
+        }
+
+        public void PrintMin(double[] statistics, int numberOfEntriesToPrint)
+        {
             double minNumberInStatistics;
             minNumberInStatistics = statistics[0];
             for (int i = 0; i < numberOfEntriesToPrint; i++)
@@ -34,7 +46,11 @@
                 }
             }
 
-            this.PrintMin(minNumberInStatistics);
+            Console.WriteLine(minNumberInStatistics);
+        }
+
+        public void PrintAvg(double[] statistics, int numberOfEntriesToPrint)
+        {
             double sum;
             sum = 0;
             for (int i = 0; i < numberOfEntriesToPrint; i++)
@@ -42,24 +58,7 @@
                 sum += statistics[i];
             }
 
-            this.PrintAvg(sum / numberOfEntriesToPrint);
-        }
-
-        // using three separate methods as the problem definition does not provide details
-        // on the concrete implementation of those methods - they might be doing different things
-        // and not only printing the value.
-        public void PrintMax(double maximum)
-        {
-            Console.WriteLine(maximum);
-        }
-
-        public void PrintMin(double minimum)
-        {
-            Console.WriteLine(minimum);
-        }
-
-        public void PrintAvg(double average)
-        {
+            double average = sum / numberOfEntriesToPrint;
             Console.WriteLine(average);
         }
     }
