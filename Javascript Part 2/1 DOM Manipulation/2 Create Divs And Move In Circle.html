@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+	<title></title>
+  <link rel="stylesheet" type="text/css" href="styles/js-console.css">
+  <link rel="stylesheet" type="text/css" href="styles/circular.css">
+</head>
+<body>
+<p>
+Write a script that creates 5 div elements and moves them in circle path with interval of 100 milliseconds.
+</p>
+<button onclick="createcircleDivsOnClick()">Create rotating Divs</button>
+<!--<div id="js-console"></div> -->
+<!--<script src="scripts/js-console.js"></script>-->
+<div id='ballHolder'></div>
+<script type="text/javascript">
+    var _startXPosition = 250;
+    var _startYPosition = 350;
+    var _radius = 100;
+    var intervalHandle;
+
+    function createcircleDivsOnClick() {
+      clearBalls();
+      AddBalls(5);
+      clearInterval(intervalHandle);
+       intervalHandle = setInterval(function() {
+         moveDivs();
+       }, 100);
+    }
+
+    //move all the balls in the area
+    function moveDivs() {
+       var movingElements = document.getElementsByClassName('circle');
+       var currentDegree = 0;
+       var elementXPosition = 0;
+       var elementYPosition = 0;
+       for (var i = 0; i < movingElements.length; i++) {
+        currentDegree = parseFloat(movingElements[i].getAttribute('data-degrees'));
+        currentDegree = (currentDegree + 1) % 360;
+        elementXPosition = _startXPosition + Math.cos(currentDegree + 2 * Math.PI / movingElements.length * i) / _radius * 10000 + 'px';
+        movingElements[i].style.top = elementXPosition;
+        elementYPosition = _startYPosition + Math.sin(currentDegree + 2 * Math.PI / movingElements.length * i) / _radius * 10000 + 'px';
+        movingElements[i].style.left = elementYPosition;
+        movingElements[i].setAttribute('data-degrees', currentDegree);
+       };
+    }
+    
+    //clear all the balls
+    function clearBalls() {
+      document.getElementById('ballHolder').innerHTML = '';
+    }
+
+    function AddBalls(numberOfDivs) {
+      var currentX = _startXPosition;
+      var currentY = _startYPosition;
+      var degrees = 0;
+      for (var i = 0; i < numberOfDivs; i++) {
+          var newDiv = document.createElement('div');
+          newDiv.setAttribute('class', 'circle');
+          currentX = _startXPosition + Math.cos(degrees + 2 * Math.PI / numberOfDivs * i) / _radius * 10000 + 'px';
+          newDiv.style.top = currentX;
+          currentY = _startYPosition + Math.sin(degrees + 2 * Math.PI / numberOfDivs * i) / _radius * 10000 + 'px';
+          newDiv.style.left = currentY;
+          newDiv.setAttribute('data-degrees', degrees);
+          document.getElementById('ballHolder').appendChild(newDiv);
+      }
+    }
+</script>
+</body>
+</html>
