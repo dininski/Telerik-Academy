@@ -1,13 +1,11 @@
 ﻿namespace Cooking
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     public class Bowl
     {
-        private IList<Vegetable> contents;
+        private readonly IList<Vegetable> contents;
 
         public Bowl()
         {

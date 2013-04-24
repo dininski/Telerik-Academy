@@ -1,14 +1,15 @@
-﻿namespace If_Statements_part_1
+﻿namespace IfStatementsPart1
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Potato
     {
-        public Potato(bool isPeeled = false, bool isGoodToEat = true, bool isCooked = false)
+        public Potato()
+        {
+            this.IsPeeled = false;
+            this.IsGoodToEat = true;
+            this.IsCooked = false;
+        }
+
+        public Potato(bool isPeeled, bool isGoodToEat, bool isCooked)
         {
             this.IsPeeled = isPeeled;
             this.IsGoodToEat = isGoodToEat;

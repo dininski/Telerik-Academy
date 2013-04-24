@@ -7,8 +7,8 @@
     <ProjectGuid>{506C87E2-E506-467F-A440-01B7F929D334}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_2._2.If_Statements</RootNamespace>
-    <AssemblyName>_2._2.If_Statements</AssemblyName>
+    <RootNamespace>IfStatementsPart2</RootNamespace>
+    <AssemblyName>IfStatementsPart2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

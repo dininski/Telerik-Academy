@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Cooking", "Control Structures\1. Cooking.csproj", "{9E5F8190-79B9-4DBE-BA71-F1048FF9E255}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Cooking", "1. Cooking\1. Cooking.csproj", "{9E5F8190-79B9-4DBE-BA71-F1048FF9E255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1. If Statements - Cooking a potato", "2. If Statements\2.1. If Statements - Cooking a potato.csproj", "{D7C84BF4-F9E9-4E4F-9A5D-F3E3570B7122}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.1. If Statements - Cooking a potato", "2.1. If Statements - Potato\2.1. If Statements - Cooking a potato.csproj", "{D7C84BF4-F9E9-4E4F-9A5D-F3E3570B7122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_2.2. If Statements - Visiting cells - to complete", "2.2. If Statements\_2.2. If Statements - Visiting cells - to complete.csproj", "{506C87E2-E506-467F-A440-01B7F929D334}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.2. If Statements - Visiting cells", "2.2. If Statements - Printer\2.2. If Statements - Visiting cells.csproj", "{506C87E2-E506-467F-A440-01B7F929D334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_3. Loop refactoring - to complete", "3. Loop refactoring\_3. Loop refactoring - to complete.csproj", "{79DB86E4-D025-4E21-9D36-D79E0051E52C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Loop refactoring", "3. Loop refactoring\3. Loop refactoring.csproj", "{79DB86E4-D025-4E21-9D36-D79E0051E52C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
