@@ -3,15 +3,19 @@ Stack Exchange sign up  log in  careers 2.0
 
 
 Stack Overflow
-Some other changes
+Questions
+Tags
+Tour
+Users
+Ask Question
+Tell me more × Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free, no registration required.
+How do I fix merge conflicts in Git?
+up vote
+1118
+down vote
+favorite
+421
 This should be good
-
-git merge git-merge merge-conflict-resolution
-share|improve this question
-edited Aug 16 '12 at 21:20
-
-venkat
-132	
 asked Oct 2 '08 at 11:31
 
 Spoike
@@ -135,7 +139,18 @@ In the long run, awareness of what others are working on (such as code review) i
 
 share|improve this answer
 edited Mar 20 at 20:30
-Let's see if this works
+
+answered Sep 28 '11 at 21:08
+
+mehaase
+2,68611619
+7	  
+Seriously one of the most helpful answers I've read on SO, thank you. – Isaac Aug 1 '12 at 16:22
+3	  
+This is the most helpful answer. – kmdent Aug 3 '12 at 16:31
+1	  
++1. I had forgotten about diff3, and was essentially looking for it and the log --merge tip. – nafg Feb 1 at 3:36
+up vote
 95
 down vote
 Identify which files are in conflict (Git should tell you this)
@@ -157,7 +172,41 @@ Yes, technically, this answers the question which as asked, but is not a usable 
 Thanks! git add the_file was my missing link to solve a manuell merged conflict! – Calaelen Aug 31 '12 at 18:25
 show 2 more comments
 up vote
-Blah blah blah
+40
+down vote
+Checkout the answers in Aborting a merge in Git, especially Charles Bailey's answer which shows how to view the different versions of the file with problems, for example,
+
+# Common base version of the file.
+git show :1:some_file.cpp
+
+# 'Ours' version of the file.
+git show :2:some_file.cpp
+
+# 'Theirs' version of the file.
+git show :3:some_file.cpp
+share|improve this answer
+edited May 30 '11 at 15:43
+
+Peter Mortensen
+5,95273767	
+answered Oct 3 '08 at 15:15
+
+Pat Notz
+30.6k115067
+up vote
+18
+down vote
+If you're making frequent small commits, then start by looking at the commit comments with git log --merge. Then git diff will show you the conflicts.
+
+For conflicts that involve more than a few lines, it's easier to see what's going on in an external gui tool. I like opendiff -- git also supports vimdiff, gvimdiff, kdiff3, tkdiff, meld, xxdiff, emerge out of the box and you can install others: git config merge.tool "your.tool" will set your chosen tool and then git mergetool after a failed merge will show you the diffs in context.
+
+Each time you edit a file to resolve a conflict git add filename will update the index and your diff will no longer show it. When all the conflicts are handled and their files have been git add-ed, git commit will complete your merge.
+
+share|improve this answer
+answered Oct 2 '08 at 16:11
+
+Paul
+11.7k21719
 2	  
 Using "git add" is the real trick here. You may not even want to commit (maybe you want to stash), but you have to do "git add" to complete the merge. I think mergetool does the add for you (although it isn't in the manpage), but if you do the merge manually, you need to use "git add" to complete it (even if you don't want to commit). – nobar Oct 25 '10 at 9:37
 up vote

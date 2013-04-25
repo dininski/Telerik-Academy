@@ -4,16 +4,6 @@ Stack Exchange sign up  log in  careers 2.0
 
 Stack Overflow
 Some other changes
-This should be good
-
-git merge git-merge merge-conflict-resolution
-share|improve this question
-edited Aug 16 '12 at 21:20
-
-venkat
-132	
-asked Oct 2 '08 at 11:31
-
 Spoike
 21.9k2478104
 3	  
@@ -35,7 +25,16 @@ answered Oct 2 '08 at 17:50
 
 Peter Burns
 10.8k41931
-Let's see if KDIFF3 works...
+10	  
+FYI you can use git mergetool -y to save a few keystrokes if you're merging a lot of files at once. – davr Jun 17 '10 at 23:32
+108	  
+Well, it doesn't necessarily open a GUI unless you install one. Running git mergetool for me resulted in vimdiff being used. You can install one of the following tools to use it instead: meld opendiff kdiff3 tkdiff xxdiff tortoisemerge gvimdiff diffuse ecmerge p4merge araxis vimdiff emerge. – Josh Glover May 11 '11 at 14:00
+9	  
+Good point Josh. On ubuntu I've had the best luck with meld, its three way merge display isn't bad. On OSX git chose a nice default. – Peter Burns May 24 '11 at 5:08
+2	  
+This opened KDiff3. Which I have absolutely no clue how to use. – David Murdoch Jun 10 '11 at 18:46
+You can also use Beyond Compare 3 now (git mergetool -t bc3). – AzP Aug 30 '12 at 14:59
+show 2 more comments
 up vote
 604
 down vote
@@ -91,7 +90,24 @@ Thanks! 'git checkout --theirs' vs 'git checkout --ours' was exactly the informa
 1	  
 +1 This is most likely what the OP was looking for. It certainly was exactly what I needed. You rock! – jlafay Jul 8 '11 at 21:31
 3	  
-Time for a merge!
+--ours and --theirs is HARD to find in the docs. Thank you for that – Slomojo May 11 '12 at 5:18
+3	  
+Careful! The meaning of --ours and --theirs is reversed. --ours == the remote. --theirs == local. See git merge --help – mmell Mar 4 at 22:56
+show 7 more comments
+up vote
+118
+down vote
+I find merge tools rarely help me understand the conflict or the resolution. I'm usually more successful looking at the conflict markers in a text editor and using git log as a supplement.
+
+Here are a few tips:
+
+Tip One
+
+The best thing I have found is to use the "diff3" merge conflict style:
+
+git config merge.conflictstyle diff3
+
+This produces conflict markers like this:
 
 <<<<<<<
 changes made on my branch
@@ -277,7 +293,16 @@ Game Development
 TeX - LaTeX
 Programmers
 Unix & Linux
-Tuk ima change
+Ask Different (Apple)
+WordPress Answers
+Geographic Information Systems
+Electrical Engineering
+Android Enthusiasts
+IT Security
+Database Administrators
+Drupal Answers
+SharePoint
+User Experience
 Mathematica
 more (14)
 Photography

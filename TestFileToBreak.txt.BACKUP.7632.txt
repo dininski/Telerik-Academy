@@ -3,17 +3,25 @@ Stack Exchange sign up  log in  careers 2.0
 
 
 Stack Overflow
+<<<<<<< HEAD
 Some other changes
+=======
+Questions
+Tags
+Tour
+Users
+Ask Question
+Tell me more × Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free, no registration required.
+How do I fix merge conflicts in Git?
+up vote
+1118
+down vote
+favorite
+421
 This should be good
-
-git merge git-merge merge-conflict-resolution
-share|improve this question
-edited Aug 16 '12 at 21:20
-
-venkat
-132	
 asked Oct 2 '08 at 11:31
 
+>>>>>>> a0ed3910ce3eec6c7f8790187a6351ae7d8d3d80
 Spoike
 21.9k2478104
 3	  
