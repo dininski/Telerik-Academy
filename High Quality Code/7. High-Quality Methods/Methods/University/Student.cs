@@ -1,4 +1,4 @@
-﻿namespace Methods
+﻿namespace Methods.University
 {
     using System;
 
@@ -14,7 +14,7 @@
 
         public bool IsOlderThan(Student other)
         {
-            return this.DateOfBirth > other.DateOfBirth;
+            return this.DateOfBirth < other.DateOfBirth;
         }
     }
 }
