@@ -2,11 +2,21 @@
 {
     using System;
 
+    /// <summary>
+    /// A circle class, that can calculate it's perimeter and
+    /// radius.
+    /// </summary>
     public class Circle : Figure
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Circle"/> class and
+        /// sets the <see cref="Circle"/>'s radius
+        /// </summary>
+        /// <param name="radius">Sets the circle's radius</param>
         public Circle(double radius)
         {
             this.Radius = radius;
+            this.FigureType = "circle";
         }
 
         /// <summary>
@@ -42,15 +52,6 @@
 
             double surface = Math.PI * this.Radius * this.Radius;
             return surface;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Returns a string, containing all the string data</returns>
-        public override string ToString()
-        {
-            return string.Format("I am a circle. My perimeter is {0:f2}. My surface is {1:f2}.", this.CalcPerimeter(), this.CalcSurface());
         }
     }
 }

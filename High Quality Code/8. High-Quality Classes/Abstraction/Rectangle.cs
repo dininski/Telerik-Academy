@@ -2,12 +2,23 @@
 {
     using System;
 
+    /// <summary>
+    /// A rectangle, which has methods to calculate it's surface
+    /// and perimeter
+    /// </summary>
     public class Rectangle : Figure
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle"/> class
+        /// and sets it's <paramref name="width"/> and <paramref name="height"/>
+        /// </summary>
+        /// <param name="width">Sets the rectangle's width</param>
+        /// <param name="height">Sets the rectangle's height</param>
         public Rectangle(double width, double height)
         {
             this.Width = width;
             this.Height = height;
+            this.FigureType = "rectangle";
         }
 
         /// <summary>
@@ -43,11 +54,6 @@
         {
             double surface = this.Width * this.Height;
             return surface;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("I am a rectangle. My perimeter is {0:f2}. My surface is {1:f2}.", this.CalcPerimeter(), this.CalcSurface());
         }
     }
 }
