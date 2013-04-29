@@ -9,6 +9,16 @@
     public class Rectangle : Figure
     {
         /// <summary>
+        /// Contains the rectangle's width
+        /// </summary>
+        private double width;
+
+        /// <summary>
+        /// Contains the rectangle's height
+        /// </summary>
+        private double height;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Rectangle"/> class
         /// and sets it's <paramref name="width"/> and <paramref name="height"/>
         /// </summary>
@@ -24,12 +34,44 @@
         /// <summary>
         /// Gets or sets the width of the rectangle
         /// </summary>
-        public double Width { get; set; }
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("The width of the rectangle must be a positive number!");
+                }
+
+                this.width = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the height of the rectangle
         /// </summary>
-        public double Height { get; set; }
+        public double Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("The height of the rectangle must be a positive number!");
+                }
+
+                this.height = value;
+            }
+        }
 
         /// <summary>
         /// Calculates the perimeter of the rectangle
@@ -37,11 +79,6 @@
         /// <returns>Returns the perimeter of the rectangle</returns>
         public override double CalcPerimeter()
         {
-            if (this.Width <= 0 || this.Height <= 0)
-            {
-                throw new Exception("The rectangle cannot have a side that is null!");
-            }
-
             double perimeter = 2 * (this.Width + this.Height);
             return perimeter;
         }

@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using System.Text;
 
+    /// <summary>
+    /// A class, containing information regarding Offsite courses.
+    /// </summary>
     public class OffsiteCourse : Course
     {
         public OffsiteCourse(string courseName)

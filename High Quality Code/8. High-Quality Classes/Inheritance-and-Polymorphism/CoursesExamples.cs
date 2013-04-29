@@ -3,9 +3,15 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// An example of the Courses, LocalCourse and OffsiteCourse
+    /// classes.
+    /// </summary>
     public class CoursesExamples
     {
-        // TODO: Double check with original output!!!
+        /// <summary>
+        /// The demo's main entry point.
+        /// </summary>
         public static void Main()
         {
             LocalCourse localCourse = new LocalCourse("Databases");

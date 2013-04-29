@@ -4,18 +4,40 @@
     using System.Collections.Generic;
     using System.Text;
 
+    /// <summary>
+    /// A class, containing information about a local course.
+    /// </summary>
     public class LocalCourse : Course
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class by given
+        /// <paramref name="courseName"/>.
+        /// </summary>
+        /// <param name="courseName">The name of the course.</param>
         public LocalCourse(string courseName)
             : this(courseName, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class by given
+        /// <paramref name="courseName"/> and <paramref name="teacherName"/>.
+        /// </summary>
+        /// <param name="courseName">The name of the course.</param>
+        /// <param name="teacherName">The name of the teacher for this course.</param>
         public LocalCourse(string courseName, string teacherName)
             : this(courseName, teacherName, new List<string>())
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocalCourse"/> class by given
+        /// <paramref name="courseName"/>, <paramref name="teacherName"/> and
+        /// <paramref name="students"/>
+        /// </summary>
+        /// <param name="courseName">The name of the course.</param>
+        /// <param name="teacherName">The name of the teacher for this course.</param>
+        /// <param name="students">The students, that are enrolled for this course.</param>
         public LocalCourse(string courseName, string teacherName, IList<string> students)
             : base(courseName, teacherName, students)
         {
@@ -23,6 +45,9 @@
             this.Lab = null;
         }
 
+        /// <summary>
+        /// Gets or sets the lab, where the local course will take place.
+        /// </summary>
         public string Lab { get; set; }
 
         public override string ToString()
