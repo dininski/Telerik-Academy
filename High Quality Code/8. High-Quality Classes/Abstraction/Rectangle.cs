@@ -1,41 +1,53 @@
-﻿using System;
-
-namespace Abstraction
+﻿namespace Abstraction
 {
-    class Rectangle : Figure
+    using System;
+
+    public class Rectangle : Figure
     {
-        public Rectangle()
-            : base(0, 0)
-        {
-        }
-
         public Rectangle(double width, double height)
-            : base(width, height)
         {
+            this.Width = width;
+            this.Height = height;
         }
 
-        public override double Radius
-        {
-            get
-            {
-                throw new NotImplementedException("Rectangle does not have Radius");
-            }
-            set
-            {
-                throw new NotImplementedException("Rectangle does not have Radius");
-            }
-        }
+        /// <summary>
+        /// Gets or sets the width of the rectangle
+        /// </summary>
+        public double Width { get; set; }
 
+        /// <summary>
+        /// Gets or sets the height of the rectangle
+        /// </summary>
+        public double Height { get; set; }
+        
+        /// <summary>
+        /// Calculates the perimeter of the rectangle
+        /// </summary>
+        /// <returns>Returns the perimeter of the rectangle</returns>
         public double CalcPerimeter()
         {
+            if (this.Width == null || this.Height == null)
+            {
+                throw new NullReferenceException("The rectangle cannot have a side that is null!");
+            }
+
             double perimeter = 2 * (this.Width + this.Height);
             return perimeter;
         }
 
+        /// <summary>
+        /// Calculates the surface of the rectangle
+        /// </summary>
+        /// <returns>Returns the surface of the rectangle</returns>
         public double CalcSurface()
         {
             double surface = this.Width * this.Height;
             return surface;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("I am a rectangle. My perimeter is {0:f2}. My surface is {1:f2}.", this.CalcPerimeter(), this.CalcSurface());
         }
     }
 }

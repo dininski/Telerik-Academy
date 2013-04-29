@@ -1,26 +1,19 @@
-﻿using System;
-
-namespace Abstraction
+﻿namespace Abstraction
 {
-    abstract class Figure
+    using System;
+
+    public abstract class Figure
     {
-        public virtual double Width { get; set; }
-        public virtual double Height { get; set; }
-        public virtual double Radius { get; set; }
+        /// <summary>
+        /// Abstract method that calculates the area of a figure
+        /// </summary>
+        /// <returns>Returns the area of the figure</returns>
+        public abstract double CalcArea();
 
-        public Figure()
-        {
-        }
-
-        public Figure(double radius)
-        {
-            this.Radius = radius;
-        }
-
-        public Figure(double width, double height)
-        {
-            this.Width = width;
-            this.Height = height;
-        }
+        /// <summary>
+        /// Abstract method that calculates the perimeter of a figure
+        /// </summary>
+        /// <returns>Returns the perimeter of the figure</returns>
+        public abstract double CalcPerimeter();
     }
 }
