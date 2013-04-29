@@ -4,33 +4,68 @@
 	<link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
-<div id="container">
-	A container div
-</div>
-<ul>
-	<li>First</li>
-	<li>2</li>
-	<li>3</li>
-	<li>4</li>
-	<li>5</li>
-	<li>6</li>
-	<li>Last</li>
-</ul>
+Create a module for working to work with DOM. The module should have the following functionality:
 
-<ul>
-	<li>First</li>
-	<li>2</li>
-	<li>3</li>
-	<li>4</li>
-	<li>5</li>
-	<li>6</li>
-	<li>Last</li>
-</ul>
+	<ul>
+		<li>Add element to parent element by given selector</li>
+		<li>Remove element from the DOM  by given selector</li>
+		<li>Attach event to given selector by given event type and event hander</li>
+		<li>Add elements to buffer, which appends them to the DOM when their for some selector count becomes 100</li>
+		<li>The buffer contains elements for each selector it gets</li>
+		<li>Get elements by CSS selector</li>
+		<li>The module should reveal only the methods</li>
+	</ul>
+	
+	<p>
+	P.S. My module is called domify
+	</p>
 
-<script type="text/javascript" src="scripts/domify.js">
-	var newDiv = document.createElement('div');
-	var domify = new Domify;
-	domify.appendChild(newDiv, '#container');
+	<div id="container">
+		var domModule = ...
+		<br>
+		var div = document.createElement("div");
+		<br>
+		//change the div
+		<br>
+		domModule.appendChild(div,"#wrapper");
+		<br>
+		domModule.removeChild("ul","li:first"); 
+		<br>
+		//remove the first li from each ul
+		<br>
+		domModule.addHandler("a.button", 'click', function(){alert("Clicked")});
+		<br>
+		domModule.appendToBuffer("container", div.cloneNode(true));
+		<br>
+		domModule.appendToBuffer("#main-nav ul", navItem);
+		<br>
+	</div>
+
+	<button id="removeFirstLi">Remove first li elements in all ul lists</button>
+	<button id="removeLastLi">Remove first li elements in all ul lists</button>
+
+	<ul>
+		<li>First</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>Last</li>
+	</ul>
+
+<script type="text/javascript" src="scripts/domify.js"></script>
+<script type="text/javascript">
+	(function() {
+		domify.addHandler('#removeFirstLi', 'click', function() {
+			domify.removeChild('ul', 'li:first');
+		});
+
+		domify.addHandler('#removeLastLi', 'click', function() {
+			domify.removeChild('ul', 'li:last');
+		});
+
+	})();
 </script>
 </body>
 </html>

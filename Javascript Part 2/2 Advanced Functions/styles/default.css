@@ -1,5 +1,11 @@
 #container {
-	background: green;
+	background: black;
 	height: 300px;
-	width: 400px;
+	width: 600px;
+	color: white;
+	padding: 10px;
+}
+
+p {
+	color: red;
 }
