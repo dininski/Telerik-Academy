@@ -44,6 +44,7 @@
     <Compile Include="UtilsExamples.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Utils\FileSystemUtils.cs" />
+    <Compile Include="Utils\GeometryUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

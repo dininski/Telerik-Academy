@@ -18,11 +18,11 @@
         /// Calculates the perimeter of the circle
         /// </summary>
         /// <returns>Returns the circle perimeter</returns>
-        public double CalcPerimeter()
+        public override double CalcPerimeter()
         {
-            if (this.Radius == null)
+            if (this.Radius <= 0)
             {
-                throw new NullReferenceException("Radius was not set!");
+                throw new Exception("Radius must be a positive number!");
             }
 
             double perimeter = 2 * Math.PI * this.Radius;
@@ -33,8 +33,13 @@
         /// Calculates the surface of the circle
         /// </summary>
         /// <returns>Returns the surface of the circle</returns>
-        public double CalcSurface()
+        public override double CalcSurface()
         {
+            if (this.Radius <= 0)
+            {
+                throw new Exception("Radius must be a positive number!");
+            }
+
             double surface = Math.PI * this.Radius * this.Radius;
             return surface;
         }

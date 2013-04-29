@@ -8,7 +8,7 @@
         /// Abstract method that calculates the area of a figure
         /// </summary>
         /// <returns>Returns the area of the figure</returns>
-        public abstract double CalcArea();
+        public abstract double CalcSurface();
 
         /// <summary>
         /// Abstract method that calculates the perimeter of a figure

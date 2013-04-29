@@ -44,6 +44,7 @@
             result.Append("; Students = ");
             result.Append(this.GetStudentsAsString());
 
+            // TODO: resolve this:
             // result.Append(" }");
             return result.ToString();
         }

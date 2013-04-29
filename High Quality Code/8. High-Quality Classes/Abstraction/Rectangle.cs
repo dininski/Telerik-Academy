@@ -19,16 +19,16 @@
         /// Gets or sets the height of the rectangle
         /// </summary>
         public double Height { get; set; }
-        
+
         /// <summary>
         /// Calculates the perimeter of the rectangle
         /// </summary>
         /// <returns>Returns the perimeter of the rectangle</returns>
-        public double CalcPerimeter()
+        public override double CalcPerimeter()
         {
-            if (this.Width == null || this.Height == null)
+            if (this.Width <= 0 || this.Height <= 0)
             {
-                throw new NullReferenceException("The rectangle cannot have a side that is null!");
+                throw new Exception("The rectangle cannot have a side that is null!");
             }
 
             double perimeter = 2 * (this.Width + this.Height);
@@ -39,7 +39,7 @@
         /// Calculates the surface of the rectangle
         /// </summary>
         /// <returns>Returns the surface of the rectangle</returns>
-        public double CalcSurface()
+        public override double CalcSurface()
         {
             double surface = this.Width * this.Height;
             return surface;

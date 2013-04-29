@@ -1,52 +1,43 @@
-﻿using System;
-
-namespace CohesionAndCoupling
+﻿namespace CohesionAndCoupling
 {
-    static class Utils
+    using System;
+    using CohesionAndCoupling.Utils;
+
+    public class Box
     {
-        public static double Width { get; set; }
-        public static double Height { get; set; }
-        public static double Depth { get; set; }
+        public double Width { get; set; }
 
-        public static double CalcDistance2D(double x1, double y1, double x2, double y2)
-        {
-            double distance = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-            return distance;
-        }
+        public double Height { get; set; }
 
-        public static double CalcDistance3D(double x1, double y1, double z1, double x2, double y2, double z2)
-        {
-            double distance = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
-            return distance;
-        }
+        public double Depth { get; set; }
 
-        public static double CalcVolume()
+        public double CalcVolume()
         {
-            double volume = Width * Height * Depth;
+            double volume = this.Width * this.Height * this.Depth;
             return volume;
         }
 
-        public static double CalcDiagonalXYZ()
+        public double CalcDiagonalXYZ()
         {
-            double distance = CalcDistance3D(0, 0, 0, Width, Height, Depth);
+            double distance = GeometryUtils.CalcDistance3D(0, 0, 0, this.Width, this.Height, this.Depth);
             return distance;
         }
 
-        public static double CalcDiagonalXY()
+        public double CalcDiagonalXY()
         {
-            double distance = CalcDistance2D(0, 0, Width, Height);
+            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Width, this.Height);
             return distance;
         }
 
-        public static double CalcDiagonalXZ()
+        public double CalcDiagonalXZ()
         {
-            double distance = CalcDistance2D(0, 0, Width, Depth);
+            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Width, this.Depth);
             return distance;
         }
 
-        public static double CalcDiagonalYZ()
+        public double CalcDiagonalYZ()
         {
-            double distance = CalcDistance2D(0, 0, Height, Depth);
+            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Height, this.Depth);
             return distance;
         }
     }
