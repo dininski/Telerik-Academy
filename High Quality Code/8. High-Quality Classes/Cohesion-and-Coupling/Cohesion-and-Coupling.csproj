@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="UtilsExamples.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Utils\FileSystemUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

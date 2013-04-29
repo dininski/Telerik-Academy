@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CohesionAndCoupling
+﻿namespace CohesionAndCoupling
 {
+    using System;
+
     class UtilsExamples
     {
         static void Main()
