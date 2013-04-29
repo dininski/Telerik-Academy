@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+<div id="container">
+	A container div
+</div>
+<script type="text/javascript" src="scripts/domify.js">
+	var newDiv = document.createElement('div');
+	var domify = new Domify;
+	domify.appendChild(newDiv, '#container');
+</script>
+</body>
+</html>
