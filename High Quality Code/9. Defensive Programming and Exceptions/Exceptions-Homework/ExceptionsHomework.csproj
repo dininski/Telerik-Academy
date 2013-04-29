@@ -7,8 +7,8 @@
     <ProjectGuid>{DB5812C6-8809-432A-938B-BEDD67FFAF79}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Exceptions_Homework</RootNamespace>
-    <AssemblyName>Exceptions-Homework</AssemblyName>
+    <RootNamespace>ExceptionsHomework</RootNamespace>
+    <AssemblyName>ExceptionsHomework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

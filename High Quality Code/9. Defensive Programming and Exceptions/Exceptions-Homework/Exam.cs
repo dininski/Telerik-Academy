@@ -1,6 +1,9 @@
-﻿using System;
-
-public abstract class Exam
+﻿namespace ExceptionsHomework
 {
-    public abstract ExamResult Check();
+    using System;
+
+    public abstract class Exam
+    {
+        public abstract ExamResult Check();
+    }
 }

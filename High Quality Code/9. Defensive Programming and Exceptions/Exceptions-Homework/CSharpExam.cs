@@ -1,28 +1,31 @@
-﻿using System;
-
-public class CSharpExam : Exam
+﻿namespace ExceptionsHomework
 {
-    public int Score { get; private set; }
+    using System;
 
-    public CSharpExam(int score)
+    public class CSharpExam : Exam
     {
-        if (score < 0)
+        public CSharpExam(int score)
         {
-            throw new ArgumentException("The score cannot be less than 0!");
+            if (score < 0)
+            {
+                throw new ArgumentException("The score cannot be less than 0!");
+            }
+
+            this.Score = score;
         }
 
-        this.Score = score;
-    }
+        public int Score { get; private set; }
 
-    public override ExamResult Check()
-    {
-        if (Score < 0 || Score > 100)
+        public override ExamResult Check()
         {
-            throw new ArgumentOutOfRangeException("The score must be positive and smaller or equal to 100");
-        }
-        else
-        {
-            return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
+            if (this.Score < 0 || this.Score > 100)
+            {
+                throw new ArgumentOutOfRangeException("The score must be positive and smaller or equal to 100");
+            }
+            else
+            {
+                return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
+            }
         }
     }
 }
