@@ -137,8 +137,8 @@
   <sourcecode name="Box.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013/01/11 11:37:58.000</styleCop>
-      <settingsFile>2012/09/27 20:03:32.000</settingsFile>
-      <sourceFile>2013/04/30 06:52:02.640</sourceFile>
+      <settingsFile>2013/04/30 07:35:32.716</settingsFile>
+      <sourceFile>2013/04/30 07:35:05.466</sourceFile>
       <parser>2013/01/11 11:37:58.000</parser>
       <StyleCop.CSharp.DocumentationRules>2013/01/11 11:37:58.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1835762512</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -155,38 +155,12 @@
       <StyleCop.CSharp.SpacingRules>2013/01/11 11:37:58.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementReturnValueDocumentationMustHaveText" ruleCheckId="SA1616">
-        <context>The returns section in the documentation header must not be empty.</context>
-        <line>40</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>46</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>52</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The method must have a documentation header.</context>
-        <line>58</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="FileSystemUtils.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013/01/11 11:37:58.000</styleCop>
-      <settingsFile>2012/09/27 20:03:32.000</settingsFile>
+      <settingsFile>2013/04/30 07:35:32.716</settingsFile>
       <sourceFile>2013/04/30 06:52:02.645</sourceFile>
       <parser>2013/01/11 11:37:58.000</parser>
       <StyleCop.CSharp.DocumentationRules>2013/01/11 11:37:58.000</StyleCop.CSharp.DocumentationRules>
@@ -204,18 +178,12 @@
       <StyleCop.CSharp.SpacingRules>2013/01/11 11:37:58.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="GeometryUtils.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013/01/11 11:37:58.000</styleCop>
-      <settingsFile>2012/09/27 20:03:32.000</settingsFile>
+      <settingsFile>2013/04/30 07:35:32.716</settingsFile>
       <sourceFile>2013/04/30 06:52:02.647</sourceFile>
       <parser>2013/01/11 11:37:58.000</parser>
       <StyleCop.CSharp.DocumentationRules>2013/01/11 11:37:58.000</StyleCop.CSharp.DocumentationRules>
@@ -233,19 +201,13 @@
       <StyleCop.CSharp.SpacingRules>2013/01/11 11:37:58.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="UtilsExamples.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2013/01/11 11:37:58.000</styleCop>
-      <settingsFile>2012/09/27 20:03:32.000</settingsFile>
-      <sourceFile>2013/04/30 06:52:02.648</sourceFile>
+      <settingsFile>2013/04/30 07:35:32.716</settingsFile>
+      <sourceFile>2013/04/30 07:35:16.076</sourceFile>
       <parser>2013/01/11 11:37:58.000</parser>
       <StyleCop.CSharp.DocumentationRules>2013/01/11 11:37:58.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1835762512</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -262,12 +224,6 @@
       <StyleCop.CSharp.SpacingRules>2013/01/11 11:37:58.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
 </stylecopresultscache>

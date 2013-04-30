@@ -24,15 +24,15 @@
             Console.WriteLine("Distance in the 2D space = {0:f2}", GeometryUtils.CalcDistance2D(1, -2, 3, 4));
             Console.WriteLine("Distance in the 3D space = {0:f2}", GeometryUtils.CalcDistance3D(5, 2, -1, 3, -6, 4));
 
-            Box figure = new Box();
-            figure.Width = 3;
-            figure.Height = 4;
-            figure.Depth = 5;
-            Console.WriteLine("Volume = {0:f2}", figure.CalcVolume());
-            Console.WriteLine("Diagonal XYZ = {0:f2}", figure.CalcDiagonalXYZ());
-            Console.WriteLine("Diagonal XY = {0:f2}", figure.CalcDiagonalXY());
-            Console.WriteLine("Diagonal XZ = {0:f2}", figure.CalcDiagonalXZ());
-            Console.WriteLine("Diagonal YZ = {0:f2}", figure.CalcDiagonalYZ());
+            Shape shape = new Shape();
+            shape.Width = 3;
+            shape.Height = 4;
+            shape.Depth = 5;
+            Console.WriteLine("Volume = {0:f2}", shape.CalcVolume());
+            Console.WriteLine("Diagonal XYZ = {0:f2}", GeometryUtils.CalcDistance3D(0, 0, 0, shape.Width, shape.Height, shape.Depth));
+            Console.WriteLine("Diagonal XY = {0:f2}", GeometryUtils.CalcDistance2D(0, 0, shape.Width, shape.Height));
+            Console.WriteLine("Diagonal XZ = {0:f2}", GeometryUtils.CalcDistance2D(0, 0, shape.Width, shape.Depth));
+            Console.WriteLine("Diagonal YZ = {0:f2}", GeometryUtils.CalcDistance2D(0, 0, shape.Height, shape.Depth));
         }
     }
 }

@@ -6,7 +6,7 @@
     /// <summary>
     /// A class, which describes a box
     /// </summary>
-    public class Box
+    public class Shape
     {
         /// <summary>
         /// Gets or sets the width of the box
@@ -31,34 +31,6 @@
         {
             double volume = this.Width * this.Height * this.Depth;
             return volume;
-        }
-
-        /// <summary>
-        /// Calculates a diagonal
-        /// </summary>
-        /// <returns></returns>
-        public double CalcDiagonalXYZ()
-        {
-            double distance = GeometryUtils.CalcDistance3D(0, 0, 0, this.Width, this.Height, this.Depth);
-            return distance;
-        }
-
-        public double CalcDiagonalXY()
-        {
-            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Width, this.Height);
-            return distance;
-        }
-
-        public double CalcDiagonalXZ()
-        {
-            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Width, this.Depth);
-            return distance;
-        }
-
-        public double CalcDiagonalYZ()
-        {
-            double distance = GeometryUtils.CalcDistance2D(0, 0, this.Height, this.Depth);
-            return distance;
         }
     }
 }
