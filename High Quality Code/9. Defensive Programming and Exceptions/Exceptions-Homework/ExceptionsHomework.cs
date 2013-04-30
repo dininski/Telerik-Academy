@@ -33,15 +33,20 @@
             return result.ToString();
         }
 
-        public static void CheckPrime(int number)
+        public static bool IsPrime(int number)
         {
+            // mark the number as prime, until we find a number that can divide it
+            bool numberIsPrime = true;
+
             for (int divisor = 2; divisor <= Math.Sqrt(number); divisor++)
             {
                 if (number % divisor == 0)
                 {
-                    throw new Exception("The number is not prime!");
+                    numberIsPrime = false;
                 }
             }
+
+            return numberIsPrime;
         }
 
         public static void Main()
@@ -63,22 +68,20 @@
             Console.WriteLine(ExtractEnding("beer", 4));
             Console.WriteLine(ExtractEnding("Hi", 100));
 
-            try
+            if (IsPrime(23))
             {
-                CheckPrime(23);
                 Console.WriteLine("23 is prime.");
             }
-            catch (Exception ex)
+            else
             {
                 Console.WriteLine("23 is not prime");
             }
 
-            try
+            if (IsPrime(33))
             {
-                CheckPrime(33);
                 Console.WriteLine("33 is prime.");
             }
-            catch (Exception ex)
+            else
             {
                 Console.WriteLine("33 is not prime");
             }
