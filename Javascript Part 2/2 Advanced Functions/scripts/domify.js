@@ -1,4 +1,7 @@
 var domify = (function () {
+    var elementsBuffer = new Array();
+    var MAX_BUFFER_SIZE = 100;
+
     var appendChild = function (elementToAppend, parentElement) {
         var parent = document.querySelector(parentElement);
         parent.appendChild(elementToAppend);
@@ -20,7 +23,13 @@ var domify = (function () {
                     break;
             }
         } else {
-            // TODO!!!
+            for (var i = 0; i < parentElements.length; i++) {
+                var allElementsToRemove = parentElements[i].querySelectorAll(elementToRemove);
+
+                for (var j = 0; j < allElementsToRemove.length; j++) {
+                    parentElements[i].removeChild(allElementsToRemove[j]);
+                }
+            }
         }
     }
 
@@ -36,18 +45,42 @@ var domify = (function () {
     var removeLastChild = function (parentElements, elementToRemove) {
         for (var i = 0; i < parentElements.length; i++) {
             var allChildren = parentElements[i].querySelectorAll(elementToRemove);
-            var pseudoElementToRemove= allChildren[allChildren.length - 1];
+            var pseudoElementToRemove = allChildren[allChildren.length - 1];
             parentElements[i].removeChild(pseudoElementToRemove);
         }
     }
 
+    //a method to add handlers to different elements
     var addHandler = function (eventElement, event, callback) {
         var elementToAddHandlerTo = document.querySelector(eventElement);
         elementToAddHandlerTo.addEventListener(event, callback);
     }
 
-    // TODO: to finish buffer
-    var addToBuffer = function() {
+    var addToBuffer = function (containerElement, elementToAppend) {
+        if (elementsBuffer[containerElement] == null) {
+            elementsBuffer[containerElement] = document.createDocumentFragment();
+        }
+
+        elementsBuffer[containerElement].appendChild(elementToAppend);
+        
+        if (elementsBuffer[containerElement].childNodes.length == MAX_BUFFER_SIZE) {
+            var parent = document.querySelector(containerElement);
+            parent.appendChild(elementsBuffer[containerElement]);
+            elementsBuffer[containerElement] = null;
+        }
+    }
+
+    var appendElementsFromBuffer = function () {
+        for (var container in elementsBuffer) {
+            var currentContainer = elementsBuffer[container];
+            var domContainer = document.querySelector(container);
+            for (var i = 0; i < currentContainer.length; i++) {
+                domContainer.appendChild(currentContainer[i]);
+            }
+        }
+
+        bufferSize = 0;
+        elementsBuffer = [];
     }
 
     return {
