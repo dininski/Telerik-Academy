@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UtilsExamples.cs" />
-    <Compile Include="Box.cs" />
+    <Compile Include="Shape.cs" />
     <Compile Include="Utils\FileSystemUtils.cs" />
     <Compile Include="Utils\GeometryUtils.cs" />
   </ItemGroup>
