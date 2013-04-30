@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+Create a module that works with moving div elements. Implement functionality for:
+
+	<ul>
+		<li>Add new moving div element to the DOM</li>
+		<li>The module should generate random background, font and border colors</li>
+		<li>All the div elements are with the same width and height</li>
+		<li>The movements of the div elements can be either circular or rectangular</li>
+		<li>The elements should be moving all the time</li>
+	</ul>
+	
+	<p>
+	P.S. My module is called movify
+	</p>
+
+	<div id="container">
+		var movingShapes = ...
+		<br>
+		//add element with rectangular movement
+		<br>
+		//change the div
+		<br>
+		movingShapes.add("rect"); 
+		<br>
+		//add element with ellipse movement
+		<br>
+		movingShapes.add("ellipse");
+	</div>
+
+	<button id="addRectangleMovingElement">Add element with rectangular movement</button>
+	<button id="addCircleMovingElement">Add element with rectangular movement</button>
+
+<script type="text/javascript" src="scripts/movify.js"></script>
+<script type="text/javascript">
+	(function() {
+		var rectangularMovementButton = document.querySelector('#addRectangleMovingElement');
+		rectangularMovementButton.addEventListener('click', function() {
+			movify.add('rect');
+		});
+
+		var circularMovementButton = document.querySelector('#addCircleMovingElement');
+		circularMovementButton.addEventListener('click', function() {
+			movify.add('ellipse');
+		});
+
+	})();
+</script>
+</body>
+</html>
