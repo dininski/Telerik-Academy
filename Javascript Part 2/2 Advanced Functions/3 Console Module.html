@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+Create a module to work with the console object. Implement functionality for:
+	<ul>
+		<li>Writing a line to the console </li>
+		<li>Writing a line to the console using a format</li>
+		<li>Writing to the console should call toString() to each element</li>
+		<li>Writing errors and warnings to the console with and without format</li>
+	</ul>
+	
+	<p>
+	P.S. My module is called consolify
+	</p>
+
+	<div id="container">
+		var specialConsole = ...
+		<br>
+		specialConsole.writeLine("Message: hello");
+		<br>
+		//logs to the console "Message: hello"
+		<br>
+		specialConsole.writeLine("Message: {0}", "hello");
+		<br>
+		//logs to the console "Message: hello"
+		<br>
+		specialConsole.writeError("Error: {0}", "Something happened");
+		<br>
+		specialConsole.writeWarning("Warning: {0}", "A warning");
+	</div>
+
+	<button id="normalConsoleLogBtn">Sample Message</button>
+	consolify.writeLine('This is a {0} message', 'test');
+	<br>
+
+	<button id="consoleErrorBtn">Sample Error</button>
+	consolify.writeError("This is a big {0}, don't {1}", 'error', 'panic');
+	<br>
+
+	<button id="consoleWarningBtn">Sample Warning</button>
+	consolify.writeLine('This is just a {0}', 'warning');
+	<br>
+
+<script type="text/javascript" src="scripts/consolify.js"></script>
+<script type="text/javascript">
+	(function() {
+		var consoleLogButton = document.querySelector('#normalConsoleLogBtn');
+		consoleLogButton.addEventListener('click', function() {
+			consolify.writeLine('This is a {0} message', 'test');
+		});
+
+		var consoleErrorButton = document.querySelector('#consoleErrorBtn');
+		consoleErrorButton.addEventListener('click', function() {
+			consolify.writeError("This is a big {0}, don't {1}", 'error', 'panic');
+		});
+
+		var consoleWarningButton = document.querySelector('#consoleWarningBtn');
+		consoleWarningButton.addEventListener('click', function() {
+			consolify.writeWarning('This is just a {0}', 'warning');
+		});
+	})();
+</script>
+</body>
+</html>
