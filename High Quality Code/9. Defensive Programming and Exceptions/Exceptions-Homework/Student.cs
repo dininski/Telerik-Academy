@@ -10,14 +10,12 @@
         {
             if (firstName == null)
             {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
+                throw new ArgumentNullException("You must specify a first name!");
             }
 
             if (lastName == null)
             {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
+                throw new ArgumentNullException("You must specify a last name!");
             }
 
             this.FirstName = firstName;
@@ -35,13 +33,12 @@
         {
             if (this.Exams == null)
             {
-                throw new Exception("Wow! Error happened!!!");
+                throw new ArgumentNullException("The exams must be initialized!");
             }
 
             if (this.Exams.Count == 0)
             {
-                Console.WriteLine("The student has no exams!");
-                return null;
+                throw new ArgumentNullException("There must be at least one exam!");
             }
 
             IList<ExamResult> results = new List<ExamResult>();
@@ -57,14 +54,12 @@
         {
             if (this.Exams == null)
             {
-                // Cannot calculate average on missing exams
-                throw new Exception();
+                throw new ArgumentNullException("The exams must be initialized!");
             }
 
             if (this.Exams.Count == 0)
             {
-                // No exams --> return -1;
-                return -1;
+                throw new ArgumentNullException("There must be at least one exam!");
             }
 
             double[] examScore = new double[this.Exams.Count];
