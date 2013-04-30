@@ -8,22 +8,22 @@
         {
             if (grade < 0)
             {
-                throw new Exception();
+                throw new ArgumentOutOfRangeException("The grade cannot be less than 0!");
             }
 
             if (minGrade < 0)
             {
-                throw new Exception();
+                throw new ArgumentOutOfRangeException("The minimum grade for the exam cannot be less than 0!");
             }
 
             if (maxGrade <= minGrade)
             {
-                throw new Exception();
+                throw new ArgumentException("The maximum grade for the exam cannot be less than the minimum grade!");
             }
 
             if (comments == null || comments == string.Empty)
             {
-                throw new Exception();
+                throw new ArgumentNullException("A comment must be entered!");
             }
 
             this.Grade = grade;
