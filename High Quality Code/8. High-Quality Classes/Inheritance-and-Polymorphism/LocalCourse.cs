@@ -48,8 +48,14 @@
         /// <summary>
         /// Gets or sets the lab, where the local course will take place.
         /// </summary>
+        /// <value>Gets or sets the value for the lab of the local course.</value>
         public string Lab { get; set; }
 
+        /// <summary>
+        /// Adds the lab information to the base string, if
+        /// such information exists.
+        /// </summary>
+        /// <returns>Returns the local course information.</returns>
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();

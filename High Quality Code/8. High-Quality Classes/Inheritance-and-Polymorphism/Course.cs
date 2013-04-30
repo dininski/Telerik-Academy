@@ -14,7 +14,8 @@
         /// <paramref name="courseName"/>
         /// </summary>
         /// <param name="courseName">The course name.</param>
-        public Course(string courseName) : this(courseName, null, new List<string>())
+        public Course(string courseName)
+            : this(courseName, null, new List<string>())
         {
         }
 
@@ -47,21 +48,25 @@
         /// <summary>
         /// Gets or sets the name of the course.
         /// </summary>
+        /// <value>Gets or sets the value for the name of the course.</value>
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the teacher for this course.
         /// </summary>
+        /// <value>Gets or sets the value for the teacher of the course.</value>
         public string TeacherName { get; set; }
 
         /// <summary>
         /// Gets or sets the students that are enrolled for this course.
         /// </summary>
+        /// <value>Gets or sets the value for the students, enrolled in the course.</value>
         public IList<string> Students { get; set; }
 
         /// <summary>
         /// Gets or sets the CourseType.
         /// </summary>
+        /// <value>Gets or sets the value for the type of the course.</value>
         protected string CourseType { get; set; }
 
         /// <summary>
@@ -87,7 +92,7 @@
             // result.Append(" }");
             return result.ToString();
         }
-        
+
         /// <summary>
         /// A method for converting the list of enrolled students to a string.
         /// </summary>
