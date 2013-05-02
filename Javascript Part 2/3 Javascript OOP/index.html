@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+Open the console :)
+
+<script type="text/javascript" src="scripts/oop.js"></script>
+<script type="text/javascript">
+console.log('creating a new Wheel with radius of 10.');
+var wheel = new vehicles.Wheel(10);
+console.log('wheel acceleration: ' + wheel.Accelerate());
+console.log(' ');
+
+console.log('creating a new PropellingNozzle with power of 20.');
+var propellingNozzle = new vehicles.PropellingNozzle(20);
+console.log('propelling nozzle acceleration with afterburner off: ' + propellingNozzle.Accelerate());
+console.log('turning on the afterburner.')
+propellingNozzle.toggleAfterburner();
+console.log('propelling nozzle acceleration with afterburner on: ' + propellingNozzle.Accelerate());
+console.log(' ');
+
+console.log('creating a new Propeller with power of 35 fins and clockwise spin.');
+var propeller = new vehicles.Propeller(35, vehicles.SpinDirection.CLOCKWISE);
+console.log('propeller clockwise speed: ' + propeller.Accelerate());
+console.log('changing the spin direction to counterclockwise');
+propeller.spinDirection = vehicles.SpinDirection.COUNTERCLOCKWISE;
+console.log('propeller counterclockwise speed: ' + propeller.Accelerate());
+console.log(' ');
+
+console.log('creating a Tank (earth vehicle) with a speed of 10.')
+var tank = new vehicles.EarthVehicle(10);
+console.log('tank acceleration: ' + tank.getAcceleration());
+console.log(' ');
+
+console.log('creating a Plane (air vehicle) with power of 100.')
+var plane = new vehicles.AirVehicle(100);
+console.log('plane acceleration with afterburner off: ' + plane.getAcceleration());
+console.log('toggling the afterburner...');
+plane.toggleAfterburner();
+console.log('plane acceleration with afterburner on: ' + plane.getAcceleration());
+console.log(' ');
+
+</script>
+</body>
+</html>
