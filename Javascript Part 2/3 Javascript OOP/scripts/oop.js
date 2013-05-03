@@ -1,27 +1,32 @@
 var vehicles = (function () {
     'use strict';
 
-    var AfterBurnerSwitchState = Object.freeze({
+    // enumeration with the possible afterburner states
+    var afterburnerState = Object.freeze({
         'OFF': 0,
         'ON': 1
     });
 
+    // spin direction enumeration
     var SpinDirection = Object.freeze({
         'CLOCKWISE': 0,
         'COUNTER_CLOCKWISE': 1
     });
 
+    // enumeration with the states of the amphibian vehicle
     var AmphibianVehicleMode = Object.freeze({
-        'ON_EARTH': 0,
-        'IN_WATER' : 1
+        'ON_LAND': 0,
+        'IN_WATER': 1
     });
 
-    Function.prototype.inherits = function (parent) {
-        this.prototype = new parent();
-        this.prototype.constructor = parent;
+    // inheritance function
+    Function.prototype.inherits = function (Parent) {
+        this.prototype = new Parent();
+        this.prototype.constructor = Parent;
     }
 
-    Function.prototype.extend = function (parent) {
+    // functionality extending function
+    Function.prototype.extends = function (parent) {
         for (var i = 1; i < arguments.length; i++) {
             var name = arguments[i];
             this.prototype[name] = parent.prototype[name];
@@ -30,15 +35,17 @@ var vehicles = (function () {
         return this;
     }
 
+    // default constructer for all the PropulsionUnits
     var PropulsionUnit = function () {
     }
 
-    PropulsionUnit.prototype.Accelerate = function () {
-        // this is more of an assertion, becase the PropulsionUnit.Accelerate() method
+    PropulsionUnit.prototype.getAcceleration = function () {
+        // this is more of an assertion, becase the PropulsionUnit.getAcceleration() method
         // is private:
-        throw new Error('The method PropulsionUnit.Accelerate() cannot be called, because it is abstract!');
+        throw new Error('The method PropulsionUnit.getAcceleration() cannot be called, because it is abstract!');
     }
 
+    // the wheel class
     var Wheel = function (radius) {
         if (!radius || radius < 0) {
             throw new Error('Wheel radius, which is larger than 0, must be specified!');
@@ -49,37 +56,46 @@ var vehicles = (function () {
 
     Wheel.inherits(PropulsionUnit);
 
-    Wheel.prototype.Accelerate = function () {
+    Wheel.prototype.getAcceleration = function () {
         return parseFloat(2 * Math.PI * this.radius);
     }
 
+    // the propelling nozzle class
     var PropellingNozzle = function (power) {
         if (typeof power === 'undefined') {
             throw new Error('Power must be specified!');
         }
 
         this.power = power;
-        this.afterburnerSwitch = AfterBurnerSwitchState.OFF;
+        this.afterburnerState = afterburnerState.OFF;
     }
 
     PropellingNozzle.inherits(PropulsionUnit);
 
-    PropellingNozzle.prototype.Accelerate = function () {
-        if (this.afterburnerSwitch == AfterBurnerSwitchState.ON) {
+    // the getAcceleration method return 2 times the power
+    // if the afterburner is on
+    PropellingNozzle.prototype.getAcceleration = function () {
+        if (this.afterburnerState == afterburnerState.ON) {
             return this.power * 2;
         } else {
             return this.power;
         }
     }
 
+    PropellingNozzle.prototype.getAfterburnerState = function () {
+        return this.afterburnerState;
+    }
+
+    // a method, which turns off and on the afterburner
     PropellingNozzle.prototype.toggleAfterburner = function () {
-        if (this.afterburnerSwitch == AfterBurnerSwitchState.ON) {
-            this.afterburnerSwitch = AfterBurnerSwitchState.OFF;
+        if (this.afterburnerState == afterburnerState.ON) {
+            this.afterburnerState = afterburnerState.OFF;
         } else {
-            this.afterburnerSwitch = AfterBurnerSwitchState.ON;
+            this.afterburnerState = afterburnerState.ON;
         }
     }
 
+    // the propeller clsas
     var Propeller = function (numberOfFins, spinDirection) {
         if (!numberOfFins || numberOfFins < 0) {
             throw new Error('A number of fins, which is larger than 0, must be specified!');
@@ -95,7 +111,9 @@ var vehicles = (function () {
 
     Propeller.inherits(PropulsionUnit);
 
-    Propeller.prototype.Accelerate = function () {
+    // the getAcceleration method returns the acceleration
+    // depending on the spin direction
+    Propeller.prototype.getAcceleration = function () {
         if (this.spinDirection == SpinDirection.CLOCKWISE) {
             return this.numberOfFins;
         } else {
@@ -103,7 +121,8 @@ var vehicles = (function () {
         }
     }
 
-    Propeller.prototype.toggleSpinDirection = function() {
+    // changes the spin direction of the propeller
+    Propeller.prototype.toggleSpinDirection = function () {
         if (this.spinDirection === SpinDirection.CLOCKWISE) {
             this.spinDirection = SpinDirection.COUNTER_CLOCKWISE;
         } else {
@@ -115,101 +134,155 @@ var vehicles = (function () {
         return this.spinDirection;
     }
 
-    var Vehicle = function (power, propulsionUnits) {
-        this.power = power;
+    // the vehicles base class
+    var Vehicle = function (speed, propulsionUnits) {
+        this.speed = speed;
         this.propulsionUnits = propulsionUnits;
     }
 
+    // a method that changes the speed of the vehicle, depending on 
+    // it's acceleration
+    Vehicle.prototype.Accelerate = function () {
+        for (var i = 0; i < this.propulsionUnits.length; i++) {
+            this.speed += this.propulsionUnits[i].getAcceleration();
+        }
+    }
+
+    // a method that returns the current speed of the vehicle
+    Vehicle.prototype.getSpeed = function () {
+        return this.speed;
+    }
+
+    // a method that stops the vehicle
+    Vehicle.prototype.stop = function () {
+        this.speed = 0;
+    }
+
+    // a method that calculates the acceleration of the vehicle
     Vehicle.prototype.getAcceleration = function () {
-    }
-
-    var EarthVehicle = function (wheelRadius) {
-        this.wheels = new Array();
-        for (var i = 0; i < 4; i++) {
-            this.wheels.push(new Wheel(wheelRadius));
-        }
-    }
-
-    EarthVehicle.inherits(Vehicle);
-
-    EarthVehicle.prototype.getAcceleration = function () {
-        var acceleration = 0;
-        for (var i = 0; i < this.wheels.length; i++) {
-            acceleration += this.wheels[i].Accelerate();
+        var totalAcceleration = 0;
+        for (var i = 0; i < this.propulsionUnits.length ; i++) {
+            totalAcceleration += this.propulsionUnits[i].getAcceleration();
         }
 
-        return acceleration;
+        return totalAcceleration;
     }
 
-    var AirVehicle = function (propellingNozzlePower) {
-        this.propellingNozzle = new PropellingNozzle(propellingNozzlePower);
+    // the land vehicle class
+    var LandVehicle = function (speed, wheels) {
+        Vehicle.apply(this, arguments);
+    }
+
+    LandVehicle.inherits(Vehicle);
+
+    // the air vehicle class
+    var AirVehicle = function (speed, propellingNozzle) {
+        Vehicle.apply(this, arguments);
     }
 
     AirVehicle.inherits(Vehicle);
 
-    AirVehicle.prototype.getAcceleration = function () {
-        return this.propellingNozzle.Accelerate();
-    }
-
     // a method for toggling the afterburner on/off
     AirVehicle.prototype.toggleAfterburner = function () {
-        this.propellingNozzle.toggleAfterburner();
+        for (var i = 0; i < this.propulsionUnits.length; i++) {
+            this.propulsionUnits[i].toggleAfterburner();
+        }
     }
 
     // a method, which returns 1 if the afterburner is on and
     // 0 if it is off.
     AirVehicle.prototype.getAfterburnerState = function () {
-        return this.propellingNozzle.afterburnerSwitch;
+        return this.propulsionUnits[0].getAfterburnerState;
     }
 
-    var WaterVehicle = function (propellersCount, numberOfFins, spinDirection) {
-        if (propellersCount < 0 || !propellersCount) {
-            throw new Error('A number of propellers, which is larger than 0, must be specified!');
-        }
-
-        this.propellers = new Array();
-        for (var i = 0; i < propellersCount; i++) {
-            propellersCount.push(new Propeller(numberOfFins, spinDirection));
-        }
+    // the water vehicle class
+    var WaterVehicle = function (speed, propellers) {
+        Vehicle.apply(this, arguments);
     }
 
     WaterVehicle.inherits(Vehicle);
 
-    WaterVehicle.prototype.getAcceleration = function () {
-        var acceleration = 0;
+    // a method that changes the propeller direction
+    WaterVehicle.prototype.changeSpinDirection = function () {
+        for (var i = 0; i < this.propulsionUnits.length; i++) {
+            if (this.propulsionUnits[i] instanceof Propeller) {
+                this.propulsionUnits[i].toggleSpinDirection();
+            }
+        }
+    }
 
-        for (var i = 0; i < this.propellers.length; i++) {
-            acceleration += this.propellers[i].Accelerate();
+    // the amphibian class
+    var AmphibianVehicle = function (speed, propellers, wheels, mode) {
+        var propulsionUnits = new Array();
+        for (var i = 0; i < propellers.length; i++) {
+            propulsionUnits.push(propellers[i]);
+        }
+
+        for (var j = 0; j < wheels.length; j++) {
+            propulsionUnits.push(wheels[i]);
+        }
+
+        Vehicle.call(this, speed, propulsionUnits);
+        this.mode = mode;
+    }
+
+    AmphibianVehicle.inherits(Vehicle);
+    AmphibianVehicle.extends(WaterVehicle, 'changeSpinDirection');
+
+    // amphibian vehicle overrides the getAcceleration method
+    // as it has different behaviour, depending on the vehicle
+    // mode
+    AmphibianVehicle.prototype.getAcceleration = function () {
+        var acceleration = 0;
+        if (this.mode === AmphibianVehicleMode.ON_LAND) {
+            for (var i = 0; i < this.propulsionUnits.length; i++) {
+                if (this.propulsionUnits[i] instanceof Wheel) {
+                    acceleration += this.propulsionUnits[i].getAcceleration();
+                }
+            }
+        } else {
+            for (var i = 0; i < this.propulsionUnits.length; i++) {
+                if (this.propulsionUnits[i] instanceof Propeller) {
+                    acceleration += this.propulsionUnits[i].getAcceleration();
+                }
+            }
         }
 
         return acceleration;
     }
 
-    WaterVehicle.prototype.toggleSpinDirection = function () {
-        for (var i = 0; i < this.propellers.length; i++) {
-            this.propellers[i].toggleSpinDirection();
+    // the amphibian vehicle overrides the default accelerate function,
+    // because the acceleration varies, depending on the mode
+    AmphibianVehicle.prototype.Accelerate = function () {
+        this.speed += this.getAcceleration();
+    }
+
+    // a method that changes the vehicle's mode and reset it's speed to 0
+    // because once the mode is changed the speed should be changed as well
+    AmphibianVehicle.prototype.toggleMode = function () {
+        this.speed = 0;
+        if (this.mode === AmphibianVehicleMode.ON_LAND) {
+            this.mode = AmphibianVehicleMode.IN_WATER;
+        } else {
+            this.mode = AmphibianVehicleMode.ON_LAND;
         }
     }
 
-    WaterVehicle.prototype.getSpinDirection = function () {
-        return this.propellers[0].getSpinDirection();
+    // returns the current amphibian mode
+    AmphibianVehicle.prototype.getCurrentMode = function () {
+        return this.mode;
     }
-
-    var AmphibiousVehicle = function (wheelRadius, propellerCount, propellerNumberOfFins, propellerSpinDirection, vehicleMode) {
-        this.vehicleMode = vehicleMode;
-
-    }
-
-    AmphibiousVehicle.inherits(Vehicle);
 
     return {
-        AfterBurnerSwitchState: AfterBurnerSwitchState,
+        afterburnerState: afterburnerState,
         SpinDirection: SpinDirection,
         Wheel: Wheel,
         PropellingNozzle: PropellingNozzle,
         Propeller: Propeller,
-        EarthVehicle: EarthVehicle,
+        LandVehicle: LandVehicle,
         AirVehicle: AirVehicle,
-        WaterVehicle: WaterVehicle
+        WaterVehicle: WaterVehicle,
+        AmphibianVehicle: AmphibianVehicle,
+        AmphibianVehicleMode: AmphibianVehicleMode
     }
 })();
