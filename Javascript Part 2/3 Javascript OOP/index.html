@@ -7,80 +7,80 @@ Open the console :)
 
 <script type="text/javascript" src="scripts/oop.js"></script>
 <script type="text/javascript">
-console.log('creating a new Wheel with radius of 10.');
-var wheel = new vehicles.Wheel(10);
-console.log('wheel acceleration: ' + wheel.getAcceleration());
-console.log(' ');
+(function(){
+	console.log('creating a new Wheel with radius of 10.');
+	var wheel = new vehicles.Wheel(10);
+	console.log('wheel acceleration: ' + wheel.getAcceleration());
+	console.log(' ');
 
-console.log('creating a new PropellingNozzle with power of 20.');
-var propellingNozzle = new vehicles.PropellingNozzle(20);
-console.log('propelling nozzle acceleration with afterburner off: ' + propellingNozzle.getAcceleration());
-console.log('turning on the afterburner.')
-propellingNozzle.toggleAfterburner();
-console.log('propelling nozzle acceleration with afterburner on: ' + propellingNozzle.getAcceleration());
-console.log(' ');
+	console.log('creating a new PropellingNozzle with power of 20.');
+	var propellingNozzle = new vehicles.PropellingNozzle(20);
+	console.log('propelling nozzle acceleration with afterburner off: ' + propellingNozzle.getAcceleration());
+	console.log('turning on the afterburner.')
+	propellingNozzle.toggleAfterburner();
+	console.log('propelling nozzle acceleration with afterburner on: ' + propellingNozzle.getAcceleration());
+	console.log(' ');
 
-console.log('creating a new Propeller with power of 35 fins and clockwise spin.');
-var propeller = new vehicles.Propeller(35, vehicles.SpinDirection.CLOCKWISE);
-console.log('propeller clockwise speed: ' + propeller.getAcceleration());
-console.log('changing the spin direction to counterclockwise');
-propeller.spinDirection = vehicles.SpinDirection.COUNTERCLOCKWISE;
-console.log('propeller counterclockwise speed: ' + propeller.getAcceleration());
-console.log(' ');
+	console.log('creating a new Propeller with power of 35 fins and clockwise spin.');
+	var propeller = new vehicles.Propeller(35, vehicles.SpinDirection.CLOCKWISE);
+	console.log('propeller clockwise speed: ' + propeller.getAcceleration());
+	console.log('changing the spin direction to counterclockwise');
+	propeller.spinDirection = vehicles.SpinDirection.COUNTERCLOCKWISE;
+	console.log('propeller counterclockwise speed: ' + propeller.getAcceleration());
+	console.log(' ');
 
-console.log('creating a Tank (land vehicle)')
-var tankWheels = [
-	new vehicles.Wheel(10),
-	new vehicles.Wheel(10),
-	new vehicles.Wheel(10),
-	new vehicles.Wheel(10),
-	new vehicles.Wheel(10),
-	new vehicles.Wheel(10)
-];
-var tank = new vehicles.LandVehicle(10, tankWheels);
-console.log('tank acceleration: ' + tank.getAcceleration());
-console.log(' ');
+	console.log('creating a Tank (land vehicle)')
+	var tankWheels = [
+		new vehicles.Wheel(10),
+		new vehicles.Wheel(10),
+		new vehicles.Wheel(10),
+		new vehicles.Wheel(10),
+		new vehicles.Wheel(10),
+		new vehicles.Wheel(10)
+	];
+	var tank = new vehicles.LandVehicle(10, tankWheels);
+	console.log('tank acceleration: ' + tank.getAcceleration());
+	console.log(' ');
 
-console.log('creating a Plane (air vehicle)');
-var plane = new vehicles.AirVehicle(100, [new vehicles.PropellingNozzle(200)]);
-console.log('plane acceleration with afterburner off: ' + plane.getAcceleration());
-console.log('toggling the afterburner...');
-plane.toggleAfterburner();
-console.log('plane acceleration with afterburner on: ' + plane.getAcceleration());
-console.log(' ');
+	console.log('creating a Plane (air vehicle)');
+	var plane = new vehicles.AirVehicle(100, [new vehicles.PropellingNozzle(200)]);
+	console.log('plane acceleration with afterburner off: ' + plane.getAcceleration());
+	console.log('toggling the afterburner...');
+	plane.toggleAfterburner();
+	console.log('plane acceleration with afterburner on: ' + plane.getAcceleration());
+	console.log(' ');
 
-console.log('creating a Ship (water vehicle)');
-var ship = new vehicles.WaterVehicle(100, [new vehicles.Propeller(40, vehicles.SpinDirection.CLOCKWISE)]);
-console.log('ship acceleration: ' + ship.getAcceleration());
-ship.changeSpinDirection();
-console.log('changing the propeller spin direction...');
-console.log('ship acceleration: ' + ship.getAcceleration());
-console.log(' ');
+	console.log('creating a Ship (water vehicle)');
+	var ship = new vehicles.WaterVehicle(100, [new vehicles.Propeller(40, vehicles.SpinDirection.CLOCKWISE)]);
+	console.log('ship acceleration: ' + ship.getAcceleration());
+	ship.changeSpinDirection();
+	console.log('changing the propeller spin direction...');
+	console.log('ship acceleration: ' + ship.getAcceleration());
+	console.log(' ');
 
-console.log('creating an Amphibian (amphibian vehicle)');
-var frogPropellers = [
-	new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE),
-	new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE),
-	new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE)
-];
-var frogWheels = [
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5),
-	new vehicles.Wheel(5)
-];
+	console.log('creating an Amphibian (amphibian vehicle)');
+	var frogPropellers = [
+		new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE),
+		new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE),
+		new vehicles.Propeller(10, vehicles.SpinDirection.CLOCKWISE)
+	];
+	var frogWheels = [
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5),
+		new vehicles.Wheel(5)
+	];
 
-var frog = new vehicles.AmphibianVehicle(50, frogPropellers, frogWheels, vehicles.AmphibianVehicleMode.ON_LAND);
-console.log('Ampibian acceleration: ' + frog.getAcceleration());
-console.log('changing the vehicle mode');
-frog.toggleMode();
-console.log('Ampibian acceleration: ' + frog.getAcceleration());
-
-
+	var frog = new vehicles.AmphibianVehicle(50, frogPropellers, frogWheels, vehicles.AmphibianVehicleMode.ON_LAND);
+	console.log('Ampibian acceleration: ' + frog.getAcceleration());
+	console.log('changing the vehicle mode');
+	frog.toggleMode();
+	console.log('Ampibian acceleration: ' + frog.getAcceleration());
+})();
 </script>
 </body>
 </html>
