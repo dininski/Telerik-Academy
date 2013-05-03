@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>TODO list</title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/todo.css">
+<body>
+<p>
+	Create a TODO list with the following UI controls:
+</p>
+
+<ul>
+	<li>Form input for new Item</li>
+	<li>Button for adding the new Item</li>
+	<li>Button for deleting some item</li>
+	<li>Show and Hide Button</li>
+</ul>
+
+<div id="todoListContainer">
+	<label for="todoDate">Enter date: </label>
+	<input id="todoDate" type="date">
+	<label for="todoContent">TODO:</label>
+	<input id="todoContent" type="text">
+	<button id="addListItem">Add new TODO item</button>
+	<br>
+	<select id="todo-list" multiple>
+	</select>
+	<br>
+	<button id='removeListItem'>Remove item</button>
+</div>
+
+
+
+<script type="text/javascript" src="scripts/todolify.js"></script>
+<script type="text/javascript">
+	var addItemButton = document.querySelector('#addListItem');
+	addItemButton.addEventListener('click', function() {
+		var dateSelected = document.querySelector('#todoDate');
+		var todoContent = document.querySelector('#todoContent');
+		todolify.addItem(dateSelected.value, todoContent.value);
+	});
+
+	var removeItemButton = document.querySelector('#removeListItem');
+	removeItemButton.addEventListener('click', function() {
+		todolify.removeItem();
+	});
+</script>
+</body>
+</html>

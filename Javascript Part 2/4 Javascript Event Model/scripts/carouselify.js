@@ -12,7 +12,7 @@ var carouselify = (function () {
     carousel.style.right = 0;
     var right = 0;
 
-    var nextImage = function() {
+    var nextImage = function () {
     	if (right +imageWidth < maxWidth) {
     		right += imageWidth;
     	} else {
@@ -22,7 +22,7 @@ var carouselify = (function () {
 		carousel.style.right = right + 'px';
     }
 
-    var previousImage = function() {
+    var previousImage = function () {
     	right -= imageWidth;
     	carousel.style.right = right + 'px'; 
     }
