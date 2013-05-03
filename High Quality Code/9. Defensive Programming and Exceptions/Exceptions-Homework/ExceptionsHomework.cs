@@ -15,7 +15,7 @@
 
             if (count == 0)
             {
-                throw new ArgumentException("The count must be larger than 0!");
+                throw new ArgumentException("The subsequence length must be larger than 0!");
             }
 
             if (startIndex + count > arr.Length)
@@ -36,12 +36,12 @@
         {
             if (count < 0)
             {
-                throw new ArgumentException("The ending count cannot be negative!");
+                throw new ArgumentException("The ending length cannot be negative!");
             }
 
             if (count > str.Length)
             {
-                throw new ArgumentException("The ending count cannot be longer that the string we are extracting from!");
+                throw new ArgumentException("The ending length cannot be longer that the string we are extracting from!");
             }
 
             StringBuilder result = new StringBuilder();
@@ -84,7 +84,6 @@
             // invalid input. Uncomment them to double check.
             // var emptyarr = Subsequence(new int[] { -1, 3, 2, 1 }, 0, 0);
             // Console.WriteLine(string.Join(" ", emptyarr));
-
             Console.WriteLine(ExtractEnding("I love C#", 2));
             Console.WriteLine(ExtractEnding("Nakov", 4));
             Console.WriteLine(ExtractEnding("beer", 4));
@@ -92,7 +91,6 @@
             // The next line now throws an expected exception, because of 
             // invalid input. Uncomment it to double check.
             // Console.WriteLine(ExtractEnding("Hi", 100));
-
             if (IsPrime(23))
             {
                 Console.WriteLine("23 is prime.");

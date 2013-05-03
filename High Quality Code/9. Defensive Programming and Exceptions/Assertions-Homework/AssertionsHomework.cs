@@ -106,6 +106,8 @@
 
         private static void Swap<T>(ref T x, ref T y)
         {
+            Debug.Assert(x != null, "The first argument cannot be null!");
+            Debug.Assert(y != null, "The second argument cannot be null!");
             T oldX = x;
             x = y;
             y = oldX;
