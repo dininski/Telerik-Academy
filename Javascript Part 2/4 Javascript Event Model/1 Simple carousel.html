@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Simple carousel</title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/default.css">
+<body>
+<p>
+	Create a Simple JS Carousel with N images and two arrows for image control 
+</p>
+
+<div id="carouselWrapper">
+	<ul id="carousel">
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+	</ul>
+</div>
+<div id="carousel_nav">
+	<img id="prev_img" src="images/prev.png" alt="previous image" />
+	<img id="next_img" src="images/next.png" alt="next image" />
+</div>
+
+<script type="text/javascript" src="scripts/carouselify.js"></script>
+<script type="text/javascript">
+	var buttonNext = document.querySelector('#next_img');
+	buttonNext.addEventListener('click', function() {
+		carouselify.nextImage();
+	});
+
+	var buttonPrev = document.querySelector('#prev_img');
+	buttonPrev.addEventListener('click', function() {
+		carouselify.previousImage();
+	});
+</script>
+</body>
+</html>
