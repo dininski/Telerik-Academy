@@ -2,19 +2,19 @@
 {
     using System;
 
-    public class CourseFullException : Exception
+    public class CourseException : Exception
     {
-        public CourseFullException()
+        public CourseException()
             : base()
         {
         }
 
-        public CourseFullException(string message)
+        public CourseException(string message)
             : base(message)
         {
         }
 
-        public CourseFullException(string message, Exception e)
+        public CourseException(string message, Exception e)
             : base(message, e)
         {
         }
