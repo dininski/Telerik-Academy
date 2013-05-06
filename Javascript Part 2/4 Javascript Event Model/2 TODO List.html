@@ -25,7 +25,9 @@
 	<select id="todo-list" multiple>
 	</select>
 	<br>
-	<button id='removeListItem'>Remove item</button>
+	<button id="removeItem">Remove item</button>
+    <button id="hideItem">Hide item</button>
+    <button id="showItems">Show items</button>
 </div>
 
 
@@ -39,10 +41,21 @@
 		todolify.addItem(dateSelected.value, todoContent.value);
 	});
 
-	var removeItemButton = document.querySelector('#removeListItem');
+	var removeItemButton = document.querySelector('#removeItem');
 	removeItemButton.addEventListener('click', function() {
 		todolify.removeItem();
 	});
+
+	var hideItemButton = document.querySelector('#hideItem');
+	hideItem.addEventListener('click', function () {
+	    todolify.hideItem();
+	});
+
+	var showItemsButton = document.querySelector('#showItems');
+	showItemsButton.addEventListener('click', function () {
+	    todolify.showItems();
+	});
+
 </script>
 </body>
 </html>

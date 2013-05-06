@@ -2,6 +2,7 @@ var todolify = (function () {
     'use strict';
 
     var todoList = document.querySelector('#todo-list');
+    var hiddenItems = new Array();
 
     var addItem = function (date, todoContent) {
         if (!date) {
@@ -25,8 +26,24 @@ var todolify = (function () {
         todoList.removeChild(todoList[todoList.selectedIndex]);
     }
 
+    var hideItem = function () {
+        var itemToHide = todoList[todoList.selectedIndex];
+        itemToHide.style.visibility = 'hidden';
+        hiddenItems.push(itemToHide);
+    }
+
+    var showItems = function () {
+        for (var i = 0; i < hiddenItems.length; i++) {
+            hiddenItems[i].style.visibility = 'visible';
+        }
+
+        hiddenItems = new Array();
+    }
+
     return {
-    	addItem: addItem,
-        removeItem: removeItem
+        addItem: addItem,
+        removeItem: removeItem,
+        hideItem: hideItem,
+        showItems: showItems
     }
 })();
