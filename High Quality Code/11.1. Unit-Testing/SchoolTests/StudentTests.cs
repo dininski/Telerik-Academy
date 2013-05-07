@@ -20,7 +20,18 @@
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void StudentWithOutOfRangeId()
         {
-            Student student = new Student(100000, "Gosho Goshov");
+            int id = 100000;
+            string name = "Gosho Goshov";
+            Student student = new Student(id, name);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void StudentWithNoName()
+        {
+            int id = 10000;
+            string name = string.Empty;
+            Student student = new Student(id, name);
         }
     }
 }

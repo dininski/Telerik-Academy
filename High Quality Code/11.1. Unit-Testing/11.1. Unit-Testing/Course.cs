@@ -2,16 +2,16 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using StudentSystem.Exceptions;
-    using System.Text;
     using System.Diagnostics;
+    using System.Linq;
+    using System.Text;
+    using StudentSystem.Exceptions;
 
     public class Course
     {
         private const int MaxStudentsPerCourse = 30;
+        
         private readonly IList<Student> enrolledStudents;
-        public string CourseName { get; set; }
 
         public Course(string courseName)
         {
@@ -19,9 +19,11 @@
             this.CourseName = courseName;
         }
 
+        public string CourseName { get; set; }
+
         public void AddStudent(Student newEnrolledStudent)
         {
-            if (this.enrolledStudents.Count > MaxStudentsPerCourse)
+            if (this.enrolledStudents.Count == MaxStudentsPerCourse)
             {
                 throw new CourseException("The course cannot have more than " + MaxStudentsPerCourse + " students");
             }
@@ -58,22 +60,22 @@
             return this.enrolledStudents.ToArray();
         }
 
-        private bool IsStudentInCourse(Student studentToFind)
-        {
-            Debug.Assert(studentToFind != null);
-            return this.enrolledStudents.Contains(studentToFind);
-        }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(string.Format("Course name: {0}", this.CourseName));
-            foreach (var student in enrolledStudents)
+            foreach (var student in this.enrolledStudents)
             {
                 sb.AppendLine(student.ToString());
             }
 
             return sb.ToString();
+        }
+
+        private bool IsStudentInCourse(Student studentToFind)
+        {
+            Debug.Assert(studentToFind != null, "The student to find cannot be null!");
+            return this.enrolledStudents.Contains(studentToFind);
         }
     }
 }
