@@ -25,24 +25,47 @@
                 var foregroundColor = "#000000";
                 var canvas = document.getElementById('houseCanvas');
                 var context = canvas.getContext("2d");
+
+                // house main body
                 context.fillStyle = backgroundColor;
                 context.fillRect(20, 120, 215, 160);
                 context.strokeStyle = foregroundColor;
                 context.lineWidth = 2;
                 context.strokeRect(20, 120, 215, 160);
                 context.fillStyle = foregroundColor;
+
+                // top left window
                 context.fillRect(35, 140, 75, 50);
+
+                // top right window
                 context.fillRect(140, 140, 75, 50);
+
+                // bottom right window
                 context.fillRect(140, 215, 75, 50);
 
+                // top left window separators
                 drawLine(context, 72, 140, 72, 190, backgroundColor);
                 drawLine(context, 35, 165, 110, 165, backgroundColor);
 
+                // top right window separators
                 drawLine(context, 176, 140, 176, 190, backgroundColor);
                 drawLine(context, 140, 165, 215, 165, backgroundColor);
 
+                // bottom right window separators
                 drawLine(context, 176, 215, 176, 265, backgroundColor);
                 drawLine(context, 140, 240, 215, 240, backgroundColor);
+
+                // roof
+                context.beginPath();
+                context.moveTo(20, 120);
+                context.lineTo(127, 20);
+                context.lineTo(235, 120);
+                context.lineTo(20, 120);
+                context.fillStyle = backgroundColor;
+                context.fill();
+                context.strokeStyle = foregroundColor;
+                context.stroke();
+
 
                 // TODO: finish house
             }
@@ -54,6 +77,8 @@
                 var hatStrokeColor = "#000000";
                 var canvas = document.getElementById('manCanvas');
                 var context = canvas.getContext("2d");
+
+                drawCircle(context, 127, 200, 55, skinColor, 2, skinStrokeColor);
             }
 
             function drawBicycle() {
@@ -82,9 +107,10 @@
                 drawLine(context, 220, 145, 185, 160, linesColor);
                 drawLine(context, 220, 145, 245, 120, linesColor);
 
-
                 // chain & pedals
                 drawCircle(context, 145, 235, 14, null, 3, linesColor);
+                drawLine(context, 135, 225, 125, 215, linesColor);
+                drawLine(context, 155, 245, 165, 255, linesColor);
             }
 
             function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
