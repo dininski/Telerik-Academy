@@ -8,67 +8,106 @@
         Draw the following graphics using canvas:
     </p>
     <canvas id='manCanvas' width="255" height="300"></canvas>
-    <canvas id='bicycleCanvas' width="255" height="300"></canvas>
+    <canvas id='bicycleCanvas' width="355" height="300"></canvas>
     <canvas id='houseCanvas' width="255" height="300"></canvas>
     <script type="text/javascript">
-        //wrap it in a self invoking function
-        window.onload = draw;
+        (function () {
+            window.onload = draw;
 
-        function draw() {
-            drawHouse();
-            drawMan();
-            drawBicycle();
-        }
+            function draw() {
+                drawHouse();
+                drawMan();
+                drawBicycle();
+            }
 
-        function drawHouse() {
-            var backgroundColor = "#975b5b";
-            var foregroundColor = "#000000";
-            var canvas = document.getElementById('houseCanvas');
-            var context = canvas.getContext("2d");
-            context.fillStyle = backgroundColor;
-            context.fillRect(20, 120, 215, 160);
-            context.strokeStyle = foregroundColor;
-            context.lineWidth = 2;
-            context.strokeRect(20, 120, 215, 160);
-            context.fillStyle = foregroundColor;
-            context.fillRect(35, 140, 75, 50);
-            context.fillRect(140, 140, 75, 50);
-            context.fillRect(140, 215, 75, 50);
+            function drawHouse() {
+                var backgroundColor = "#975b5b";
+                var foregroundColor = "#000000";
+                var canvas = document.getElementById('houseCanvas');
+                var context = canvas.getContext("2d");
+                context.fillStyle = backgroundColor;
+                context.fillRect(20, 120, 215, 160);
+                context.strokeStyle = foregroundColor;
+                context.lineWidth = 2;
+                context.strokeRect(20, 120, 215, 160);
+                context.fillStyle = foregroundColor;
+                context.fillRect(35, 140, 75, 50);
+                context.fillRect(140, 140, 75, 50);
+                context.fillRect(140, 215, 75, 50);
 
-            drawLine(context, 72, 140, 72, 190, backgroundColor);
-            drawLine(context, 35, 165, 110, 165, backgroundColor);
+                drawLine(context, 72, 140, 72, 190, backgroundColor);
+                drawLine(context, 35, 165, 110, 165, backgroundColor);
 
-            drawLine(context, 176, 140, 176, 190, backgroundColor);
-            drawLine(context, 140, 165, 215, 165, backgroundColor);
+                drawLine(context, 176, 140, 176, 190, backgroundColor);
+                drawLine(context, 140, 165, 215, 165, backgroundColor);
 
-            drawLine(context, 176, 215, 176, 265, backgroundColor);
-            drawLine(context, 140, 240, 215, 240, backgroundColor);
-        }
+                drawLine(context, 176, 215, 176, 265, backgroundColor);
+                drawLine(context, 140, 240, 215, 240, backgroundColor);
 
-        function drawMan() {
-            var skinColor = "#90cad7";
-            var skinStrokeColor = "#13444f";
-            var hatColor = "#396693";
-            var hatStrokeColor = "#000000";
-            var canvas = document.getElementById('manCanvas');
-            var context = canvas.getContext("2d");
-        }
+                // TODO: finish house
+            }
 
-        function drawBicycle() {
-            var wheelColor = "#90cad7";
-            var linesColor = "#3b91a6";
-            var canvas = document.getElementById('bicycleCanvas');
-            var context = canvas.getContext("2d");
-        }
+            function drawMan() {
+                var skinColor = "#90cad7";
+                var skinStrokeColor = "#13444f";
+                var hatColor = "#396693";
+                var hatStrokeColor = "#000000";
+                var canvas = document.getElementById('manCanvas');
+                var context = canvas.getContext("2d");
+            }
 
-        function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
-            ctx.beginPath();
-            ctx.moveTo(lineStartingX, lineStartingY);
-            ctx.lineTo(lineEndingX, lineEndingY);
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = lineColor;
-            ctx.stroke();
-        }
+            function drawBicycle() {
+                var wheelColor = "#90cad7";
+                var linesColor = "#3b91a6";
+                var canvas = document.getElementById('bicycleCanvas');
+                var context = canvas.getContext("2d");
+                var wheelRadius = 45;
+
+                // wheels
+                drawCircle(context, 65, 235, wheelRadius, wheelColor, 3, linesColor);
+                drawCircle(context, 235, 235, wheelRadius, wheelColor, 3, linesColor);
+
+                // body
+                drawLine(context, 65, 235, 145, 235, linesColor);
+                drawLine(context, 145, 235, 105, 160, linesColor);
+                drawLine(context, 145, 235, 227, 180, linesColor);
+                drawLine(context, 65, 235, 115, 180, linesColor);
+                drawLine(context, 115, 180, 227, 180, linesColor);
+                drawLine(context, 235, 235, 220, 145, linesColor);
+
+                // seat
+                drawLine(context, 85, 160, 125, 160, linesColor);
+
+                // handlebars
+                drawLine(context, 220, 145, 185, 160, linesColor);
+                drawLine(context, 220, 145, 245, 120, linesColor);
+
+
+                // chain & pedals
+                drawCircle(context, 145, 235, 14, null, 3, linesColor);
+            }
+
+            function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
+                ctx.beginPath();
+                ctx.moveTo(lineStartingX, lineStartingY);
+                ctx.lineTo(lineEndingX, lineEndingY);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = lineColor;
+                ctx.stroke();
+            }
+
+            function drawCircle(ctx, centerX, centerY, radius, fillColor, strokeWidth, strokeColor) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+                if (fillColor != null) {
+                    ctx.fillStyle = fillColor;
+                    ctx.fill();
+                }
+                ctx.lineWidth = strokeWidth;
+                ctx.strokeStyle = strokeColor;
+                ctx.stroke();
+            }
+        })();
     </script>
 </body>
 </html>
