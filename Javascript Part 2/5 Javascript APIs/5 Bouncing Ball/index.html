@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+    <p>
+        Draw a circle that flies inside a box. When it reaches an edge, it should bounce that edge
+    </p>
+    <canvas id='ballCanvas' width="500" height="300"></canvas>
+    <script type="text/javascript">
+        window.onload = startMotion;
+
+            var Ball = function () {
+                this.radius = 5;
+                this.xPosition = 38;
+                this.yPosition = 19;
+                this.xDirection = 1;
+                this.yDirection = -1;
+
+                this.move = function () {
+                    if (this.xPosition === 0) {
+                        this.xDirection *= -1;
+                    }
+
+                    if (this.yPosition === 0) {
+                        this.yDirection *= -1;
+                    }
+
+                    if (this.xPosition === 500) {
+                        this.xDirection *= -1;
+                    }
+
+                    if (this.yPosition == 300) {
+                        this.yDirection *= -1;
+                    }
+
+                    this.xPosition += this.xDirection;
+                    this.yPosition += this.yDirection;
+                }
+            }
+
+            var drawBall = function (context, ball) {
+                ball.move();
+                context.clearRect(0, 0, 500, 300);
+                context.beginPath();
+                context.arc(ball.xPosition, ball.yPosition, ball.radius, 0, 2 * Math.PI, false);
+                context.fillStyle = 'green';
+                context.fill();
+                context.lineWidth = 1;
+                context.strokeStyle = '#003300';
+                context.stroke();
+            }
+
+            function startMotion () {
+                console.log(123);
+                var movingBall = new Ball();
+                var canvas = document.getElementById('ballCanvas');
+                var context = canvas.getContext("2d");
+                window.setInterval(function () {
+                    drawBall(context, movingBall);
+                }, 2);
+            }
+    </script>
+</body>
+</html>
