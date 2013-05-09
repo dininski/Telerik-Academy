@@ -59,7 +59,7 @@ var wormify = (function () {
 
         for (var i = 0; i < TOP_SCORES_TO_DISPLAY; i++) {
             var currentScore = sortedScores[i];
-            if (currentScore !== 0) {
+            if (!currentScore) {
                 var scoreDiv = document.createElement('div');
                 scoreDiv.innerText = localStorage[currentScore] + ' : ' + currentScore;
                 TOP_SCORES_ELEMENT.appendChild(scoreDiv);
