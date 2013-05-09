@@ -156,7 +156,6 @@ var wormify = (function () {
     var keyboardControlWorm = function (worm) {
         document.onkeydown = function (event) {
             event = event || window.event;
-            // TODO: check if move is valid
             switch (event.keyCode) {
                 // left
                 case 37:
