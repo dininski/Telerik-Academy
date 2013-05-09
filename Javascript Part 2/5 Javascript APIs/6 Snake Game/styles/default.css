@@ -1,0 +1,19 @@
+body {
+	text-align: center;
+	font-family: 'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
+}
+
+div.container {
+	width: 800px;
+	margin: 0 auto;
+}
+
+canvas#wormGame {
+	border: 2px dotted grey;
+	background: url('../images/background.png');
+}
+
+div#hiScores {
+	float: right;
+	width: 96px;
+}
