@@ -3,7 +3,7 @@ body {
 	font-family: 'Segoe UI',Tahoma,Arial,Helvetica,sans-serif;
 }
 
-div.container {
+div.gameWrapper {
 	width: 800px;
 	margin: 0 auto;
 }
@@ -15,5 +15,5 @@ canvas#wormGame {
 
 div#hiScores {
 	float: right;
-	width: 96px;
+	width: 196px;
 }

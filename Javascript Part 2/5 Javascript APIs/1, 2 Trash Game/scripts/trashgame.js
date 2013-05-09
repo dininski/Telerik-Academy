@@ -15,16 +15,13 @@ var trashGame = (function () {
 
     function startGame() {
         timeTaken = 0;
-
         clearInterval(timeController);
-
-        timeController = setInterval(function () {
-            timeTaken++;
-        }, 10);
-
         currentNumberOfTrash = NUMBER_OF_TRASH;
         clearAllTrash();
         generateTrash();
+        timeController = setInterval(function () {
+            timeTaken++;
+        }, 10);
     }
 
     function endGame() {
@@ -35,7 +32,6 @@ var trashGame = (function () {
     }
 
     function updateScores() {
-
         var sortedScores = Object.keys(localStorage).sort(function (a, b) {
             return a - b;
         });
@@ -123,7 +119,6 @@ var trashGame = (function () {
         GAME_CONTAINER.removeChild(trashDiv);
         closeCan();
         currentNumberOfTrash--;
-
         if (currentNumberOfTrash == 0) {
             endGame();
         }

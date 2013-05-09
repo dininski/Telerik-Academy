@@ -3,16 +3,27 @@
     <title>The worm game</title>
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
-<body>
+<body onload='displayScores()'>
 	<p>Welcome to the WORM GAME</p>
-	<div class="container">
-	<div id="hiScores">High scores:</div>
-    <canvas id='wormGame' width='700' height='500'></canvas>
-    <div id="score"></div>
+	<button id='startButton'>Start Game</button>
+	<div class="gameWrapper">
+		<div id='hiScores'>
+			High scores:
+			<div id="top10"></div>
+		</div>
+	    <canvas id='wormGame' width='600' height='400'></canvas>
+	    <div id="score"></div>
     </div>
     <script type="text/javascript" src='scripts/wormify.js'></script>
     <script type="text/javascript">
-    	wormify.startGame();
+    	var startButton = document.getElementById('startButton');
+    	startButton.addEventListener('click', function() {
+    		wormify.startGame();
+    	});
+
+    	function displayScores() {
+    		return wormify.updateTopScores();
+    	}
     </script>
 </body>
 </html>
