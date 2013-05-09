@@ -59,9 +59,11 @@ var wormify = (function () {
 
         for (var i = 0; i < TOP_SCORES_TO_DISPLAY; i++) {
             var currentScore = sortedScores[i];
-            var scoreDiv = document.createElement('div');
-            scoreDiv.innerText = localStorage[currentScore] + ' : ' + currentScore;
-            TOP_SCORES_ELEMENT.appendChild(scoreDiv);
+            if (currentScore !== 0) {
+                var scoreDiv = document.createElement('div');
+                scoreDiv.innerText = localStorage[currentScore] + ' : ' + currentScore;
+                TOP_SCORES_ELEMENT.appendChild(scoreDiv);
+            }
         }
     }
 
