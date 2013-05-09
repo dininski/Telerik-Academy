@@ -1,10 +1,21 @@
 <html>
 <head>
-	<title></title>
+    <title></title>
     <link href="styles/default.css" rel="stylesheet" />
 </head>
 <body>
     <img id="trashcan" src="images/trashcan_closed.png" alt="Trashcan" />
+    <button id="startGameOnClick">New game</button>
+    <div id="hi-scores"></div>
+    <div id="playingField">
+    </div>
+
+    <script>
+        var startButton = document.getElementById('startGameOnClick');
+        startButton.addEventListener('click', function() {
+            trashGame.startGame();
+        })
+    </script>
     <script src="scripts/trashgame.js"></script>
 </body>
 </html>

@@ -20,6 +20,52 @@
                 drawBicycle();
             }
 
+            function drawMan() {
+                var skinColor = "#90cad7";
+                var skinStrokeColor = "#13444f";
+                var hatColor = "#396693";
+                var hatStrokeColor = "#000000";
+                var canvas = document.getElementById('manCanvas');
+                var context = canvas.getContext("2d");
+
+                drawCircle(context, 127, 200, 55, skinColor, 2, skinStrokeColor);
+
+
+
+            }
+
+            function drawBicycle() {
+                var wheelColor = "#90cad7";
+                var linesColor = "#3b91a6";
+                var canvas = document.getElementById('bicycleCanvas');
+                var context = canvas.getContext("2d");
+                var wheelRadius = 45;
+
+                // wheels
+                drawCircle(context, 65, 235, wheelRadius, wheelColor, 3, linesColor);
+                drawCircle(context, 235, 235, wheelRadius, wheelColor, 3, linesColor);
+
+                // body
+                drawLine(context, 65, 235, 145, 235, linesColor);
+                drawLine(context, 145, 235, 105, 160, linesColor);
+                drawLine(context, 145, 235, 227, 180, linesColor);
+                drawLine(context, 65, 235, 115, 180, linesColor);
+                drawLine(context, 115, 180, 227, 180, linesColor);
+                drawLine(context, 235, 235, 220, 145, linesColor);
+
+                // seat
+                drawLine(context, 85, 160, 125, 160, linesColor);
+
+                // handlebars
+                drawLine(context, 220, 145, 185, 160, linesColor);
+                drawLine(context, 220, 145, 245, 120, linesColor);
+
+                // chain & pedals
+                drawCircle(context, 145, 235, 14, null, 3, linesColor);
+                drawLine(context, 135, 225, 125, 215, linesColor);
+                drawLine(context, 155, 245, 165, 255, linesColor);
+            }
+
             function drawHouse() {
                 var backgroundColor = "#975b5b";
                 var foregroundColor = "#000000";
@@ -65,52 +111,9 @@
                 context.fill();
                 context.strokeStyle = foregroundColor;
                 context.stroke();
-
+                ctx.closePath();
 
                 // TODO: finish house
-            }
-
-            function drawMan() {
-                var skinColor = "#90cad7";
-                var skinStrokeColor = "#13444f";
-                var hatColor = "#396693";
-                var hatStrokeColor = "#000000";
-                var canvas = document.getElementById('manCanvas');
-                var context = canvas.getContext("2d");
-
-                drawCircle(context, 127, 200, 55, skinColor, 2, skinStrokeColor);
-            }
-
-            function drawBicycle() {
-                var wheelColor = "#90cad7";
-                var linesColor = "#3b91a6";
-                var canvas = document.getElementById('bicycleCanvas');
-                var context = canvas.getContext("2d");
-                var wheelRadius = 45;
-
-                // wheels
-                drawCircle(context, 65, 235, wheelRadius, wheelColor, 3, linesColor);
-                drawCircle(context, 235, 235, wheelRadius, wheelColor, 3, linesColor);
-
-                // body
-                drawLine(context, 65, 235, 145, 235, linesColor);
-                drawLine(context, 145, 235, 105, 160, linesColor);
-                drawLine(context, 145, 235, 227, 180, linesColor);
-                drawLine(context, 65, 235, 115, 180, linesColor);
-                drawLine(context, 115, 180, 227, 180, linesColor);
-                drawLine(context, 235, 235, 220, 145, linesColor);
-
-                // seat
-                drawLine(context, 85, 160, 125, 160, linesColor);
-
-                // handlebars
-                drawLine(context, 220, 145, 185, 160, linesColor);
-                drawLine(context, 220, 145, 245, 120, linesColor);
-
-                // chain & pedals
-                drawCircle(context, 145, 235, 14, null, 3, linesColor);
-                drawLine(context, 135, 225, 125, 215, linesColor);
-                drawLine(context, 155, 245, 165, 255, linesColor);
             }
 
             function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
@@ -120,6 +123,7 @@
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = lineColor;
                 ctx.stroke();
+                ctx.closePath();
             }
 
             function drawCircle(ctx, centerX, centerY, radius, fillColor, strokeWidth, strokeColor) {
@@ -132,6 +136,7 @@
                 ctx.lineWidth = strokeWidth;
                 ctx.strokeStyle = strokeColor;
                 ctx.stroke();
+                ctx.closePath();
             }
         })();
     </script>
