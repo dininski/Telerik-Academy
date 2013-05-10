@@ -132,9 +132,12 @@
                 context.save();
                 context.fillStyle = backgroundColor;
                 context.strokeStyle = foregroundColor;
-                context.fillRect(180, 30, 20, 60);
-                context.strokeRect(180, 30, 20, 60);
+                context.fillRect(170, 30, 20, 60);
                 context.restore();
+
+                drawLine(context, 170, 30, 170, 90, foregroundColor);
+                drawLine(context, 190, 30, 190, 90, foregroundColor);
+                drawEllipse(context, 180, 80, 10, backgroundColor, 3, foregroundColor, 1, 0.4);
             }
 
             function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
