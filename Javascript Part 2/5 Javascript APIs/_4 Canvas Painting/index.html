@@ -36,18 +36,22 @@
                 drawEllipse(context, 112, 500, 20, skinColor, 2, skinStrokeColor);
                 context.restore();
 
+                // hat
+                drawEllipse(context, 155, 720, 70, hatColor, 2, hatStrokeColor, 0.8, 0.2);
 
                 // nose
                 drawLine(context, 110, 205, 120, 205, skinStrokeColor);
                 drawLine(context, 110, 205, 118, 180, skinStrokeColor);
 
                 // eyeballs
-                context.save();
                 drawEllipse(context, 125, 440, 10, skinColor, 2, skinStrokeColor, 0.8, 0.4);
-                context.restore();
-                context.save();
                 drawEllipse(context, 170, 440, 10, skinColor, 2, skinStrokeColor, 0.8, 0.4);
-                context.restore();
+
+                // eyes
+                drawEllipse(context, 242, 220, 4, skinStrokeColor, 2, skinStrokeColor, 0.4, 0.8);
+                drawEllipse(context, 334, 220, 4, skinStrokeColor, 2, skinStrokeColor, 0.4, 0.8);
+
+
 
             }
 
@@ -119,18 +123,18 @@
                 drawLine(context, 140, 240, 215, 240, backgroundColor);
 
                 // roof
-                context.beginPath();
-                context.moveTo(20, 120);
-                context.lineTo(127, 20);
-                context.lineTo(235, 120);
-                context.lineTo(20, 120);
-                context.fillStyle = backgroundColor;
-                context.fill();
-                context.strokeStyle = foregroundColor;
-                context.stroke();
-                context.closePath();
+                var firstPoint = new Point(20, 120);
+                var secondPoint = new Point(127, 20);
+                var thirdPoint = new Point(235, 120);
+                drawTriangle(context, firstPoint, secondPoint, thirdPoint, backgroundColor, foregroundColor);
 
-                // TODO: finish house
+                // chimney
+                context.save();
+                context.fillStyle = backgroundColor;
+                context.strokeStyle = foregroundColor;
+                context.fillRect(180, 30, 20, 60);
+                context.strokeRect(180, 30, 20, 60);
+                context.restore();
             }
 
             function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
@@ -144,6 +148,7 @@
             }
 
             function drawEllipse(ctx, centerX, centerY, radius, fillColor, strokeWidth, strokeColor, scaleX, scaleY) {
+                ctx.save();
                 ctx.beginPath();
                 if (scaleX && scaleY) {
                     ctx.scale(scaleX, scaleY);
@@ -156,12 +161,29 @@
                     ctx.fill();
                 }
 
-                
-
                 ctx.lineWidth = strokeWidth;
                 ctx.strokeStyle = strokeColor;
                 ctx.stroke();
                 ctx.closePath();
+                ctx.restore();
+            }
+
+            function drawTriangle(context, firstPoint, secondPoint, thirdPoint, fillColor, strokeColor) {
+                context.beginPath();
+                context.moveTo(firstPoint.x, firstPoint.y);
+                context.lineTo(secondPoint.x, secondPoint.y);
+                context.lineTo(thirdPoint.x, thirdPoint.y);
+                context.lineTo(firstPoint.x, firstPoint.y);
+                context.fillStyle = fillColor;
+                context.fill();
+                context.strokeStyle = strokeColor;
+                context.stroke();
+                context.closePath();
+            }
+
+            var Point = function (x, y) {
+                this.x = x;
+                this.y = y;
             }
         })();
     </script>
