@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Poker
+﻿namespace Poker
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     public class Hand : IHand
     {
         public IList<ICard> Cards { get; private set; }
@@ -14,7 +15,14 @@ namespace Poker
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var card in this.Cards)
+            {
+                sb.AppendFormat("{0} ", card.ToString());
+            }
+
+            return sb.ToString().Trim();
         }
     }
 }
