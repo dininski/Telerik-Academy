@@ -1,4 +1,4 @@
-﻿namespace Poker
+﻿namespace Poker.Common
 {
     using System;
     using System.Collections.Generic;
@@ -63,7 +63,7 @@
                 throw new ArgumentException("Cannot check an invalid hand!");
             }
 
-            IDictionary<string, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+            IDictionary<CardFace, int> cardFaceOccurences = this.GetCardFaceOccurences(hand);
             int firstCardOccurencesCount = cardFaceOccurences.Values.ElementAt(0);
             int secondCardOccurencesCount = cardFaceOccurences.Values.ElementAt(1);
 
@@ -108,7 +108,32 @@
 
             if (!this.IsFlush(hand))
             {
-                throw new NotImplementedException();
+                Dictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+                cardFaceOccurences = cardFaceOccurences.OrderBy(x => x.Value).
+                    ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+                bool isHandSequential = true;
+                bool startsWithAce = cardFaceOccurences.ElementAt(4).Key == CardFace.Ace;
+
+                int endIndex;
+                if (startsWithAce)
+                {
+                    endIndex = 1;
+                }
+                else
+                {
+                    endIndex = 0;
+                }
+
+                for (int i = 0; i < cardFaceOccurences.Count - 1 - endIndex; i++)
+                {
+                    if (cardFaceOccurences.ElementAt(i).Key != cardFaceOccurences.ElementAt(i + 1).Key - 1)
+                    {
+                        isHandSequential = false;
+                        break;
+                    }
+                }
+
+                return isHandSequential;
             }
             else
             {
@@ -175,7 +200,7 @@
                 throw new ArgumentException("Cannot check for high card in invalid hand!");
             }
 
-            IDictionary<string, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+            IDictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
             int mostCardOccurences = cardFaceOccurences.Max(x => x.Value);
             var isHighCard = (mostCardOccurences == 1 && !this.IsStraight(hand) && !this.IsFlush(hand));
             return isHighCard;
@@ -186,20 +211,20 @@
             throw new NotImplementedException();
         }
 
-        private Dictionary<string, int> GetCardFaceOccurences(IHand hand)
+        private Dictionary<CardFace, int> GetCardFaceOccurences(IHand hand)
         {
             Debug.Assert(hand != null, "Hand cannot be null!");
             Debug.Assert(this.IsValidHand(hand), "Cannot process an invalid hand!");
-            Dictionary<string, int> cardFaceOccurences = new Dictionary<string, int>();
+            Dictionary<CardFace, int> cardFaceOccurences = new Dictionary<CardFace, int>();
             foreach (var card in hand.Cards)
             {
-                if (cardFaceOccurences.ContainsKey(card.Face.ToString()))
+                if (cardFaceOccurences.ContainsKey(card.Face))
                 {
-                    cardFaceOccurences[card.Face.ToString()]++;
+                    cardFaceOccurences[card.Face]++;
                 }
                 else
                 {
-                    cardFaceOccurences.Add(card.Face.ToString(), 1);
+                    cardFaceOccurences.Add(card.Face, 1);
                 }
             }
 
@@ -211,7 +236,7 @@
         {
             Debug.Assert(hand != null, "Hand cannot be null!");
             Debug.Assert(this.IsValidHand(hand), "Cannot process an invalid hand!");
-            IDictionary<string, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+            IDictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
             int firstCardOccurencesCount = cardFaceOccurences.Values.ElementAt(0);
             int secondCardOccurencesCount = cardFaceOccurences.Values.ElementAt(1);
             int pairsCount = 0;
@@ -232,7 +257,7 @@
         {
             Debug.Assert(hand != null, "Hand cannot be null!");
             Debug.Assert(this.IsValidHand(hand), "Cannot process an invalid hand!");
-            IDictionary<string, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+            IDictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
             int mostCardOccurences = cardFaceOccurences.Max(x => x.Value);
             return mostCardOccurences;
         }

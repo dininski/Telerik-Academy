@@ -30,6 +30,7 @@
             {
                 sampleCourse.AddStudent(new Student(10000 + i, "Ivan Ivanov"));
             }
+            Assert.Fail();
         }
 
         [TestMethod]
@@ -40,6 +41,7 @@
             Student ivan = new Student(10000, "Ivan Ivanov");
             sampleCourse.AddStudent(ivan);
             sampleCourse.AddStudent(ivan);
+            Assert.Fail();
         }
 
         [TestMethod]
@@ -49,6 +51,7 @@
             Student ivan = new Student(10000, "Ivan Ivanov");
             Course emptyCourse = new Course("Empty course");
             emptyCourse.RemoveStudent(ivan);
+            Assert.Fail();
         }
 
         [TestMethod]
@@ -73,6 +76,7 @@
             Course sampleCourse = new Course("Javascript");
             sampleCourse.AddStudent(ivan);
             sampleCourse.RemoveStudent(pesho);
+            Assert.Fail();
         }
 
         [TestMethod]

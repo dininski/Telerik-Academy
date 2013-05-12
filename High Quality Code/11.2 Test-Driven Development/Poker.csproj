@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
-    <Compile Include="CardFace.cs" />
-    <Compile Include="CardSuit.cs" />
-    <Compile Include="PokerHandsChecker.cs" />
-    <Compile Include="Hand.cs" />
-    <Compile Include="ICard.cs" />
-    <Compile Include="IHand.cs" />
-    <Compile Include="IPokerHandsChecker.cs" />
+    <Compile Include="Common\Card.cs" />
+    <Compile Include="Common\CardFace.cs" />
+    <Compile Include="Common\CardSuit.cs" />
+    <Compile Include="Common\PokerHandsChecker.cs" />
+    <Compile Include="Common\Hand.cs" />
+    <Compile Include="Common\ICard.cs" />
+    <Compile Include="Common\IHand.cs" />
+    <Compile Include="Common\IPokerHandsChecker.cs" />
     <Compile Include="PokerExample.cs" />
   </ItemGroup>
   <ItemGroup>

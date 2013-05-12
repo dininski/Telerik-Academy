@@ -23,6 +23,7 @@
             int id = 100000;
             string name = "Gosho Goshov";
             Student student = new Student(id, name);
+            Assert.Fail();
         }
 
         [TestMethod]
@@ -32,6 +33,7 @@
             int id = 10000;
             string name = string.Empty;
             Student student = new Student(id, name);
+            Assert.Fail();
         }
     }
 }

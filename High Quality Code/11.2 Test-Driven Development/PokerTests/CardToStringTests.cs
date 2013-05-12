@@ -2,7 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Poker;
+    using Poker.Common;
 
     [TestClass]
     public class CardToStringTests

@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Poker;
+    using Poker.Common;
 
     [TestClass]
     public class PokerHandsCheckerTests
@@ -441,11 +441,24 @@
             cards.Add(new Card(CardFace.Nine, CardSuit.Clubs));
             cards.Add(new Card(CardFace.Seven, CardSuit.Diamonds));
             Hand hand = new Hand(cards);
-            Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for high card correctly");
+            Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for straight correctly");
         }
 
         [TestMethod]
-        public void TestStraightHasStraight2to6()
+        public void TestStraightNoStraightHasFlush()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ten, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Jack, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Queen, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.King, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for straight correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightHasStraight2_6()
         {
             IList<ICard> cards = new List<ICard>();
             cards.Add(new Card(CardFace.Four, CardSuit.Hearts));
@@ -454,11 +467,11 @@
             cards.Add(new Card(CardFace.Six, CardSuit.Diamonds));
             cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
             Hand hand = new Hand(cards);
-            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for high card correctly");
+            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for straight correctly");
         }
 
         [TestMethod]
-        public void TestStraightHasStraightAto5()
+        public void TestStraightHasStraightA_5()
         {
             IList<ICard> cards = new List<ICard>();
             cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
@@ -467,11 +480,11 @@
             cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
             cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
             Hand hand = new Hand(cards);
-            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for high card correctly");
+            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for straight correctly");
         }
 
         [TestMethod]
-        public void TestStraightHasStraight10toA()
+        public void TestStraightHasStraight10_A()
         {
             IList<ICard> cards = new List<ICard>();
             cards.Add(new Card(CardFace.Ten, CardSuit.Spades));
@@ -480,7 +493,7 @@
             cards.Add(new Card(CardFace.Queen, CardSuit.Hearts));
             cards.Add(new Card(CardFace.King, CardSuit.Clubs));
             Hand hand = new Hand(cards);
-            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for high card correctly");
+            Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for straight correctly");
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text;
-
-namespace Poker
+﻿namespace Poker.Common
 {
+    using System;
+    using System.Text;
+
     public class Card : ICard
     {
         public CardFace Face { get; private set; }
@@ -80,4 +80,4 @@ namespace Poker
             return sb.ToString();
         }
     }        
-}            
+}
