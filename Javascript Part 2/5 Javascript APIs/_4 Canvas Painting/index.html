@@ -38,6 +38,13 @@
 
                 // hat
                 drawEllipse(context, 155, 720, 70, hatColor, 2, hatStrokeColor, 0.8, 0.2);
+                drawEllipse(context, 125, 700, 30, hatColor, 2, hatStrokeColor, 1, 0.2);
+                context.fillStyle = hatColor;
+                context.fillRect(95, 100, 60, 40);
+                context.strokeStyle = hatStrokeColor;
+                drawLine(context, 95, 100, 95, 140);
+                drawLine(context, 155, 100, 155, 140);
+                drawEllipse(context, 125, 500, 30, hatColor, 2, hatStrokeColor, 1, 0.2);
 
                 // nose
                 drawLine(context, 110, 205, 120, 205, skinStrokeColor);
@@ -50,9 +57,6 @@
                 // eyes
                 drawEllipse(context, 242, 220, 4, skinStrokeColor, 2, skinStrokeColor, 0.4, 0.8);
                 drawEllipse(context, 334, 220, 4, skinStrokeColor, 2, skinStrokeColor, 0.4, 0.8);
-
-
-
             }
 
             function drawBicycle() {
@@ -134,10 +138,18 @@
                 context.strokeStyle = foregroundColor;
                 context.fillRect(170, 30, 20, 60);
                 context.restore();
-
                 drawLine(context, 170, 30, 170, 90, foregroundColor);
                 drawLine(context, 190, 30, 190, 90, foregroundColor);
                 drawEllipse(context, 180, 80, 10, backgroundColor, 3, foregroundColor, 1, 0.4);
+
+                // door
+                drawEllipse(context, 72, 715, 37, null, 3, foregroundColor, 1, 0.3);
+                context.fillRect(35, 215, 75, 64);
+                drawLine(context, 35, 215, 35, 280);
+                drawLine(context, 110, 215, 110, 280);
+                drawLine(context, 72, 203, 72, 280, foregroundColor);
+                drawEllipse(context, 60, 250, 3, null, 2, foregroundColor);
+                drawEllipse(context, 85, 250, 3, null, 2, foregroundColor);
             }
 
             function drawLine(ctx, lineStartingX, lineStartingY, lineEndingX, lineEndingY, lineColor) {
