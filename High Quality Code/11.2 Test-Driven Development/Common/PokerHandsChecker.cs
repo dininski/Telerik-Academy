@@ -29,7 +29,12 @@
 
         public bool IsStraightFlush(IHand hand)
         {
-            if (this.IsFlush(hand) && this.IsStraight(hand))
+            if (!this.IsValidHand(hand))
+            {
+                throw new ArgumentException("Cannot check for straight flush in an invalid hand!");
+            }
+
+            if (this.IsSameSuit(hand) && this.IsSequential(hand))
             {
                 return true;
             }
@@ -84,19 +89,14 @@
                 throw new ArgumentException("Cannot check for flush in invalid hand!");
             }
 
-            var cardsInHand = hand.Cards;
-            var suitForFlush = cardsInHand[0].Suit;
-            var isFlush = true;
-
-            foreach (var card in cardsInHand)
+            if (this.IsSequential(hand))
             {
-                if (card.Suit != suitForFlush)
-                {
-                    isFlush = false;
-                }
+                return false;
             }
-
-            return isFlush;
+            else
+            {
+                return this.IsSameSuit(hand);
+            }
         }
 
         public bool IsStraight(IHand hand)
@@ -106,38 +106,13 @@
                 throw new ArgumentException("Cannot check for a straight in invalid hand!");
             }
 
-            if (!this.IsFlush(hand))
+            if (this.IsSameSuit(hand))
             {
-                Dictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
-                cardFaceOccurences = cardFaceOccurences.OrderBy(x => x.Value).
-                    ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
-                bool isHandSequential = true;
-                bool startsWithAce = cardFaceOccurences.ElementAt(4).Key == CardFace.Ace;
-
-                int endIndex;
-                if (startsWithAce)
-                {
-                    endIndex = 1;
-                }
-                else
-                {
-                    endIndex = 0;
-                }
-
-                for (int i = 0; i < cardFaceOccurences.Count - 1 - endIndex; i++)
-                {
-                    if (cardFaceOccurences.ElementAt(i).Key != cardFaceOccurences.ElementAt(i + 1).Key - 1)
-                    {
-                        isHandSequential = false;
-                        break;
-                    }
-                }
-
-                return isHandSequential;
+                return false;
             }
             else
             {
-                return false;
+                return this.IsSequential(hand);
             }
         }
 
@@ -260,6 +235,63 @@
             IDictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
             int mostCardOccurences = cardFaceOccurences.Max(x => x.Value);
             return mostCardOccurences;
+        }
+
+        private bool IsSequential(IHand hand)
+        {
+            Debug.Assert(hand != null);
+            Dictionary<CardFace, int> cardFaceOccurences = GetCardFaceOccurences(hand);
+            if (cardFaceOccurences.Count == 5)
+            {
+                cardFaceOccurences = cardFaceOccurences.OrderBy(x => x.Value).
+                ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value);
+                bool isHandSequential = true;
+                bool startsWithAce = cardFaceOccurences.ElementAt(4).Key == CardFace.Ace;
+
+                int endIndex;
+                if (startsWithAce)
+                {
+                    endIndex = 1;
+                }
+                else
+                {
+                    endIndex = 0;
+                }
+
+                for (int i = 0; i < cardFaceOccurences.Count - 1 - endIndex; i++)
+                {
+                    if (cardFaceOccurences.ElementAt(i).Key != cardFaceOccurences.ElementAt(i + 1).Key - 1)
+                    {
+                        isHandSequential = false;
+                        break;
+                    }
+                }
+
+                return isHandSequential;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        private bool IsSameSuit(IHand hand)
+        {
+            Debug.Assert(hand != null);
+            var cardsInHand = hand.Cards;
+            var suitForFlush = cardsInHand[0].Suit;
+            var isSuited = true;
+
+            foreach (var card in cardsInHand)
+            {
+                if (card.Suit != suitForFlush)
+                {
+                    isSuited = false;
+                }
+            }
+
+            return isSuited;
         }
     }
 }

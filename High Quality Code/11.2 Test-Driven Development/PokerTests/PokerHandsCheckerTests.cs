@@ -432,7 +432,7 @@
         }
 
         [TestMethod]
-        public void TestStraightNoStraight()
+        public void TestStraightNoStraight_1()
         {
             IList<ICard> cards = new List<ICard>();
             cards.Add(new Card(CardFace.Two, CardSuit.Spades));
@@ -440,6 +440,32 @@
             cards.Add(new Card(CardFace.Ace, CardSuit.Hearts));
             cards.Add(new Card(CardFace.Nine, CardSuit.Clubs));
             cards.Add(new Card(CardFace.Seven, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for straight correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightHasNoStraight_2()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Six, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for straight correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightHasNoStraight_3()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Six, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Nine, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
             Hand hand = new Hand(cards);
             Assert.IsFalse(handsChecker.IsStraight(hand), "Not validating for straight correctly");
         }
@@ -494,6 +520,105 @@
             cards.Add(new Card(CardFace.King, CardSuit.Clubs));
             Hand hand = new Hand(cards);
             Assert.IsTrue(handsChecker.IsStraight(hand), "Not validating for straight correctly");
+        }
+
+        // Straight Flush
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void TestStraighFlushNullHand()
+        {
+            Hand hand = new Hand(null);
+            handsChecker.IsStraightFlush(hand);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestStraightFlushInvalidHand()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Two, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.King, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            handsChecker.IsStraightFlush(hand);
+        }
+
+        [TestMethod]
+        public void TestStraightFlushNoStraightFlush_1()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Two, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.King, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Ten, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightFlushNoStraightFlush_2()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Two, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.King, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Jack, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Queen, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightFlushNoStraightFlush_3()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Two, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.King, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Jack, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Seven, CardSuit.Diamonds));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightFlushNoStraightFlush_4()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Six, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Three, CardSuit.Spades));
+            cards.Add(new Card(CardFace.Five, CardSuit.Spades));
+            Hand hand = new Hand(cards);
+            Assert.IsFalse(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightFlushHasStraightFlush_1()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Clubs));
+            cards.Add(new Card(CardFace.Jack, CardSuit.Clubs));
+            cards.Add(new Card(CardFace.King, CardSuit.Clubs));
+            cards.Add(new Card(CardFace.Queen, CardSuit.Clubs));
+            cards.Add(new Card(CardFace.Ten, CardSuit.Clubs));
+            Hand hand = new Hand(cards);
+            Assert.IsTrue(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
+        }
+
+        [TestMethod]
+        public void TestStraightFlushHasStraightFlush_2()
+        {
+            IList<ICard> cards = new List<ICard>();
+            cards.Add(new Card(CardFace.Ace, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Four, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Two, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Three, CardSuit.Hearts));
+            cards.Add(new Card(CardFace.Five, CardSuit.Hearts));
+            Hand hand = new Hand(cards);
+            Assert.IsTrue(handsChecker.IsStraightFlush(hand), "Not validating for straight flush correctly");
         }
     }
 }

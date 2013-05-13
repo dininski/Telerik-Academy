@@ -27,42 +27,13 @@ namespace Poker
 
             // vasil test
             IList<ICard> cards = new List<ICard>();
-            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
             cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Three, CardSuit.Hearts));
-            cards.Add(new Card(CardFace.Four, CardSuit.Clubs));
+            cards.Add(new Card(CardFace.Six, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Two, CardSuit.Diamonds));
+            cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
             cards.Add(new Card(CardFace.Five, CardSuit.Diamonds));
-            Hand myHand = new Hand(cards);
-            //Console.WriteLine(checker.IsStraight(myHand));
-
-            cards = new List<ICard>();
-            cards.Add(new Card(CardFace.Four, CardSuit.Hearts));
-            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
-            cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Six, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
-            myHand = new Hand(cards);
-            Console.WriteLine(myHand);
-            Console.WriteLine(checker.IsStraight(myHand));
-
-            cards = new List<ICard>();
-            cards.Add(new Card(CardFace.Ten, CardSuit.Spades));
-            cards.Add(new Card(CardFace.Jack, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Ace, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Queen, CardSuit.Hearts));
-            cards.Add(new Card(CardFace.King, CardSuit.Clubs));
             hand = new Hand(cards);
-            Console.WriteLine(hand);
-            Console.WriteLine(checker.IsStraight(hand));
-
-            cards = new List<ICard>();
-            cards.Add(new Card(CardFace.Four, CardSuit.Hearts));
-            cards.Add(new Card(CardFace.Two, CardSuit.Spades));
-            cards.Add(new Card(CardFace.Three, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Six, CardSuit.Diamonds));
-            cards.Add(new Card(CardFace.Five, CardSuit.Clubs));
-            hand = new Hand(cards);
-            Console.WriteLine(checker.IsStraight(hand));
+            Console.WriteLine(checker.IsStraightFlush(hand));
         }
     }
 }
