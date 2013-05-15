@@ -1,153 +1,164 @@
 ﻿using System;
 
-public class WalkInMatrix
+namespace WalkInMatrix
 {
-    static void Change(ref int dx, ref int dy)
+    public class WalkInMatrix
     {
-        int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
-        int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
-        int cd = 0;
-        for (int count = 0; count < 8; count++)
+        private static readonly int[,] directions = { { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 } };
+
+        static int[,] ChangeDirection(int currentXDirection, int currentYDirection)
         {
-            if (dirX[count] == dx && dirY[count] == dy)
+            int[,] nextDirection = new int[2, 2];
+            nextDirection[0, 0] = currentXDirection;
+            nextDirection[0, 1] = currentYDirection;
+            int currentDirectionIndex = 0;
+            for (int count = 0; count < 8; count++)
             {
-                cd = count;
-                break;
-            }
-        }
-
-        if (cd == 7)
-        {
-            dx = dirX[0];
-            dy = dirY[0];
-            return;
-        }
-
-        dx = dirX[cd + 1];
-        dy = dirY[cd + 1];
-    }
-
-    static bool Check(int[,] arr, int x, int y)
-    {
-        int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
-        int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
-        for (int i = 0; i < 8; i++)
-        {
-            if (x + dirX[i] >= arr.GetLength(0) || x + dirX[i] < 0)
-            {
-                dirX[i] = 0;
-            }
-
-            if (y + dirY[i] >= arr.GetLength(0) || y + dirY[i] < 0)
-            {
-                dirY[i] = 0;
-            }
-        }
-
-        for (int i = 0; i < 8; i++)
-        {
-            if (arr[x + dirX[i], y + dirY[i]] == 0)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    static void FindCell(int[,] arr, out int x, out int y)
-    {
-        x = 0;
-        y = 0;
-        for (int i = 0; i < arr.GetLength(0); i++)
-        {
-            for (int j = 0; j < arr.GetLength(0); j++)
-            {
-                if (arr[i, j] == 0)
+                if (directions[count, 0] == nextDirection[0, 0] && directions[count, 1] == nextDirection[0, 1])
                 {
-                    x = i;
-                    y = j;
-                    return;
+                    currentDirectionIndex = count;
+                    break;
+                }
+            }
+
+            if (currentDirectionIndex == 7)
+            {
+                nextDirection[0, 0] = directions[0, 0];
+                nextDirection[0, 1] = directions[0, 1];
+            }
+            else
+            {
+                nextDirection[0, 0] = directions[currentDirectionIndex + 1, 0];
+                nextDirection[0, 1] = directions[currentDirectionIndex + 1, 1];
+            }
+            return nextDirection;
+        }
+
+        static bool Check(int[,] arr, int x, int y)
+        {
+            int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
+            int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
+            for (int i = 0; i < 8; i++)
+            {
+                if (x + dirX[i] >= arr.GetLength(0) || x + dirX[i] < 0)
+                {
+                    dirX[i] = 0;
+                }
+
+                if (y + dirY[i] >= arr.GetLength(0) || y + dirY[i] < 0)
+                {
+                    dirY[i] = 0;
+                }
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (arr[x + dirX[i], y + dirY[i]] == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        static void FindNextAvailableCell(int[,] arr, out int x, out int y)
+        {
+            x = 0;
+            y = 0;
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(0); j++)
+                {
+                    if (arr[i, j] == 0)
+                    {
+                        x = i;
+                        y = j;
+                        return;
+                    }
                 }
             }
         }
-    }
 
-    static void Main(string[] args)
-    {
-        int n = 5;
-        int[,] matrica = new int[n, n];
-        int number = 1;
-        int i = 0;
-        int j = 0;
-        int dx = 1;
-        int dy = 1;
-        while (true)
+        static void Main(string[] args)
         {
-            matrica[i, j] = number;
-
-            if (!Check(matrica, i, j))
-            {
-                break;
-            }
-
-            while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0))
-            {
-                Change(ref dx, ref dy);
-            }
-
-            i += dx;
-            j += dy;
-            number++;
+            int n = 5;
+            int[,] matrica;
+            matrica = GenerateRotatingWalkMatrix(n);
+            PrintMatrix(matrica);
         }
 
-        for (int p = 0; p < n; p++)
+        private static void PrintMatrix(int[,] matrix)
         {
-            for (int q = 0; q < n; q++)
+            for (int col = 0; col < matrix.GetLength(0); col++)
             {
-                Console.Write("{0,3}", matrica[p, q]);
-            }
+                for (int row = 0; row < matrix.GetLength(1); row++)
+                {
+                    Console.Write("{0,3}", matrix[col, row]);
+                }
 
-            Console.WriteLine();
+                Console.WriteLine();
+            }
         }
 
-        Console.WriteLine();
-        FindCell(matrica, out i, out j);
-
-        if (i != 0 && j != 0)
+        public static int[,] GenerateRotatingWalkMatrix(int sizeOfMatrix)
         {
-            dx = 1;
-            dy = 1;
+            int n = sizeOfMatrix;
+            int[,] matrix = new int[n, n];
+            int[,] nextFreeBlock = { { 0, 0 } };
+            int[,] movementDirection = { { 1, 1 } };
+            int number = 1;
             while (true)
             {
-                matrica[i, j] = number;
-                if (!Check(matrica, i, j))
+                matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
+
+                if (!Check(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
                 {
                     break;
                 }
 
-                if (i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0)
+                while ((nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0
+                    || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0
+                    || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0))
                 {
-                    while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrica[i + dx, j + dy] != 0))
-                    {
-                        Change(ref dx, ref dy);
-                    }
+                    movementDirection = ChangeDirection(movementDirection[0, 0], movementDirection[0, 1]);
                 }
 
-                i += dx;
-                j += dy;
+                nextFreeBlock[0, 0] += movementDirection[0, 0];
+                nextFreeBlock[0, 1] += movementDirection[0, 1];
                 number++;
             }
-        }
 
-        for (int pp = 0; pp < n; pp++)
-        {
-            for (int qq = 0; qq < n; qq++)
+            number++;
+            FindNextAvailableCell(matrix, out nextFreeBlock[0, 0], out nextFreeBlock[0, 1]);
+
+            if (nextFreeBlock[0, 0] != 0 && nextFreeBlock[0, 1] != 0)
             {
-                Console.Write("{0,3}", matrica[pp, qq]);
+                movementDirection[0, 0] = 1;
+                movementDirection[0, 1] = 1;
+                while (true)
+                {
+                    matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
+                    if (!Check(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
+                    {
+                        break;
+                    }
+
+                    if (nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0 || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0 || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0)
+                    {
+                        while ((nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0 || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0 || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0))
+                        {
+                            movementDirection = ChangeDirection(movementDirection[0, 0], movementDirection[0, 1]);
+                        }
+                    }
+
+                    nextFreeBlock[0, 0] += movementDirection[0, 0];
+                    nextFreeBlock[0, 1] += movementDirection[0, 1];
+                    number++;
+                }
             }
 
-            Console.WriteLine();
+            return matrix;
         }
     }
 }
