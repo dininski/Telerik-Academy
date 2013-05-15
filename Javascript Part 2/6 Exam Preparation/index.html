@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+	<div id="accordion-container">
+	</div>
+    <p>
+        Cloned accordion:
+    </p>
+	<div id="copied-accordion-container">
+	</div>
+    <script src="scripts/accordion.js"></script>
+    <script src="scripts/serialize_extension.js"></script>
+    <script type="text/javascript">
+    		var accordion = controls.getAccordion("#accordion-container");
+			var webItem = accordion.add("Web");
+		    var html = webItem.add("HTML");
+			var css = webItem.add("CSS");
+			var js = webItem.add("JavaScript");
+			var jquery = webItem.add("jQuery");
+			var aspNet = webItem.add("ASP.NET MVC");
+			var aspNetSub = aspNet.add("ASP.NET MVC");
+			var aspNetSub2 = aspNet.add("ASP.NET MVC");
+			var desktop = accordion.add("Desktop");
+			var mobile = accordion.add("Mobile");
+			mobile.add("iPhone");
+			mobile.add('Android');
+			mobile.add('Symbian');
+			var embedded = accordion.add("Embedded");
+			accordion.render();
+
+			var serialized = accordion.serialize();
+			localStorage.setObject("acc", serialized);
+
+			var deserializedData = localStorage.getObject("acc");
+			var clonedAccordion = controls.buildAccordion("#copied-accordion-container", deserializedData);
+			clonedAccordion.render();
+	</script>
+</body>
+</html>
