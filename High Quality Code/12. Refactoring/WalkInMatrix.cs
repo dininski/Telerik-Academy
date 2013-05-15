@@ -34,28 +34,20 @@ namespace WalkInMatrix
             return nextDirection;
         }
 
-        static bool Check(int[,] arr, int x, int y)
+        static bool HasMoreMoves(int[,] board, int xPosition, int yPosition)
         {
-            int[] dirX = { 1, 1, 1, 0, -1, -1, -1, 0 };
-            int[] dirY = { 1, 0, -1, -1, -1, 0, 1, 1 };
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < directions.GetLength(0); i++)
             {
-                if (x + dirX[i] >= arr.GetLength(0) || x + dirX[i] < 0)
-                {
-                    dirX[i] = 0;
-                }
+                int nextXInDirection = xPosition + directions[i, 0];
+                int nextYDirection = yPosition + directions[i, 1];
 
-                if (y + dirY[i] >= arr.GetLength(0) || y + dirY[i] < 0)
+                if ((nextXInDirection < board.GetLength(0) && nextXInDirection >= 0) &&
+                   (nextYDirection < board.GetLength(1) && nextYDirection >= 0))
                 {
-                    dirY[i] = 0;
-                }
-            }
-
-            for (int i = 0; i < 8; i++)
-            {
-                if (arr[x + dirX[i], y + dirY[i]] == 0)
-                {
-                    return true;
+                    if (board[nextXInDirection, nextYDirection] == 0)
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -71,7 +63,7 @@ namespace WalkInMatrix
                 {
                     if (board[i, j] == 0)
                     {
-                        nextAvailable[0,0] = i;
+                        nextAvailable[0, 0] = i;
                         nextAvailable[0, 1] = j;
                         return nextAvailable;
                     }
@@ -118,7 +110,7 @@ namespace WalkInMatrix
             {
                 matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
 
-                if (!Check(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
+                if (!HasMoreMoves(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
                 {
                     break;
                 }
@@ -140,12 +132,13 @@ namespace WalkInMatrix
 
             if (nextFreeBlock[0, 0] != 0 && nextFreeBlock[0, 1] != 0)
             {
-                movementDirection[0, 0] = 1;
-                movementDirection[0, 1] = 1;
+                movementDirection[0, 0] = directions[0, 0];
+                movementDirection[0, 1] = directions[0, 1];
+
                 while (true)
                 {
                     matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
-                    if (!Check(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
+                    if (!HasMoreMoves(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
                     {
                         break;
                     }
