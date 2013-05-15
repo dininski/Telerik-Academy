@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotatingWalkInMatrix", "RotatingWalkInMatrix.csproj", "{4D520899-7061-4EAA-B67E-D14EE8B30462}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotatingWalkInMatrix", "WalkInMatrix\RotatingWalkInMatrix.csproj", "{4D520899-7061-4EAA-B67E-D14EE8B30462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalkInMatrixTests", "..\WalkInMatrixTests\WalkInMatrixTests.csproj", "{425F9FDE-C876-4D12-8F58-2404A10D0054}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalkInMatrixTests", "WalkInMatrixTests\WalkInMatrixTests.csproj", "{425F9FDE-C876-4D12-8F58-2404A10D0054}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
