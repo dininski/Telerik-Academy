@@ -1,14 +1,14 @@
-﻿using System;
-
-namespace WalkInMatrix
+﻿namespace RotatingWalkInMatrix
 {
+    using System;
+
     public class WalkInMatrix
     {
         private static readonly int[,] directions = { { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, 1 } };
 
-        static int[,] ChangeDirection(int currentXDirection, int currentYDirection)
+        public static int[,] ChangeDirection(int currentXDirection, int currentYDirection)
         {
-            int[,] nextDirection = new int[2, 2];
+            int[,] nextDirection = new int[1, 2];
             nextDirection[0, 0] = currentXDirection;
             nextDirection[0, 1] = currentYDirection;
             int currentDirectionIndex = 0;
@@ -31,10 +31,11 @@ namespace WalkInMatrix
                 nextDirection[0, 0] = directions[currentDirectionIndex + 1, 0];
                 nextDirection[0, 1] = directions[currentDirectionIndex + 1, 1];
             }
+
             return nextDirection;
         }
 
-        static bool HasMoreMoves(int[,] board, int xPosition, int yPosition)
+        public static bool HasMoreMoves(int[,] board, int xPosition, int yPosition)
         {
             for (int i = 0; i < directions.GetLength(0); i++)
             {
@@ -54,7 +55,7 @@ namespace WalkInMatrix
             return false;
         }
 
-        static int[,] NextAvailableCell(int[,] board)
+        public static int[,] NextAvailableCell(int[,] board)
         {
             int[,] nextAvailable = { { 0, 0 } };
             for (int i = 0; i < board.GetLength(0); i++)
@@ -73,17 +74,49 @@ namespace WalkInMatrix
             return nextAvailable;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int n = 5;
-            int[,] matrica;
-            matrica = GenerateRotatingWalkMatrix(n);
-            PrintMatrix(matrica);
-            Console.WriteLine();
+            Console.WriteLine("Please enter matrix size:");
+            int matrixSize = int.Parse(Console.ReadLine());
+            int[,] matrix;
+            matrix = GenerateRotatingWalkMatrix(matrixSize);
+            PrintMatrix(matrix);
+        }
 
-            n = 7;
-            matrica = GenerateRotatingWalkMatrix(n);
-            PrintMatrix(matrica);
+        public static int[,] GenerateRotatingWalkMatrix(int sizeOfMatrix)
+        {
+            int matrixSide = sizeOfMatrix;
+            int[,] matrix = new int[matrixSide, matrixSide];
+            int[,] nextFreeBlock = { { 0, 0 } };
+            int[,] movementDirection = { { 1, 1 } };
+            int number = 1;
+            do
+            {
+                matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
+
+                if (HasMoreMoves(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
+                {
+                    while (nextFreeBlock[0, 0] + movementDirection[0, 0] >= matrixSide || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0
+                                       || nextFreeBlock[0, 1] + movementDirection[0, 1] >= matrixSide || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0
+                                       || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0)
+                    {
+                        movementDirection = ChangeDirection(movementDirection[0, 0], movementDirection[0, 1]);
+                    }
+
+                    nextFreeBlock[0, 0] += movementDirection[0, 0];
+                    nextFreeBlock[0, 1] += movementDirection[0, 1];
+                    number++;
+                }
+                else
+                {
+                    nextFreeBlock = NextAvailableCell(matrix);
+                    movementDirection[0, 0] = directions[0, 0];
+                    movementDirection[0, 1] = directions[0, 1];
+                    number++;
+                }
+            } while (number <= matrixSide * matrixSide);
+
+            return matrix;
         }
 
         private static void PrintMatrix(int[,] matrix)
@@ -92,72 +125,10 @@ namespace WalkInMatrix
             {
                 for (int row = 0; row < matrix.GetLength(1); row++)
                 {
-                    Console.Write("{0,3}", matrix[col, row]);
+                    Console.Write("{0,4}", matrix[col, row]);
                 }
-
                 Console.WriteLine();
             }
-        }
-
-        public static int[,] GenerateRotatingWalkMatrix(int sizeOfMatrix)
-        {
-            int n = sizeOfMatrix;
-            int[,] matrix = new int[n, n];
-            int[,] nextFreeBlock = { { 0, 0 } };
-            int[,] movementDirection = { { 1, 1 } };
-            int number = 1;
-            while (true)
-            {
-                matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
-
-                if (!HasMoreMoves(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
-                {
-                    break;
-                }
-
-                while ((nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0
-                    || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0
-                    || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0))
-                {
-                    movementDirection = ChangeDirection(movementDirection[0, 0], movementDirection[0, 1]);
-                }
-
-                nextFreeBlock[0, 0] += movementDirection[0, 0];
-                nextFreeBlock[0, 1] += movementDirection[0, 1];
-                number++;
-            }
-
-            number++;
-            nextFreeBlock = NextAvailableCell(matrix);
-
-            if (nextFreeBlock[0, 0] != 0 && nextFreeBlock[0, 1] != 0)
-            {
-                movementDirection[0, 0] = directions[0, 0];
-                movementDirection[0, 1] = directions[0, 1];
-
-                while (true)
-                {
-                    matrix[nextFreeBlock[0, 0], nextFreeBlock[0, 1]] = number;
-                    if (!HasMoreMoves(matrix, nextFreeBlock[0, 0], nextFreeBlock[0, 1]))
-                    {
-                        break;
-                    }
-
-                    if (nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0 || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0 || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0)
-                    {
-                        while ((nextFreeBlock[0, 0] + movementDirection[0, 0] >= n || nextFreeBlock[0, 0] + movementDirection[0, 0] < 0 || nextFreeBlock[0, 1] + movementDirection[0, 1] >= n || nextFreeBlock[0, 1] + movementDirection[0, 1] < 0 || matrix[nextFreeBlock[0, 0] + movementDirection[0, 0], nextFreeBlock[0, 1] + movementDirection[0, 1]] != 0))
-                        {
-                            movementDirection = ChangeDirection(movementDirection[0, 0], movementDirection[0, 1]);
-                        }
-                    }
-
-                    nextFreeBlock[0, 0] += movementDirection[0, 0];
-                    nextFreeBlock[0, 1] += movementDirection[0, 1];
-                    number++;
-                }
-            }
-
-            return matrix;
         }
     }
 }

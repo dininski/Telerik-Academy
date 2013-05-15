@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\12. Refactoring\Walk In Matrix.csproj">
+    <ProjectReference Include="..\12. Refactoring\RotatingWalkInMatrix.csproj">
       <Project>{4d520899-7061-4eaa-b67e-d14ee8b30462}</Project>
-      <Name>Walk In Matrix</Name>
+      <Name>RotatingWalkInMatrix</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
