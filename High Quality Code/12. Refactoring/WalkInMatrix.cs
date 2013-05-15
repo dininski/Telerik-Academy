@@ -62,28 +62,34 @@ namespace WalkInMatrix
             return false;
         }
 
-        static void FindNextAvailableCell(int[,] arr, out int x, out int y)
+        static int[,] NextAvailableCell(int[,] board)
         {
-            x = 0;
-            y = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
+            int[,] nextAvailable = { { 0, 0 } };
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int j = 0; j < arr.GetLength(0); j++)
+                for (int j = 0; j < board.GetLength(0); j++)
                 {
-                    if (arr[i, j] == 0)
+                    if (board[i, j] == 0)
                     {
-                        x = i;
-                        y = j;
-                        return;
+                        nextAvailable[0,0] = i;
+                        nextAvailable[0, 1] = j;
+                        return nextAvailable;
                     }
                 }
             }
+
+            return nextAvailable;
         }
 
         static void Main(string[] args)
         {
             int n = 5;
             int[,] matrica;
+            matrica = GenerateRotatingWalkMatrix(n);
+            PrintMatrix(matrica);
+            Console.WriteLine();
+
+            n = 7;
             matrica = GenerateRotatingWalkMatrix(n);
             PrintMatrix(matrica);
         }
@@ -130,7 +136,7 @@ namespace WalkInMatrix
             }
 
             number++;
-            FindNextAvailableCell(matrix, out nextFreeBlock[0, 0], out nextFreeBlock[0, 1]);
+            nextFreeBlock = NextAvailableCell(matrix);
 
             if (nextFreeBlock[0, 0] != 0 && nextFreeBlock[0, 1] != 0)
             {
