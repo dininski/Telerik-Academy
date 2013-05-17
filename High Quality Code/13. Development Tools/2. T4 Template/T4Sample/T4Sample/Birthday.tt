@@ -1,0 +1,15 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".txt" #>
+
+This year my birthday was on <#= DateTime.Parse("04/21/2013").DayOfWeek #>,
+<#
+
+DateTime xmas = DateTime.Parse("04/21/2013");
+
+for	(int i = 0; i < 10; i++) {
+	xmas = xmas.AddYears(1);
+}
+
+#>
+
+In 2023 my birthday will be on a <#= xmas.DayOfWeek #>
