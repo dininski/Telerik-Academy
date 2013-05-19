@@ -1,22 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Catalog.Interfaces;
-using Catalog.Enumerations;
-
-namespace Catalog
+﻿namespace Catalog
 {
+    using System;
+    using Catalog.Enumerations;
+    using Catalog.Interfaces;
+
     public class Content : IComparable, IContent
     {
+        private string url;
+
+        public Content(ContentType type, string[] commandParams)
+        {
+            this.Type = type;
+            this.Title = commandParams[(int)ContentInformation.Title];
+            this.Author = commandParams[(int)ContentInformation.Author];
+            this.Size = long.Parse(commandParams[(int)ContentInformation.Size]);
+            this.URL = commandParams[(int)ContentInformation.Url];
+        }
+        
         public string Title { get; set; }
 
         public string Author { get; set; }
 
-        public Int64 Size { get; set; }
-
-        private string url;
+        public long Size { get; set; }
 
         public string URL
         {
@@ -24,6 +29,7 @@ namespace Catalog
             {
                 return this.url;
             }
+
             set
             {
                 this.url = value;
@@ -35,25 +41,18 @@ namespace Catalog
 
         public string TextRepresentation { get; set; }
 
-        public Content(ContentType type, string[] commandParams)
-        {
-            this.Type = type;
-            this.Title = commandParams[(int)ContentInformation.Title];
-            this.Author = commandParams[(int)ContentInformation.Author];
-            this.Size = Int64.Parse(commandParams[(int)ContentInformation.Size]);
-            this.URL = commandParams[(int)ContentInformation.Url];
-        }
-
         public int CompareTo(object obj)
         {
-            if (null == obj)
-                return 1;
+            if (obj == null)
+            {
+                throw new ArgumentNullException("Cannot compare to a null object");
+            }
 
             Content otherContent = obj as Content;
 
             if (otherContent != null)
             {
-                Int32 comparisonResult = this.TextRepresentation.CompareTo(otherContent.TextRepresentation);
+                int comparisonResult = this.TextRepresentation.CompareTo(otherContent.TextRepresentation);
 
                 return comparisonResult;
             }
@@ -63,10 +62,9 @@ namespace Catalog
 
         public override string ToString()
         {
-            string output = String.Format("{0}: {1}; {2}; {3}; {4}", this.Type.ToString(), this.Title, this.Author, this.Size, this.URL);
+            string output = string.Format("{0}: {1}; {2}; {3}; {4}", this.Type.ToString(), this.Title, this.Author, this.Size, this.URL);
 
             return output;
         }
     }
-
 }

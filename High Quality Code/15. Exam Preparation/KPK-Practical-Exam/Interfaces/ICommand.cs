@@ -1,10 +1,7 @@
-using System;
-using System.Linq;
-using System.Text;
-using Catalog.Enumerations;
-
 namespace Catalog.Interfaces
 {
+    using Catalog.Enumerations;
+
     public interface ICommand
     {
         CommandType Type { get; set; }

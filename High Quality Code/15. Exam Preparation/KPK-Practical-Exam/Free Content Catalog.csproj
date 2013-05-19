@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalog.cs" />
+    <Compile Include="ContentCatalog.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandExecutor.cs" />
     <Compile Include="Content.cs" />

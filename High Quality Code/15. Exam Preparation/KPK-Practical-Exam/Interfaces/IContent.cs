@@ -1,15 +1,15 @@
-using System;
-using Catalog.Enumerations;
-
 namespace Catalog.Interfaces
 {
+    using System;
+    using Catalog.Enumerations;
+
     public interface IContent : IComparable
     {
         string Title { get; set; }
 
         string Author { get; set; }
 
-        Int64 Size { get; set; }
+        long Size { get; set; }
 
         string URL { get; set; }
 

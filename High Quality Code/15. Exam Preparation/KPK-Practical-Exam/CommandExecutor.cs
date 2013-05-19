@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Catalog.Interfaces;
-using Catalog.Enumerations;
-
-namespace Catalog
+﻿namespace Catalog
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Catalog.Enumerations;
+    using Catalog.Interfaces;
+
     public class CommandExecutor : ICommandExecutor
     {
         public void ExecuteCommand(ICatalog contCat, ICommand command, StringBuilder sb)
@@ -40,17 +39,16 @@ namespace Catalog
                         throw new FormatException("Invalid number of parameters!");
                     }
 
-                    sb.AppendLine(String.Format("{0} items updated", contCat.UpdateContent(command.Parameters[0], command.Parameters[1])));
+                    sb.AppendLine(string.Format("{0} items updated", contCat.UpdateContent(command.Parameters[0], command.Parameters[1])));
                     break;
 
                 case CommandType.Find:
                     if (command.Parameters.Length != 2)
                     {
-                        Console.WriteLine("Invalid params!");
                         throw new Exception("Invalid number of parameters!");
                     }
 
-                    Int32 numberOfElementsToList = Int32.Parse(command.Parameters[1]);
+                    int numberOfElementsToList = int.Parse(command.Parameters[1]);
 
                     IEnumerable<IContent> foundContent = contCat.GetListContent(command.Parameters[0], numberOfElementsToList);
 
@@ -65,12 +63,11 @@ namespace Catalog
                             sb.AppendLine(content.TextRepresentation);
                         }
                     }
+
                     break;
 
                 default:
-                    {
-                        throw new InvalidCastException("Unknown command!");
-                    }
+                    throw new InvalidCastException("Unknown command!");
             }
         }
     }

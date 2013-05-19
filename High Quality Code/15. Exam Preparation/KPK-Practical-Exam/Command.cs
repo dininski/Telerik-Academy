@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Catalog.Interfaces;
-using Catalog.Enumerations;
-
-namespace Catalog
+﻿namespace Catalog
 {
+    using System;
+    using System.Linq;
+    using Catalog.Enumerations;
+    using Catalog.Interfaces;
+
     public class Command : ICommand
     {
-        readonly char[] paramsSeparators = { ';' };
-        readonly char commandEnd = ':';
-
-        public CommandType Type { get; set; }
-
-        public string OriginalForm { get; set; }
-
-        public string Name { get; set; }
-
-        public string[] Parameters { get; set; }
-
-        private Int32 commandNameEndIndex;
+        private readonly char[] paramsSeparators = { ';' };
+        private readonly char commandEnd = ':';
+        private int commandNameEndIndex;
 
         public Command(string input)
         {
@@ -29,15 +17,14 @@ namespace Catalog
 
             this.Parse();
         }
+        
+        public CommandType Type { get; set; }
 
-        private void Parse()
-        {
-            this.commandNameEndIndex = this.GetCommandNameEndIndex();
-            this.Name = this.ParseName();
-            this.Parameters = this.ParseParameters();
-            this.TrimParams();
-            this.Type = this.ParseCommandType(this.Name);
-        }
+        public string OriginalForm { get; set; }
+
+        public string Name { get; set; }
+
+        public string[] Parameters { get; set; }
 
         public CommandType ParseCommandType(string commandName)
         {
@@ -51,46 +38,44 @@ namespace Catalog
             switch (commandName.Trim())
             {
                 case "Add book":
-                    {
-                        type = CommandType.AddBook;
-                    } break;
+                    type = CommandType.AddBook;
+                    break;
 
                 case "Add movie":
-                    {
-                        type = CommandType.AddMovie;
-                    } break;
+                    type = CommandType.AddMovie;
+                    break;
 
                 case "Add song":
-                    {
-                        type = CommandType.AddSong;
-                    } break;
+                    type = CommandType.AddSong;
+                    break;
 
                 case "Add application":
-                    {
-                        type = CommandType.AddApplication;
-                    } break;
+                    type = CommandType.AddApplication;
+                    break;
 
                 case "Update":
-                    {
-                        type = CommandType.Update;
-                    } break;
+                    type = CommandType.Update;
+                    break;
 
                 case "Find":
-                    {
-                        type = CommandType.Find;
-                    } break;
+                    type = CommandType.Find;
+                    break;
 
                 default:
+                    if (commandName.ToLower().Contains("book") ||
+                        commandName.ToLower().Contains("movie") ||
+                        commandName.ToLower().Contains("song") ||
+                        commandName.ToLower().Contains("application"))
                     {
-                        if (commandName.ToLower().Contains("book")
-
-                            || commandName.ToLower().Contains("movie") || commandName.ToLower().Contains("song")
-                            || commandName.ToLower().Contains("application")) throw new InsufficientExecutionStackException();
-
-                        if (commandName.ToLower().Contains("find")
-                            || commandName.ToLower().Contains("update"))
-                            throw new InvalidProgramException();
-
+                        throw new InsufficientExecutionStackException();
+                    }
+                    else if (commandName.ToLower().Contains("find") ||
+                      commandName.ToLower().Contains("update"))
+                    {
+                        throw new InvalidProgramException();
+                    }
+                    else
+                    {
                         throw new MissingFieldException("Invalid command name!");
                     }
             }
@@ -106,11 +91,11 @@ namespace Catalog
 
         public string[] ParseParameters()
         {
-            Int32 paramsLength = this.OriginalForm.Length - (this.commandNameEndIndex + 3);
+            int paramsLength = this.OriginalForm.Length - (this.commandNameEndIndex + 3);
 
             string paramsOriginalForm = this.OriginalForm.Substring(this.commandNameEndIndex + 2, paramsLength + 1);
 
-            string[] parameters = paramsOriginalForm.Split(paramsSeparators, StringSplitOptions.RemoveEmptyEntries);
+            string[] parameters = paramsOriginalForm.Split(this.paramsSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < parameters.Length; i++)
             {
@@ -120,35 +105,39 @@ namespace Catalog
             return parameters;
         }
 
-        public Int32 GetCommandNameEndIndex()
+        public int GetCommandNameEndIndex()
         {
-            Int32 endIndex = this.OriginalForm.IndexOf(commandEnd);
-
+            int endIndex = this.OriginalForm.IndexOf(this.commandEnd);
             return endIndex;
-        }
-
-        private void TrimParams()
-        {
-            for (int i = 0; ; i++)
-            {
-                if (!(i < this.Parameters.Length))
-                {
-                    break;
-
-                }
-                this.Parameters[i] = this.Parameters[i].Trim();
-            }
         }
 
         public override string ToString()
         {
-            string toString = "" + this.Name + " ";
+            string commandAsString = this.Name + " ";
 
             foreach (string param in this.Parameters)
             {
-                toString += param + " ";
-            } return toString;
+                commandAsString += param + " ";
+            }
+
+            return commandAsString;
+        }
+
+        private void TrimParams()
+        {
+            for (int i = 0; i < this.Parameters.Length; i++)
+            {
+                this.Parameters[i] = this.Parameters[i].Trim();
+            }
+        }
+
+        private void Parse()
+        {
+            this.commandNameEndIndex = this.GetCommandNameEndIndex();
+            this.Name = this.ParseName();
+            this.Parameters = this.ParseParameters();
+            this.TrimParams();
+            this.Type = this.ParseCommandType(this.Name);
         }
     }
-
 }
