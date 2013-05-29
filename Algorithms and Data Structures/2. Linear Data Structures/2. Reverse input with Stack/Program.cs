@@ -1,4 +1,7 @@
-﻿namespace PrintInReverse
+﻿// Write a program that reads N integers from the console
+// and reverses them using a stack. Use the Stack<int> class.
+
+namespace PrintInReverse
 {
     using System;
     using System.Collections.Generic;

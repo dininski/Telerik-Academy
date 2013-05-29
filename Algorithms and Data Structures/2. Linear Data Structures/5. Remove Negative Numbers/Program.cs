@@ -1,4 +1,6 @@
-﻿namespace RemoveNegativeNumbers
+﻿// Write a program that removes from given sequence all negative numbers.
+
+namespace RemoveNegativeNumbers
 {
     using System;
     using System.Collections.Generic;

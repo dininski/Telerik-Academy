@@ -1,4 +1,8 @@
-﻿namespace SortList
+﻿// Write a program that reads a sequence of integers
+// (List<int>) ending with an empty line and sorts them in
+// an increasing order.
+
+namespace SortList
 {
     using System;
     using System.Collections.Generic;
