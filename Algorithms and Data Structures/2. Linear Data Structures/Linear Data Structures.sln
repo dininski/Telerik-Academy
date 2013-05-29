@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11. Generic Linked List Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Longest Subsequence in List", "4. Longest Subsequence in List\4. Longest Subsequence in List.csproj", "{CCA4EB5D-6FCB-43C6-9968-43889FC9E477}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. Stack Array Implementation", "12. Stack Array Implementation\12. Stack Array Implementation.csproj", "{6129F8C0-89F1-4005-89F9-1B9A2313BC66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. Stack Array Implementation Tests", "12. Stack Array Implementation Tests\12. Stack Array Implementation Tests.csproj", "{8F1F4535-1B00-455C-8A5C-BC76282F4EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{CCA4EB5D-6FCB-43C6-9968-43889FC9E477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCA4EB5D-6FCB-43C6-9968-43889FC9E477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCA4EB5D-6FCB-43C6-9968-43889FC9E477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6129F8C0-89F1-4005-89F9-1B9A2313BC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6129F8C0-89F1-4005-89F9-1B9A2313BC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6129F8C0-89F1-4005-89F9-1B9A2313BC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6129F8C0-89F1-4005-89F9-1B9A2313BC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F1F4535-1B00-455C-8A5C-BC76282F4EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F1F4535-1B00-455C-8A5C-BC76282F4EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F1F4535-1B00-455C-8A5C-BC76282F4EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F1F4535-1B00-455C-8A5C-BC76282F4EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
