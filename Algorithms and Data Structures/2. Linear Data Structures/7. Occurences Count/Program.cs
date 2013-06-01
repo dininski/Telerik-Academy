@@ -10,9 +10,9 @@ namespace OccurencesCount
 {
     using System;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int[] testArray = new int[] { 3, 4, 4, 2, 3, 3, 4, 3, 2 };
             int[] occurences = new int[1001];

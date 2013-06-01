@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LinkedListImplementation;
-
-namespace LinkedListUnitTests
+﻿namespace LinkedListUnitTests
 {
+    using System;
+    using LinkedListImplementation;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class LinkedListTests
     {
@@ -110,6 +110,5 @@ namespace LinkedListUnitTests
         }
 
         #endregion
-
     }
 }

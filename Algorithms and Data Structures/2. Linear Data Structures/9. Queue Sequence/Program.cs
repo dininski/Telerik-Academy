@@ -19,9 +19,9 @@ namespace QueueSequence
     using System.Text;
     using System.Threading.Tasks;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Please enter a number to go through the sequence:");
 
@@ -35,7 +35,7 @@ namespace QueueSequence
             {
                 int currentNumber = sequenceQueue.Dequeue();
                 sequenceQueue.Enqueue(currentNumber + 1);
-                sequenceQueue.Enqueue(2*currentNumber + 1);
+                sequenceQueue.Enqueue((2 * currentNumber) + 1);
                 sequenceQueue.Enqueue(currentNumber + 2);
                 Console.Write("{0} ", currentNumber);
                 counter++;

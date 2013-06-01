@@ -5,9 +5,9 @@ namespace RemoveNegativeNumbers
     using System;
     using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int[] allNumbers = { 19, -10, 12, -6, -3, 34, -2, 5 };
 

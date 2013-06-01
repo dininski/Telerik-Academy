@@ -34,12 +34,12 @@ namespace StackImplementation
             }
 
             this.currentElementPos++;
-            this.stackArray[currentElementPos] = elementToAdd;
+            this.stackArray[this.currentElementPos] = elementToAdd;
         }
 
         public int Pop()
         {
-            int elementToRemove = this.stackArray[currentElementPos];
+            int elementToRemove = this.stackArray[this.currentElementPos];
             this.currentElementPos--;
             return elementToRemove;
         }
@@ -51,9 +51,9 @@ namespace StackImplementation
 
         private void ResizeStackArray()
         {
-            int currentStackSize = stackArray.Length;
+            int currentStackSize = this.stackArray.Length;
             int[] arrayCopyHolder = new int[currentStackSize];
-            Array.Copy(this.stackArray, arrayCopyHolder, stackArray.Length);
+            Array.Copy(this.stackArray, arrayCopyHolder, this.stackArray.Length);
             this.stackArray = new int[currentStackSize * 2];
             Array.Copy(arrayCopyHolder, this.stackArray, currentStackSize);
         }

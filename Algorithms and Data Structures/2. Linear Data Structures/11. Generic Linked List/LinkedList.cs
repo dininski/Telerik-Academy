@@ -1,4 +1,12 @@
-﻿namespace LinkedListImplementation
+﻿// Implement the data structure linked list. Define a class
+// ListItem<T> that has two fields: value (of type T) and
+// NextItem (of type ListItem<T>). Define additionally a class
+// LinkedList<T> with a single field FirstElement (of type
+// ListItem<T>).
+
+// I have added some additional methods such as Contains()
+// as well as an indexer
+namespace LinkedListImplementation
 {
     using System;
 
@@ -6,13 +14,55 @@
     {
         private ListItem head;
         private ListItem tail;
-        public int Count { get; private set; }
 
         public LinkedList()
         {
             this.head = null;
             this.tail = null;
             this.Count = 0;
+        }
+
+        public int Count { get; private set; }
+
+        public T this[int index]
+        {
+            get
+            {
+                if (index > this.Count - 1 || index < 0)
+                {
+                    throw new IndexOutOfRangeException("The supplied index must be larger that 0 and less than the size of the list!");
+                }
+
+                ListItem currentNode = this.head;
+                int counter = 0;
+
+                while (counter != index)
+                {
+                    currentNode = currentNode.Next;
+                    counter++;
+                }
+
+                return currentNode.Element;
+            }
+
+            set
+            {
+                if (index > this.Count - 1 || index < 0)
+                {
+                    throw new IndexOutOfRangeException("The supplied index must be larger that 0 and less than the size of the list!");
+                }
+
+                ListItem currentNode = this.head;
+                int counter = 0;
+
+                while (counter != index)
+                {
+                    currentNode = currentNode.Next;
+                    counter++;
+                }
+
+                currentNode.Element = value;
+            }
         }
 
         public void AddElement(T element)
@@ -84,10 +134,11 @@
             while (currentNode != null)
             {
                 if ((currentNode.Element.CompareTo(obj) == 0 && currentNode.Element != null)
-                    || currentNode.Element == null && obj == null)
+                    || (currentNode.Element == null && obj == null))
                 {
                     break;
                 }
+
                 previousNode = currentNode;
                 currentNode = currentNode.Next;
                 elementIndex++;
@@ -95,53 +146,12 @@
 
             if (currentNode != null)
             {
-                RemoveByIndex(elementIndex);
+                this.RemoveByIndex(elementIndex);
                 return elementIndex;
             }
             else
             {
                 return -1;
-            }
-        }
-
-        public T this[int index]
-        {
-            get
-            {
-                if (index > this.Count - 1 || index < 0)
-                {
-                    throw new IndexOutOfRangeException("The supplied index must be larger that 0 and less than the size of the list!");
-                }
-
-                ListItem currentNode = this.head;
-                int counter = 0;
-
-                while (counter != index)
-                {
-                    currentNode = currentNode.Next;
-                    counter++;
-                }
-
-                return currentNode.Element;
-            }
-
-            set
-            {
-                if (index > this.Count - 1 || index < 0)
-                {
-                    throw new IndexOutOfRangeException("The supplied index must be larger that 0 and less than the size of the list!");
-                }
-
-                ListItem currentNode = this.head;
-                int counter = 0;
-
-                while (counter != index)
-                {
-                    currentNode = currentNode.Next;
-                    counter++;
-                }
-
-                currentNode.Element = value;
             }
         }
 

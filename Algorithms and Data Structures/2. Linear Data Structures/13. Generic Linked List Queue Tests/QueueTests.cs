@@ -1,8 +1,8 @@
 ﻿namespace LinkedListQueueTests
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using GenericQueue;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class QueueTests

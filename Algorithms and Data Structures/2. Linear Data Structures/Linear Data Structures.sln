@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13. Generic Linked List Que
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13. Generic Linked List Queue Tests", "13. Generic Linked List Queue Tests\13. Generic Linked List Queue Tests.csproj", "{DEC0BA12-5A6C-4B86-A0B2-3D04AC8BC01F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. Shortest Sequence Of Operations", "10 Shortest Sequence Of Operations\10. Shortest Sequence Of Operations.csproj", "{88559356-D1AC-4447-BF21-0F3387455610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14. Labyrinth BFS", "14. Labyrinth BFS\14. Labyrinth BFS.csproj", "{EB9A4223-B8A0-4B8D-A6B7-D367B960810B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,14 @@ Global
 		{DEC0BA12-5A6C-4B86-A0B2-3D04AC8BC01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC0BA12-5A6C-4B86-A0B2-3D04AC8BC01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC0BA12-5A6C-4B86-A0B2-3D04AC8BC01F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88559356-D1AC-4447-BF21-0F3387455610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88559356-D1AC-4447-BF21-0F3387455610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88559356-D1AC-4447-BF21-0F3387455610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88559356-D1AC-4447-BF21-0F3387455610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB9A4223-B8A0-4B8D-A6B7-D367B960810B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB9A4223-B8A0-4B8D-A6B7-D367B960810B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB9A4223-B8A0-4B8D-A6B7-D367B960810B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB9A4223-B8A0-4B8D-A6B7-D367B960810B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

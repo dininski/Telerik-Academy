@@ -1,16 +1,21 @@
-﻿namespace GenericQueue
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+﻿// Implement the ADT queue as dynamic linked list. Use
+// generics (LinkedQueue<T>) to allow storing different
+// data types in the queue.
 
+namespace GenericQueue
+{
     public class Queue<T>
     {
         private int size;
         private Node tail;
         private Node head;
+
+        public Queue()
+        {
+            this.head = null;
+            this.tail = null;
+            this.size = 0;
+        }
 
         public int Size
         {
@@ -23,14 +28,6 @@
             {
                 this.size = value;
             }
-        }
-
-
-        public Queue()
-        {
-            this.head = null;
-            this.tail = null;
-            this.size = 0;
         }
 
         public void Enqueue(T element)
@@ -50,7 +47,7 @@
                 this.tail = newElement;
             }
 
-            size++;
+            this.size++;
         }
 
         public T Dequeue()
@@ -61,19 +58,20 @@
                 this.head = this.head.Next;
             }
 
-            size--;
+            this.size--;
             return value;
         }
 
         private class Node
         {
-            public T Value { get; set; }
-            public Node Next { get; set; }
-
             public Node(T value)
             {
                 this.Value = value;
             }
+
+            public T Value { get; set; }
+
+            public Node Next { get; set; }
         }
     }
 }

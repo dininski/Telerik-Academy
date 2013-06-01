@@ -2,15 +2,14 @@
 // numbers that occur odd number of times. Example:
 // {4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2}  {5, 3, 3, 5}
 
-
 namespace OddNumberOfOccurences
 {
     using System;
     using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int[] testNumbers = new int[] { 4, 2, 2, 5, 2, 3, 2, 3, 1, 5, 2 };
             var oddOccurences = new List<int>();
@@ -30,7 +29,7 @@ namespace OddNumberOfOccurences
                     {
                         for (int j = 0; j < currentOccurences; j++)
                         {
-                            oddOccurences.Add(testNumbers[i]);                            
+                            oddOccurences.Add(testNumbers[i]);
                         }
                     }
 
@@ -42,7 +41,7 @@ namespace OddNumberOfOccurences
             {
                 for (int j = 0; j < currentOccurences; j++)
                 {
-                    oddOccurences.Add(testNumbers[testNumbers.Length-1]);
+                    oddOccurences.Add(testNumbers[testNumbers.Length - 1]);
                 }
             }
 

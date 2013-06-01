@@ -11,9 +11,9 @@ namespace LongestSubsequenceInList
     using System.Text;
     using System.Threading.Tasks;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // using the sample array in order to iniatilize the list
             // in an easy way - just for demostration purposes.

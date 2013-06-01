@@ -3,15 +3,14 @@
 // majorant of given array (if exists). Example:
 // {2, 2, 3, 3, 2, 3, 4, 3, 3} -> 3
 
-
 namespace Majorant
 {
     using System;
     using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int[] sampleValues = new int[] { 2, 2, 3, 3, 2, 3, 4, 3, 3 };
 
@@ -49,7 +48,7 @@ namespace Majorant
                 }
             }
 
-            if (possibleMajorantOccurences >= sampleValues.Length / 2 + 1)
+            if (possibleMajorantOccurences >= (sampleValues.Length / 2) + 1)
             {
                 Console.WriteLine("{0} is the majorant.", possibleMajorant);
             }

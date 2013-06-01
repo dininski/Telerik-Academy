@@ -6,9 +6,9 @@ namespace PrintInReverse
     using System;
     using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Stack<int> numbersStack = new Stack<int>();
 
@@ -29,6 +29,7 @@ namespace PrintInReverse
                 int number = numbersStack.Pop();
                 Console.Write("{0} ", number);
             }
+
             Console.WriteLine();
         }
     }
