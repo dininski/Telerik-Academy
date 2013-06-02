@@ -17,20 +17,7 @@ namespace Jedi_Meditation
 
             for (int i = 0; i < totalMeditators; i++)
             {
-                switch (meditators[i][0])
-                {
-                    case 'm':
-                        meditatorsPriorityQueue.Add(meditators[i]);
-                        break;
-                    case 'k':
-                        meditatorsPriorityQueue.Add(meditators[i]);
-                        break;
-                    case 'p':
-                        meditatorsPriorityQueue.Add(meditators[i]);
-                        break;
-                    default:
-                        throw new ArgumentException("Invalid jedi format");
-                }
+                meditatorsPriorityQueue.Add(meditators[i]);
             }
         }
 
