@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Number Of Occurences", "1. Number Of Occurences\1. Number Of Occurences.csproj", "{30F950ED-5DD7-472A-A2B0-0B9750E53727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Odd words", "2. Odd words\2. Odd words.csproj", "{0D2CC7DE-DF8A-4381-BF6A-CA340505E974}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30F950ED-5DD7-472A-A2B0-0B9750E53727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F950ED-5DD7-472A-A2B0-0B9750E53727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F950ED-5DD7-472A-A2B0-0B9750E53727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F950ED-5DD7-472A-A2B0-0B9750E53727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2CC7DE-DF8A-4381-BF6A-CA340505E974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2CC7DE-DF8A-4381-BF6A-CA340505E974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2CC7DE-DF8A-4381-BF6A-CA340505E974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2CC7DE-DF8A-4381-BF6A-CA340505E974}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
