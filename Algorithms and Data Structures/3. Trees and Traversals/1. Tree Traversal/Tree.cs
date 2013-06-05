@@ -88,6 +88,7 @@
             return sb.ToString();
         }
 
+        // get a list with the longest route
         public List<Node> FindLongestRoute()
         {
             var firstLongest = new List<Node>();
