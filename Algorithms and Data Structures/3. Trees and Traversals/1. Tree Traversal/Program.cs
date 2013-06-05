@@ -1,6 +1,7 @@
 ﻿namespace TreeTraversal
 {
     using System;
+    using System.Linq;
 
     public class Program
     {
@@ -22,6 +23,13 @@
             Console.WriteLine("The root of the tree is: {0}", tree.GetRoot());
             Console.WriteLine("The middle elements of tree are: {0}", tree.GetMiddleElementsAsString());
             Console.WriteLine("The leafs in the tree are: {0}", tree.GetLeafsAsString());
+
+            var test = tree.FindLongestRoute(3);
+
+            foreach (var element in test)
+            {
+                Console.Write("{0} ", element.Value);
+            }
         }
     }
 }

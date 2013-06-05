@@ -88,55 +88,66 @@
             return sb.ToString();
         }
 
-        public string GetLongestPath()
+        public List<Node> FindLongestRoute(int root)
         {
-            var rootNodeChildren = tree[root];
+            var firstLongest = new List<Node>();
+            var secondLongest = new List<Node>();
 
-            Path longestPath = new Path();
-            Path secondLongestPath = new Path();
-
-            foreach (var child in rootNodeChildren)
+            if (tree[root].Count == 0)
             {
-                Path currentPath = FindLongestPath(child.Value);
+                var singleElementRoute = new List<Node>();
+                singleElementRoute.Add(new Node(root));
+                return singleElementRoute;
+            }
+            else if (tree[root].Count == 1)
+            {
+                return GetLongest(tree[root], root);
+            }
 
-                if (currentPath.Length > secondLongestPath.Length)
+            foreach (var item in tree[root])
+            {
+                var currentLength = GetLongest(tree[item.Value], item.Value);
+                if (currentLength.Count > secondLongest.Count)
                 {
-                    if (currentPath.Length > longestPath.Length)
+                    if (currentLength.Count > firstLongest.Count)
                     {
-                        secondLongestPath = longestPath;
-                        longestPath = currentPath;
+                        secondLongest = firstLongest;
+                        firstLongest = currentLength;
                     }
                     else
                     {
-                        secondLongestPath = currentPath;
+                        secondLongest = currentLength;
                     }
                 }
             }
 
-            string result = string.Format("{0} {1}, {2}", longestPath.PathString, root, secondLongestPath.PathString);
+            var result = new List<Node>();
+            result.AddRange(firstLongest);
+            result.AddRange(new List<Node> { new Node(root) });
+            result.AddRange(secondLongest);
 
             return result;
         }
 
-        private Path FindLongestPath(int root)
+        public List<Node> GetLongest(List<Node> subtree, int currentNode)
         {
-            throw new NotImplementedException();
-        }
+            var routes = new List<List<Node>>();
 
-        private class Node
-        {
-            public int Value { get; private set; }
-
-            public Node(int value)
+            if (subtree.Count == 0)
             {
-                this.Value = value;
+                var children = new List<Node>();
+                children.Add(new Node(currentNode));
+                return children;
             }
-        }
 
-        private class Path
-        {
-            public int Length { get; private set; }
-            public string PathString { get; private set; }
+            foreach (var children in subtree)
+            {
+                var childPaths = GetLongest(tree[children.Value], children.Value);
+                routes.Add(childPaths);
+            }
+
+            routes.Sort((x, y) => x.Count.CompareTo(y.Count));
+            return routes.First();
         }
     }
 }
