@@ -1,6 +1,7 @@
 ﻿namespace TreeTraversal
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     public class Program
@@ -24,11 +25,12 @@
             Console.WriteLine("The middle elements of tree are: {0}", tree.GetMiddleElementsAsString());
             Console.WriteLine("The leafs in the tree are: {0}", tree.GetLeafsAsString());
 
-            var test = tree.FindLongestRoute(3);
+            var test = tree.FindLongestRoute();
 
+            Console.Write("The longest route is: ");
             foreach (var element in test)
             {
-                Console.Write("{0} ", element.Value);
+                Console.Write("{0}, ", element.Value);
             }
         }
     }
