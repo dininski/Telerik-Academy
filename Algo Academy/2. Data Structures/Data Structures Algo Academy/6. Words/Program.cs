@@ -2,26 +2,32 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Diagnostics;
     using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
-        public static Dictionary<string, int> wordsThatMatch;
+        public static Dictionary<string, int> wordMatches;
         public static HashSet<string> wordsInSentence;
-        public static HashSet<string> allWords;
+        public static HashSet<string> usedWords;
 
         public static void Main(string[] args)
         {
-            allWords = new HashSet<string>();
-            wordsThatMatch = new Dictionary<string, int>();
+            wordMatches = new Dictionary<string, int>();
             wordsInSentence = new HashSet<string>();
+            usedWords = new HashSet<string>();
+            StringBuilder result = new StringBuilder();
+
             int numberOfLines = int.Parse(Console.ReadLine());
+
+#if DEBUG
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+#endif
+
             for (int i = 0; i < numberOfLines; i++)
             {
                 string sentence = Console.ReadLine();
-
                 AddWords(sentence);
             }
 
@@ -29,50 +35,44 @@
 
             for (int i = 0; i < wordsToFindCount; i++)
             {
-                string word = Console.ReadLine();
-                allWords.Add(word);
+                string searchedWord = Console.ReadLine();
 
-
-                if (!wordsThatMatch.ContainsKey(word))
+                if (!wordMatches.ContainsKey(searchedWord))
                 {
-                    wordsThatMatch.Add(word, 0);
+                    wordMatches.Add(searchedWord, 0);
                 }
-            }
 
-
-            foreach (var searchedWord in allWords)
-            {
-                foreach (var sentenceWord in wordsInSentence)
+                if (!usedWords.Contains(searchedWord))
                 {
-                    var sentenceWordLetters = GetLetters(sentenceWord);
-                    var searchedLetters = GetLetters(searchedWord);
-                    
-                    sentenceWordLetters.IntersectWith(searchedLetters);
-                    
-                    if (sentenceWordLetters.Count == searchedLetters.Count)
+                    usedWords.Add(searchedWord);
+
+                    foreach (var wordInSentence in wordsInSentence)
                     {
-                        wordsThatMatch[searchedWord]++;
+                        var sentenceWordLetters = GetLetters(wordInSentence);
+                        var searchedLetters = GetLetters(searchedWord);
+                        sentenceWordLetters.IntersectWith(searchedLetters);
+
+                        if (sentenceWordLetters.Count == searchedLetters.Count)
+                        {
+                            wordMatches[searchedWord]++;
+                        }
                     }
                 }
+
+                result.AppendFormat("{0} -> {1}", searchedWord, wordMatches[searchedWord]);
+
+                if (i < wordsToFindCount - 1)
+                {
+                    result.AppendLine();
+                }
             }
 
-            PrintDict(wordsThatMatch);
-        }
+            Console.WriteLine(result.ToString());
 
-        public static void PrintHashSet(HashSet<string> words)
-        {
-            foreach (var word in words)
-            {
-                Console.Write("{0}, ", word);
-            }
-        }
-
-        public static void PrintDict(Dictionary<string, int> words)
-        {
-            foreach (var word in words)
-            {
-                Console.WriteLine("{0} -> {1}", word.Key, word.Value);
-            }
+#if DEBUG
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
+#endif
         }
 
         public static HashSet<char> GetLetters(string word)
@@ -95,22 +95,23 @@
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < sentence.Length; i++)
             {
-                if (sentence[i] >= 'a' && sentence[i] <= 'z' || sentence[i] >= 'A' && sentence[i] <= 'Z')
+                if (sentence[i] >= 'a' && sentence[i] <= 'z')
                 {
                     word.Append(sentence[i]);
                 }
+                else if (sentence[i] >= 'A' && sentence[i] <= 'Z')
+                {
+                    word.Append((char)((int)sentence[i] - (int)'A' + (int)'a'));
+                }
                 else
                 {
-                    if (word.ToString() != "")
-                    {
-                        wordsInSentence.Add(word.ToString().ToLower());
-                    }
 
+                    wordsInSentence.Add(word.ToString());
                     word = new StringBuilder();
                 }
             }
 
-            wordsInSentence.Add(word.ToString().ToLower());
+            wordsInSentence.Add(word.ToString());
         }
     }
 }
