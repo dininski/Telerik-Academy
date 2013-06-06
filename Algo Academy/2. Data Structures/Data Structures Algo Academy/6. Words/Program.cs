@@ -42,13 +42,14 @@
 
             foreach (var searchedWord in allWords)
             {
-                foreach (var word in wordsInSentence)
+                foreach (var sentenceWord in wordsInSentence)
                 {
-                    var lettersInWord = GetLetters(word);
+                    var sentenceWordLetters = GetLetters(sentenceWord);
                     var searchedLetters = GetLetters(searchedWord);
-                    searchedLetters.IntersectWith(lettersInWord);
-
-                    if (searchedLetters.Count == searchedWord.Length)
+                    
+                    sentenceWordLetters.IntersectWith(searchedLetters);
+                    
+                    if (sentenceWordLetters.Count == searchedLetters.Count)
                     {
                         wordsThatMatch[searchedWord]++;
                     }
