@@ -21,16 +21,8 @@
             for (int i = 0; i < numberOfLines; i++)
             {
                 string sentence = Console.ReadLine();
-                
-                string[] words = ParseWords(sentence);
 
-                foreach (var word in words)
-                {
-                    if (!wordsInSentence.Contains(word))
-                    {
-                        wordsInSentence.Add(word);
-                    }
-                }
+                AddWords(sentence);
             }
 
             int wordsToFindCount = int.Parse(Console.ReadLine());
@@ -38,10 +30,8 @@
             for (int i = 0; i < wordsToFindCount; i++)
             {
                 string word = Console.ReadLine();
-                if (!allWords.Contains(word))
-                {
-                    allWords.Add(word);
-                }
+                allWords.Add(word);
+
 
                 if (!wordsThatMatch.ContainsKey(word))
                 {
@@ -49,9 +39,10 @@
                 }
             }
 
-            foreach (var word in wordsInSentence)
+
+            foreach (var searchedWord in allWords)
             {
-                foreach (var searchedWord in allWords)
+                foreach (var word in wordsInSentence)
                 {
                     var lettersInWord = GetLetters(word);
                     var searchedLetters = GetLetters(searchedWord);
@@ -98,28 +89,27 @@
             return letters;
         }
 
-        public static string[] ParseWords(string sentence)
+        public static void AddWords(string sentence)
         {
-            List<string> words = new List<string>();
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < sentence.Length; i++)
             {
-                if ((sentence[i] >= 'a' && sentence[i] <= 'z') || (sentence[i] >= 'A' && sentence[i] <= 'Z'))
+                if (sentence[i] >= 'a' && sentence[i] <= 'z' || sentence[i] >= 'A' && sentence[i] <= 'Z')
                 {
-                    word.Append(sentence[i]);       
+                    word.Append(sentence[i]);
                 }
                 else
                 {
                     if (word.ToString() != "")
                     {
-                        words.Add(word.ToString());
+                        wordsInSentence.Add(word.ToString().ToLower());
                     }
 
                     word = new StringBuilder();
                 }
             }
 
-            return words.ToArray();
+            wordsInSentence.Add(word.ToString().ToLower());
         }
     }
 }
