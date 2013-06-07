@@ -3,9 +3,6 @@
     using GenericHashTable;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class HashedSet<T>
     {
@@ -14,7 +11,7 @@
             this.hashTable = new HashTable<T, int>();
         }
 
-        private HashTable<T, int> hashTable;
+        private readonly HashTable<T, int> hashTable;
 
         public int Count
         {
@@ -44,13 +41,35 @@
             this.hashTable.Clear();
         }
 
-        public HashedSet<T> Union(HashedSet<T> setToUnion)
+        public IEnumerable<T> Elements()
         {
-            throw new NotImplementedException();
+            return hashTable.Keys();
         }
 
-        public HashedSet<T> Intersect(HashedSet<T> setToUnion) {
-            throw new NotImplementedException();
+        public bool Contains(T element)
+        {
+            return hashTable.ContainsKey(element);
+        }
+
+        public void Union(HashedSet<T> setToUnion)
+        {
+            foreach (var element in setToUnion.Elements())
+            {
+                if (!this.Contains(element))
+                {
+                    this.hashTable.Add(element, 0);
+                }
+            }
+        }
+
+        public void Intersect(HashedSet<T> setToIntersect) {
+            foreach (var element in setToIntersect.Elements())
+            {
+                if (!this.Contains(element))
+                {
+                    this.hashTable.Remove(element);
+                }
+            }
         }
     }
 }

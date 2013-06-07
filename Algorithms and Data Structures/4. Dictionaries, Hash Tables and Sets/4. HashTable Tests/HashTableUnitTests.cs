@@ -1,6 +1,8 @@
 ﻿namespace HashTableTests
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using GenericHashTable;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -47,6 +49,7 @@
             }
 
             int actualCount = integerTable.Count;
+
             Assert.AreEqual(numberOfElements, actualCount, "The table count is incorrectly calculated!");
         }
 
@@ -82,7 +85,7 @@
 
             int actualCount = integerTable.Count;
             Assert.AreEqual(numberOfElements - 1, actualCount, "The table count is incorrect when table is an element is removed!");
-            var shouldFail = integerTable[3];
+            int shouldFail = integerTable[3];
         }
 
         [TestMethod]
@@ -179,6 +182,34 @@
             for (int i = 0; i < numberOfElements; i++)
             {
                 Assert.AreEqual(i + 10, integerTable.Find(i), "Returning incorrect keys!");
+            }
+        }
+
+        [TestMethod]
+        public void TestHashTableForeach()
+        {
+            HashTable<int, int> integerTable = new HashTable<int, int>();
+            List<KeyValuePair<int, int>> valuesInTable = new List<KeyValuePair<int, int>>();
+
+            int numberOfElements = 10;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                integerTable.Add(i, i + 10);
+            }
+
+            foreach (KeyValuePair<int, int> pair in integerTable)
+            {
+                valuesInTable.Add(pair);
+            }
+
+            Assert.AreEqual(numberOfElements, valuesInTable.Count,
+                "Foreach iterates through incorrect amount of values.");
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(1, valuesInTable.Where(x => (x.Key == i && x.Value == i + 10)).Count(),
+                    "Foreach returns incorrect set of values");
             }
         }
     }
