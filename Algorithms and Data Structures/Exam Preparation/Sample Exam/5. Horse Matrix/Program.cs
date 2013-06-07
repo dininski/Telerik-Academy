@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// TODO: implement with tree
 namespace _5.Horse_Matrix
 {
     class Program
@@ -11,10 +12,9 @@ namespace _5.Horse_Matrix
         public static void Main(string[] args)
         {
             int matrixSize = int.Parse(Console.ReadLine());
+            
             char[,] matrix = new char[matrixSize, matrixSize];
             Position startPosition = new Position();
-            Position endPosition = new Position();
-            List<Position> possibleAnswers = new List<Position>();
 
             for (int col = 0; col < matrixSize; col++)
             {
@@ -29,95 +29,53 @@ namespace _5.Horse_Matrix
                     {
                         startPosition = new Position(col, row);
                     }
-                    if (rowChars[row] == 'e')
-                    {
-                        endPosition = new Position(col, row);
-                    }
                 }
             }
 
             Stack<Position> positions = new Stack<Position>();
             positions.Push(startPosition);
+            int fastestPath = int.MaxValue;
+
+            int[,] possibleMoves = new int[,] { { 1, 2 }, { 1, -2 }, { 2, 1 }, { 2, -1 }, { -1, 2 }, { -1, -2 }, { -2, 1 }, { -2, -1 } };
+
             while (positions.Count != 0)
             {
                 Position current = positions.Pop();
                 if (matrix[current.Col, current.Row] == 'e')
                 {
-                    possibleAnswers.Add(current);
+                    if (current.Hops < fastestPath)
+                    {
+                        fastestPath = current.Hops;
+                    }
                     continue;
                 }
 
-                if (current.Col + 2 < matrixSize && current.Row + 1 < matrixSize && matrix[current.Col + 2, current.Row + 1] != 'x')
+                for (int i = 0; i < possibleMoves.GetLength(0); i++)
                 {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col + 2, current.Row + 1, current.Hops + 1, vis));
-                }
-
-                if (current.Col + 2 < matrixSize && current.Row - 1 >= 0 && matrix[current.Col + 2, current.Row - 1] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col + 2, current.Row - 1, current.Hops + 1, vis));
-                }
-
-                if (current.Col + 1 < matrixSize && current.Row - 2 >= 0 && matrix[current.Col + 1, current.Row - 2] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col + 1, current.Row - 2, current.Hops + 1, vis));
-                }
-
-                if (current.Col + 1 < matrixSize && current.Row + 2 < matrixSize && matrix[current.Col + 1, current.Row + 2] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col + 1, current.Row + 2, current.Hops + 1, vis));
-                }
-
-                if (current.Col - 2 >= 0 && current.Row + 1 < matrixSize && matrix[current.Col - 2, current.Row + 1] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col - 2, current.Row + 1, current.Hops + 1, vis));
-                }
-
-                if (current.Col - 2 >= 0 && current.Row - 1 < matrixSize && matrix[current.Col - 2, current.Row - 1] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col - 2, current.Row - 1, current.Hops + 1, vis));
-                }
-
-                if (current.Col - 1 >= 0 && current.Row + 2 < matrixSize && matrix[current.Col - 1, current.Row + 2] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col - 1, current.Row + 2, current.Hops + 1, vis));
-                }
-
-                if (current.Col - 1 >= 0 && current.Row - 2 >= 0 && matrix[current.Col - 1, current.Row - 2] != 'x')
-                {
-                    List<Position> vis = new List<Position>(current.Visited);
-                    vis.Add(new Position(current.Col, current.Row));
-                    positions.Push(new Position(current.Col - 1, current.Row - 2, current.Hops + 1, vis));
+                    var newCol = current.Col + possibleMoves[i, 0];
+                    var newRow = current.Row + possibleMoves[i, 1];
+                    if (newCol >= 0 && newCol < matrixSize
+                        && newRow >= 0 && newRow < matrixSize
+                        && matrix[newCol, newRow] != 'x')
+                    {
+                        var newPosition = new Position(newCol, newRow, current.Hops + 1, current.Visited);
+                        if (!current.IsVisited(newPosition))
+                        {
+                            newPosition.Visit(newPosition);
+                            positions.Push(newPosition);
+                        }
+                    }
                 }
             }
 
-            for (int col = 0; col < matrixSize; col++)
+            if (fastestPath != int.MaxValue)
             {
-                for (int row = 0; row < matrixSize; row++)
-                {
-                    Console.Write("{0} ", matrix[col, row]);
-                }
-                Console.WriteLine();
+                Console.WriteLine(fastestPath);
             }
-
-            foreach (var item in possibleAnswers)
+            else
             {
-                Console.WriteLine(item.Hops);
+                Console.WriteLine("No");
             }
-
         }
 
         public class Position
@@ -132,32 +90,29 @@ namespace _5.Horse_Matrix
             }
 
             public Position(int col, int row, int hops)
-                : this(col, row, hops, new List<Position>())
+                : this(col, row, hops, new HashSet<Position>())
             {
             }
 
-            public Position(int col, int row, int hops, List<Position> previouslyVisited)
+            public Position(int col, int row, int hops, HashSet<Position> previouslyVisited)
             {
                 this.Col = col;
                 this.Row = row;
                 this.Hops = hops;
-                this.Visited = new List<Position>(previouslyVisited);
+                this.Visited = new HashSet<Position>(previouslyVisited);
             }
 
-            public bool Visit(Position pos)
+            public bool IsVisited(Position pos)
             {
-                if (!this.Visited.Contains(pos))
-                {
-                    this.Visited.Add(pos);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return this.Visited.Where(x => x.Row.Equals(pos.Row) && x.Col.Equals(pos.Col)).Count() != 0;
             }
 
-            public List<Position> Visited;
+            public void Visit(Position pos)
+            {
+                this.Visited.Add(pos);
+            }
+
+            public HashSet<Position> Visited;
             public int Row { get; set; }
             public int Col { get; set; }
             public int Hops { get; set; }
