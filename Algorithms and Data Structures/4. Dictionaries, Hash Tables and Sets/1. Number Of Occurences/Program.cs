@@ -6,7 +6,6 @@
 // 3 -> 4 times
 // 4 -> 3 times
 
-
 namespace Occurences
 {
     using System;
@@ -30,6 +29,7 @@ namespace Occurences
                 {
                     occurences.Add(values[i], 0);
                 }
+
                 occurences[values[i]]++;
             }
 
