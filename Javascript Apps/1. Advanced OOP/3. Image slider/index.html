@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Simple carousel</title>
+</head>
+<link rel="stylesheet" type="text/css" href="styles/sliderControl.css">
+<body>
+<p>
+Implement a image slider control using Prototypal OOP.
+The slider has a set of images and only one can be enlarged.
+Each image in the image slider has a title and two urls (thumbnail url and large image url).
+When an image from the thumbnails is clicked.
+The slider must have buttons for prev/next image.
+</p>
+
+<div id="carouselWrapper">
+	<ul id="carousel">
+		<li><img src="images/1.jpg"></li>
+		<li><img src="images/2.jpg"></li>
+		<li><img src="images/3.jpg"></li>
+		<li><img src="images/4.jpg"></li>
+	</ul>
+</div>
+<div id="carousel_nav">
+	<img id="prev_img" src="images/prev.png" alt="previous image" />
+	<img id="next_img" src="images/next.png" alt="next image" />
+</div>
+<div id="previews">
+	<ul id="carouselPreviews">
+		<li class='thumb'><img src="images/1.jpg"></li>
+		<li class='thumb'><img src="images/2.jpg"></li>
+		<li class='thumb'><img src="images/3.jpg"></li>
+		<li class='thumb'><img src="images/4.jpg"></li>
+	</ul>
+</div>
+<script type="text/javascript" src="scripts/proto-create-extend.js"></script>
+<script type="text/javascript" src="scripts/sliderControl.js"></script>
+<script type="text/javascript">
+
+	var imageSize = 500;
+	var imageControl = Object.create(SliderControl);
+	imageControl.init("#carouselWrapper", imageSize);	
+</script>
+</body>
+</html>
