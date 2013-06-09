@@ -1,11 +1,23 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
-<body> 
-Open the console :)
-<script type="text/javascript" src="scripts/classic-create-inherit.js"></script>
-<script type="text/javascript" src="scripts/classic-oop-school.js"></script>
+<body>
+    <div id="favourites-container"></div>
+    <script type="text/javascript" src="scripts/classic-create-inherit.js"></script>
+    <script type="text/javascript" src="scripts/classic-oop-favourites-bar.js"></script>
+    <script type="text/javascript">
+        var telerik = new Url("telerik", "http://www.telerikacademy.com");
+        var google = new Url("google", "http://www.google.com");
+        var bing = new Url("bing", "http://www.bing.com");
+        var searchEnginesFolder = new Folder("Search engines", [google, bing]);
+
+        var bar = new FavouritesBar([telerik, telerik, telerik], [searchEnginesFolder, searchEnginesFolder, searchEnginesFolder], "#favourites-container");
+        bar.render();
+
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+#favouritesBar {
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background: grey;
+}
+
+#favouritesBar>li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 0 10px;
+}
+
+#favouritesBar > ul {
+	display: inline;
+}
+
+.urlFolder {
+	position: absolute;
+	display: none;
+}
+
+.urlFolderContainer:hover .urlFolder {
+	display: block;
+}
