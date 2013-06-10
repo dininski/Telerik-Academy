@@ -5,8 +5,100 @@
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
+    <br/> Create a slider control using jQuery
+    <br/> The slider can have many slides
+    <br/> Only one slide is visible at a time
+    <br/> Each slide contains HTML code
+    <br/> i.e. it can contain images, forms, divs, headers, links, etc…
+    <br/> Implement functionality for changing the visible slide after 5 seconds
+    <br/> Create buttons for next and previous slide
+    <div id="slider">
+        <div id="sliderContainer">
+            <ul id="sliderItemsList">
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 1</div>
+                    </div>
+                </li>
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 2</div>
+                    </div>
+                </li>
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 3</div>
+                    </div>
+                </li>
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 4</div>
+                    </div>
+                </li>
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 5</div>
+                    </div>
+                </li>
+                <li class="sliderItem">
+                    <div>
+                        <img src="http://www.placekitten.com/400/250" /><div class="overlay">Item 6</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="navigation">
+            <img id="navPrev" src="images/prev.png" />
+            <img id="navNext" src="images/next.png" />
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/jquery-1.10.1.js"></script>
+    <script type="text/javascript">
+        var sliderContainer = $('#sliderItemsList');
+        var sliderItemSize = $('.sliderItem').first().css('width');
+        sliderItemSize = +sliderItemSize.substr(0, sliderItemSize.length - 2);
+        console.log(sliderItemSize);
+        var maxLeft = $('#sliderItemsList').children().length * sliderItemSize;
+        sliderContainer.css('width', maxLeft + 'px');
+        var currentLeft = sliderContainer.css('left');
+        currentLeft = +currentLeft.substr(0, currentLeft.length-2);
 
-<script type="text/javascript" src="scripts/jquery-1.10.1.js">
-</script>
+        window.setInterval(function () {
+            move('left');
+        }, 5000, false);
+
+        $('#navNext').on('click', function () {
+            move('left');
+        });
+
+        $('#navPrev').on('click', function () {
+            move('right');
+        });
+
+        var move = function (dir) {
+            var pos = sliderContainer.css('left');
+            if (dir === "right") {
+            	if (currentLeft === 0) {
+            	    currentLeft = -maxLeft + sliderItemSize;
+            	} else {
+            	    currentLeft += sliderItemSize;
+            	}
+                sliderContainer.animate({
+                    left: currentLeft+'px'
+                }, 1000, function () {
+                	sliderContainer.css('left', currentLeft);
+                });
+            } else {
+                if (currentLeft === -maxLeft + sliderItemSize) {
+            		currentLeft = 0;
+            	} else {
+                    currentLeft -= sliderItemSize;
+            	}
+                sliderContainer.animate({
+                    left: currentLeft
+                }, 1000, function () { });
+            }
+        }
+    </script>
 </body>
 </html>

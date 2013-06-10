@@ -1,0 +1,58 @@
+#slider {
+	position: relative;
+	width: 500px;
+	margin: 100px auto;
+}
+
+#sliderContainer {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 400px;
+	height: 250px;
+	background-color: grey;
+	position: relative;
+}
+
+#sliderItemsList {
+	padding: 0;
+	height: 250px;
+	margin-top: 0;
+	left: 0;
+	list-style-type: none;
+	position: relative;
+}
+
+.sliderItem {
+	width: 400px;
+	height: 250px;
+	float: left;
+	position: relative;
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	width: 380px;
+	min-height: 30px;
+}
+
+#navigation {
+	position: absolute;
+	z-index: 1000;
+	top: 100px;
+	width: 500px;
+}
+
+#navPrev {
+	float: left;
+}
+
+#navNext {
+	float: right;
+}
