@@ -133,6 +133,44 @@
             return result;
         }
 
+        public List<List<int>> FindPathsWithSum(int sumToFind)
+        {
+            var results = FindPaths(sumToFind, this.root, new List<List<int>>());
+            return results;
+        }
+
+        public List<List<int>> FindSubtreesWithSum(int sumToFind)
+        {
+            var results = FindSubtrees(sumToFind, this.root, new List<List<int>>());
+            return results;
+        }
+
+        private List<List<int>> FindPaths(int sumToFind, int root, List<List<int>> paths)
+        {
+
+            Stack<KeyValuePair<int, int>> allPaths = new Stack<KeyValuePair<int, int>>();
+            allPaths.Push(new KeyValuePair<int, int>(root, root));
+
+            while (allPaths.Count > 0)
+            {
+                var currentRoot = allPaths.Pop();
+
+                foreach (var node in tree[currentRoot.Key])
+                {
+                    var pathSum = currentRoot.Value + node;
+                    if (pathSum == sumToFind)
+                    {
+                        paths.Add(GetPathNodes(root, node, new List<int>()));
+                    }
+                    allPaths.Push(new KeyValuePair<int, int>(node, pathSum));
+
+                    FindPaths(sumToFind, node, paths);
+                }
+            }
+
+            return paths;
+        }
+
         private List<int> GetLongest(List<int> subtree)
         {
             var routes = new List<List<int>>();
@@ -154,13 +192,7 @@
             return routes.First();
         }
 
-        public List<List<int>> FindPathsWithSum(int sumToFind)
-        {
-            var results = FindSum(sumToFind, this.root, new List<List<int>>());
-            return results;
-        }
-
-        private List<List<int>> FindSum(int sumToFind, int root, List<List<int>> paths)
+        private List<List<int>> FindSubtrees(int sumToFind, int root, List<List<int>> paths)
         {
             foreach (var node in tree[root])
             {
@@ -173,7 +205,7 @@
 
                 if (tree[node] != null)
                 {
-                    FindSum(sumToFind, node, paths);
+                    FindSubtrees(sumToFind, node, paths);
                 }
             }
 
@@ -206,6 +238,22 @@
                 if (tree[node] != null)
                 {
                     GetPathNodes(node, path);
+                }
+            }
+
+            return path; 
+        }
+
+        private List<int> GetPathNodes(int root, int destination, List<int> path)
+        {
+            // todo: fix this shit! 
+            throw new NotImplementedException();
+            path.Add(root);
+            foreach (var node in tree[root])
+            {
+                if (tree[node].Count != 0 && node != destination)
+                {
+                    GetPathNodes(node, destination, path);
                 }
             }
 

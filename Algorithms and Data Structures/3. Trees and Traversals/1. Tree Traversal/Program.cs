@@ -41,18 +41,30 @@
 
             // 5. All paths in the tree with given sum of their nodes
             Console.WriteLine("Paths with sum, entered by the user.");
-            Console.WriteLine("Please enter a sum to find:");
-
+            Console.Write("Please enter a sum to find: ");
+            int pathSumToFind = int.Parse(Console.ReadLine());
+            var paths = tree.FindPathsWithSum(pathSumToFind);
+            Console.WriteLine("Paths with sum: {0}", pathSumToFind);
+            foreach (var path in paths)
+            {
+                foreach (var node in path)
+                {
+                    Console.Write("{0} ", node);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            
 
             // 6. Subtrees with sum entered by the user
             Console.WriteLine("Subtrees with a sum, entered by the user.");
             Console.Write("Please enter a sum to find: ");
-            int sumToFind = int.Parse(Console.ReadLine());
-            var routes = tree.FindPathsWithSum(sumToFind);
-            Console.WriteLine("Subtrees with sum {0}:", sumToFind);
-            foreach (var route in routes)
+            int subtreeSumToFind = int.Parse(Console.ReadLine());
+            var subtrees = tree.FindSubtreesWithSum(subtreeSumToFind);
+            Console.WriteLine("Subtrees with sum {0}:", subtreeSumToFind);
+            foreach (var subtree in subtrees)
             {
-                foreach (var node in route)
+                foreach (var node in subtree)
                 {
                     Console.Write("{0} ", node);
                 }
