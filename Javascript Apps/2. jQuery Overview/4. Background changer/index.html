@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+Implement functionality to change the background color of a web page
+i.e. select a color from a color picker and set this color as the background color of the page
+    <p>Please select background color: </p>
+<input id="colorChanger" type="color"/>
+<script type="text/javascript" src="scripts/jquery-1.10.1.js">
+</script>
+<script type="text/javascript">
+$('#colorChanger').on('input', function() {
+    var color = $(this).val();
+    $('body').css('background-color', color);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses-module.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+
+</head>
+	 
+<body>
+	<script type="text/javascript">
+	     
+
+	    localStorage.clear();
+
+	    categories.createDefaultCategoryStorage();
+
+	    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "Cash", "Jack Daniels bottle");
+	    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "Visa Electron", "dentist");
+	    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "Cash", "Subway sandwiches");
+	    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "Master Card", "Plazza");
+	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "Master Card", "Kaufland");
+
+
+	    // categories.addCategory("Hobby");
+	    // categories.addSubCategory("Hobby", "Fishing");
+
+
+	    // categories.deleteCategory("medical");
+
+	    // categories.deleteSubCategory("medical", "dentist");
+
+	    // console.log(categories.getAllCategories());
+
+	    // console.log(categories.getAllSubCategories("medical"));
+
+	    console.log(storage.load("categories"));
+	    console.log(storage.load("expenses"));
+
+
+
+	    // //gets objects from specific category by 3 parameters  (category, year, month)
+	    // var object = expenses.getCategoryExpenses("foodAndGroceries", "2013", "05");
+	    //  console.log(object);
+
+
+	    // //gets objects from specific category by 2 parameters  (category, year)
+	    // var object = expenses.getCategoryExpenses("medical", "2013");
+	    //  console.log(object);
+
+	    //    //gets objects fromm all categories by one parameter - year 
+	    // var object = expenses.getAllExpenses("2013");
+	    //  console.log(object);
+
+	    // //gets objects from all categories by two parameters - year and month 
+
+	    // var object = expenses.getAllExpenses("2013", "05");
+	    // console.log(object);
+
+	    // var object = expenses.getAllExpensesSum("2013");
+	    // console.log(object);
+
+	    // var object = expenses.getAllExpensesSum("2013", "05");
+	    // console.log(object);
+
+	    var object = expenses.getCategoryExpensesSum("foodAndGroceries", "2013");
+	    console.log(object);
+
+	    var object = expenses.getCategoryExpensesSum("foodAndGroceries", "2013", "05");
+	    console.log(object);
+
+
+	    // localStorage.clear();
+
+
+
+
+	</script>
+</body>
+</html>

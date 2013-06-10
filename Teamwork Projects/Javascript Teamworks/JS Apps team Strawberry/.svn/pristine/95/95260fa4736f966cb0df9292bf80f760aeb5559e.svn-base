@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses-module.js"></script>
+	<script type="text/javascript" src="scripts/accounts.js"></script>
+</head>
+	 
+<body>
+	<script type="text/javascript">
+	    localStorage.clear();
+
+
+	    accounts.addAccount("credit", "Visa", 720.00, "16/09/2014");
+	    accounts.addAccount("debit", "Visa Electron", 1290.24, "24/11/2014");
+	    accounts.addAccount("debit", "Visa Electron", 430.20, "14/01/2014");
+
+	    accounts.makePayment("credit", "Visa", 100);
+	    accounts.makePayment("debit", "Visa Electron", 124.50);
+
+	    accounts.addFunds("debit", "Visa Electron", 452.00);
+
+	    var loaded = storage.load("accounts");
+	    console.log(loaded);
+
+
+	    console.log("Accounts balance: " + accounts.totalBalance());
+
+	    console.log("Debit cards balance: " + accounts.totalBalance("debit"));
+
+	    console.log(loaded.debit);
+
+
+
+	</script>
+</body>
+</html>

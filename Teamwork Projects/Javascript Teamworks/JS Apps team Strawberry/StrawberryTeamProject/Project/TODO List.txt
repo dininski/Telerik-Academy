@@ -1,0 +1,3 @@
+﻿Expenses module:
+ - get expenses list by subcategory
+ - get expenses sum by subcategory

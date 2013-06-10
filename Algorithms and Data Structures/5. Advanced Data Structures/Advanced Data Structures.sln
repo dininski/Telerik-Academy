@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Priority Queue Unit Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Products In Range", "2. Products In Range\2. Products In Range.csproj", "{0E93544F-B807-4BD5-B9C8-4998F08C4C46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Words and trie", "3. Words and trie\3. Words and trie.csproj", "{EA7C03D1-3475-4C43-BDA1-46ADE42BFE9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{0E93544F-B807-4BD5-B9C8-4998F08C4C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E93544F-B807-4BD5-B9C8-4998F08C4C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E93544F-B807-4BD5-B9C8-4998F08C4C46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA7C03D1-3475-4C43-BDA1-46ADE42BFE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA7C03D1-3475-4C43-BDA1-46ADE42BFE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA7C03D1-3475-4C43-BDA1-46ADE42BFE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA7C03D1-3475-4C43-BDA1-46ADE42BFE9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
