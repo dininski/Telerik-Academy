@@ -40,6 +40,7 @@
             Console.WriteLine();
 
             // 5. All paths in the tree with given sum of their nodes
+            // NOTE: bug - adding 0 length paths more than once.
             Console.WriteLine("Paths with sum, entered by the user.");
             Console.Write("Please enter a sum to find: ");
             int pathSumToFind = int.Parse(Console.ReadLine());
@@ -53,8 +54,6 @@
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
-            
 
             // 6. Subtrees with sum entered by the user
             Console.WriteLine("Subtrees with a sum, entered by the user.");

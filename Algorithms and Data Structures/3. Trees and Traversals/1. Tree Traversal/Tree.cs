@@ -162,6 +162,12 @@
                     {
                         paths.Add(GetPathNodes(root, node, new List<int>()));
                     }
+
+                    if (node == sumToFind)
+                    {
+                        paths.Add(new List<int>(new int[] { node }));
+                    }
+
                     allPaths.Push(new KeyValuePair<int, int>(node, pathSum));
 
                     FindPaths(sumToFind, node, paths);
@@ -241,20 +247,36 @@
                 }
             }
 
-            return path; 
+            return path;
         }
 
         private List<int> GetPathNodes(int root, int destination, List<int> path)
         {
-            // todo: fix this shit! 
-            throw new NotImplementedException();
-            path.Add(root);
-            foreach (var node in tree[root])
+            var nodes = new Stack<int>();
+            nodes.Push(root);
+
+            List<KeyValuePair<int, int?>> allNodes = new List<KeyValuePair<int, int?>>();
+            allNodes.Add(new KeyValuePair<int, int?>(root, null));
+
+            while (nodes.Count > 0)
             {
-                if (tree[node].Count != 0 && node != destination)
+                var current = nodes.Pop();
+                if (tree[current].Count != 0)
                 {
-                    GetPathNodes(node, destination, path);
+                    foreach (var node in tree[current])
+                    {
+                        nodes.Push(node);
+                        allNodes.Add(new KeyValuePair<int, int?>(node, current));
+                    }
                 }
+            }
+
+            int? parent = destination;
+            while (parent != null)
+            {
+                var currentNode = allNodes.Where(x => x.Key == parent);
+                path.Add(currentNode.First().Key);
+                parent = currentNode.First().Value;
             }
 
             return path;
