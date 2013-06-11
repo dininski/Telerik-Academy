@@ -5,8 +5,37 @@
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
+    <div id="tableContainer"></div>
+    <script type="text/javascript" src="scripts/jquery-1.10.1.js">
+    </script>
 
-<script type="text/javascript" src="scripts/jquery-1.10.1.js">
-</script>
+    <script type="text/javascript">
+        var Student = function (fname, lname, grade) {
+            this.fname = fname;
+            this.lname = lname;
+            this.grade = grade;
+        }
+
+        var pesho = new Student("Pesho", "Peshov", 11);
+        var gosho = new Student("Gosho", "Goshov", 10);
+        var students = [];
+        students.push(pesho);
+        students.push(gosho);
+
+        var generateTable = function (tableContainer, students) {
+            var tableContainer = $(tableContainer);
+            tableContainer.append('<table><thead><th>First Name</th> ' +
+                '<th>Last Name</th><th>Grade</th></thead><tbody></tbody></table>');
+            var tableBody = tableContainer.children('table').children('tbody');
+
+            for (var i = 0; i < students.length; i++) {
+                tableBody.append('<tr><td>' + students[i].fname +
+                    '</td><td>' + students[i].lname +
+                    '</td><td>' + students[i].grade + '</td></tr>');
+            }
+        }
+
+        generateTable('#tableContainer', students);
+    </script>
 </body>
 </html>

@@ -10,11 +10,9 @@
     </div>
 
     <button id="addElementsButton">Click to add before and after elements</button>
-    <script type="text/javascript" src="scripts/jquery-1.10.1.js">
-    
-    </script>
+    <script type="text/javascript" src="scripts/jquery-1.10.1.js"></script>
 
-    <script>
+    <script type="text/javascript">
         jQuery.prototype.appendNewElement = function (elementToAppend) {
             $(this).after(elementToAppend);
         }
@@ -24,7 +22,7 @@
         }
 
         var newElement = document.createElement('div');
-        
+
         $('#addElementsButton').on('click', function () {
             var elementToPrepend = newElement.cloneNode(true);
             $(elementToPrepend).addClass('prepended').text('prepended before the element');
