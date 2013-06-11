@@ -5,8 +5,59 @@
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
+    <div id="gridViewContainer"></div>
+    <script type="text/javascript" src="scripts/jquery-1.10.1.js"></script>
+    <script type="text/javascript">
+        var GridViewControl = function (containerSelector, head, rowsArray) {
+            var container = $(containerSelector);
+            header = head;
+            var rows = rowsArray;
+            var tableElement = document.createElement('table');
+            var table = $(tableElement);
+            container.append(table);
 
-<script type="text/javascript" src="scripts/jquery-1.10.1.js">
-</script>
+            this.addRow = function (newRow) {
+                rows.push(newRow);
+            };
+
+            this.changeHeader = function (header) {
+                head = header;
+                renderHeader();
+            };
+
+            this.render = function () {
+                renderHeader();
+                renderRows();
+            }
+
+            var renderHeader = function () {
+                var tableThead = table.children('thead');
+                var theadElement = document.createElement('thead');
+
+                theadElement = document.createElement('thead');
+                var thead = $(theadElement);
+
+                for (var i = 0; i < head.length; i++) {
+                    thead.append('<th>' + head[i] + '</th>');
+                }
+
+                table.append(thead);
+                container.append(table);
+            }
+
+            var renderRows = function() {
+                
+            }
+        }
+
+        var head = [];
+        head.push('First Name');
+        head.push('Last Name');
+        head.push('Grade');
+
+        var test = new GridViewControl('#gridViewContainer', head, null);
+        test.render();
+        test.changeHeader(['123']);
+    </script>
 </body>
 </html>
