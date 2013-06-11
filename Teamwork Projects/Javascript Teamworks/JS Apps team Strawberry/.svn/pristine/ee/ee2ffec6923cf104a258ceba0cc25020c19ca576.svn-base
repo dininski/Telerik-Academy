@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>	  
+	<script type="text/javascript" src="scripts/budget.js"></script>
+    <script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses-module.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+
+</head>
+	 
+<body>
+	<script type="text/javascript">
+        storage.clear();
+
+        expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "Cash", "Jack Daniels bottle");
+        expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "Visa Electron", "dentist");
+        expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "Cash", "Subway sandwiches");
+        expenses.addExpense("entertainment", "discos", "14/05/2013", 157.99, "Master Card", "Plazza");
+        expenses.addExpense("foodAndGroceries", "groceries", "05/05/2013", 60.22, "Master Card", "Kaufland");
+
+        homeBudget.addIncome("05", "2013", 1200);
+        console.log("Income : " + homeBudget.getIncome("05", "2013"));
+
+        homeBudget.addExpenses("05", "2013");
+        console.log("Total expense : " + homeBudget.getExpenses("05", "2013"));
+        
+        homeBudget.addBudget("05", "2013");
+        console.log("Remaining budget : " + homeBudget.getBudget("05", "2013"));
+	</script>
+</body>
+</html>
