@@ -1,0 +1,24 @@
+div {
+	text-align: center;
+}
+
+.elementToSurround {
+	width: 100px;
+	height: 100px;
+	background-color: green;
+	color: white;
+}
+
+.prepended {
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+	color: white;
+}
+
+.appended {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	color: white;
+}

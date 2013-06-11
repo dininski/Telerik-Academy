@@ -5,8 +5,37 @@
     <link rel="stylesheet" type="text/css" href="styles/default.css">
 </head>
 <body>
+    <div class="container">
+        <div class="elementToSurround">This element will be surrounded!</div>
+    </div>
 
-<script type="text/javascript" src="scripts/jquery-1.10.1.js">
-</script>
+    <button id="addElementsButton">Click to add before and after elements</button>
+    <script type="text/javascript" src="scripts/jquery-1.10.1.js">
+    
+    </script>
+
+    <script>
+        jQuery.prototype.appendNewElement = function (elementToAppend) {
+            $(this).after(elementToAppend);
+        }
+
+        jQuery.prototype.prependNewElement = function (elementToPrepend) {
+            $(this).before(elementToPrepend);
+        }
+
+        var newElement = document.createElement('div');
+        
+        $('#addElementsButton').on('click', function () {
+            var elementToPrepend = newElement.cloneNode(true);
+            $(elementToPrepend).addClass('prepended').text('prepended before the element');
+
+            var elementToAppend = newElement.cloneNode(true);
+            $(elementToAppend).addClass('appended').text('appended after the element');
+
+            $('.elementToSurround').appendNewElement(elementToAppend);
+            $('.elementToSurround').prependNewElement(elementToPrepend);
+        });
+
+    </script>
 </body>
 </html>
