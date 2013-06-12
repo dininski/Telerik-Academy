@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Maximum Path", "Maximum Path\1. Maximum Path.csproj", "{B2C9500F-4BC7-435D-A942-2AA3511A477A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Maximum Path", "1. Maximum Path\1. Maximum Path.csproj", "{B2C9500F-4BC7-435D-A942-2AA3511A477A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Horse Matrix", "5. Horse Matrix\5. Horse Matrix.csproj", "{DF68180A-5C91-49C0-9C1F-04E9A8251D31}"
 EndProject
