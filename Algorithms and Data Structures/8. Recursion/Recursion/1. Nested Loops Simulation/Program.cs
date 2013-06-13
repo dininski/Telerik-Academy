@@ -46,6 +46,7 @@ namespace NestedLoops
             {
                 Console.Write("{0} ", arr[i]);
             }
+
             Console.WriteLine();
         }
     }
