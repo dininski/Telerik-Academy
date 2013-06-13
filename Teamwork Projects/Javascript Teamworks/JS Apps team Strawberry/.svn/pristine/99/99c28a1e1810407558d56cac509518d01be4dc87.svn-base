@@ -57,12 +57,11 @@
 
         storage.save("accounts", accounts);
 
-        var income = [
-
-        ]
+        var income = []
 
         storage.save("income", income);
     }
+
 
     var deleteAccount = function (type, name) {
         var accounts = storage.load("accounts");

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6 Feb - 4 3d Stars", "6 Feb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Exam - 4 3d Lines 50 out of 100", "Test Exam - 4 3d Lines\Test Exam - 4 3d Lines 50 out of 100.csproj", "{B1AC75D8-99C8-46AA-9336-C13A2FBA4696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8 Feb - Crossword", "8 Feb - Crossword\8 Feb - Crossword.csproj", "{5E34AF21-39EA-48C2-BAFE-33C460C0FC88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{B1AC75D8-99C8-46AA-9336-C13A2FBA4696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1AC75D8-99C8-46AA-9336-C13A2FBA4696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1AC75D8-99C8-46AA-9336-C13A2FBA4696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E34AF21-39EA-48C2-BAFE-33C460C0FC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E34AF21-39EA-48C2-BAFE-33C460C0FC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E34AF21-39EA-48C2-BAFE-33C460C0FC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E34AF21-39EA-48C2-BAFE-33C460C0FC88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -138,9 +138,8 @@
 
 
 	<script type="text/javascript">
-	    // credit cards have negative balance, can buy anything when balance is negative
-
-	    storage.clear();
+	    //credit cards have negative balance, can buy anything when balance is negative
+	    localStorage.clear();
 	    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
 	    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
 	    accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
@@ -154,8 +153,6 @@
 	    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
 	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
 	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "debit", "Visa Electron", "Kaufland");
-
-
 
 	    var allAccounts = storage.load("accounts");
 	    var totalBalance = accounts.totalBalance();
@@ -270,9 +267,7 @@
 
 	    // console.log(accounts["debit"][0].name);
 
-	    console.log(storage.load("expenses"));
-	    console.log(storage.load("accounts"));
-	    console.log(storage.load("income"));
+
 
 
 
