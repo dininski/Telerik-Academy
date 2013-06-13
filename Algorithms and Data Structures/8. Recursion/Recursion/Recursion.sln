@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. All combinations without
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Permutations", "4. Permutations\4. Permutations.csproj", "{053D41EE-3BD7-4AFE-B572-57FCCF384185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_5. Ordered subsets of element set", "5. Ordered subsets of element set\_5. Ordered subsets of element set.csproj", "{DB43E72C-690E-4CE2-8A25-0BBD84702763}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Ordered subsets of element set", "5. Ordered subsets of element set\5. Ordered subsets of element set.csproj", "{DB43E72C-690E-4CE2-8A25-0BBD84702763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6. All subsets of strings", "6. All subsets of strings\_6. All subsets of strings.csproj", "{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{DB43E72C-690E-4CE2-8A25-0BBD84702763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB43E72C-690E-4CE2-8A25-0BBD84702763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB43E72C-690E-4CE2-8A25-0BBD84702763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

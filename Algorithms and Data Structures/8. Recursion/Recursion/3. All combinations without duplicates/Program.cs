@@ -27,12 +27,7 @@ namespace CombinationsNoDuplicates
             {
                 for (int i = start; i <= max; i++)
                 {
-                    if (index > 0 && result[index - 1] < i)
-                    {
-                        result[index] = i;
-                        Recursive(index + 1, result, start + 1, max);
-                    }
-                    else if (index == 0)
+                    if ((index == 0) || (index > 0 && result[index - 1] < i))
                     {
                         result[index] = i;
                         Recursive(index + 1, result, start + 1, max);
