@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+
+    <!-- jQuery and jQuery Mobile -->
+    <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+    <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!--<link rel="stylesheet" href="/resources/demos/style.css" />-->
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+         
+    </script>
+    <script src="scripts/accounts.js"></script>
+    <script src="scripts/local-storage-extensions.js"></script>
+    <script src="scripts/storage.js"></script>
+    
+
+    <style>
+        div > ul > li a > span {
+            display: inline-block;
+            float: right;
+            color: #61B329;
+            font-size: 14px;
+            text-shadow: 1px 1px 0px green;
+        }
+
+        span.totalAccountsSum {
+            display: inline-block;
+            float: right;
+            color: white;
+        }
+
+        p#addAccountButton div.ui-btn-shadow {
+            display: inline-block;
+        }
+
+        p#addAccountButton > div {
+            margin-right: 5px;
+            width: 78%;
+        }
+        span.ui-btn-inner {
+            width:100%;
+        }
+
+        .ui-content div div {
+            float:right;
+        }
+        .ui-content div p {
+            float:right;
+        }
+        #add {
+            
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="Div1">
+        <div data-theme="a" data-role="header">
+            <h3>Add account
+        </h3>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="selectmenu2">
+                    Type:         
+                </label>
+                <select id="type" id="selectmenu2" name="Type" data-theme="d">
+                    <option value="debit" data-theme="b">Debit Card
+                </option>
+                    <option value="credit" data-theme="b">Credit Card
+                </option>
+                    <option value="bank" data-theme="b">Bank Account
+                </option>
+                </select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="textinput2">
+                    Name:
+           
+                </label>
+                <input name="" id="name" placeholder="" value="" type="text" data-mini="true" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="textinput3">
+                    Balance:           
+                </label>
+                <input name="" id="balance" placeholder="" value="" type="text" data-mini="true" />
+            </div>
+           <div data-role="fieldcontain", id="addAccountButton">
+                <label>
+                    Date:           
+                </label>                
+                <input type="text" id="datepicker" />
+            </div>
+            <a id="add-account-button" data-role="button" data-theme="b" href="#page1" >Add</a>
+        </div>
+    </div>
+    <script>
+       
+
+        $("#add-account-button").on('click', function(){
+            var type = $('#type').val();
+            var accName = $('#name').val();
+            var balance = Number($('#balance').val()).toFixed(2);
+            var date = $('#datepicker').val();
+            accounts.addAccount(type, accName, Number(balance), date);
+            location.href="accounts-tests.html";
+        })
+
+    </script>
+</body>
+</html>

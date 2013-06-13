@@ -11,8 +11,8 @@
     <script type="text/javascript" src="scripts/chart.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
+        storage.clear();
 
-        accounts.init();
         accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
         accounts.addAccount("credit", "Master Card", -12520.00, "16/11/2014");
         accounts.addAccount("debit", "Visa Electron", 12830.24, "24/11/2014");
@@ -36,6 +36,7 @@
         expenses.addExpense("foodAndGroceries", "groceries", "27/11/2013", 422.66, "cash", "", "Jack Daniels bottle");
         expenses.addExpense("medical", "dentist", "20/12/2013", 1200.00, "debit", "Visa Electron", "dentist");
 
+
         homeBudget.addExpenses("01", "2013");
         homeBudget.addExpenses("02", "2013");
         homeBudget.addExpenses("03", "2013");
@@ -48,6 +49,7 @@
         homeBudget.addExpenses("10", "2013");
         homeBudget.addExpenses("11", "2013");
         homeBudget.addExpenses("12", "2013");
+
 
         accounts.addFunds("credit", "Visa", 1720.00, "16/01/2013", "NA", "NA");
         accounts.addFunds("credit", "Visa", 1820.00, "16/02/2013", "NA", "NA");

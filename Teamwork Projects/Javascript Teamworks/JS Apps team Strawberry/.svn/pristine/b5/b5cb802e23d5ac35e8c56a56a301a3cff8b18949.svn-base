@@ -106,7 +106,13 @@
     }
 
     var totalBalance = function (accType) {
-        return accType ? getAccTypeBalance(accType) : getAllAccBalance();
+        if (arguments.length == 0) {
+            return getAllAccBalance();
+        };
+
+        if (arguments.length == 1) {
+            return getAccTypeBalance(accType);
+        };
     }
 
     function getAllAccBalance() {
@@ -177,14 +183,13 @@
     }
 
     var getAllIncomesSum = function (year, month) {
-        return arguments.length == 1 ? getYearIncome(year) : getMonthIncome(year, month);
-        // if (arguments.length == 1) {
-        //     return getYearIncome(year);
-        // };
+        if (arguments.length == 1) {
+            return getYearIncome(year);
+        };
 
-        // if (arguments.length == 2) {
-        //     return getMonthIncome(year, month);
-        // };
+        if (arguments.length == 2) {
+            return getMonthIncome(year, month);
+        };
     }
 
 

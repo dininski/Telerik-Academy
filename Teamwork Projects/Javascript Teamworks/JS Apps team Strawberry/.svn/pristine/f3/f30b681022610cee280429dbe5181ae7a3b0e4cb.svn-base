@@ -10,14 +10,12 @@
 	<script type="text/javascript" src="scripts/categories.js"></script>
 
 
+
 	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
 	  
-  <!-- Angular.js -->  
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-
-  <!-- jQuery and jQuery Mobile -->
-	<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
-	<script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	  <!-- jQuery and jQuery Mobile -->
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 
     <style>
 	    div > ul > li a > span{
@@ -145,12 +143,12 @@
 
 	    accounts.init();
 
-	    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
-	    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
-	    accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
-	    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
-	    accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
-	    accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+	    // accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+	    // accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+	    // accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
+	    // accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+	    // accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
+	    // accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
 
 	    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
 	    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");

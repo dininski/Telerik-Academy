@@ -8,7 +8,10 @@
 	<script type="text/javascript" src="scripts/expenses.js"></script>
 	<script type="text/javascript" src="scripts/accounts.js"></script>
 	<script type="text/javascript" src="scripts/categories.js"></script>
-	
+
+
+
+
 	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
 	  
 	  <!-- jQuery and jQuery Mobile -->
@@ -45,7 +48,7 @@
 
         <a id="delete-button" data-role="button" href="#page1" data-icon="delete" data-iconpos="right"
         class="ui-btn-right">
-            Delete card
+            Delete
         </a>
 
         <a id="backButton" data-role="button" href="" data-icon="back" data-iconpos="left"
@@ -70,12 +73,10 @@
     </div>
 </div>
 	<script type="text/javascript">
-
-		accounts.init();
-
 	    $("#backButton").bind('click', function () {
 	        location.href = "accounts-tests.html";
 	    });
+
 
 	    var get = location.search;
 	    get = get.substring(1, get.length);
