@@ -1,30 +1,36 @@
 ﻿var categories = (function () {
+    var categoryStorage;
+    var categoryStorageName = 'categories';
+    var expenses;
+    var expensesStorageName = 'expenses';
+
+    var init = function() {
+        categoryStorage = storage.load(categoryStorageName);
+        expenses = storage.load(expensesStorageName);
+        if (expenses === null || expenses === undefined) {
+            createDefaultCategoryStorage();
+        }
+
+        expenses = storage.load(expensesStorageName);
+    }
 
     var addCategory = function (categoryName) {
-        // if (storage.load("categories") == null) {
-        // 	createCategoryStorage();
-        // };
-
-        var categoryStorage = storage.load("categories");
 
         if (categoryStorage[categoryName] == null) {
 
             categoryStorage[categoryName] = [];
             categoryStorage[categoryName].push("none");
-            storage.save("categories", categoryStorage);
+            storage.save(categoryStorageName, categoryStorage);
 
-            var expenses = storage.load("expenses");
             expenses[categoryName] = {};
             expenses[categoryName]["none"] = [];
-            storage.save("expenses", expenses);
+            storage.save(expensesStorageName, expenses);
         };
     }
 
-    var createDefaultCategoryStorage = function () {
-        if (storage.load("expenses") == null) {
+    var createDefaultCategoryStorage = function () { 
             createStorage();
             createCategoryStorage();
-        };
     }
 
     function createCategoryStorage() {
@@ -34,7 +40,7 @@
             medical: ["medicines", "dentist", "doctor", "none"],
         }
 
-        storage.save("categories", categoryStorage);
+        storage.save(categoryStorageName, categoryStorage);
     }
 
     function createStorage() {
@@ -67,50 +73,42 @@
         storage.save("expenses", expenses);
     }
 
-
+    // done up to here
     var addSubCategory = function (category, subCategory) {
-
-        var categoryStorage = storage.load("categories");
 
         if (categoryStorage[category][subCategory] == null) {
 
             categoryStorage[category].push(subCategory);
-            storage.save("categories", categoryStorage);
+            storage.save(categoryStorageName, categoryStorage);
 
             var expenses = storage.load("expenses");
             expenses[category][subCategory] = [];
-            storage.save("expenses", expenses);
+            storage.save(expensesStorageName, expenses);
         };
     }
 
     var deleteCategory = function (category) {
-        var categories = storage.load("categories");
-        var expenses = storage.load("expenses");
-
-        if (categories[category] != null) {
-            delete categories[category];
+        if (categoryStorage[category] != null) {
+            delete categoryStorage[category];
             delete expenses[category];
-            storage.save("categories", categories);
-            storage.save("expenses", expenses);
+            storage.save(categoryStorageName, categoryStorage);
+            storage.save(expensesStorageName, expenses);
         };
     }
 
     var deleteSubCategory = function (category, subCategory) {
-        var categories = storage.load("categories");
-        var expenses = storage.load("expenses");
 
-        var element = categories[category].indexOf(subCategory);
-        categories[category].splice(element, 1);
+        var element = categoryStorage[category].indexOf(subCategory);
+        categoryStorage[category].splice(element, 1);
 
         delete expenses[category][subCategory];
-        storage.save("categories", categories);
-        storage.save("expenses", expenses);
+        storage.save(categoryStorageName, categoryStorage);
+        storage.save(expensesStorageName, expenses);
     }
 
     var getAllCategories = function () {
         var result = [];
-        var categories = storage.load("categories");
-        for (var category in categories) {
+        for (var category in categoryStorage) {
             result.push(category);
         }
 
@@ -118,13 +116,11 @@
     }
 
     var getAllSubCategories = function (category) {
-        var result = [];
-        var categories = storage.load("categories");
-
-        return categories[category];
+        return categoryStorage[category];
     }
 
     return {
+        init: init,
         addCategory: addCategory,
         createDefaultCategoryStorage: createDefaultCategoryStorage,
         addSubCategory: addSubCategory,
@@ -132,7 +128,5 @@
         deleteSubCategory: deleteSubCategory,
         getAllCategories: getAllCategories,
         getAllSubCategories: getAllSubCategories
-
     }
-
 }())

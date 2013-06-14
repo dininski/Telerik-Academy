@@ -9,8 +9,13 @@
 	<script type="text/javascript" src="scripts/accounts.js"></script>
 	<script type="text/javascript" src="scripts/categories.js"></script>
 
+
 	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
 	  
+  <!-- Angular.js -->  
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+  <!-- jQuery and jQuery Mobile -->
 	<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
 	<script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 
@@ -36,11 +41,11 @@
 	<!-- Home -->
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
-        <a id="add-new-account-button" data-role="button" href="#" data-icon="plus" data-iconpos="right"
+        <a id="add-new-account-button" data-role="button" href="#page1" data-icon="plus" data-iconpos="right"
         class="ui-btn-right">
             Add
         </a>
-        <a id="homeButton" data-role="button" href="#" data-icon="home" data-iconpos="left"
+        <a data-role="button" href="#page1" data-icon="home" data-iconpos="left"
         class="ui-btn-left">
             Home
         </a>
@@ -63,24 +68,24 @@
 
 	<script type="text/javascript">
 	    // credit cards have negative balance, can buy anything when balance is negative
-	    //storage.clear();
-        // accounts.init();
-        // categories.init();
-        // expenses.init();;
+	    storage.clear();
+        accounts.init();
+        categories.init();
+        expenses.init();;
 
-	    // accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
-	    // accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
-	    // accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
-	    // accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
-	    // accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
-	    // accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+	    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+	    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+	    accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
+	    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+	    accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
+	    accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
 
-	    // expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
-	    // expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");
-	    // expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
-	    // expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
-	    // expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
-	    // expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "debit", "Visa Electron", "Kaufland");
+	    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
+	    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");
+	    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
+	    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
+	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
+	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "debit", "Visa Electron", "Kaufland");
 
 	    var allAccounts = storage.load("accounts");
 	    var totalBalance = accounts.totalBalance();
@@ -88,11 +93,7 @@
 	    $("#totalBalance").text(totalBalance).css({ 'font-size': "14px", 'color': "#61B329", 'text-shadow': "text-shadow: 1px 1px 0px green" });
 
 	    $("#add-new-account-button").on('click', function(){
-	    	location.href="addAccount.html";
-	    })
-
-	    $("#homeButton").on('click', function(){
-	    	location.href="index.html";
+	    	location.href="AddAccount.html";
 	    })
 
 	    for (var type in allAccounts) {
@@ -131,6 +132,7 @@
 		    	)
 	            $collapse.append($ul);
 	        }
+	        
 	        $("#acc-container").append($collapse);
 	    }
 

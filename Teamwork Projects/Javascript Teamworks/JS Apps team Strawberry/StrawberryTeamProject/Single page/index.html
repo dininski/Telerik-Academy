@@ -1,27 +1,47 @@
 <!DOCTYPE html>
-<html ng-app="personalFinance">
+<html class='ui-mobile' ng-app="personalFinance">
 <head>
-	<title></title>
-	<script type="text/javascript" src="scripts/angular.min.js"></script>
-	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
-	<script type="text/javascript" src="scripts/storage.js"></script>
-	<script type="text/javascript" src="scripts/expenses.js"></script>
-	<script type="text/javascript" src="scripts/accounts.js"></script>
-	<script type="text/javascript" src="scripts/personalFinance.js"></script>
-	<script type="text/javascript" src="scripts/categories.js"></script>
-	<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
-	<script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	  
-	<!-- jQuery and jQuery Mobile -->
+    <title ng-bind-template="{{title}}">Title</title>
+    
+    <script type="text/javascript" src="scripts/local-storage-extensions.js"></script>
+    <script type="text/javascript" src="scripts/storage.js"></script>
+    <script type="text/javascript" src="scripts/expenses.js"></script>
+    <script type="text/javascript" src="scripts/accounts.js"></script>
+    <script type="text/javascript" src="scripts/categories.js"></script>
+
+    <script type="text/javascript" src="scripts/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/personalFinance.js"></script>
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery.mobile-1.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/jquery.mobile-1.3.1.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
 </head>
 <body>
-<div data-role='page'>
-	<div id="view" ng-view data-role='content'></div>
-</div>
-<script type="text/javascript">
-    accounts.init();
-</script>
+    <div data-role="page" id="page1">
+        <div data-theme="a" data-role="header">
+
+            <a id="add-new-account-button" data-role="button" href="#" data-icon="plus" data-iconpos="right"
+                class="ui-btn-right">Add
+            </a>
+            <a href='/' id="homeButton" data-role="button" href="#" data-icon="home" data-iconpos="left"
+                class="ui-btn-left">Home
+            </a>
+
+            <h3 ng-bind-template="{{header}}"></h3>
+        </div>
+
+        <div ng-view>
+        </div>
+
+        <div data-theme="a" data-role="footer" data-position="fixed">
+            <h3 ng-bind-template="{{footer}}"></h3>
+        </div>
+    </div>
+    <script type="text/javascript">
+        accounts.init();
+        categories.init();
+        expenses.init();;
+    </script>
 </body>
 </html>

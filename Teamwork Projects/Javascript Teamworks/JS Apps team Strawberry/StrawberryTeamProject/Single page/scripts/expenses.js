@@ -1,5 +1,23 @@
 ﻿var expenses = (function () {
+    var expensesStorage;
+    var expensesStorageName = 'expenses';
+    var categoriesStorage;
+    var categoriesStorageName = 'categories';
 
+    var init = function () {
+        if (storage.load(expensesStorageName) == null ) {
+            categories.createDefaultCategoryStorage();
+        };
+
+        expensesStorage = storage.load(expensesStorageName);
+        categoriesStorage = storage.load(categoriesStorageName);
+
+        if (categoriesStorage === undefined || categoriesStorage === null) {
+            categories.createDefaultCategoryStorage();
+        };
+        
+        categoriesStorage = storage.load(categoriesStorageName);
+    }
     // add expense by 6 parameters -  
     // category
     // subcategory
@@ -9,29 +27,23 @@
     // notes (any string is allowed)
     var addExpense = function (category, subCategory, date, amount, paymentMethod, accName, notes) {
 
-        if (storage.load("expenses") == null) {
-            categories.createDefaultCategoryStorage();
-        };
-
         if (isAddingExpensePossible(category, subCategory) &&
                 accounts.makePayment(paymentMethod, accName, amount)) {
 
             var objectToAdd = createObject(date, amount, paymentMethod, accName, notes);
-            var loadedExpenses = storage.load("expenses");
-            loadedExpenses[category][subCategory].push(objectToAdd);
-            storage.save("expenses", loadedExpenses);
+            expensesStorage[category][subCategory].push(objectToAdd);
+            storage.save(expensesStorageName, expensesStorage);
         }
     }
 
     function isAddingExpensePossible(category, subcategory) {
-        var categories = storage.load("categories");
         var isPossible = true;
 
-        if (categories[category] == null) {
+        if (categoriesStorage[category] == null) {
             isPossible = false;
         } else {
-            for (var i = 0; i < categories[category].length; i++) {
-                if (categories[category][i] == subcategory) {
+            for (var i = 0; i < categoriesStorage[category].length; i++) {
+                if (categoriesStorage[category][i] == subcategory) {
                     isPossible = true;
                     break;
                 };
@@ -99,9 +111,8 @@
     // get expenses for a specific month
     // returns an array of objects
     function monthCategoryExpenses(category, year, month) {
-        var expenses = storage.load("expenses");
         var result = [];
-        var object = expenses[category];
+        var object = expensesStorage[category];
 
         var subCat = categories.getAllSubCategories(category);
 
@@ -120,9 +131,8 @@
     // get expenses for a specific year
     // returns an array of objects
     function yearCategoryExpenses(category, year) {
-        var expenses = storage.load("expenses");
         var result = [];
-        var object = expenses[category];
+        var object = expensesStorage[category];
 
         var subCat = categories.getAllSubCategories(category);
 
@@ -138,16 +148,15 @@
     }
 
     var getAllExpensesByAccount = function (paymentMethod, accName) {
-        var expenses = storage.load("expenses");
         var result = [];
 
-        for (var category in expenses) {
+        for (var category in expensesStorage) {
             var subCat = categories.getAllSubCategories(category);
             for (var i = 0; i < subCat.length; i++) {
-                for (var j = 0; j < expenses[category][subCat[i]].length; j++) {
-                    if (expenses[category][subCat[i]][j].paymentMethod == paymentMethod &&
-                            expenses[category][subCat[i]][j].accName == accName) {
-                        result.push(expenses[category][subCat[i]][j]);
+                for (var j = 0; j < expensesStorage[category][subCat[i]].length; j++) {
+                    if (expensesStorage[category][subCat[i]][j].paymentMethod == paymentMethod &&
+                            expensesStorage[category][subCat[i]][j].accName == accName) {
+                        result.push(expensesStorage[category][subCat[i]][j]);
                     };
                 };
             }
@@ -169,15 +178,14 @@
     }
 
     function yearAllExpenses(year) {
-        var expenses = storage.load("expenses");
         var result = [];
 
-        for (var category in expenses) {
+        for (var category in expensesStorage) {
             var subCat = categories.getAllSubCategories(category);
             for (var i = 0; i < subCat.length; i++) {
-                for (var j = 0; j < expenses[category][subCat[i]].length; j++) {
-                    if (getYear(expenses[category][subCat[i]][j].date) == year) {
-                        result.push(expenses[category][subCat[i]][j]);
+                for (var j = 0; j < expensesStorage[category][subCat[i]].length; j++) {
+                    if (getYear(expensesStorage[category][subCat[i]][j].date) == year) {
+                        result.push(expensesStorage[category][subCat[i]][j]);
                     };
                 };
             }
@@ -186,16 +194,15 @@
     }
 
     function monthAllExpenses(year, month) {
-        var expenses = storage.load("expenses");
         var result = [];
 
-        for (var category in expenses) {
+        for (var category in expensesStorage) {
             var subCat = categories.getAllSubCategories(category);
             for (var i = 0; i < subCat.length; i++) {
-                for (var j = 0; j < expenses[category][subCat[i]].length; j++) {
-                    if (getYear(expenses[category][subCat[i]][j].date) == year &&
-				 		getMonth(expenses[category][subCat[i]][j].date) == month) {
-                        result.push(expenses[category][subCat[i]][j]);
+                for (var j = 0; j < expensesStorage[category][subCat[i]].length; j++) {
+                    if (getYear(expensesStorage[category][subCat[i]][j].date) == year &&
+				 		getMonth(expensesStorage[category][subCat[i]][j].date) == month) {
+                        result.push(expensesStorage[category][subCat[i]][j]);
                     };
                 };
             }
@@ -287,6 +294,7 @@
     }
 
     return {
+        init: init,
         addExpense: addExpense,
         getCategoryExpenses: getCategoryExpenses,
         getAllExpenses: getAllExpenses,

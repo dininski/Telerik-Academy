@@ -1,5 +1,18 @@
-﻿	<script type="text/javascript">
-		// storage.clear();
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>	  
+	<script type="text/javascript" src="scripts/budget.js"></script>
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+    <script type="text/javascript" src="scripts/accounts.js"></script>
+</head>
+	 
+<body>
+	<script type="text/javascript">
+		storage.clear();
 
 		expenses.addExpense("foodAndGroceries", "groceries", "27/5/2013", 42.66, "Cash", "Jack Daniels bottle");
 		expenses.addExpense("medical", "dentist", "20/5/2013", 100.00, "Visa Electron", "dentist");
@@ -31,3 +44,5 @@
 		homeBudget.addBudget("5", "2013");
 		console.log("Remaining budget : " + homeBudget.getBudget("5", "2013"));
 	</script>
+</body>
+</html>
