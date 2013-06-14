@@ -133,10 +133,10 @@
                   ).append("<input id='newCategoryField' type='text' placeholder='New Subcategory here' style='display: none'/>")
                         .on('keydown', { category: this.parent.parent.data }, function (event) {
                             if (event.keyCode == 13) {
-                                console.log(category);
+                                
                                 var catField = $(this).find('#newCategoryField');
                                 if (catField.val().length > 1) {                                    // TODO check input !
-                                    // categories.addSubCategory(category, catField.val());
+                                    categories.addSubCategory(category, value);
                                     var prevClone = $(this).prev().clone();
                                     $(this).before(prevClone);
                                     prevClone.find('.ui-link-inherit').text(catField.val());
