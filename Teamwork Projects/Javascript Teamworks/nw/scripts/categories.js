@@ -1,51 +1,50 @@
 ﻿var categories = (function () {
     var categoryStorage;
-    var categoryStorageName = 'categories';
+    var categorySaveName = "categories";
     var expenses;
-    var expensesStorageName = 'expenses';
+    var expensesSaveName = "expenses";
 
     var init = function() {
-        categoryStorage = storage.load(categoryStorageName);
-        expenses = storage.load(expensesStorageName);
-        if (expenses === null || expenses === undefined) {
+        categoryStorage = storage.load(categorySaveName);
+        expenses = storage.load(expensesSaveName);
+        
+        if (expenses === undefined || expenses === {}) {
             createDefaultCategoryStorage();
-        }
-
-        expenses = storage.load(expensesStorageName);
+        };
     }
 
     var addCategory = function (categoryName) {
 
-        if (categoryStorage[categoryName] == null) {
+        if (categoryStorage[categoryName] === null) {
 
             categoryStorage[categoryName] = [];
             categoryStorage[categoryName].push("none");
-            storage.save(categoryStorageName, categoryStorage);
+            storage.save(categorySaveName, categoryStorage);
 
             expenses[categoryName] = {};
             expenses[categoryName]["none"] = [];
-            storage.save(expensesStorageName, expenses);
+            storage.save(expensesSaveName, expenses);
         };
     }
 
-    var createDefaultCategoryStorage = function () { 
-            createStorage();
-            createCategoryStorage();
+    var createDefaultCategoryStorage = function () {
+        createStorage();
+        createCategoryStorage();
     }
 
     function createCategoryStorage() {
-        var categoryStorage = {
+        var categoryStorageTemplate = {
             foodAndGroceries: ["fastFood", "restaurantFood", "groceries", "none"],
             entertainment: ["cinema", "bars", "discos", "vacations", "none"],
             medical: ["medicines", "dentist", "doctor", "none"],
         }
 
-        storage.save(categoryStorageName, categoryStorage);
+        storage.save(categorySaveName, categoryStorage);
     }
 
     function createStorage() {
 
-        var expenses = {
+        var expensesTemplate = {
 
             foodAndGroceries: {
                 fastFood: [],
@@ -70,29 +69,29 @@
             }
         }
 
-        storage.save("expenses", expenses);
+        storage.save(expensesSaveName, expensesTemplate);
     }
 
-    // done up to here
+
     var addSubCategory = function (category, subCategory) {
 
         if (categoryStorage[category][subCategory] == null) {
 
             categoryStorage[category].push(subCategory);
-            storage.save(categoryStorageName, categoryStorage);
+            storage.save(expensesSaveName, categoryStorage);
 
-            var expenses = storage.load("expenses");
             expenses[category][subCategory] = [];
-            storage.save(expensesStorageName, expenses);
+            storage.save(expensesSaveName, expenses);
         };
     }
 
     var deleteCategory = function (category) {
+
         if (categoryStorage[category] != null) {
             delete categoryStorage[category];
             delete expenses[category];
-            storage.save(categoryStorageName, categoryStorage);
-            storage.save(expensesStorageName, expenses);
+            storage.save(expensesSaveName, categoryStorage);
+            storage.save(expensesSaveName, expenses);
         };
     }
 
@@ -102,12 +101,13 @@
         categoryStorage[category].splice(element, 1);
 
         delete expenses[category][subCategory];
-        storage.save(categoryStorageName, categoryStorage);
-        storage.save(expensesStorageName, expenses);
+        storage.save(categorySaveName, categoryStorage);
+        storage.save(expensesSaveName, expenses);
     }
 
     var getAllCategories = function () {
         var result = [];
+
         for (var category in categoryStorage) {
             result.push(category);
         }

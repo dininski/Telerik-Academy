@@ -112,24 +112,25 @@
                 </label>                
                 <input type="text" id="datepicker" />
             </div>
+            <!-- <a id="add-account-button" data-role="button" data-theme="b" href="#page1" >Add</a> -->
         </div>
     </div>
     <script>
         accounts.init();
+        categories.init();
+        expenses.init();
         
         $("#save-account-button").on('click', function(){
             var type = $('#type').val();
             var accName = $('#name').val();
             var balance = $('#balance').val();
             var date = $('#datepicker').val();
-
-            // check if successfully added!
             accounts.addAccount(type, accName, Number(balance), date);
-            location.href="accounts.html";
+            location.href="accounts-tests.html";
         })
 
         $("#backButton").on('click', function(){
-            parent.history.back();
+            location.href="accounts-tests.html";
         })
     </script>
 </body>

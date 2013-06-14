@@ -76,7 +76,7 @@
         expenses.init();;
 
 	    $("#backButton").bind('click', function () {
-	        parent.history.back();
+	        location.href = "accounts-tests.html";
 	    });
 
 	    var get = location.search;

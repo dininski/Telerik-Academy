@@ -1,0 +1,36 @@
+﻿body {
+}
+    div > ul > li a > span {
+        display: inline-block;
+        float: right;
+        color: #61B329;
+        font-size: 14px;
+        text-shadow: 1px 1px 0px green;
+    }
+
+@media (min-width:480px) {
+    span.totalAccountsSum {
+        display: inline-block;
+        float: right;
+        color: white;
+    }
+
+    p#addAccountButton div.ui-btn-shadow {
+        display: inline-block;
+    }
+
+    p#addAccountButton > div {
+        margin-right: 5px;
+        width: 78%;
+    }
+    span.ui-btn-inner {
+        width:100%;
+    }
+
+    .ui-content div div {
+        float:right;
+    }
+    .ui-content div p {
+        float:right;
+    }
+}

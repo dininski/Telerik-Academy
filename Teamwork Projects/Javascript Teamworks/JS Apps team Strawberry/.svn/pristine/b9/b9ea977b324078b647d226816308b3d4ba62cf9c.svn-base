@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses.js"></script>
+	<script type="text/javascript" src="scripts/accounts.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+
+
+	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+	  
+  <!-- Angular.js -->  
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+  <!-- jQuery and jQuery Mobile -->
+	<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+	<script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+    <style>
+	    div > ul > li a > span{
+	        display: inline-block;
+	        float: right;
+	        color: #61B329;
+	        font-size: 14px;
+	        text-shadow: 1px 1px 0px green;
+	    }
+
+	   span.totalAccountsSum{
+
+	        display: inline-block;
+	        float: right;
+	        color: white;
+	    }
+   </style>
+</head>
+	 
+<body>
+	<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <a id="add-new-account-button" data-role="button" href="#page1" data-icon="plus" data-iconpos="right"
+        class="ui-btn-right">
+            Add
+        </a>
+        <a data-role="button" href="#page1" data-icon="home" data-iconpos="left"
+        class="ui-btn-left">
+            Home
+        </a>
+        <h3>
+            Accounts <span id="totalBalance"></span>
+        </h3>
+    </div>
+    <div data-role="content">
+        <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+            
+
+           <!--  <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    Debit Cards <span class="totalAccountsSum">$2951.00</span>
+                </h3>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Visa Electron <span>$1250.92</span>
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Maestro <span>$1720.22</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    Credit Cards <span class="totalAccountsSum">$-950.00</span>
+                </h3>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Master Card <span>$-158.59</span>
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Visa <span>$-750.59</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    Bank Accounts <span class="totalAccountsSum">$26000.00</span>
+                </h3>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            Procredit Bank <span>$12500.00</span>
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            Post Bank <span>$5000.00</span>
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="none">
+                            CCB <span>$8500.00</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="false">
+                <h3>
+                    Cash <span class="totalAccountsSum">$2560.59</span>
+                </h3>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Cash <span>$2560.59</span>
+                        </a>  
+                    </li>
+                </ul>
+            </div> -->
+
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3>
+            Footer
+        </h3>
+    </div>
+
+</div>
+
+
+	<script type="text/javascript">
+	    // credit cards have negative balance, can buy anything when balance is negative
+
+	    accounts.init();
+
+	    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+	    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+	    accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
+	    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+	    accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
+	    accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+
+	    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
+	    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");
+	    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
+	    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
+	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
+	    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "debit", "Visa Electron", "Kaufland");
+
+	    var allAccounts = storage.load("accounts");
+	    var totalBalance = accounts.totalBalance();
+	    $("#totalBalance").text(totalBalance).css({ 'font-size': "14px", 'color': "#61B329", 'text-shadow': "text-shadow: 1px 1px 0px green" });
+
+	    $("#add-new-account-button").on('click', function(){
+	    	location.href="AddAccount.html";
+	    })
+
+	    for (var type in allAccounts) {
+
+	        var accType = accounts.accTypeParser(type);
+	        var totalBalance = accounts.totalBalance(type);
+
+	        $collapse = $('<div></div>')
+			.attr({ 'data-role': "collapsible", 'data-collapsed': false })
+		    .append($('<h3></h3>')
+		        .text(accType)//acc type
+		        .append($('<span></span>')
+		        	.text("$" + totalBalance)//acc type total sum
+		            .addClass("totalAccountsSum")
+		        )
+		    )
+
+	        $ul = $('<ul></ul>')
+                   .attr({ 'data-role': "listview", 'data-divider-theme': "b", 'data-inset': "true" });
+	        for (var i = 0; i < allAccounts[type].length; i++) {
+	            var accName = allAccounts[type][i].name;
+	            var accBalance = allAccounts[type][i].balance;
+
+	            $ul.append($('<li></li>')
+		    		.attr({ 'data-theme': "c" })
+		    		.append($('<a></a>')
+		    			.attr({ 'data-transition': "slide" })
+		    			.text(accName)
+		    			.append($('<span></span>')
+		    				.text("$" + Number(accBalance).toFixed(2))
+	    				)
+		    		).on('click', { type: type, accName: accName }, function (event) {
+		    		    var go = "expensesByAccount.html?type=" + event.data.type + "&accName=" + event.data.accName;
+		    		    location.href = go;
+		    		})
+		    	)
+	            $collapse.append($ul);
+	        }
+	        $("#acc-container").append($collapse);
+	    }
+
+
+	    //credit cards have negative balance, can buy anything when balance is negative
+	    //    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+	    //    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+	    //    accounts.addAccount("debit", "Visa Electron", 1290.24, "24/11/2014");
+	    //    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+	    //    accounts.addAccount("debit", "Visa Electron", 430.20, "14/01/2014");
+
+	    // expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
+	    //    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");
+	    //    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
+	    //    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
+	    //    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
+
+
+
+	    // localStorage.clear();
+
+
+
+	    //payment complete
+	    // accounts.makePayment("credit", "Visa", 100);
+
+	    //not enough funds in the account, payment NOT complete
+	    // accounts.makePayment("credit", "Visa", 100);
+
+	    // accounts.makePayment("debit", "Visa Electron", 124.50);
+
+	    //add income
+	    // accounts.addFunds("debit", "Visa Electron", 1200.00, "11/5/2013", "regular salary", "salary");
+	    // accounts.addFunds("debit", "Visa Electron", 1200.00, "11/6/2013", "regular salary", "salary");
+
+	    //accType, accName, amount, date, notes, description
+	    // console.log(storage.load("income")[0]);
+
+	    // var loaded = storage.load("accounts");
+	    // console.log(loaded);
+
+
+	    // console.log("Accounts balance: " + accounts.totalBalance());
+
+	    // console.log("Debit cards balance: " + accounts.totalBalance("debit"));
+
+	    // console.log(loaded.debit);
+
+	    //get income 
+	    //(yaer income) - by one parameter - year 
+	    //(month income)- by two parameters - yer month
+	    // console.log(accounts.getAllIncomesSum("2013", "6"));
+	    // console.log(accounts.getAllIncomesSum("2013"));
+
+	    //transfer money from account to another account
+	    // var test = accounts.makeTransfer("debit", "Visa Electron", 100, "credit", "Visa");
+	    // console.log(storage.load("accounts"));
+
+	    //delete account (type, name)
+	    // accounts.deleteAccount("credit", "Visa");
+
+	    // accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+
+	    // accounts.makePayment("cash", "", 100);
+	    var accounts = storage.load("accounts")
+
+	    for (var v in accounts) {
+	        console.log(v);
+	    }
+
+	    // console.log(accounts["debit"][0].name);
+
+	    console.log(storage.load("expenses"));
+	    console.log(storage.load("accounts"));
+	    console.log(storage.load("income"));
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<script type="text/javascript">
+    localStorage.clear();
+    categories.createDefaultCategoryStorage();
+
+    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+    accounts.addAccount("debit", "Visa Electron", 1280.24, "24/11/2014");
+    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+    accounts.addAccount("debit", "Maestro", 2670.21, "24/11/2015");
+    accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+
+    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
+    expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 422444.66, "cash", "cash", "Too expensive");
+    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "debit", "Visa Electron", "dentist");
+    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
+    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
+    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
+    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 602.22, "credit", "Master Card", "Kaufland");
+
+    console.log(storage.load("categories"));
+    console.log(storage.load("expenses"));
+
+    var categories = storage.load("categories");
+    console.log(categories["medical"]);
+    console.log(expenses.isAddingExpensePossible("meddical", "docdtor"));
+</script>	

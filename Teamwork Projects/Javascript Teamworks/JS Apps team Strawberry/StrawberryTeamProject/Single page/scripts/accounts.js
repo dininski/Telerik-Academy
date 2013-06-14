@@ -1,8 +1,8 @@
 ﻿var accounts = (function () {
-    var accounts;
     var accountsStorage = "accounts";
-    var income;
     var incomeStorage = "income";
+    var accounts;
+    var income;
 
     var init = function() {
         accounts = storage.load(accountsStorage);

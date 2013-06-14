@@ -1,0 +1,150 @@
+﻿<style>
+    div > ul > li a > span{
+        display: inline-block;
+        float: right;
+        color: #61B329;
+        font-size: 14px;
+        text-shadow: 1px 1px 0px green;
+    }
+
+    div ul li a strong{
+    	position: absolute;
+    	left: 40%;
+    }
+
+   span.totalAccountsSum{
+
+        display: inline-block;
+        float: right;
+        color: white;
+    }
+
+    .not-added-item{
+		box-shadow: inset 0px 0px 60px green;	    	
+    }
+
+    input{
+    	width: 50%;
+    	border-radius: 10px;
+    	height: 35px;
+    	background: green;
+    	opacity: 0.6;
+    	font-size: 22px;
+    	color: white;
+    	padding-left: 20px;
+
+    }
+
+</style>
+<!-- Home -->
+<div data-role="page" id="page1">
+<div data-theme="a" data-role="header">
+
+
+
+    <a id="backButton" data-role="button" href="" data-icon="back" data-iconpos="left"
+    class="ui-btn-left">
+        Back
+    </a>
+    <h3 id="accName">
+        Categories
+    </h3>
+</div>
+<div data-role="content">
+    <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+             
+
+    </div>
+</div>
+<div data-theme="a" data-role="footer" data-position="fixed">
+    <h3>
+        Footer
+    </h3>
+</div>
+</div>
+<script type="text/javascript">
+
+    accounts.init();
+
+    $("#backButton").bind('click', function () {
+        location.href = "accounts-tests.html";
+    });
+
+    var allCategories = categories.getAllCategories();
+
+    for (var i = 0; i < allCategories.length; i++) {
+        var category = allCategories[i];
+
+        $collapse = $('<div></div>')
+		.attr({ 'data-role': "collapsible", 'data-collapsed': false })
+	    .append($('<h3></h3>')
+	        .text(category)//acc type
+	    )
+
+        $ul = $('<ul></ul>')
+               .attr({ 'data-role': "listview", 'data-divider-theme': "b", 'data-inset': "true" });
+
+        var allSubCat = categories.getAllSubCategories(category);
+
+        for (var j = 0; j < allSubCat.length; j++) {
+            var subCat = allSubCat[j];
+
+            $ul.append($('<li></li>')
+	    		.attr({ 'data-theme': "c" })
+	    		.append($('<a></a>')
+	    			.attr({ 'data-transition': "slide" })
+	    			.text(subCat)
+	    		)
+	    	)
+            $collapse.append($ul);
+        }
+        $li = $('<li></li>')
+              .attr({ 'data-theme': "c" })
+              .addClass('not-added-item')
+              .on('click', { category: category }, function (event) {
+                  // console.log($(this).prev().prop('tagName'));
+                  $input = $("<input id='test-input' type='text' placeholder='New Subcategory here' />");
+                  $input.on('keydown', { category: event.data.category }, function (event) {
+                      if (event.keyCode == 13) {
+                          var value = $(this).val();
+                          if (value.length > 1) {                                    // TODO check input !
+                              categories.addSubCategory(event.data.category, value);
+                              // $(this).prepend($('<li>test</li>'));                    // TOOD prepend subcategory element
+                              $(this).replaceWith($li);
+                          };
+
+                      };
+                  })
+                  $(this).replaceWith($input);
+              })
+
+              .append($('<a></a>')
+                  .attr({ 'data-transition': "slide" })
+                  .css("color", "green")
+                  .text("add new subcategory")
+              )
+        $ul.append($li);
+        $collapse.append($ul);
+
+        $("#acc-container").append($collapse);
+    }
+
+    $ul = $('<ul></ul>')
+               .attr({ 'data-role': "listview", 'data-divider-theme': "b", 'data-inset': "true" })
+               .css("margin-top", "0px");
+    $ul.append($('<li></li>')
+               .attr({ 'data-theme': "c" })
+               .addClass('not-added-item')
+               .on('click', function () {
+                   console.log("wtf");
+               })
+               .append($('<a></a>')
+                   .attr({ 'data-transition': "slide" })
+                   .css("color", "green")
+                   .text("add new subcategory")
+               )
+           )
+    $("#acc-container").append($ul);
+
+
+</script>

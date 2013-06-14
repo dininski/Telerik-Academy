@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chart Test</title>
+    <script type="text/javascript" src="scripts/accounts.js"></script>
+    <script type="text/javascript" src="scripts/budget.js"></script>
+    <script type="text/javascript" src="scripts/categories.js"></script>
+    <script type="text/javascript" src="scripts/expenses.js"></script>
+    <script type="text/javascript" src="scripts/local-storage-extensions.js"></script>
+    <script type="text/javascript" src="scripts/storage.js"></script>
+    <script type="text/javascript" src="scripts/chart.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        accounts.init();
+        categories.init();
+        
+        accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+        accounts.addAccount("credit", "Master Card", -12520.00, "16/11/2014");
+        accounts.addAccount("debit", "Visa Electron", 12830.24, "24/11/2014");
+        accounts.addAccount("debit", "Visa Electron FB", 12490.24, "24/11/2015");
+        accounts.addAccount("debit", "Maestro", 26720.21, "24/11/2015"); +
+
+        accounts.addFunds("cash", "", 12020.00, "11/05/2013", "regular salary", "salary");
+
+        // category, subCategory, date, amount, paymentMethod, accName, notes
+
+        expenses.addExpense("foodAndGroceries", "groceries", "27/01/2013", 442.66, "cash", "", "Jack Daniels bottle");
+        expenses.addExpense("medical", "dentist", "20/02/2013", 1002.00, "debit", "Visa Electron", "dentist");
+        expenses.addExpense("foodAndGroceries", "fastFood", "13/03/2013", 141.66, "cash", "", "Subway sandwiches");
+        expenses.addExpense("entertainment", "discos", "14/04/2013", 1557.99, "credit", "Master Card", "Plazza");
+        expenses.addExpense("foodAndGroceries", "groceries", "05/05/2013", 640.22, "credit", "Master Card", "Kaufland");
+        expenses.addExpense("foodAndGroceries", "groceries", "27/06/2013", 422.66, "cash", "", "Jack Daniels bottle");
+        expenses.addExpense("medical", "dentist", "20/07/2013", 1010.00, "debit", "Visa Electron", "dentist");
+        expenses.addExpense("foodAndGroceries", "fastFood", "13/08/2013", 1444.66, "cash", "", "Subway sandwiches");
+        expenses.addExpense("entertainment", "discos", "14/09/2013", 1547.99, "credit", "Master Card", "Plazza");
+        expenses.addExpense("foodAndGroceries", "groceries", "05/10/2013", 650.22, "credit", "Master Card", "Kaufland");
+        expenses.addExpense("foodAndGroceries", "groceries", "27/11/2013", 422.66, "cash", "", "Jack Daniels bottle");
+        expenses.addExpense("medical", "dentist", "20/12/2013", 1200.00, "debit", "Visa Electron", "dentist");
+
+        homeBudget.addExpenses("01", "2013");
+        homeBudget.addExpenses("02", "2013");
+        homeBudget.addExpenses("03", "2013");
+        homeBudget.addExpenses("04", "2013");
+        homeBudget.addExpenses("05", "2013");
+        homeBudget.addExpenses("06", "2013");
+        homeBudget.addExpenses("07", "2013");
+        homeBudget.addExpenses("08", "2013");
+        homeBudget.addExpenses("09", "2013");
+        homeBudget.addExpenses("10", "2013");
+        homeBudget.addExpenses("11", "2013");
+        homeBudget.addExpenses("12", "2013");
+
+        accounts.addFunds("credit", "Visa", 1720.00, "16/01/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1820.00, "16/02/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1720.00, "16/03/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1820.00, "16/04/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1920.00, "16/05/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1620.00, "16/06/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1720.00, "16/07/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1920.00, "16/08/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1820.00, "16/09/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1820.00, "16/10/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1920.00, "16/11/2013", "NA", "NA");
+        accounts.addFunds("credit", "Visa", 1620.00, "16/12/2013", "NA", "NA");
+
+        homeBudget.addIncomes("01", "2013");
+        homeBudget.addIncomes("02", "2013");
+        homeBudget.addIncomes("03", "2013");
+        homeBudget.addIncomes("04", "2013");
+        homeBudget.addIncomes("05", "2013");
+        homeBudget.addIncomes("06", "2013");
+        homeBudget.addIncomes("07", "2013");
+        homeBudget.addIncomes("08", "2013");
+        homeBudget.addIncomes("09", "2013");
+        homeBudget.addIncomes("10", "2013");
+        homeBudget.addIncomes("11", "2013");
+        homeBudget.addIncomes("12", "2013");
+
+        homeBudget.addBudget("01", "2013");
+        homeBudget.addBudget("02", "2013");
+        homeBudget.addBudget("03", "2013");
+        homeBudget.addBudget("04", "2013");
+        homeBudget.addBudget("05", "2013");
+        homeBudget.addBudget("06", "2013");
+        homeBudget.addBudget("07", "2013");
+        homeBudget.addBudget("08", "2013");
+        homeBudget.addBudget("09", "2013");
+        homeBudget.addBudget("10", "2013");
+        homeBudget.addBudget("11", "2013");
+        homeBudget.addBudget("12", "2013");
+
+        // Currently is supported only the input ["Date", "Incomes", "Expenses", "Budget"]
+        DrawChart(["Date", "Incomes", "Expenses", "Budget"], 1, 12, 2013);
+    </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 600px; height: 250px;"></div>
+</body>
+</html>
