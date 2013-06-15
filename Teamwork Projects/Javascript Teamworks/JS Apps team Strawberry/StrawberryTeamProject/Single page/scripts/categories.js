@@ -35,9 +35,11 @@
 
     function createCategoryStorage() {
         var categoryStorage = {
-            foodAndGroceries: ["fastFood", "restaurantFood", "groceries", "none"],
-            entertainment: ["cinema", "bars", "discos", "vacations", "none"],
-            medical: ["medicines", "dentist", "doctor", "none"],
+            home: ["rent", "appliances", "renovation"],
+            utilities: ["electricity", "heating", "water", "phone", "cellPhone", "internet"],
+            foodAndGroceries: ["fastFood", "restaurantFood", "groceries"],
+            entertainment: ["cinema", "bars", "discos", "vacations"],
+            medical: ["medicines", "dentist", "doctor"],
         }
 
         storage.save(categoryStorageName, categoryStorage);
@@ -47,11 +49,26 @@
 
         var expenses = {
 
+            home: {
+                rent: [],
+                furnishing: [],
+                appliances: [],
+                renovation: [],
+            },
+
+            utilities: {
+                electricity: [],
+                heating: [],
+                water: [],
+                phone: [],
+                cellPhone: [],
+                internet: [],
+            },
+
             foodAndGroceries: {
                 fastFood: [],
                 restaurantFood: [],
                 groceries: [],
-                none: [],
             },
 
             entertainment: {
@@ -59,18 +76,18 @@
                 bars: [],
                 discos: [],
                 vacations: [],
-                none: [],
             },
 
             medical: {
                 medicines: [],
                 dentist: [],
                 doctor: [],
-                none: [],
             }
         }
 
+        var allTimeExpenses = expenses;
         storage.save("expenses", expenses);
+        storage.save("allTimeExpenses", allTimeExpenses);
     }
 
     // done up to here
