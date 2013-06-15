@@ -1,14 +1,12 @@
-﻿body {
+﻿div > ul > li a > span {
+    display: inline-block;
+    float: right;
+    color: #61B329;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px green;
 }
-    div > ul > li a > span {
-        display: inline-block;
-        float: right;
-        color: #61B329;
-        font-size: 14px;
-        text-shadow: 1px 1px 0px green;
-    }
 
-@media (min-width:480px) {
+@media (min-width: 480px) {
     span.totalAccountsSum {
         display: inline-block;
         float: right;
@@ -33,4 +31,12 @@
     .ui-content div p {
         float:right;
     }
+}
+
+div > ul > li a > span{
+    display: inline-block;
+    float: right;
+    color: #61B329;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px green;
 }

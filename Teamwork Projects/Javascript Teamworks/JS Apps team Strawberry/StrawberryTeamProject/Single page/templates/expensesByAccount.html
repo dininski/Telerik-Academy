@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses.js"></script>
+	<script type="text/javascript" src="scripts/accounts.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+	
+	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+	  
+	  <!-- jQuery and jQuery Mobile -->
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+    <style>
+	    div > ul > li a > span{
+	        display: inline-block;
+	        float: right;
+	        color: #61B329;
+	        font-size: 14px;
+	        text-shadow: 1px 1px 0px green;
+	    }
+
+	    div ul li a strong{
+	    	position: absolute;
+	    	left: 40%;
+	    }
+
+	   span.totalAccountsSum{
+
+	        display: inline-block;
+	        float: right;
+	        color: white;
+	    }
+   </style>
+</head>
+	 
+<body>
+	<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+
+        <a id="delete-button" data-role="button" href="#page1" data-icon="delete" data-iconpos="right"
+        class="ui-btn-right">
+            Delete card
+        </a>
+
+        <a id="backButton" data-role="button" href="" data-icon="back" data-iconpos="left"
+        class="ui-btn-left">
+            Back
+        </a>
+        <h3 id="accName">
+            Accounts <span id="totalBalance"></span>
+        </h3>
+    </div>
+    <div data-role="content">
+        <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+                <ul id="list" data-role="listview" data-divider-theme="b" data-inset="true">
+                    
+                </ul>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3>
+            Footer
+        </h3>
+    </div>
+</div>
+	<script type="text/javascript">
+
+		accounts.init();
+        categories.init();
+        expenses.init();;
+
+	    $("#backButton").bind('click', function () {
+	        parent.history.back();
+	    });
+
+	    var get = location.search;
+	    get = get.substring(1, get.length);
+	    get = get.replace("%20", " ");
+	    get = get.replace("%", ' ');
+	    var parts = get.split("&");
+	    var type = parts[0].split("=")[1];
+	    var accName = parts[1].split("=")[1];
+	    var allExpenses = expenses.getAllExpensesByAccount(type, accName);
+
+	    $("#accName").text(accName);
+
+	    $("#delete-button").on('click', { type: type, accName: accName }, function (event) {
+	        accounts.deleteAccount(event.data.type, event.data.accName);
+	        location.href = "accounts-tests.html";
+	    });
+
+	    if (allExpenses.length > 0) {
+
+	        $ul = $("#list");
+	        for (var i = 0; i < allExpenses.length; i++) {
+	            var notes = allExpenses[i].notes;
+	            var date = allExpenses[i].date;
+	            var amount = allExpenses[i].amount;
+
+	            $ul.append($('<li></li>')
+                        .attr({ 'data-theme': "c" })
+                        .append($('<a></a>')
+                            .attr({ 'data-transition': "slide" })
+                            .text(notes)
+                            .append($('<span></span>')
+                                .text("$" + amount)
+                            )
+                            .append($('<strong></strong>')
+                                .text(date)
+                            )
+                        )
+                    )
+	        }
+	    }
+	</script>
+</body>
+</html>

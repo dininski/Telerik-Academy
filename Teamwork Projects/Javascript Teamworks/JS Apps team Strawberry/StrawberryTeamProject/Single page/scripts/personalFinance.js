@@ -1,7 +1,9 @@
 ﻿var personalFinance = angular.module("personalFinance", []);
 
 personalFinance.config(function($routeProvider, $locationProvider){
-    $locationProvider.html5Mode(true)
+    
+    $locationProvider.html5Mode(true);
+
     $routeProvider.when('/', {
       title: "Home",
       header: "Personal Finance Single Page App",
@@ -47,22 +49,22 @@ personalFinance.controller('HomeController', function($scope, $location) {
 });
 
 personalFinance.controller('AccountsController', function($scope, $location) {
-	$scope.goBack = function() {
-		  window.history.back();
-	}
+
 })
 
 personalFinance.controller('ExpensesController', function($scope, $location) {
-  $scope.goBack = function() {
-      window.history.back();
+  $scope.addAccount = function() {
+    $location.path('/addAccount');
   }
 })
 
 personalFinance.run(['$location', '$rootScope', function($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-        $rootScope.title = current.$$route.title || "Personal Finance Single Page App";
-        $rootScope.header = current.$$route.header || "Personal Finance Single Page App";
-        $rootScope.footer = current.$$route.footer || "Made by team Strawberry";
+        if (current.$$route) {
+          $rootScope.title = current.$$route.title || "Personal Finance Single Page App";
+          $rootScope.header = current.$$route.header || "Personal Finance Single Page App";
+          $rootScope.footer = current.$$route.footer || "Made by team Strawberry";
+        };
     });
 }]);
 
@@ -77,7 +79,18 @@ personalFinance.directive('renderMobile', function($timeout) {
   }
 });
 
-personalFinance.directive('datePicker', function($timeout) {
+// personalFinance.directive('backButton', function($window) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attrs) {
+//         $(element).on('click', function() {
+//           $window.history.back();
+//         })
+//     }
+//   }
+// });
+
+personalFinance.directive('datePicker', function($timeout, $location) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
@@ -85,6 +98,7 @@ personalFinance.directive('datePicker', function($timeout) {
         $(element).datepicker();
         drawAddCards();
         $('body').trigger('create');
+        addCardHandlers(scope, $location);
       }, 5);
     }
   }
@@ -282,6 +296,7 @@ var drawExpenses = function() {
           .append($('<span></span>')
             .text("$" + totalBalance)//acc type total sum
               .addClass("totalAccountsSum")
+              .css('float', 'right')
           )
       )
 
@@ -298,14 +313,26 @@ var drawExpenses = function() {
             .text(accName)
             .append($('<span></span>')
               .text("$" + Number(accBalance).toFixed(2))
+              .css('float', 'right')
             )
-          ).on('click', { type: type, accName: accName }, function (event) {
-              var go = "expensesByAccount.html?type=" + event.data.type + "&accName=" + event.data.accName;
-              location.href = go;
-          })
+            .attr({'ng-click':'getAccountData()'})  
+          )
         )
             $collapse.append($ul);
         }
         $("#acc-container").append($collapse);
     }
+}
+
+var addCardHandlers = function(scope, $location) {
+  $("#addCardButton").on('click', function(){
+        var type = $('#type').val();
+        var accName = $('#name').val();
+        var balance = $('#balance').val();
+        var date = $('#datepicker').val();
+        accounts.addAccount(type, accName, Number(balance), date);
+        scope.$apply(function() {
+          $location.path('/expenses');
+        })
+    })
 }

@@ -132,6 +132,7 @@
 		    	)
 	            $collapse.append($ul);
 	        }
+	        
 	        $("#acc-container").append($collapse);
 	    }
 
