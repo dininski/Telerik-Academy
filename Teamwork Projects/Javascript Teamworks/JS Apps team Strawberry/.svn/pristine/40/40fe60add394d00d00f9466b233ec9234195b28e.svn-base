@@ -57,6 +57,9 @@
     </div>
     <div data-role="content">
         <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+		 
+
+
 
         </div>
     </div>
@@ -70,12 +73,11 @@
 
 
 	<script type="text/javascript">
-	    //credit cards have negative balance, can buy anything when balance is negative
-	    // storage.clear();
+	    // credit cards have negative balance, can buy anything when balance is negative
+	    //storage.clear();
         accounts.init();
         categories.init();
         expenses.init();;
-
 
 	    // accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
 	    // accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
@@ -147,7 +149,7 @@
 	    		.attr({'data-role': "content"})
 	    		.css('text-align', "center")
 	    		.css('margin-top', "10px")
-	    		.append($('<a id="transfer-funds-button"></a>')
+	    		.append($('<a></a>')
 	    			.attr({'data-role': 'content', "data-inline": 'true', 'data-theme': 'a'})
 	    			.text("Transfer Funds")
 	    			.css('color', 'white')
@@ -155,11 +157,10 @@
 	    			.css('cursor', 'pointer')
 	    			).on('click', function(){
 	    				$("#transfer-funds-div").fadeIn(1500)
-	    				$("#transfer-funds-button").css('display', 'none');
 	    			})
 
 
-	    		$transferDivInside = $("<div id='transfer-funds-div' style='margin-top: 20px; display: none'></div>")
+	    		$transferDivInside = $("<div id='transfer-funds-div' style='margin-top: 20px;'></div>")
 	    			.append($('<div data-role="fieldcontain"></div>'))
 
 	    $labelTransferFrom = $('<label for="select-menu-from-acc"></label>').text("From:");
@@ -204,6 +205,105 @@
 	    $transferDivInside.append($transferButton);
 	    $transferDiv.append($transferDivInside);
 	    $("#acc-container").append($transferDiv);
+
+	    // <a data-role="button" href="#page1">
+     //        Transfer
+     //    </a>
+
+
+	    // <div data-role="fieldcontain">
+     //        <label for="textinput1">
+     //            Amount
+     //        </label>
+     //        <input name="" id="textinput1" placeholder="Amount here" value="" type="text">
+     //    </div>
+
+				// 		   <div data-role="fieldcontain">
+				//             <select id="selectmenu1" name="">
+				//                 <option value="option1">
+				//                     Option 1
+				//                 </option>
+				//             </select>
+				//         </div>
+
+
+			    // <div data-role="content" style="text-align: center">
+			  //       <a data-role="button" data-inline="true" data-theme="a" href="#page1">
+			  //           Transfer Funds
+			  //       </a>
+			  //   </div>
+
+	    //credit cards have negative balance, can buy anything when balance is negative
+	    //    accounts.addAccount("credit", "Visa", -720.00, "16/09/2014");
+	    //    accounts.addAccount("credit", "Master Card", -1520.00, "16/11/2014");
+	    //    accounts.addAccount("debit", "Visa Electron", 1290.24, "24/11/2014");
+	    //    accounts.addAccount("debit", "Visa Electron FB", 1290.24, "24/11/2015");
+	    //    accounts.addAccount("debit", "Visa Electron", 430.20, "14/01/2014");
+
+	    // expenses.addExpense("foodAndGroceries", "groceries", "27/05/2013", 42.66, "cash", "cash", "Jack Daniels bottle");
+	    //    expenses.addExpense("medical", "dentist", "20/05/2013", 100.00, "credit", "Visa", "dentist");
+	    //    expenses.addExpense("foodAndGroceries", "fastFood", "13/05/2013", 14.66, "cash", "cash", "Subway sandwiches");
+	    //    expenses.addExpense("entertainment", "discos", "14/06/2013", 157.99, "credit", "Master Card", "Plazza");
+	    //    expenses.addExpense("foodAndGroceries", "groceries", "05/06/2013", 60.22, "credit", "Master Card", "Kaufland");
+
+
+
+	    // localStorage.clear();
+
+
+
+	    //payment complete
+	    // accounts.makePayment("credit", "Visa", 100);
+
+	    //not enough funds in the account, payment NOT complete
+	    // accounts.makePayment("credit", "Visa", 100);
+
+	    // accounts.makePayment("debit", "Visa Electron", 124.50);
+
+	    //add income
+	    // accounts.addFunds("debit", "Visa Electron", 1200.00, "11/5/2013", "regular salary", "salary");
+	    // accounts.addFunds("debit", "Visa Electron", 1200.00, "11/6/2013", "regular salary", "salary");
+
+	    //accType, accName, amount, date, notes, description
+	    // console.log(storage.load("income")[0]);
+
+	    // var loaded = storage.load("accounts");
+	    // console.log(loaded);
+
+
+	    // console.log("Accounts balance: " + accounts.totalBalance());
+
+	    // console.log("Debit cards balance: " + accounts.totalBalance("debit"));
+
+	    // console.log(loaded.debit);
+
+	    //get income 
+	    //(yaer income) - by one parameter - year 
+	    //(month income)- by two parameters - yer month
+	    // console.log(accounts.getAllIncomesSum("2013", "6"));
+	    // console.log(accounts.getAllIncomesSum("2013"));
+
+	    //transfer money from account to another account
+	    // var test = accounts.makeTransfer("debit", "Visa Electron", 100, "credit", "Visa");
+	    // console.log(storage.load("accounts"));
+
+	    //delete account (type, name)
+	    // accounts.deleteAccount("credit", "Visa");
+
+	    // accounts.addFunds("cash", "", 1200.00, "11/5/2013", "regular salary", "salary");
+
+	    // accounts.makePayment("cash", "", 100);
+	    var accounts = storage.load("accounts")
+
+	    for (var v in accounts) {
+	        console.log(v);
+	    }
+
+	    // console.log(accounts["debit"][0].name);
+
+	    console.log(storage.load("expenses"));
+	    console.log(storage.load("accounts"));
+	    console.log(storage.load("income"));
 	</script>
 </body>
 </html>

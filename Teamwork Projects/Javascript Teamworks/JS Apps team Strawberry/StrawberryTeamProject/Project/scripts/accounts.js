@@ -114,7 +114,7 @@
 
         for (var k in accounts) {
             for (var i = 0; i < accounts[k].length; i++) {
-                balance += accounts[k][i].balance;
+                balance += parseFloat(accounts[k][i].balance);
             };
         }
 
@@ -124,7 +124,7 @@
     function getAccTypeBalance(accType) {
         var balance = 0;
         for (var i = 0; i < accounts[accType].length; i++) {
-            balance += accounts[accType][i].balance;
+            balance += parseFloat(accounts[accType][i].balance);
         };
 
         return Number(balance.toFixed(2));

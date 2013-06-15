@@ -19,7 +19,7 @@ personalFinance.config(function($routeProvider, $locationProvider){
   });
 
     $routeProvider.when('/expenses', {
-      header: 'Expenses ordered by account',
+      header: 'Manage accounts',
       templateUrl: 'templates/expenses.html',
       controller: 'ExpensesController'
   });
@@ -29,15 +29,20 @@ personalFinance.config(function($routeProvider, $locationProvider){
       templateUrl: 'templates/categories.html'
     });
 
+    $routeProvider.when('/charts', {
+      header: 'Budget charts',
+      templateUrl: 'templates/chart.html'
+    });
+
   $routeProvider.otherwise({redirectTo: '/'});
 
 });
 
 personalFinance.controller('HomeController', function($scope, $location) {
 
-	$scope.goToAccounts = function() {
-		$location.path('/addAccount');
-	}
+  $scope.expenses = "Manage accounts";
+  $scope.categories = "Manage categories";
+  $scope.charts = "Generate financial stats";
 
   $scope.goToCategories = function() {
     $location.path('/categories');
@@ -45,6 +50,10 @@ personalFinance.controller('HomeController', function($scope, $location) {
 
   $scope.goToExpenses = function() {
     $location.path('/expenses');
+  }
+
+  $scope.goToCharts = function() {
+    $location.path('/charts');
   }
 });
 
@@ -224,10 +233,11 @@ var drawCategories = function() {
 };
 
 var drawAddCards = function() {
-  var allAccounts = storage.load("accounts");
-      var totalBalance = accounts.totalBalance();
+
+      var allAccounts = storage.load("accounts");
+      var total = accounts.totalBalance();
       
-      $("#totalBalance").text(totalBalance).css({ 'font-size': "14px", 'color': "#61B329", 'text-shadow': "text-shadow: 1px 1px 0px green" });
+      $("#totalBalance").text(total).css({ 'font-size': "14px", 'color': "#61B329", 'text-shadow': "text-shadow: 1px 1px 0px green" });
 
       $("#add-new-account-button").on('click', function(){
         location.href="addAccount.html";
@@ -275,53 +285,130 @@ var drawAddCards = function() {
 
 var drawExpenses = function() {
 
-    var allAccounts = storage.load("accounts");
-    var totalBalance = accounts.totalBalance();
-    
-    //$("#totalBalance").text(totalBalance).css({ 'font-size': "14px", 'color': "#61B329", 'text-shadow': "text-shadow: 1px 1px 0px green" });
+      var allAccounts = storage.load("accounts");
+      var total = accounts.totalBalance();
 
-    $("#add-new-account-button").on('click', function(){
-      location.href="AddAccount.html";
-    })
+      for (var type in allAccounts) {
 
-    for (var type in allAccounts) {
+          var accType = accounts.accTypeParser(type);
+          var totalBalance = accounts.totalBalance(type);
 
-        var accType = accounts.accTypeParser(type);
-        var totalBalance = accounts.totalBalance(type);
-
-        $collapse = $('<div></div>')
-    .attr({ 'data-role': "collapsible", 'data-collapsed': false })
-      .append($('<h3></h3>')
-          .text(accType)//acc type
-          .append($('<span></span>')
-            .text("$" + totalBalance)//acc type total sum
-              .addClass("totalAccountsSum")
-              .css('float', 'right')
-          )
-      )
-
-        $ul = $('<ul></ul>')
-                 .attr({ 'data-role': "listview", 'data-divider-theme': "b", 'data-inset': "true" });
-        for (var i = 0; i < allAccounts[type].length; i++) {
-            var accName = allAccounts[type][i].name;
-            var accBalance = allAccounts[type][i].balance;
-
-            $ul.append($('<li></li>')
-          .attr({ 'data-theme': "c" })
-          .append($('<a></a>')
-            .attr({ 'data-transition': "slide" })
-            .text(accName)
+          $collapse = $('<div></div>')
+      .attr({ 'data-role': "collapsible", 'data-collapsed': false })
+        .append($('<h3></h3>')
+            .text(accType)//acc type
             .append($('<span></span>')
-              .text("$" + Number(accBalance).toFixed(2))
-              .css('float', 'right')
+              .text("$" + totalBalance)//acc type total sum
+                .addClass("totalAccountsSum")
+                .css('float', 'right')
             )
-            .attr({'ng-click':'getAccountData()'})  
-          )
         )
-            $collapse.append($ul);
-        }
-        $("#acc-container").append($collapse);
-    }
+
+        var totals = $('<div id="totalBalance"></div>');
+        var totalsElement = $(totals);
+      totalsElement.text('Total: ' + total).css({
+        'text-shadow': "text-shadow: 1px 1px 0px green",
+        'margin' : '0',
+        'padding' : '10px',
+        'text-align' : 'center'
+      }).addClass('ui-bar-a');
+
+          $ul = $('<ul></ul>')
+                   .attr({ 'data-role': "listview", 'data-divider-theme': "b", 'data-inset': "true" });
+          for (var i = 0; i < allAccounts[type].length; i++) {
+              var accName = allAccounts[type][i].name;
+              var accBalance = allAccounts[type][i].balance;
+
+              $ul.append($('<li></li>')
+            .attr({ 'data-theme': "c" })
+            .append($('<a></a>')
+              .attr({ 'data-transition': "slide" })
+              .text(accName)
+              .append($('<span></span>')
+                .text("$" + Number(accBalance).toFixed(2))
+                .css('float', 'right')
+                .append($('<span class="ui-btn-up-a ui-btn-corner-all" style="margin: 0 5px; padding: 7px;">delete</span>'))
+                .on('click', { type: type, accName: accName }, function (event) {
+                  var accountName = event.data.accName;
+                  var accountType = event.data.type;
+                  accounts.deleteAccount(accountType, accountName);
+                  var cardBlock = $(this).parent().parent().parent().parent();
+                  cardBlock.parent().parent().parent()
+                    .find('.totalAccountsSum').first().text(accounts.totalBalance(accountType));
+                  cardBlock.remove();
+                  totalsElement.text('Total: '+accounts.totalBalance());
+                })
+              )
+            )
+          )
+              $collapse.append($ul);
+          }
+          $("#acc-container").append($collapse);
+      }
+
+
+
+     $transferDiv = $('<div></div>')
+          .attr({'data-role': "content"})
+          .css('text-align', "center")
+          .css('margin-top', "10px")
+          .append($('<button id="transfer-funds-button"></button>')
+            .attr({'data-role': 'content', "data-inline": 'true', 'data-theme': 'a'})
+            .text("Transfer Funds")
+            .css('color', 'black')
+            .css('border-radius', '10px')
+            .css('cursor', 'pointer')
+            ).on('click', function(){
+              $("#transfer-funds-div").fadeIn(1500)
+              $("#transfer-funds-button").parent().css('display', 'none');
+            })
+
+
+          $transferDivInside = $("<div id='transfer-funds-div' style='margin-top: 20px; display: none'></div>")
+            .append($('<div data-role="fieldcontain"></div>'))
+
+      $labelTransferFrom = $('<label for="select-menu-from-acc"></label>').text("From:");
+      $labelTransferTo = $('<label for="select-menu-to-acc"></label>').text("To:");
+
+      $selectTransferFrom = $('<select id="select-menu-from-acc"></select>')
+      $selectTransferTo = $('<select id="select-menu-to-acc"></select>')
+
+      for(var type in allAccounts){
+         for (var i = 0; i < allAccounts[type].length; i++) {
+          var accName = allAccounts[type][i].name;
+           $option = $('<option></option>');
+           $option.text(accName);
+           $option.val(type + '/' + accName);
+           $selectTransferFrom.append($option);
+           $selectTransferTo.append($option.clone());
+         };
+      }
+
+      $amountLabel = $('<label for="transferAmount"></label>').text("Amount:");
+      $amountInput = $('<input id="transferAmount" placeholder="Amount here" type="text" />')
+      $transferButton = $('<a data-role="button">Transfer</a>').on('click',{accounts: accounts}, function(event){
+        $valueFrom = $("#select-menu-from-acc").val();
+        $typeFrom = $valueFrom.split('/')[0];
+        $nameFrom = $valueFrom.split('/')[1];
+
+        $valueTo = $("#select-menu-to-acc").val();
+        $typeTo = $valueTo.split('/')[0];
+        $nameTo = $valueTo.split('/')[1];
+
+        $amount = $("#transferAmount").val(); 
+          event.data.accounts.makeTransfer($typeFrom, $nameFrom, Number($amount), $typeTo, $nameTo);
+      })
+
+      $transferDivInside.append($labelTransferFrom);
+      $transferDivInside.append($selectTransferFrom);
+      $transferDivInside.append($labelTransferTo);
+      $transferDivInside.append($selectTransferTo);
+      $transferDivInside.append($amountLabel);
+      $transferDivInside.append($amountInput);
+      $transferDivInside.append($transferButton);
+      $transferDiv.append($transferDivInside);
+      $("#acc-container").after($transferDiv);
+      $($transferDiv).before(totals);
 }
 
 var addCardHandlers = function(scope, $location) {
