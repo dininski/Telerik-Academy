@@ -1,4 +1,10 @@
-﻿<div data-role="fieldcontain" id="select-account-menu">
+﻿<style type="text/css">
+    label {
+        min-width: 80px;
+        display: inline-block;
+    }
+</style>
+<div data-role="fieldcontain" id="select-account-menu">
     <label for="selectmenu2">
         Type:         
     </label>
@@ -15,19 +21,19 @@
     <label for="textinput2">
         Name:
     </label>
-    <input name="" id="name" placeholder="" value="" type="text" data-mini="true" />
+    <input name="" id="name" placeholder="A name for the account" value="" type="text" data-mini="true" />
 </div>
 <div data-role="fieldcontain">
     <label for="textinput3">
         Balance:           
     </label>
-    <input name="" id="balance" placeholder="" value="" type="text" data-mini="true" />
+    <input name="" id="balance" placeholder="Current balance" value="" type="text" data-mini="true" />
 </div>
 <div data-role="fieldcontain", id="addAccountButton">
     <label>
         Date:           
     </label>                
-    <input type="text" id="datepicker" date-picker/>
+    <input type="text" placeholder="Expiry date" id="datepicker" date-picker/>
 </div>
 <div data-role="fieldcontain", id="addAccountButton">
     <button id='addCardButton'>Add</button>
