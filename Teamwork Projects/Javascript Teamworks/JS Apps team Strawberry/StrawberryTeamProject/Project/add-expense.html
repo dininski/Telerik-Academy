@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses.js"></script>
+	<script type="text/javascript" src="scripts/accounts.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+	
+	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+	  
+	  <!-- jQuery and jQuery Mobile -->
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+	  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" /> 
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <style>
+/*	    div > ul > li a > span{
+	        display: inline-block;
+	        float: right;
+	        color: #61B329;
+	        font-size: 14px;
+	        text-shadow: 1px 1px 0px green;
+	    }
+
+	    div ul li a strong{
+	    	position: absolute;
+	    	left: 40%;
+	    }
+
+	   span.totalAccountsSum{
+
+	        display: inline-block;
+	        float: right;
+	        color: white;
+	    }
+
+	    .not-added-item{
+			box-shadow: inset 0px 0px 60px green;	    	
+	    }
+*/
+/*	    input{
+	    	width: 50%;
+	    	border-radius: 10px;
+	    	height: 35px;
+	    	background: green;
+	    	opacity: 0.6;
+	    	font-size: 22px;
+	    	color: white;
+	    	padding-left: 20px;
+	    }*/
+
+
+	   
+
+   </style>
+   <script type="text/javascript">
+	   $(function () {
+	            $("#datepicker").datepicker();
+	        });
+   </script>
+</head>
+	 
+<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <a id="home-button" data-role="button" href="#" data-icon="home" data-iconpos="left"
+        class="ui-btn-left">
+            Home
+        </a>
+        <h3>
+            Add Expense
+        </h3>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain" style="width:45%; display: inline-block">
+            <label for="categories">
+                Category:
+            </label>
+            <select id="categories" name="">
+            	<option value="">
+                     Choose
+                </option>
+                <option value="home">
+                     Home
+                </option>
+                <option value="utilities">
+                     Utilities
+                </option>
+                <option value="foodAndGroceries">
+                     Groceries
+                </option>
+                <option value="entertainment">
+                     Entertainment
+                </option>
+                <option value="medical">
+                     Medical
+                </option>
+            </select>
+        </div>
+        <div data-role="fieldcontain" style="width:45%;display: inline-block">
+            <label for="subcategories">
+                Subcategory:
+            </label>
+            <select id="subcategories" name="">
+                <option value="">
+                    Choose
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div data-role="content" style="width:25%;display: inline-block">
+        <div data-role="fieldcontain">
+            <label for="textinput1">
+                Date:
+            </label>
+            <input name="" id="datepicker" placeholder="" value="" type="text">
+        </div>
+    </div>
+
+    <div data-role="content" style="width:50%;display: inline-block">
+        <div data-role="fieldcontain">
+            <label for="textinput1">
+                Amount:
+            </label>
+            <input name="" id="amount" placeholder="" value="" type="text">
+        </div>
+    </div>
+
+
+
+ 	<div data-role="content">
+        <div data-role="fieldcontain" style="width:40%; display: inline-block">
+            <label for="paymentMethods">
+                Payment Method:
+            </label>
+            <select id="paymentMethods" name="">
+            	<option value="">
+                     Choose
+                </option>
+                <option value="debit">
+                     Debit Cards
+                </option>
+                <option value="credit">
+                     Credit Cards
+                </option>
+                <option value="bank">
+                     Bank Acc
+                </option>
+                <option value="cash">
+                     Cash
+                </option>
+            </select>
+        </div>
+        <div data-role="fieldcontain" style="width:40%;display: inline-block">
+            <label for="accountsMenu">
+                Account:
+            </label>
+            <select id="accountsMenu" name="">
+                <option value="">
+                    Choose
+                </option>
+            </select>
+
+        </div>
+        <span   id="availableMoney"></span>
+    </div>
+
+
+    <div data-role="content" style="">
+        <div data-role="fieldcontain">
+            <label for="textinput1">
+                Notes:
+            </label>
+            <input name="" id="notes" placeholder="" value="" type="text">
+        </div>
+    </div>
+
+    <div style="width: 50%; margin-left:25%" id="add-expense-button" data-role="content">
+        <a id="add-expsense-button" data-role="button" href="#page1" data-icon="plus" data-iconpos="left">
+            Add Expense
+        </a>
+    </div>
+
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3>
+            Telerik Academy Teamwork Project
+        </h3>
+    </div>
+</div>
+	<script type="text/javascript">
+
+	$categoriesMenu = $("#categories").on('change', function(){
+		$category = $("#categories").val();
+		$allCategories = storage.load("categories");
+		$("#subcategories").empty();
+		for (var i = 0; i < $allCategories[$category].length; i++) {
+			$subcategory = $allCategories[$category][i];
+			$option = $("<option></option>");
+			$option.val($subcategory);
+			$option.text($subcategory);
+			$("#subcategories").append($option);
+		};
+		// $($("#subcategories option")[0]).text("wtf");
+	})
+
+	$paymentMethodsMenu = $("#paymentMethods").on('change', function(){
+		$paymentMethod = $("#paymentMethods").val();
+		console.log($paymentMethod);
+		$allPaymentMethods = storage.load("accounts");
+		$("#accountsMenu").empty();
+		for (var i = 0; i < $allPaymentMethods[$paymentMethod].length; i++) {
+			$account = $allPaymentMethods[$paymentMethod][i].name;
+			$option = $("<option></option>");
+			$option.val($account);
+			$option.text($account);
+			$("#accountsMenu").append($option);
+		};
+	})
+
+	$("#add-expense-button").on('click', function(){
+		$category = $("#categories").val();
+		$subCat = $("#subcategories").val();
+		$date = $("#datepicker").val();
+		$amount = $("#amount").val();
+		$paymentMethod = $("#paymentMethods").val();
+		$account = $("#accountsMenu").val();
+		$notes = $("#notes").val();
+		expenses.addExpense($category, $subCat, $date, $amount, $paymentMethod, $account, $notes);
+		document.location.href="index.html"
+	})
+
+    $("#accountsMenu").on('change', function(){
+        $type = $("#paymentMethods").val();
+        $name = $("#accountsMenu").val();
+        $accounts = storage.load("accounts");
+
+        for (var i = 0; i < $accounts[$type].length; i++) {
+            if ($accounts[$type][i].name == $name) {
+                $balance = $accounts[$type][i].balance;
+                $("#availableMoney").text(Number($balance).toFixed(2))
+                if (Number($("#availableMoney").text()) > 0) {
+                    $("#availableMoney").css('color', "green");
+                }else{
+                    $("#availableMoney").css('color', 'red');
+                }
+            };
+        };
+
+
+    })
+
+
+	$("#subcategories").on('click', function(){
+		console.log($(this).val());
+	})
+ 
+
+	$("#home-button").on('click', function(){
+		location.href = "index.html";
+	})
+
+
+
+	</script>
+</body>
+</html>

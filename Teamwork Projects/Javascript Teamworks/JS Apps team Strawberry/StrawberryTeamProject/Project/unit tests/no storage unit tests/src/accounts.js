@@ -27,10 +27,10 @@
                 accounts[type].push(account);
                 storage.save("accounts", accounts);
             } else {
-                alert("Balance should be a positive number!");
+                throw new Error("Balance should be a positive number!");
             }
         } else {
-            alert("Card name already exists. Please choose another name !");
+            throw new Error("Card name already exists. Please choose another name !");
         }
     }
 
@@ -102,6 +102,7 @@
             storage.save("accounts", accounts);
             return true;
         }
+
         return false;
     }
 
@@ -262,15 +263,15 @@
                                 enoughFunds = true;
                                 break;
                             } else {
-                                alert("Influence funds in the account!");
+                                throw new Error("Insufficient funds in the account!");
                                 break;
                             }
                         } else {
-                            alert("Amount should be a possitive number!");
+                            throw new Error("Amount should be a possitive number!");
                             break;
                         }
                     } else {
-                        alert("Amount should be a number!");
+                        throw new Error("Amount should be a number!");
                     }
                 };
             };

@@ -24,7 +24,6 @@
         <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
         <button id='accountsButton'>Accounts</button>
         <button id='addExpense'>Add Expense</button>
-        <button id='addIncome'>Add Income</button>
         <button id='categoriesButton'>Categories</button>
         <button id='chartsButton'>Charts</button>
         </div>
@@ -50,10 +49,6 @@
 
 	$('#addExpense').on('click', function(){
 		document.location.href = 'add-expense.html';
-	})
-
-	$('#addIncome').on('click', function(){
-		document.location.href = 'add-income.html';
 	})
 </script>
 </body>
