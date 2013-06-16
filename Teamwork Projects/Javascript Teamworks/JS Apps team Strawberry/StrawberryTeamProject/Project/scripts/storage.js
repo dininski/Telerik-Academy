@@ -21,14 +21,6 @@
         }
     }
 
-    // var save = function (key, value) {
-    //     return localStorage.setObject(key, value);
-    // }
-
-    // var load = function (key) {
-    //     return localStorage.getObject(key);
-    // }
-
     var clear = function () {
         storageObject = {};
         localStorage.setObject(appName, storageObject);

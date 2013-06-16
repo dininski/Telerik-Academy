@@ -10,18 +10,11 @@
   <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
 
   <!-- include source files here... -->
-  <script type="text/javascript" src='src/mockStorage.js'></script>
-  <script type="text/javascript" src='src/accounts.js'></script>
-  <script type="text/javascript" src='src/budget.js'></script>
-  <script type="text/javascript" src='src/categories.js'></script>
-  <script type="text/javascript" src='src/expenses.js'></script>
+  <script type="text/javascript" src='../scripts/mockStorage.js'></script>
+  <script type="text/javascript" src='../scripts/expenses.js'></script>
 
   <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/AccountsSpec.js"></script>
-  <script type="text/javascript" src="spec/BudgetSpec.js"></script>
-  <script type="text/javascript" src="spec/CategoriesSpec.js"></script>
   <script type="text/javascript" src="spec/ExpensesSpec.js"></script>
-  <script type="text/javascript" src="spec/MockStorageSpec.js"></script>
 
   <script type="text/javascript">
     (function() {
