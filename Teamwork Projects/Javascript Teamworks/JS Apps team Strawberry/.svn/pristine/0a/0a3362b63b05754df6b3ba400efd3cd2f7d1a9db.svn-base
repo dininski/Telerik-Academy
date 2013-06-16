@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class='ui-mobile' ng-app="personalFinance">
+<head>
+    <title ng-bind-template="{{title}}">Title</title>
+    
+    <script type="text/javascript" src="scripts/local-storage-extensions.js"></script>
+    <script type="text/javascript" src="scripts/storage.js"></script>
+    <script type="text/javascript" src="scripts/expenses.js"></script>
+    <script type="text/javascript" src="scripts/accounts.js"></script>
+    <script type="text/javascript" src="scripts/categories.js"></script>
+
+    <script type="text/javascript" src="scripts/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/personalFinance.js"></script>
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery.mobile-1.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/jquery.mobile-1.3.1.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+    <div data-role="page" id="page1">
+        <div data-theme="a" data-role="header">
+            <!-- <a href='/' id="homeButton" data-role="button" href back-button data-icon="home" data-iconpos="right"
+                class="ui-btn-right">Back
+            </a> -->
+            <a href='/' id="homeButton" data-role="button" href ng-href="./home" data-icon="home" data-iconpos="left"
+                class="ui-btn-left">Home
+            </a>
+
+            <h3 ng-bind-template="{{header}}"></h3>
+        </div>
+
+        <div ng-view>
+        </div>
+
+        <div id='footer' data-theme="a" data-role="footer" data-position="fixed">
+            <h3 ng-bind-template="{{footer}}"></h3>
+        </div>
+    </div>
+    <script type="text/javascript">
+        accounts.init();
+        categories.init();
+        expenses.init();;
+    </script>
+</body>
+</html>

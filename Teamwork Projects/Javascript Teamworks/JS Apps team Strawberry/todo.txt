@@ -1,2 +1,0 @@
-angular.js for multiple views
-refactor categories.js and expenses.js

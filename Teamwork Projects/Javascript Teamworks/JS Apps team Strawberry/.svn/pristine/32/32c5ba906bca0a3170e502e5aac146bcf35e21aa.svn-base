@@ -1,0 +1,8 @@
+﻿<div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+    <ul id="list" data-role="listview" data-divider-theme="b" data-inset="true">
+        
+    </ul>
+</div>	
+<button ng-click='addAccount()'>Add new card/bank account</button>
+
+<div expenses-renderer></div>

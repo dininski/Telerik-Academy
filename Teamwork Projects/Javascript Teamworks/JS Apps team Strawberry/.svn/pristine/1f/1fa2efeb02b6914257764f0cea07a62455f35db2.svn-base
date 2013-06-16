@@ -1,45 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>Test</title>
-	  
-	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
-	<script type="text/javascript" src="scripts/storage.js"></script>
-	<script type="text/javascript" src="scripts/expenses.js"></script>
-	<script type="text/javascript" src="scripts/accounts.js"></script>
-	<script type="text/javascript" src="scripts/categories.js"></script>
-	
-	<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
-	  
-	  <!-- jQuery and jQuery Mobile -->
-	  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
-	  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-
-    <style>
-	    div > ul > li a > span{
-	        display: inline-block;
-	        float: right;
-	        color: #61B329;
-	        font-size: 14px;
-	        text-shadow: 1px 1px 0px green;
-	    }
-
-	    div ul li a strong{
-	    	position: absolute;
-	    	left: 40%;
-	    }
-
-	   span.totalAccountsSum{
-
-	        display: inline-block;
-	        float: right;
-	        color: white;
-	    }
-   </style>
-</head>
-	 
-<body>
-	<!-- Home -->
+﻿	<!-- Home -->
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
 
@@ -63,12 +22,6 @@
                 </ul>
         </div>
     </div>
-    <div data-theme="a" data-role="footer" data-position="fixed">
-        <h3>
-            Footer
-        </h3>
-    </div>
-</div>
 	<script type="text/javascript">
 
 		accounts.init();
@@ -80,9 +33,9 @@
 	    });
 
 	    var get = location.search;
-	    get = decodeURI(get);
-	    console.log(get);
 	    get = get.substring(1, get.length);
+	    get = get.replace("%20", " ");
+	    get = get.replace("%", ' ');
 	    var parts = get.split("&");
 	    var type = parts[0].split("=")[1];
 	    var accName = parts[1].split("=")[1];
@@ -92,33 +45,18 @@
 
 	    $("#delete-button").on('click', { type: type, accName: accName }, function (event) {
 	        accounts.deleteAccount(event.data.type, event.data.accName);
-	        location.href = "accounts.html";
+	        location.href = "accounts-tests.html";
 	    });
 
 	    if (allExpenses.length > 0) {
 
 	        $ul = $("#list");
-	        var all = [];
 	        for (var i = 0; i < allExpenses.length; i++) {
 	            var notes = allExpenses[i].notes;
 	            var date = allExpenses[i].date;
 	            var amount = allExpenses[i].amount;
-	            var object = {date: date, notes:notes, amount:amount}
-	            all.push(object);
-	        }
-	        all.sort(function(a, b) {
-			   var date1 = a.date.split('/');
-			   var date2 = b.date.split('/');
-			   var date1Num = Number(date1[0]) + Number(date1[1]*100) + Number(date1[2]*1000);
-			   var date2Num = Number(date2[0]) + Number(date2[1]*100) + Number(date2[2]*1000);
-			   return (date1Num == date2Num) ? 0 : (date1Num > date2Num) ? 1 : -1;
-			});
-	        for (var i = 0; i < all.length; i++) {
-	        	var date = all[i].date;
-	        	var notes = all[i].notes;
-	        	var amount = all[i].amount;
 
-	        	  $ul.append($('<li></li>')
+	            $ul.append($('<li></li>')
                         .attr({ 'data-theme': "c" })
                         .append($('<a></a>')
                             .attr({ 'data-transition': "slide" })
@@ -131,9 +69,6 @@
                             )
                         )
                     )
-	        };
+	        }
 	    }
-
 	</script>
-</body>
-</html>

@@ -1,0 +1,3 @@
+<div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+  <div categories-renderer></div>
+</div>
