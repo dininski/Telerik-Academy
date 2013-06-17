@@ -6,32 +6,34 @@
 
     public class SubsetsGenerator<T>
     {
-        private T[] Elements;
+        private readonly T[] elements;
+        private T[] result;
 
         public SubsetsGenerator(IEnumerable<T> elements)
         {
-            this.Elements = elements.ToArray();
+            this.elements = elements.ToArray();
         }
 
         public void PrintSubsets(int max)
         {
-            GenerateSubsets(0, new T[max], 0, max);
+            result = new T[max];
+            GenerateSubsets(0, 0);
         }
 
-        private void GenerateSubsets(int index, T[] result, int start, int max)
+        private void GenerateSubsets(int start, int current)
         {
-            if (index == max)
+            if (start >= this.result.Length)
             {
-                Print(result);
+                Print(this.result);
             }
             else
             {
-                for (int i = start; i <= max; i++)
+                for (int i = current; i < this.elements.Length; i++)
                 {
-
+                    this.result[start] = this.elements[i];
+                    GenerateSubsets(start + 1, i + 1);
                 }
             }
-
         }
 
         private void Print(T[] items)

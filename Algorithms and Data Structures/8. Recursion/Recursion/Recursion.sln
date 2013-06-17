@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Permutations", "4. Permu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Ordered subsets of element set", "5. Ordered subsets of element set\5. Ordered subsets of element set.csproj", "{DB43E72C-690E-4CE2-8A25-0BBD84702763}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_6. All subsets of strings", "6. All subsets of strings\_6. All subsets of strings.csproj", "{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. All subsets of strings", "6. All subsets of strings\6. All subsets of strings.csproj", "{03AD62AF-4705-487A-8390-F6CFF7E2FF6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
