@@ -113,7 +113,6 @@
     function monthCategoryExpenses(category, year, month) {
         var result = [];
         var object = expensesStorage[category];
-
         var subCat = categories.getAllSubCategories(category);
 
         for (var i = 0; i < subCat.length; i++) {
@@ -160,7 +159,6 @@
                 };
             }
         }
-
         return result;
     }
 
@@ -211,13 +209,17 @@
 
     // --------- Gets expenses sum from specific category ---------
 
-    var getCategoryExpensesSum = function (category, year, month) {
+    var getCategoryExpensesSum = function (category, year, month, monthTo) {
         if (arguments.length == 2) {
             return yearCategoryExpensesSum(category, year);
         };
 
         if (arguments.length == 3) {
             return monthCategoryExpensesSum(category, year, month);
+        };
+
+        if (arguments.length == 4) {
+            return periodCategoryExpensesSum(category, year, month, monthTo);
         };
     }
 
@@ -242,6 +244,18 @@
         };
 
         return Number(result.toFixed(2));
+    }
+
+    function periodCategoryExpensesSum(category, year, monthFrom, monthTo){
+        result = 0;
+        for(var i = monthFrom; i <= monthTo; i++){  
+            var expensesList = monthCategoryExpenses(category, year, i)
+            
+            for(var j =0; j < expensesList.length; j++){
+                result += expensesList[j].amount;
+            }            
+        }
+        return Number(result.toFixed(2))
     }
 
     // --------- Gets expenses sum from all categories ---------

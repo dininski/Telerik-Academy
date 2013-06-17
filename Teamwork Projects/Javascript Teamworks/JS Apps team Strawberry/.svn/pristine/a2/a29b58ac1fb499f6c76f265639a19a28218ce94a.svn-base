@@ -2,24 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-
+     
     <!-- jQuery and jQuery Mobile -->
+    <script type="text/javascript" src="scripts/local-storage-extensions.js"></script>  
+    <script type="text/javascript" src="scripts/storage.js"></script>
+    <script type="text/javascript" src="scripts/expenses.js"></script>
+    <script type="text/javascript" src="scripts/accounts.js"></script>
+    <script type="text/javascript" src="scripts/categories.js"></script>
     <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
     <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <!--<link rel="stylesheet" href="/resources/demos/style.css" />-->
     <script>
         $(function () {
-            $("#datepicker").datepicker();
+            $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
         });
          
     </script>
-    <script src="scripts/accounts.js"></script>
-    <script src="scripts/local-storage-extensions.js"></script>
-    <script src="scripts/storage.js"></script>
+ 
     
 
     <style>
@@ -30,7 +34,9 @@
             font-size: 14px;
             text-shadow: 1px 1px 0px green;
         }
+ 
 
+    @media (min-width:480px) {
         span.totalAccountsSum {
             display: inline-block;
             float: right;
@@ -55,16 +61,29 @@
         .ui-content div p {
             float:right;
         }
+    }
+
     </style>
 </head>
 <body>
     <div data-role="page" id="Div1">
         <div data-theme="a" data-role="header">
-            <h3>Add account
-        </h3>
+             
+            <h3>
+                Add account
+            </h3>
+            <a id="backButton" data-role="button" href="" data-icon="back" data-iconpos="left"
+            class="ui-btn-left">
+                Back
+            </a>
+
+            <a id="save-account-button" data-role="button" href="#page1" data-icon="save" data-iconpos="right"
+        class="ui-btn-right">
+            Save
+        </a>
         </div>
         <div data-role="content">
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain" id="select-account-menu">
                 <label for="selectmenu2">
                     Type:         
                 </label>
@@ -96,22 +115,25 @@
                 </label>                
                 <input type="text" id="datepicker" />
             </div>
-            <a id="add-account-button" data-role="button" data-theme="b" href="#page1" >Add</a>
         </div>
     </div>
     <script>
-
-       accounts.init();
-
-        $("#add-account-button").on('click', function(){
+        accounts.init();
+        
+        $("#save-account-button").on('click', function(){
             var type = $('#type').val();
             var accName = $('#name').val();
-            var balance = Number($('#balance').val()).toFixed(2);
+            var balance = $('#balance').val();
             var date = $('#datepicker').val();
+
+            // check if successfully added!
             accounts.addAccount(type, accName, Number(balance), date);
-            location.href="accounts-tests.html";
+            location.href="accounts.html";
         })
 
+        $("#backButton").on('click', function(){
+            parent.history.back();
+        })
     </script>
 </body>
 </html>

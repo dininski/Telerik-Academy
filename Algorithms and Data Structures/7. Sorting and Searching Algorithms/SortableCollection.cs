@@ -46,22 +46,20 @@
 
         public bool BinarySearch(T item)
         {
-            int currentIndex = (this.items.Count - 1) / 2;
+            int left = 0;
+            int right = this.items.Count;
 
-            if (this.items[0].Equals(item))
+            while (left + 1 < right)
             {
-                return true;
-            }
+                int middle = (left + right) / 2;
 
-            while (currentIndex != 0 && currentIndex < this.items.Count && !this.items[currentIndex].Equals(item))
-            {
-                if (this.items[currentIndex].CompareTo(item) > 0)
+                if (item.CompareTo(this.items[middle]) > 0)
                 {
-                    currentIndex /= 2;
+                    left = middle;
                 }
-                else if (this.items[currentIndex].CompareTo(item) < 0)
+                else if (item.CompareTo(this.items[middle]) < 0)
                 {
-                    currentIndex *= 2;
+                    right = middle;
                 }
                 else
                 {
@@ -69,17 +67,14 @@
                 }
             }
 
-            if (currentIndex >= this.items.Count)
-            {
-                return false;
-            }
-
-            if (this.items[currentIndex].Equals(item))
+            if (this.items[left].Equals(item))
             {
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public void Shuffle()

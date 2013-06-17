@@ -68,7 +68,7 @@
                 else if (right.Count > 0)
                 {
                     result.AddRange(right);
-                    right.Remove(right[0]);
+                    right.Clear();
                 }
             }
 

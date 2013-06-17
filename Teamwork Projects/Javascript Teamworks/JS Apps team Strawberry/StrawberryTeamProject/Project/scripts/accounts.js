@@ -314,6 +314,34 @@
         }
     }
 
+    // var getAllExpensesByAccount = function (paymentMethod, accName) {
+    //     var result = [];
+    //     for (var category in expensesStorage) {
+    //         var subCat = categories.getAllSubCategories(category);
+    //         for (var i = 0; i < subCat.length; i++) {
+    //             for (var j = 0; j < expensesStorage[category][subCat[i]].length; j++) {
+    //                 if (expensesStorage[category][subCat[i]][j].paymentMethod == paymentMethod &&
+    //                         expensesStorage[category][subCat[i]][j].accName == accName) {
+    //                     result.push(expensesStorage[category][subCat[i]][j]);
+    //                 };
+    //             };
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    var getAllIncomesByAccount = function(paymentMethod, accName){
+        var result = [];
+        var incomes = storage.load("income");
+        for(var i =0; i < incomes.length; i++){
+            if (incomes[i].accType == paymentMethod &&
+                incomes[i].accName == accName) {
+                result.push(incomes[i]);
+            };
+        }
+        return result;
+    }
+
     return {
         init: init,
         addAccount: addAccount,
@@ -324,5 +352,7 @@
         makeTransfer: makeTransfer,
         deleteAccount: deleteAccount,
         accTypeParser: accTypeParser,
+        getAllIncomesByAccount: getAllIncomesByAccount,
+
     }
 }());

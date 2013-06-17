@@ -1,8 +1,8 @@
 ﻿var accounts = (function () {
+    var accounts = storage.load("accounts");
     var accountsStorage = "accounts";
+    var income = storage.load("income")
     var incomeStorage = "income";
-    var accounts;
-    var income;
 
     var init = function() {
         accounts = storage.load(accountsStorage);
@@ -27,10 +27,10 @@
                 accounts[type].push(account);
                 storage.save("accounts", accounts);
             } else {
-                alert("Balance should be a positive number!");
+                throw new Error("Balance should be a positive number!");
             }
         } else {
-            alert("Card name already exists. Please choose another name !");
+            throw new Error("Card name already exists. Please choose another name !");
         }
     }
 
@@ -102,6 +102,7 @@
             storage.save("accounts", accounts);
             return true;
         }
+
         return false;
     }
 
@@ -114,7 +115,7 @@
 
         for (var k in accounts) {
             for (var i = 0; i < accounts[k].length; i++) {
-                balance += accounts[k][i].balance;
+                balance += parseFloat(accounts[k][i].balance);
             };
         }
 
@@ -124,7 +125,7 @@
     function getAccTypeBalance(accType) {
         var balance = 0;
         for (var i = 0; i < accounts[accType].length; i++) {
-            balance += accounts[accType][i].balance;
+            balance += parseFloat(accounts[accType][i].balance);
         };
 
         return Number(balance.toFixed(2));
@@ -262,15 +263,15 @@
                                 enoughFunds = true;
                                 break;
                             } else {
-                                alert("Influence funds in the account!");
+                                throw new Error("Insufficient funds in the account!");
                                 break;
                             }
                         } else {
-                            alert("Amount should be a possitive number!");
+                            throw new Error("Amount should be a possitive number!");
                             break;
                         }
                     } else {
-                        alert("Amount should be a number!");
+                        throw new Error("Amount should be a number!");
                     }
                 };
             };
@@ -313,6 +314,34 @@
         }
     }
 
+    // var getAllExpensesByAccount = function (paymentMethod, accName) {
+    //     var result = [];
+    //     for (var category in expensesStorage) {
+    //         var subCat = categories.getAllSubCategories(category);
+    //         for (var i = 0; i < subCat.length; i++) {
+    //             for (var j = 0; j < expensesStorage[category][subCat[i]].length; j++) {
+    //                 if (expensesStorage[category][subCat[i]][j].paymentMethod == paymentMethod &&
+    //                         expensesStorage[category][subCat[i]][j].accName == accName) {
+    //                     result.push(expensesStorage[category][subCat[i]][j]);
+    //                 };
+    //             };
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    var getAllIncomesByAccount = function(paymentMethod, accName){
+        var result = [];
+        var incomes = storage.load("income");
+        for(var i =0; i < incomes.length; i++){
+            if (incomes[i].accType == paymentMethod &&
+                incomes[i].accName == accName) {
+                result.push(incomes[i]);
+            };
+        }
+        return result;
+    }
+
     return {
         init: init,
         addAccount: addAccount,
@@ -323,5 +352,7 @@
         makeTransfer: makeTransfer,
         deleteAccount: deleteAccount,
         accTypeParser: accTypeParser,
+        getAllIncomesByAccount: getAllIncomesByAccount,
+
     }
 }());

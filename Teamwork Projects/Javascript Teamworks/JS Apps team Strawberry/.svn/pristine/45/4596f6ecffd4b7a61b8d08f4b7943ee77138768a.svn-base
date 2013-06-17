@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	  
+	<script type="text/javascript" src="scripts/local-storage-extensions.js"></script>	
+	<script type="text/javascript" src="scripts/storage.js"></script>
+	<script type="text/javascript" src="scripts/expenses.js"></script>
+	<script type="text/javascript" src="scripts/accounts.js"></script>
+	<script type="text/javascript" src="scripts/categories.js"></script>
+	
+	  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+      
+      <!-- jQuery and jQuery Mobile -->
+      <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+      <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+	  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <style>
+	    div.pic, div.allInfo{
+	    	float: left;
+	    	height: 48px;
+	    }
+
+	    div.pic{
+	    	width: 48px;
+	    	width: 48px;
+	    }
+	    div.allInfo{
+	    	width: 80%;
+	    }
+	   div > ul > li {
+	    	height: 50px;
+	    }
+
+	    div.topDiv{
+	    	height: 20px;
+	    }
+
+	    div.middleDiv{
+	    	height: 14px;
+	    }
+
+	    div.bottomDiv{
+	    	height: 14px;
+	    	color: green;
+	    }
+	    div.totalBalance, div.middleDiv, div.bottomDiv{
+	    	width: 100%;
+	    }
+
+	    span.category, span.spendMoney{
+	    	float: left;
+	    }
+
+	    span.budgetMoney, span.leftMoney{
+	    	float: right;
+	    }
+   </style>
+</head>
+	 
+<body>
+	<!-- Home -->
+<div data-role="page" id="page1">
+    <div data-theme="a" data-role="header">
+        <a id="backButton" data-role="button" href="" data-icon="home" data-iconpos="left"
+        class="ui-btn-left">
+            Home
+        </a>
+        <h3 id="accName">
+            Budget Manager <span id="totalBalance"></span>
+        </h3>
+    </div>
+    <div data-role="content">
+        <div id="acc-container" data-role="collapsible-set" data-theme="b" data-content-theme="a">
+                <ul id="list" data-role="listview" data-divider-theme="b" data-inset="true">
+                	<li>
+                    	<div class="pic" style="background: url('images/home.png') no-repeat"></div>
+                    	<div class="allInfo">
+                    		<div class="topDiv">
+                    			<span class="category">Home/rent</span>
+                    			<span class="budgetMoney" id="budgetMoneyHome">800</span>
+                    		</div>
+                    		<div class="middleDiv">
+                    			<div id="progressbarHome" style="height:12px; width:100%; background:green"></div>
+                    		</div>
+                    		<div class="bottomDiv">
+                    			<span class="spendMoney" id="spendMoneyHome"></span>
+                    			<span class="leftMoney" id="leftMoneyHome"></span>
+                    		</div>
+                    	</div>
+                    </li>
+                    <li>
+                    	<div class="pic" style="background: url('images/utilities.png') no-repeat"></div>
+                    	<div class="allInfo">
+                    		<div class="topDiv">
+                    			<span class="category">Utilities</span>
+                    			<span class="budgetMoney" id="budgetMoneyUtilities">400</span>
+                    		</div>
+                    		<div class="middleDiv">
+                    			<div id="progressbarUtilities" style="height:12px; width:100%; background:green"></div>
+                    		</div>
+                    		<div class="bottomDiv">
+                    			<span class="spendMoney" id="spendMoneyUtilities"></span>
+                    			<span class="leftMoney" id="leftMoneyUtilities"></span>
+                    		</div>
+                    	</div>
+                    </li>
+
+                    <li>
+                    	<div class="pic" style="background: url('images/cart.png') no-repeat"></div>
+                    	<div class="allInfo">
+                    		<div class="topDiv">
+                    			<span class="category">Food/Groceries</span>
+                    			<span class="budgetMoney" id="budgetMoneyFood">600</span>
+                    		</div>
+                    		<div class="middleDiv">
+                    			<div id="progressbarFood" style="height:12px; width:100%; background:green"></div>
+                    		</div>
+                    		<div class="bottomDiv">
+                    			<span class="spendMoney" id="spendMoneyFood"></span>
+                    			<span class="leftMoney" id="leftMoneyFood"></span>
+                    		</div>
+                    	</div>
+                    </li>
+
+                    <li>
+                    	<div class="pic" style="background: url('images/fun.png') no-repeat"></div>
+                    	<div class="allInfo">
+                    		<div class="topDiv">
+                    			<span class="category">Entertainment</span>
+                    			<span class="budgetMoney" id="budgetMoneyEntertainment">250</span>
+                    		</div>
+                    		<div class="middleDiv">
+                    			<div id="progressbarEntertainment" style="height:12px; width:100%; background:green"></div>
+                    		</div>
+                    		<div class="bottomDiv">
+                    			<span class="spendMoney" id="spendMoneyEntertainment"></span>
+                    			<span class="leftMoney" id="leftMoneyEntertainment"></span>
+                    		</div>
+                    	</div>
+                    </li>
+
+                    <li>
+                    	<div class="pic" style="background: url('images/medical.png') no-repeat"></div>
+                    	<div class="allInfo">
+                    		<div class="topDiv">
+                    			<span class="category">Medical</span>
+                    			<span class="budgetMoney" id="budgetMoneyMedical">250</span>
+                    		</div>
+                    		<div class="middleDiv">
+                    			<div id="progressbarMedical" style="height:12px; width:100%; background:green"></div>
+                    		</div>
+                    		<div class="bottomDiv">
+                    			<span class="spendMoney" id="spendMoneyMedical"></span>
+                    			<span class="leftMoney" id="leftMoneyMedical"></span>
+                    		</div>
+                    	</div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+    <div data-theme="a" data-role="footer" data-position="fixed">
+        <h3>
+            Footer
+        </h3>
+    </div>
+</div>
+	<script type="text/javascript">
+
+		accounts.init();
+        categories.init();
+        expenses.init();;
+
+	    $("#backButton").bind('click', function () {
+	        window.location.href = "index.html";
+	    });
+
+
+$date = new Date();
+$currentMonth = $date.getMonth()+1;
+$currentYear = $date.getFullYear();
+function monthParser(month){
+	if (month < 10) {
+		return '0' + month;
+	}else{
+		return month;
+	}
+}
+
+//Home
+$expensesForMonth = expenses.getCategoryExpensesSum("home", $currentYear, monthParser($currentMonth));
+$budgetMoney = Number($("#budgetMoneyHome").text());
+$leftMoney = $budgetMoney - $expensesForMonth;
+$percentHome = ($expensesForMonth / $budgetMoney)*100;
+
+$leftMoneyColor = "";
+if ($leftMoney > 0) {
+	$leftMoneyColor = "green";
+}else{
+	$leftMoneyColor = "red";
+}
+
+$("#spendMoneyHome").text('$' + $expensesForMonth);
+$("#leftMoneyHome")
+	.text('$' + $leftMoney.toFixed(2))
+	.css('color', $leftMoneyColor);
+
+
+$(function() {
+    $( "#progressbarHome" ).progressbar({
+      value: $percentHome
+    });
+  });
+
+//Utilities
+$expensesForMonth = expenses.getCategoryExpensesSum("utilities", $currentYear, monthParser($currentMonth));
+$budgetMoney = Number($("#budgetMoneyUtilities").text());
+$leftMoney = $budgetMoney - $expensesForMonth;
+$percentUtilities = ($expensesForMonth / $budgetMoney)*100;
+
+$leftMoneyColor = "";
+if ($leftMoney > 0) {
+	$leftMoneyColor = "green";
+}else{
+	$leftMoneyColor = "red";
+}
+
+$("#spendMoneyUtilities").text('$' + $expensesForMonth);
+$("#leftMoneyUtilities")
+	.text('$' + $leftMoney.toFixed(2))
+	.css('color', $leftMoneyColor);
+
+
+$(function() {
+    $( "#progressbarUtilities" ).progressbar({
+      value: $percentUtilities
+    });
+  });
+
+//Food and Groceries
+$expensesForMonth = expenses.getCategoryExpensesSum("foodAndGroceries", $currentYear, monthParser($currentMonth));
+$budgetMoney = Number($("#budgetMoneyFood").text());
+$leftMoney = $budgetMoney - $expensesForMonth;
+$percentFood = ($expensesForMonth / $budgetMoney)*100;
+
+$leftMoneyColor = "";
+if ($leftMoney > 0) {
+	$leftMoneyColor = "green";
+}else{
+	$leftMoneyColor = "red";
+}
+
+$("#spendMoneyFood").text('$' + $expensesForMonth);
+$("#leftMoneyFood")
+	.text('$' + $leftMoney.toFixed(2))
+	.css('color', $leftMoneyColor);
+
+
+$(function() {
+    $( "#progressbarFood" ).progressbar({
+      value: $percentFood
+    });
+  });
+
+
+//Entertainment
+
+$expensesForMonth = expenses.getCategoryExpensesSum("entertainment", $currentYear, monthParser($currentMonth));
+$budgetMoney = Number($("#budgetMoneyEntertainment").text());
+$leftMoney = $budgetMoney - $expensesForMonth;
+$percentEntertainment = ($expensesForMonth / $budgetMoney)*100;
+
+$leftMoneyColor = "";
+if ($leftMoney > 0) {
+	$leftMoneyColor = "green";
+}else{
+	$leftMoneyColor = "red";
+}
+
+$("#spendMoneyEntertainment").text('$' + $expensesForMonth);
+$("#leftMoneyEntertainment")
+	.text('$' + $leftMoney.toFixed(2))
+	.css('color', $leftMoneyColor);
+
+
+$(function() {
+    $( "#progressbarEntertainment" ).progressbar({
+      value: $percentEntertainment
+    });
+  });
+
+//Medical
+
+$expensesForMonth = expenses.getCategoryExpensesSum("medical", $currentYear, monthParser($currentMonth));
+$budgetMoney = Number($("#budgetMoneyEntertainment").text());
+$leftMoney = $budgetMoney - $expensesForMonth;
+$percentMedical = ($expensesForMonth / $budgetMoney)*100;
+
+$leftMoneyColor = "";
+if ($leftMoney > 0) {
+	$leftMoneyColor = "green";
+}else{
+	$leftMoneyColor = "red";
+}
+
+$("#spendMoneyMedical").text('$' + $expensesForMonth);
+$("#leftMoneyMedical")
+	.text('$' + $leftMoney.toFixed(2))
+	.css('color', $leftMoneyColor);
+
+
+$(function() {
+    $( "#progressbarMedical" ).progressbar({
+      value: $percentMedical
+    });
+  });
+
+	</script>
+</body>
+</html>
