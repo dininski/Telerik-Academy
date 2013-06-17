@@ -55,7 +55,7 @@
     <Compile Include="SearchingTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\7. Sorting and Searching Algorithms\SortingHomework.csproj">
+    <ProjectReference Include="..\SortingHomework.csproj">
       <Project>{e642bcb7-2897-407b-acd2-531f37d9e9b4}</Project>
       <Name>SortingHomework</Name>
     </ProjectReference>
