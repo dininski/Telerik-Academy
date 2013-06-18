@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1 Tribonacci", "1 Tribonacci\1 Tribonacci.csproj", "{AFEFB104-E53C-46C6-9D9D-52216A4DCEAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 SuperSum - incomplete", "2 SuperSum\2 SuperSum - incomplete.csproj", "{73AEBE7E-EF19-4DCC-8C89-0CEE5A57279E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 SuperSum", "2 SuperSum\2 SuperSum.csproj", "{73AEBE7E-EF19-4DCC-8C89-0CEE5A57279E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4 Guitar", "4 Guitar\4 Guitar.csproj", "{A989F672-5CCC-4254-89FF-71A72908FAFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{73AEBE7E-EF19-4DCC-8C89-0CEE5A57279E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73AEBE7E-EF19-4DCC-8C89-0CEE5A57279E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73AEBE7E-EF19-4DCC-8C89-0CEE5A57279E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A989F672-5CCC-4254-89FF-71A72908FAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A989F672-5CCC-4254-89FF-71A72908FAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A989F672-5CCC-4254-89FF-71A72908FAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A989F672-5CCC-4254-89FF-71A72908FAFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
