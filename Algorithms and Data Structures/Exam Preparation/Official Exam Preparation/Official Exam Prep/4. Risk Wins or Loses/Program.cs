@@ -41,12 +41,13 @@
                 int currentCol = current.Col;
                 int currentRow = current.Row;
 
+                int colDir;
+                int rowDir;
+
                 for (int i = 0; i < 6; i++)
                 {
-                    int colDir;
-                    int rowDir;
-
                     colDir = 0;
+
                     rowDir = moveDirections[i];
 
                     if ((currentCol + colDir > -1) &&
@@ -70,9 +71,6 @@
 
                 for (int i = 0; i < 4; i++)
                 {
-                    int colDir;
-                    int rowDir;
-
                     colDir = moveDirections[i];
                     rowDir = 0;
 

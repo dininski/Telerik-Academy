@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Risk Wins or Loses", "4. Risk Wins or Loses\4. Risk Wins or Loses.csproj", "{7F72879A-94D5-4080-A30E-6236D86AEF8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Message in bottle", "1. Message in bottle\1. Message in bottle.csproj", "{6142F9D8-7D29-4980-91AB-4F315E246C7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Academy Tasks", "2. Academy Tasks\2. Academy Tasks.csproj", "{8FAB0772-A1C5-4055-97DB-702905C15F2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{7F72879A-94D5-4080-A30E-6236D86AEF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F72879A-94D5-4080-A30E-6236D86AEF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F72879A-94D5-4080-A30E-6236D86AEF8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6142F9D8-7D29-4980-91AB-4F315E246C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6142F9D8-7D29-4980-91AB-4F315E246C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6142F9D8-7D29-4980-91AB-4F315E246C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6142F9D8-7D29-4980-91AB-4F315E246C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAB0772-A1C5-4055-97DB-702905C15F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAB0772-A1C5-4055-97DB-702905C15F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAB0772-A1C5-4055-97DB-702905C15F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAB0772-A1C5-4055-97DB-702905C15F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

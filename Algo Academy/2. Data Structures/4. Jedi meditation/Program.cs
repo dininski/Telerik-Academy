@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Wintellect.PowerCollections;
 
 namespace Jedi_Meditation
 {
@@ -9,78 +8,41 @@ namespace Jedi_Meditation
     {
         static void Main(string[] args)
         {
-            int number = int.Parse(Console.ReadLine());
-            string inputString = Console.ReadLine();
-            MeditationSolver ms = new MeditationSolver(number, inputString);
-            Console.WriteLine(ms.GetMeditationOrder());
-        }
+            var masters = new HashSet<string>();
+            var knights = new HashSet<string>();
+            var padawans = new HashSet<string>();
 
-        public class MeditationSolver
-        {
-            private OrderedBag<string> meditatorsPriorityQueue;
-            private int meditatorsCount;
-            private string[] meditators;
+            int numberOfJedi = int.Parse(Console.ReadLine());
 
-            public MeditationSolver(int totalMeditators, string inputString)
+            string input = Console.ReadLine();
+            string[] jedis = input.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < jedis.Length; i++)
             {
-                meditatorsPriorityQueue = new OrderedBag<string>(JediComparer);
-                this.meditatorsCount = totalMeditators;
-                this.meditators = inputString.Split(' ');
-
-                for (int i = 0; i < meditatorsCount; i++)
+                char firstChar = jedis[i][0];
+                if (firstChar == 'm')
                 {
-                    meditatorsPriorityQueue.Add(meditators[i]);
+                    masters.Add(jedis[i]);
+                }
+                else if (firstChar == 'k')
+                {
+                    knights.Add(jedis[i]);
+                }
+                else
+                {
+                    padawans.Add(jedis[i]);
                 }
             }
 
-            public string GetMeditationOrder()
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (var item in meditatorsPriorityQueue)
-                {
-                    sb.AppendFormat("{0} ", item);
-                }
+            StringBuilder result = new StringBuilder();
 
-                return sb.ToString().Trim();
-            }
+            result.Append(string.Join(" ", masters));
+            result.Append(" ");
+            result.Append(string.Join(" ", knights));
+            result.Append(" ");
+            result.Append(string.Join(" ", padawans));
 
-            public static int JediComparer(string first, string second)
-            {
-                int firstPriority;
-                int secondPriority;
-
-                switch (first[0])
-                {
-                    case 'm':
-                        firstPriority = 0;
-                        break;
-                    case 'k':
-                        firstPriority = 1;
-                        break;
-                    case 'p':
-                        firstPriority = 2;
-                        break;
-                    default:
-                        return -2;
-                }
-
-                switch (second[0])
-                {
-                    case 'm':
-                        secondPriority = 0;
-                        break;
-                    case 'k':
-                        secondPriority = 1;
-                        break;
-                    case 'p':
-                        secondPriority = 2;
-                        break;
-                    default:
-                        return -2;
-                }
-
-                return firstPriority.CompareTo(secondPriority);
-            }
+            Console.WriteLine(result.ToString());
         }
     }
 }
