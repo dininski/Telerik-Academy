@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Most Common", "2. Most Common\2. Most Common.csproj", "{3584DDE5-4299-4388-84CC-AF2CB3EF7AF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. LinkedOut", "4. LinkedOut\4. LinkedOut.csproj", "{6701554C-D473-407A-942C-181B6EA47717}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{3584DDE5-4299-4388-84CC-AF2CB3EF7AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3584DDE5-4299-4388-84CC-AF2CB3EF7AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3584DDE5-4299-4388-84CC-AF2CB3EF7AF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6701554C-D473-407A-942C-181B6EA47717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6701554C-D473-407A-942C-181B6EA47717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6701554C-D473-407A-942C-181B6EA47717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6701554C-D473-407A-942C-181B6EA47717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
