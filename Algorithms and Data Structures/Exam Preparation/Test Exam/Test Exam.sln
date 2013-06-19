@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Validate HTML", "3. Validate HTML\3. Validate HTML.csproj", "{45102692-2FF0-4962-BF20-7D357D64E40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Risk Wins Risk Loses", "2. Risk Wins Risk Loses\2. Risk Wins Risk Loses.csproj", "{847C06CC-048D-4B54-BB91-1AECA19987C2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Reach N", "4. Reach N\4. Reach N.csproj", "{BDC3B6E0-9793-426C-9609-99E2D3E1DD71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_2. Risk Wins Risk Loses", "2. Risk Wins Risk Loses\_2. Risk Wins Risk Loses.csproj", "{847C06CC-048D-4B54-BB91-1AECA19987C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_1. Events", "1. Events\_1. Events.csproj", "{21188D66-0071-4EF5-96C4-A4C392579C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +19,18 @@ Global
 		{45102692-2FF0-4962-BF20-7D357D64E40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45102692-2FF0-4962-BF20-7D357D64E40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45102692-2FF0-4962-BF20-7D357D64E40C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDC3B6E0-9793-426C-9609-99E2D3E1DD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDC3B6E0-9793-426C-9609-99E2D3E1DD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC3B6E0-9793-426C-9609-99E2D3E1DD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC3B6E0-9793-426C-9609-99E2D3E1DD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847C06CC-048D-4B54-BB91-1AECA19987C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21188D66-0071-4EF5-96C4-A4C392579C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21188D66-0071-4EF5-96C4-A4C392579C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21188D66-0071-4EF5-96C4-A4C392579C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21188D66-0071-4EF5-96C4-A4C392579C9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
