@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Maximum Path", "1. Maxim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Horse Matrix", "5. Horse Matrix\5. Horse Matrix.csproj", "{DF68180A-5C91-49C0-9C1F-04E9A8251D31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Friends In Need", "3. Friends In Need\3. Friends In Need.csproj", "{34DB1E3E-B5FC-40B8-8D37-FBF518A17563}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{DF68180A-5C91-49C0-9C1F-04E9A8251D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF68180A-5C91-49C0-9C1F-04E9A8251D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF68180A-5C91-49C0-9C1F-04E9A8251D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DB1E3E-B5FC-40B8-8D37-FBF518A17563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DB1E3E-B5FC-40B8-8D37-FBF518A17563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DB1E3E-B5FC-40B8-8D37-FBF518A17563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DB1E3E-B5FC-40B8-8D37-FBF518A17563}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

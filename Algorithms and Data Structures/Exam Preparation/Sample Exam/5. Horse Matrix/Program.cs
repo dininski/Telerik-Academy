@@ -10,7 +10,7 @@ class Program
     {
         int matrixSize = int.Parse(Console.ReadLine());
 
-        string[,] matrix = new string[matrixSize, matrixSize];
+        char[,] matrix = new char[matrixSize, matrixSize];
 
         Position startPosition = new Position(0, 0);
 
@@ -22,13 +22,14 @@ class Program
             string[] rowData = rowDataString.Split(' ');
             for (int row = 0; row < matrixSize; row++)
             {
-                matrix[col, row] = rowData[row];
-                if (rowData[row] == "s")
+                matrix[col, row] = rowData[row][0];
+
+                if (matrix[col, row] == 's')
                 {
                     startPosition = new Position(col, row);
                     visited[col, row] = true;
                 }
-                if (rowData[row] != "-")
+                if (matrix[col, row] != '-')
                 {
                     visited[col, row] = true;
                 }
@@ -57,11 +58,10 @@ class Program
                     {
                         visited[newCol, newRow] = true;
                         var newPosition = new Position(newCol, newRow, current.Hops + 1);
-                        matrix[newCol, newRow] = newPosition.Hops.ToString();
                         positions.Enqueue(newPosition);
                     }
 
-                    if (matrix[newCol, newRow] == "e")
+                    if (matrix[newCol, newRow] == 'e')
                     {
                         Console.WriteLine(current.Hops + 1);
                         return;
