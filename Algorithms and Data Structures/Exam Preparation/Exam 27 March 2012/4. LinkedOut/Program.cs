@@ -71,7 +71,7 @@
 
                 if (!linksCount.ContainsKey(current.Name))
                 {
-                    linksCount.Add(current.Name, current.Level);                    
+                    linksCount.Add(current.Name, current.Level);
                 }
 
                 if (current.Name.Equals(personToFind))
@@ -89,7 +89,7 @@
 
                         if (!visited.Contains(child.Name))
                         {
-                            bfs.Enqueue(new Person(child.Name, current.Level + 1));                            
+                            bfs.Enqueue(new Person(child.Name, current.Level + 1));
                         }
                     }
                 }
