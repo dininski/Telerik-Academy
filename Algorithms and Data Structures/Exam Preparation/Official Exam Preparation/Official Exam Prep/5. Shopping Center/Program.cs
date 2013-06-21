@@ -166,17 +166,17 @@
 
         public class Center
         {
-            readonly OrderedMultiDictionary<string, Product> productsByName;
+            readonly MultiDictionary<string, Product> productsByName;
             readonly OrderedMultiDictionary<decimal, Product> productsByPrice;
-            readonly OrderedMultiDictionary<string, Product> productsByProducer;
-            readonly OrderedMultiDictionary<string, Product> productsByNameAndProducer;
+            readonly MultiDictionary<string, Product> productsByProducer;
+            readonly MultiDictionary<string, Product> productsByNameAndProducer;
 
             public Center()
             {
-                this.productsByName = new OrderedMultiDictionary<string, Product>(true);
+                this.productsByName = new MultiDictionary<string, Product>(true);
                 this.productsByPrice = new OrderedMultiDictionary<decimal, Product>(true);
-                this.productsByProducer = new OrderedMultiDictionary<string, Product>(true);
-                this.productsByNameAndProducer = new OrderedMultiDictionary<string, Product>(true);
+                this.productsByProducer = new MultiDictionary<string, Product>(true);
+                this.productsByNameAndProducer = new MultiDictionary<string, Product>(true);
             }
 
             public void AddProduct(Product newProduct)
@@ -194,7 +194,8 @@
             {
                 if (this.productsByName.ContainsKey(name))
                 {
-                    return this.productsByName[name];
+                    OrderedBag<Product> prodByName = new OrderedBag<Product>(productsByName[name]);
+                    return prodByName;
                 }
                 else
                 {
@@ -213,7 +214,8 @@
             {
                 if (this.productsByProducer.ContainsKey(producer))
                 {
-                    return productsByProducer[producer];
+                    OrderedBag<Product> producers = new OrderedBag<Product>(this.productsByProducer[producer]);
+                    return producers;
                 }
                 else
                 {
