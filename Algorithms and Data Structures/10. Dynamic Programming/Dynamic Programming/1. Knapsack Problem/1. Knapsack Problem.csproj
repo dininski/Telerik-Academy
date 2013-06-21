@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8FAB0772-A1C5-4055-97DB-702905C15F2A}</ProjectGuid>
+    <ProjectGuid>{41A38CD3-0B05-4C38-A21F-298319690BFB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AcademyTasks</RootNamespace>
-    <AssemblyName>AcademyTasks</AssemblyName>
+    <RootNamespace>_1.Knapsack_Problem</RootNamespace>
+    <AssemblyName>_1.Knapsack_Problem</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
