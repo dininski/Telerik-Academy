@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Binary rabbits", "1. Binary rabbits\1. Binary rabbits.csproj", "{6D2154E4-3D59-44F0-84E8-A89745E9011C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Binary passwords", "1. Binary rabbits\1. Binary passwords.csproj", "{6D2154E4-3D59-44F0-84E8-A89745E9011C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Color rabbits", "2. Color rabbits\2. Color rabbits.csproj", "{E4C4DA49-C498-4D18-AFDA-D58187F6C415}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Color balls combinations", "4. Color balls combinations\4. Color balls combinations.csproj", "{71A14FCA-AEF3-4D79-846D-B7E0DA5930F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Divisors", "3. Divisors\3. Divisors.csproj", "{D57F7A37-4E96-4909-A513-9363E4BDD0B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{71A14FCA-AEF3-4D79-846D-B7E0DA5930F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A14FCA-AEF3-4D79-846D-B7E0DA5930F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A14FCA-AEF3-4D79-846D-B7E0DA5930F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D57F7A37-4E96-4909-A513-9363E4BDD0B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D57F7A37-4E96-4909-A513-9363E4BDD0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D57F7A37-4E96-4909-A513-9363E4BDD0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D57F7A37-4E96-4909-A513-9363E4BDD0B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

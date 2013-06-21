@@ -7,8 +7,8 @@
     <ProjectGuid>{71A14FCA-AEF3-4D79-846D-B7E0DA5930F7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_4.Color_balls_combinations</RootNamespace>
-    <AssemblyName>_4.Color_balls_combinations</AssemblyName>
+    <RootNamespace>ColorBallsCombinations</RootNamespace>
+    <AssemblyName>ColorBallsCombinations</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

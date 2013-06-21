@@ -1,48 +1,59 @@
-﻿namespace _4.Color_balls_combinations
+﻿namespace ColorBallsCombinations
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Numerics;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
+        static Dictionary<char, int> occurences;
+        static BigInteger comb;
         static Dictionary<int, BigInteger> factorials;
-        static HashSet<char> occurences;
 
         public static void Main(string[] args)
         {
+            comb = 0;
+            string ballsInput = Console.ReadLine();
+            occurences = new Dictionary<char, int>();
             factorials = new Dictionary<int, BigInteger>();
+
             factorials.Add(1, 1);
             factorials.Add(2, 2);
-            string input = Console.ReadLine();
-            int numberOfBalls = input.Length;
-            occurences = new HashSet<char>();
 
-            for (int i = 0; i < input.Length; i++)
+            foreach (var ball in ballsInput)
             {
-                if (!occurences.Contains(input[i]))
+                if (!occurences.ContainsKey(ball))
                 {
-                    occurences.Add(input[i]);
+                    occurences.Add(ball, 0);
                 }
+
+                occurences[ball]++;
             }
 
-            int numberOfColors = occurences.Count;
-            Console.WriteLine(Factorial(numberOfBalls) / (Factorial(numberOfColors) * Factorial(numberOfBalls - numberOfColors)));
+            comb = PossibleCombinations(ballsInput.Length, occurences);
+            Console.WriteLine(comb);
+        }
+
+        public static BigInteger PossibleCombinations(int total, Dictionary<char, int> repetitions)
+        {
+            BigInteger denominator = 1;
+
+            foreach (var occurence in occurences)
+            {
+                denominator *= Factorial(occurence.Value);
+            }
+
+            return Factorial(total) / denominator;
         }
 
         public static BigInteger Factorial(int number)
         {
-            if (factorials.ContainsKey(number))
+            if (!factorials.ContainsKey(number))
             {
-                return factorials[number];
+                factorials.Add(number, number * Factorial(number - 1));
             }
 
-            BigInteger fact = number * Factorial(number - 1);
-            factorials.Add(number, fact);
-            return fact;
+            return factorials[number];
         }
     }
 }
