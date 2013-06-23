@@ -7,8 +7,8 @@
     <ProjectGuid>{41A38CD3-0B05-4C38-A21F-298319690BFB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_1.Knapsack_Problem</RootNamespace>
-    <AssemblyName>_1.Knapsack_Problem</AssemblyName>
+    <RootNamespace>Knapsack</RootNamespace>
+    <AssemblyName>Knapsack</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
