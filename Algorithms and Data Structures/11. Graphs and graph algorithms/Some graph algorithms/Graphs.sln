@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topological sort", "Topological sort\Topological sort.csproj", "{5BC1D777-00D4-480E-B83B-AC1B4410571F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minimum Spanning Tree Prim", "Minimum Spanning Tree Prim\Minimum Spanning Tree Prim.csproj", "{C5859388-EC74-4A36-8FD4-81123B8D6C9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{5BC1D777-00D4-480E-B83B-AC1B4410571F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC1D777-00D4-480E-B83B-AC1B4410571F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC1D777-00D4-480E-B83B-AC1B4410571F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5859388-EC74-4A36-8FD4-81123B8D6C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5859388-EC74-4A36-8FD4-81123B8D6C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5859388-EC74-4A36-8FD4-81123B8D6C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5859388-EC74-4A36-8FD4-81123B8D6C9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
