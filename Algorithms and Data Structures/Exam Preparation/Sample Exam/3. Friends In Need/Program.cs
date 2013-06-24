@@ -91,7 +91,7 @@
 
         public static void Dijkstra(Node startNode)
         {
-            PriorityQueue queue = new PriorityQueue();
+            PriorityQueue<Node> queue = new PriorityQueue<Node>();
 
             foreach (var item in graph)
             {
