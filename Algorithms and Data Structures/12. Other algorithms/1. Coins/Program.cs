@@ -5,14 +5,10 @@
 namespace Coins
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class Program
     {
-        static int[] coinValues = new int[] { 5, 2, 1 };
+        static readonly int[] coinValues = new int[] { 5, 2, 1 };
         static int[] coinCount;
         static int valueToFind;
 
@@ -28,16 +24,10 @@ namespace Coins
 
         public static void Greedy(int[] coinCount, int currentPos, int currentSum)
         {
-
             for (int i = currentPos; i < coinCount.Length; i++)
             {
                 coinCount[i] = (valueToFind - currentSum) / coinValues[i];
                 currentSum += coinCount[i] * coinValues[i];
-            }
-
-            if (currentSum < valueToFind)
-            {
-                Greedy(coinCount, currentPos + 1, currentSum);
             }
 
             if (currentSum == valueToFind)
