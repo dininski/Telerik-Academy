@@ -5,11 +5,14 @@
 namespace CombinationsDuplicates
 {
     using System;
+    using System.Collections.Generic;
 
     public class Program
     {
+        static HashSet<int> used;
         public static void Main(string[] args)
         {
+            used = new HashSet<int>();
             Console.Write("Please enter number of elements:");
             int maxElements = int.Parse(Console.ReadLine());
             Console.Write("Please enter set size: ");
@@ -27,8 +30,13 @@ namespace CombinationsDuplicates
             {
                 for (int i = 1; i <= max; i++)
                 {
-                    result[index] = i;
-                    Recursive(index + 1, result, max);
+                    if (!used.Contains(i))
+                    {
+                        used.Add(i);
+                        result[index] = i;
+                        Recursive(index + 1, result, max);
+                        used.Remove(i); 
+                    }
                 }
             }
         }
