@@ -8,6 +8,7 @@ namespace Coins
 
     public class Program
     {
+        // the coins must be sorted in descending order
         static readonly int[] coinValues = new int[] { 5, 2, 1 };
         static int[] coinCount;
         static int valueToFind;
@@ -30,9 +31,13 @@ namespace Coins
                 currentSum += coinCount[i] * coinValues[i];
             }
 
-            if (currentSum == valueToFind)
+            if (currentSum == valueToFind && valueToFind > 0)
             {
                 PrintCounts(coinCount);
+            }
+            else
+            {
+                Console.WriteLine("Cannot have a sum of {0} with coins with values {1} using greedy algorithm", valueToFind, string.Join(", ", coinValues));
             }
         }
 
