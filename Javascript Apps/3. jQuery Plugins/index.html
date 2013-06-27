@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery plugin</title>
+	<link rel="stylesheet" type="text/css" href="styles/default.css">
+</head>
+<body>
+<ul id="treeview">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Sub menu
+		<ul>
+			<li>Subitem</li>
+			<li>
+				Subsub menu
+				<ul>
+					<li>Subsub item</li>
+					<li>Subsubsub menu
+						<ul>
+							<li>Subsub item</li>
+							<li>Subsub item</li>
+							<li>Subsub item</li>
+						</ul>
+					</li>
+					<li>Subsub item</li>
+				</ul>
+			</li>
+			<li>
+				Subsub menu
+				<ul>
+					<li>Subsub item</li>
+					<li>Subsub item</li>
+					<li>Subsub item</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<script type="text/javascript" src="scripts/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="scripts/treeview.js"></script>
+
+<script type="text/javascript">
+	$('#treeview').treeview();
+</script>
+</body>
+</html>
