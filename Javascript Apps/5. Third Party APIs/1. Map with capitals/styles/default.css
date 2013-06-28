@@ -1,0 +1,35 @@
+#map-container {
+	width: 800px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+#map-canvas {
+	float: left;
+	width: 600px;
+	height: 400px;
+}
+
+#capitals-list-container {
+	float: right;
+	width:  200px;
+	height: 400px;
+}
+
+.capital-list-item {
+    list-style-type: none;
+}
+
+#map-control {
+    float: left;
+    height: 100px;
+    width: 600px;
+}
+
+#previous-capital-btn {
+    float: left;
+}
+
+#next-capital-btn {
+    float: right;
+}
