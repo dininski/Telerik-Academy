@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="scripts/jquery-2.0.2.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+</head>
+<body>
+Note - needs a server in order for the login button to work due to same origin policy
+<br/>
+<span id="signinButton">
+  <span
+    class="g-signin"
+    data-callback="signinCallback"
+    data-clientid="560328031364-7ejagebk9bu6sn4p0o8tnl9g7qp34svg.apps.googleusercontent.com"
+    data-cookiepolicy="single_host_origin"
+    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+    data-scope="https://www.googleapis.com/auth/plus.login">
+  </span>
+</span>
+
+<div id="video-container">
+    
+
+</div>
+<script type="text/javascript">
+var videoPlayer = '<div id="player"></div>'+
+    '<br />' +
+    '<span>ID: </span><input type="text" id="load-video" value="PGNiXGX2nLU"/>' +
+    '<button id="single-video">Load video</button>' +
+    '<button id="pause">Pause video</button>' +
+    '<button id="play">Play video</button>' +
+    '<button id="mute">Mute video</button>' +
+    '<button id="unmute">Unmute video</button>' +
+    '<input type="range" id="volume" min="0" max="100"/>' +
+    '<br />' +
+    '<span>Playlist: </span><textarea id="playlist">dQw4w9WgXcQ,PGNiXGX2nLU,reTx5sqvVJ4</textarea>' +
+    '<button id="load-playlist">Load playlist</button>' +
+    '<button id="previous">Previous</button>' +
+    '<button id="next">Next</button>';
+
+var player;
+
+function signinCallback(authResult) {
+  if (authResult['access_token']) {
+    document.getElementById('signinButton').setAttribute('style', 'display: none');
+    $('#video-container').html(videoPlayer);
+    $.getScript('scripts/youtube-player.js');
+
+    player = new YT.Player('player', {
+        height: '390', //must be bigger than 200px
+        width: '640', //must be bigger than 200px
+        videoId: 'PGNiXGX2nLU',
+    });
+
+    console.log(player);
+
+    document.getElementById('single-video').addEventListener('click', function () {
+        var video = document.getElementById('load-video').value;
+        player.loadVideoById(video, 0, "large");
+    }, false);
+
+    document.getElementById('single-video').addEventListener('click', function () {
+        var video = document.getElementById('load-video').value;
+        player.loadVideoById(video, 0, "large");
+    }, false);
+
+    document.getElementById('pause').addEventListener('click', function () {
+        player.pauseVideo();
+    }, false);
+
+    document.getElementById('play').addEventListener('click', function () {
+        player.playVideo();
+    }, false);
+
+    document.getElementById('load-playlist').addEventListener('click', function () {
+        var videoPlaylist = document.getElementById('playlist').value.split(',');
+        player.loadPlaylist(videoPlaylist, 0, 0, "large");
+    }, false);
+
+    document.getElementById('previous').addEventListener('click', function () {
+        player.previousVideo();
+    }, false);
+
+    document.getElementById('next').addEventListener('click', function () {
+        player.nextVideo();
+    }, false);
+
+    document.getElementById('mute').addEventListener('click', function () {
+        player.mute();
+    }, false);
+
+    document.getElementById('unmute').addEventListener('click', function () {
+        player.unMute();
+    }, false);
+
+    $('#volume').on('change', function() {
+        player.setVolume($(this).val());
+    });
+  } else if (authResult['error']) {
+    $('#video-container').html('Failed to login - please try again.');
+  }
+}
+</script>
+</body>
+</html>
