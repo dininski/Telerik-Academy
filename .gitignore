@@ -4,3 +4,4 @@
 *.suo
 *.ldf
 *.mdf
+*.coverage
