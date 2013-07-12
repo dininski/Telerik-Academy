@@ -84,7 +84,7 @@ SELECT CONVERT(varchar, GETDATE(), 113)
 CREATE TABLE Users(
 	Id int IDENTITY,
 	UserName nvarchar(20) UNIQUE NOT NULL,
-	UserPassword nvarchar(20) NOT NULL,
+	UserPassword nvarchar(20),
 	FullName nvarchar(40) NOT NULL,
 	LastLogin datetime,
 	CONSTRAINT PK_Users PRIMARY KEY(Id),
@@ -124,20 +124,106 @@ ALTER TABLE Users
 		REFERENCES Groups(Id)
 
 -- Problem 19 - Write SQL statements to insert several records in the Users and Groups tables.
+INSERT INTO Groups(Name)
+	VALUES ('Administrators'), ('Moderators'), ('Users')
 
+INSERT INTO Users(UserName, UserPassword, FullName, GroupId)
+	VALUES
+		('nakov', '123456', 'Svetlin Nakov', 1),
+		('niki', '654321', 'Nikolay Kostov', 1),
+		('doncho', '111111', 'Doncho Minkov', 1),
+		('kurtev', '999999', 'Teodor Kurtev', 2),
+		('jasssonpet', 'abvabv', 'Jasson Petrov', 2),
+		('a user', 'userpass', 'User Userov', 3)
 
--- Problem Write SQL statements to update some of the records in the Users and Groups tables.
--- Problem Write SQL statements to delete some of the records from the Users and Groups tables.
--- Problem Write SQL statements to insert in the Users table the names of all employees from the Employees table. Combine the first and last names as a full name. For username use the first letter of the first name + the last name (in lowercase). Use the same for the password, and NULL for last login time.
--- Problem Write a SQL statement that changes the password to NULL for all users that have not been in the system since 10.03.2010.
--- Problem Write a SQL statement that deletes all users without passwords (NULL password).
--- Problem Write a SQL query to display the average employee salary by department and job title.
--- Problem Write a SQL query to display the minimal employee salary by department and job title along with the name of some of the employees that take it.
--- Problem Write a SQL query to display the town where maximal number of employees work.
--- Problem Write a SQL query to display the number of managers from each town.
--- Problem Write a SQL to create table WorkHours to store work reports for each employee (employee id, date, task, hours, comments). Don't forget to define  identity, primary key and appropriate foreign key. 
+-- Problem 20 - Write SQL statements to update some of the records in the Users and Groups tables.
+UPDATE Users SET UserName = 'a forum user'
+	WHERE UserName = 'a user'
+
+UPDATE Users SET UserPassword = 'umna_parola'
+	WHERE Id = 1
+
+UPDATE Groups SET Name = 'Forum users'
+	WHERE Name = 'Users'
+
+-- Problem 21 - Write SQL statements to delete some of the records from the Users and Groups tables.
+DELETE FROM Groups
+	WHERE Name = 'Extra'
+
+DELETE FROM Users
+	WHERE Id = 1 OR Id = 2
+
+-- Problem 22 - Write SQL statements to insert in the Users table the names of all employees from the Employees table.
+-- Combine the first and last names as a full name. For username use the first letter of the first name + the last name (in lowercase).
+-- Use the same for the password, and NULL for last login time.
+INSERT INTO Users(FullName, UserName, UserPassword)
+	SELECT (e.FirstName + ' ' + e.LastName),
+		(SUBSTRING(e.FirstName, 0, 4) + LOWER(e.LastName)),
+		(SUBSTRING(e.FirstName, 0, 2) + LOWER(e.LastName))
+	FROM Employees e
+
+-- Problem 23 - Write a SQL statement that changes the password to NULL for all users that have not been in the system since 10.03.2010.
+UPDATE Users SET UserPassword = NULL
+	WHERE DATEDIFF(day, LastLogin, CAST('2010-03-10' AS DATE)) > 0
+
+-- Problem 24 - Write a SQL statement that deletes all users without passwords (NULL password).
+DELETE FROM Users
+	WHERE UserPassword IS NULL
+
+-- Problem 25 - Write a SQL query to display the average employee salary by department and job title.
+SELECT AVG(e.Salary) as AvgSalary, e.JobTitle, d.Name FROM Employees e
+	JOIN Departments d ON e.DepartmentID = d.DepartmentID
+	GROUP BY e.JobTitle, e.Salary, d.Name
+	ORDER BY AvgSalary DESC
+
+-- Problem 26 - Write a SQL query to display the minimal employee salary by department
+-- and job title along with the name of some of the employees that take it.
+SELECT MIN(e.Salary) as MinSalary, e.JobTitle, d.Name FROM Employees e
+	JOIN Departments d ON e.DepartmentID = d.DepartmentID
+	GROUP BY e.JobTitle, e.Salary, d.Name
+	ORDER BY MinSalary DESC
+
+-- Problem 27 - Write a SQL query to display the town where maximal number of employees work.
+SELECT TOP 1 t.Name, COUNT(t.Name) as [Number of employees] FROM Towns t
+	JOIN Addresses a ON t.TownID = a.TownID
+	JOIN Employees e ON a.AddressID = e.AddressID
+	GROUP BY t.Name
+	ORDER BY [Number of employees] DESC
+
+-- Problem 28 - Write a SQL query to display the number of managers from each town.
+SELECT t.Name, COUNT(*) as [Number of managers] FROM Towns t
+	JOIN Addresses a ON t.TownID = a.TownID
+	JOIN Employees e ON a.AddressID = e.AddressID
+	WHERE e.EmployeeID IN 
+	(SELECT DISTINCT ManagerID FROM Employees)
+	GROUP BY t.Name
+	ORDER BY [Number of managers] DESC
+
+-- Problem 29 - Write a SQL to create table WorkHours to store work reports for each employee (employee id, date, task, hours, comments).
+-- Don't forget to define identity, primary key and appropriate foreign key.
+CREATE TABLE WorkHours(
+	Id int IDENTITY,
+	EmployeeID int NOT NULL,
+	[Date] date,
+	Task nvarchar(20),
+	[Hours] int,
+	Comments nvarchar(30),
+	CONSTRAINT PK_WorkHours PRIMARY KEY(Id),
+	CONSTRAINT FK_Employees_WorkHours FOREIGN KEY(EmployeeId)
+		REFERENCES Employees(EmployeeId)
+	)
+
 -- Problem Issue few SQL statements to insert, update and delete of some data in the table.
--- Problem Define a table WorkHoursLogs to track all changes in the WorkHours table with triggers. For each change keep the old record data, the new record data and the command (insert / update / delete).
--- Problem Start a database transaction, delete all employees from the 'Sales' department along with all dependent records from the pother tables. At the end rollback the transaction.
--- Problem Start a database transaction and drop the table EmployeesProjects. Now how you could restore back the lost table data?
--- Problem Find how to use temporary tables in SQL Server. Using temporary tables backup all records from EmployeesProjects and restore them back after dropping and re-creating the table.
+
+-- Problem Define a table WorkHoursLogs to track all changes in the WorkHours table with triggers.
+-- For each change keep the old record data, the new record data and the command (insert / update / delete).
+
+-- Problem Start a database transaction, delete all employees from the 'Sales' department along with
+-- all dependent records from the pother tables. At the end rollback the transaction.
+
+-- Problem Start a database transaction and drop the table EmployeesProjects.
+-- Now how you could restore back the lost table data?
+
+-- Problem Find how to use temporary tables in SQL Server.
+-- Using temporary tables backup all records from EmployeesProjects and restore
+-- them back after dropping and re-creating the table.
