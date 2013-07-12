@@ -213,7 +213,8 @@ CREATE TABLE WorkHours(
 		REFERENCES Employees(EmployeeId)
 	)
 
--- Problem Issue few SQL statements to insert, update and delete of some data in the table.
+-- Problem 30 - Issue few SQL statements to insert, update and delete of some data in the table.
+
 
 -- Problem Define a table WorkHoursLogs to track all changes in the WorkHours table with triggers.
 -- For each change keep the old record data, the new record data and the command (insert / update / delete).
