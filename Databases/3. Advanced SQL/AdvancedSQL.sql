@@ -54,16 +54,78 @@ SELECT d.Name AS Department, t.Name AS Town, COUNT(*) FROM Employees e
 	GROUP BY t.Name, d.Name
 
 -- Problem 11 - Write a SQL query to find all managers that have exactly 5 employees. Display their first name and last name.
+SELECT m.firstName, m.LastName FROM Employees m
+	JOIN Employees e ON e.ManagerID = m.EmployeeID
+	GROUP BY m.FirstName, m.LastName
+	HAVING COUNT(e.ManagerID) = 5
+
+-- Problem 12 - Write a SQL query to find all employees along with their managers. For employees that do not have manager display the value "(no manager)".
+SELECT e.EmployeeID, (e.firstName + ' ' + e.LastName) AS [Employee Name], 
+	ISNULL((m.FirstName + ' ' + m.LastName), '(no manager)') AS [Manager]
+FROM Employees e
+	LEFT OUTER JOIN Employees m
+		ON e.ManagerID = m.EmployeeID
+
+-- Problem 13 - Write a SQL query to find the names of all employees whose last name is exactly 5 characters long. Use the built-in LEN(str) function.
+SELECT e.FirstName, e.LastName FROM Employees e
+	WHERE LEN(e.lastName) = 5
+
+-- Problem 14 - Write a SQL query to display the current date and time in the following format
+-- "day.month.year hour:minutes:seconds:milliseconds". Search in  Google to find how to format dates in SQL Server.
+SELECT CONVERT(varchar, GETDATE(), 113)
+
+-- Problem 15 - Write a SQL statement to create a table Users.
+-- Users should have username, password, full name and last login time.
+-- Choose appropriate data types for the table fields.
+-- Define a primary key column with a primary key constraint.
+-- Define the primary key column as identity to facilitate inserting records.
+-- Define unique constraint to avoid repeating usernames.
+-- Define a check constraint to ensure the password is at least 5 characters long.
+CREATE TABLE Users(
+	Id int IDENTITY,
+	UserName nvarchar(20) UNIQUE NOT NULL,
+	UserPassword nvarchar(20) NOT NULL,
+	FullName nvarchar(40) NOT NULL,
+	LastLogin datetime,
+	CONSTRAINT PK_Users PRIMARY KEY(Id),
+	CONSTRAINT PasswordMinLength CHECK (DATALENGTH([UserPassword]) > 4)
+)
+
+INSERT INTO Users(UserName, UserPassword, FullName, LastLogin)
+	VALUES ('stamat', 'parolata', 'Pesho Peshov', GETDATE()),
+		('pesho', 'parolata', 'Pesho Peshov', GETDATE() - 2),
+		('pesho2', 'parolata', 'Pesho Peshov', GETDATE() - 4)
+GO
+
+-- Problem 16 - Write a SQL statement to create a view that displays the users from the
+-- Users table that have been in the system today. Test if the view works correctly.
+CREATE VIEW [Logged in today]
+	AS SELECT * FROM Users u
+		WHERE DATEDIFF(DAY, u.LastLogin, GETDATE()) = 0
+GO
+
+-- Problem 17 - Write a SQL statement to create a table Groups.
+-- Groups should have unique name (use unique constraint).
+-- Define primary key and identity column.
+CREATE TABLE Groups (
+	Id int IDENTITY,
+	Name nvarchar(20) UNIQUE,
+	CONSTRAINT PK_Groups PRIMARY KEY(Id)
+)
+
+-- Problem 18 - Write a SQL statement to add a column GroupID to the table Users.
+-- Fill some data in this new column and as well in the Groups table.
+-- Write a SQL statement to add a foreign key constraint between tables Users and Groups tables.
+ALTER TABLE Users  
+	ADD GroupId int
+
+ALTER TABLE Users
+	ADD CONSTRAINT FK_Users_Groups FOREIGN KEY(GroupId)
+		REFERENCES Groups(Id)
+
+-- Problem 19 - Write SQL statements to insert several records in the Users and Groups tables.
 
 
--- Problem Write a SQL query to find all employees along with their managers. For employees that do not have manager display the value "(no manager)".
--- Problem Write a SQL query to find the names of all employees whose last name is exactly 5 characters long. Use the built-in LEN(str) function.
--- Problem Write a SQL query to display the current date and time in the following format "day.month.year hour:minutes:seconds:milliseconds". Search in  Google to find how to format dates in SQL Server.
--- Problem Write a SQL statement to create a table Users. Users should have username, password, full name and last login time. Choose appropriate data types for the table fields. Define a primary key column with a primary key constraint. Define the primary key column as identity to facilitate inserting records. Define unique constraint to avoid repeating usernames. Define a check constraint to ensure the password is at least 5 characters long.
--- Problem Write a SQL statement to create a view that displays the users from the Users table that have been in the system today. Test if the view works correctly.
--- Problem Write a SQL statement to create a table Groups. Groups should have unique name (use unique constraint). Define primary key and identity column.
--- Problem Write a SQL statement to add a column GroupID to the table Users. Fill some data in this new column and as well in the Groups table. Write a SQL statement to add a foreign key constraint between tables Users and Groups tables.
--- Problem Write SQL statements to insert several records in the Users and Groups tables.
 -- Problem Write SQL statements to update some of the records in the Users and Groups tables.
 -- Problem Write SQL statements to delete some of the records from the Users and Groups tables.
 -- Problem Write SQL statements to insert in the Users table the names of all employees from the Employees table. Combine the first and last names as a full name. For username use the first letter of the first name + the last name (in lowercase). Use the same for the password, and NULL for last login time.
