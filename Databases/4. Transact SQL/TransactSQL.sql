@@ -70,12 +70,6 @@ SELECT @result
 -- Problem 4 - Create a stored procedure that uses the function from the previous example
 -- to give an interest to a person's account for one month. It should take the AccountId
 -- and the interest rate as parameters.
-GO
-CREATE PROC dbo.usp_CalculateMonthlyForPerson(@accountId int, @interestRate decimal)
-AS
-	UPDATE Accounts
-	SET Balance = dbo.usp_CalculateAfterInterest(Balance, @interestRate, 1)
-	WHERE Id = @accountId
 					
 
 -- Problem Add two more stored procedures WithdrawMoney( AccountId, money) and DepositMoney (AccountId, money) that operate in transactions.
