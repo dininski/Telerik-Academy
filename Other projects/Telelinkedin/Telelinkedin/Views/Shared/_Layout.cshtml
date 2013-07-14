@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - A linkedin clone project</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/kendo")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div id="main-title">
+                <section id="login" class="pull-right">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <p class="site-title">@Html.ActionLink("telelinkedin", "Index", "Home")</p>
+            </div>
+
+            <nav class="navbar">
+                <div class="navbar-inner">
+                    <ul class="nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+
+                    <form class="form-search pull-right">
+                        <div class="input-append">
+                            <input type="text" class="span2 search-query">
+                            <button type="submit" class="btn search-submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix" id="main-content-wrapper">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - developed by Vasil Dininski</p>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+        $('.form-search').on('click', '.search-submit', function () {
+            var query = $('.search-query').val();
+            var options = {
+                url: "/Account/Search",
+                type: "POST",
+                data: { searchString: query }
+            }
+
+            $.ajax(options).done(function (data) {
+                $('#main-content-wrapper').html(data);
+            });
+
+            return false;
+        });
+    </script>
+</body>
+</html>

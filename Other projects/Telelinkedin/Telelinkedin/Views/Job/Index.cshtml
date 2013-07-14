@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Jobs";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo().Grid<Telelinkedin.ViewModels.JobViewModel>().Name("jobs")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .Sort(sort => sort.Add("StartDate").Descending())
+        .Model(model => model.Id(m => m.Employer))
+        .Read(read => read.Action("GetJobs", "Job"))
+        .Update(up => up.Action("UpdateJob", "Job"))
+        .Destroy(del => del.Action("DeleteJob", "Job"))
+        .Create(cr => cr.Action("CreateJob", "Job"))
+    )
+
+    .ToolBar(toolbar => toolbar.Create().Text("Add job"))
+
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Employer);
+        columns.Bound(c => c.Position);
+        columns.Bound(c => c.Description);
+        columns.Bound(c => c.StartDate);
+        columns.Bound(c => c.EndDate);
+        columns.Command(cmd => { cmd.Edit(); cmd.Destroy(); });
+    })
+
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Pageable()
+    .Sortable()
+)
+
+@Html.ActionLink("Back to profile", "Index", new { Controller = "Account" })

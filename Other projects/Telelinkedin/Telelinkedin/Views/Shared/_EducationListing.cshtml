@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.EducationViewModel>
+
+<p class="lead">Education</p>
+
+@if (!Model.Any())
+{
+    <div>No education has been entered</div>
+}
+else
+{
+    foreach (var education in @Model)
+    {
+        <h4>@Html.DisplayFor(e => education.Institution)</h4>
+        <div>@Html.DisplayFor(e => education.StartDate) - @Html.DisplayFor(e => education.EndDate)</div>
+        <div>@Html.DisplayFor(e => education.Specialty)</div>
+        <hr />
+    }
+}

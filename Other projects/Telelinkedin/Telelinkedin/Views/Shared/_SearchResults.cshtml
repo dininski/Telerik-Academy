@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.ProfileListViewModel>
+
+<div class="row-fluid">
+    <div class="well span12">
+        <div>Search Results</div>
+        @foreach (var profile in Model)
+        {
+            <div>@Html.ActionLink(profile.Name, "View", new { Controller = "Account", id = profile.Id })</div>
+        }
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Telelinkedin.Models.Education>
+
+@{
+    ViewBag.Title = "Education";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo().Grid<Telelinkedin.ViewModels.EducationViewModel>().Name("education")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .Sort(sort => sort.Add("StartDate").Descending())
+        .Model(model => model.Id(m => m.Institution))
+        .Read(read => read.Action("GetEducations", "Education"))
+        .Update(up => up.Action("UpdateEducation", "Education"))
+        .Destroy(del => del.Action("DeleteEducation", "Education"))
+        .Create(cr => cr.Action("CreateEducation", "Education"))
+    )
+
+    .ToolBar(toolbar => toolbar.Create().Text("Add education"))
+
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Institution);
+        columns.Bound(c => c.Specialty);
+        columns.Bound(c => c.StartDate);
+        columns.Bound(c => c.EndDate);
+        columns.Bound(c => c.Description);
+        columns.Command(cmd => { cmd.Edit(); cmd.Destroy(); });
+    })
+
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Pageable()
+    .Sortable()
+)
+
+@Html.ActionLink("Back to profile", "Index", new { Controller = "Account" })

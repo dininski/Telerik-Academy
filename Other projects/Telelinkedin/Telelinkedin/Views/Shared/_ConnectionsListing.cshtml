@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.ProfileConnectionViewModel>
+
+<p class="lead">Connections</p>
+
+@if (@Model.Count() == 0)
+{
+    <div>No Requests</div>
+}
+else
+{
+    foreach (var connection in @Model)
+    {
+        <span>@Html.ActionLink(connection.Name, "View", new { Controller = "Account", id = connection.Id })</span>
+        <hr />
+    }
+}

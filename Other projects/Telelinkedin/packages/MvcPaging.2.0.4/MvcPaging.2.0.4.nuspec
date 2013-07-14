@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcPaging</id>
+    <version>2.0.4</version>
+    <title>MvcPaging</title>
+    <authors>Martijn Boland,  Bart Lenaerts,  Rajeesh CV</authors>
+    <owners>Martijn Boland,  Bart Lenaerts,  Rajeesh CV</owners>
+    <licenseUrl>https://github.com/martijnboland/MvcPaging/wiki/License</licenseUrl>
+    <projectUrl>https://github.com/martijnboland/MvcPaging</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Paging library for ASP.NET MVC.</description>
+    <releaseNotes>2.0.4 (2013-05-20)
+- Support for covariance in IPagedList by inheriting from IEnumerable&lt;T&gt; instead of 
+  IList&lt;T&gt; (https://github.com/martijnboland/MvcPaging/pull/17).
+- Small bugfix in Demo project (https://github.com/martijnboland/MvcPaging/pull/18).
+- Support for array parameters (https://github.com/martijnboland/MvcPaging/issues/22).</releaseNotes>
+    <copyright />
+    <language />
+    <tags>mvc3 pager asp.net mvc paging</tags>
+    <references>
+      <reference file="MvcPaging.dll" />
+    </references>
+  </metadata>
+</package>

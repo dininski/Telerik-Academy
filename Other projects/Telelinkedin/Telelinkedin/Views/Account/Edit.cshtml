@@ -1,0 +1,83 @@
+﻿@model Telelinkedin.Models.UserProfile
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserProfile</legend>
+
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.UserName)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            Profile visibility
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Visibility, new SelectList(Enum.GetValues(typeof(Telelinkedin.Models.VisibilityState))))
+            @Html.ValidationMessageFor(model => model.Visibility)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobsVisibility)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.JobsVisibility, new SelectList(Enum.GetValues(typeof(Telelinkedin.Models.VisibilityState))))
+            @Html.ValidationMessageFor(model => model.JobsVisibility)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EducationVisibility)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.EducationVisibility, new SelectList(Enum.GetValues(typeof(Telelinkedin.Models.VisibilityState))))
+            @Html.ValidationMessageFor(model => model.EducationVisibility)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SkillVisibility)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.SkillVisibility, new SelectList(Enum.GetValues(typeof(Telelinkedin.Models.VisibilityState))))
+            @Html.ValidationMessageFor(model => model.SkillVisibility)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to profile", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

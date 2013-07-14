@@ -1,0 +1,139 @@
+﻿<h2>@ViewBag.Title</h2>
+@(Html.Kendo().Grid<Telelinkedin.ViewModels.ProfileAdminViewModel>()
+    .Name("profile")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .Model(model => model.Id(m => m.Id))
+        .Read(read => read.Action("GetProfiles", "Admin"))
+        .Update(up => up.Action("UpdateProfile", "Admin"))
+        .Destroy(del => del.Action("DeleteProfile", "Admin"))
+    )
+    
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Id).Groupable(false);
+        columns.Bound(c => c.FirstName);
+        columns.Bound(c => c.LastName);
+        columns.Bound(c => c.Email);
+        columns.Bound(c => c.Visibility);
+        columns.Command(cmd => { cmd.Edit(); cmd.Destroy(); });
+    })
+
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .ClientDetailTemplateId("inner")
+    .Pageable( p => p.Refresh(true))
+    .Sortable()
+)
+
+<script id="inner" type="text/kendo-tmpl">
+    @(Html.Kendo().TabStrip()
+            .Name("tabStrip")
+            .SelectedIndex(0)
+            .Items(items =>
+            {
+                items.Add().Text("Education").Content(@<text>
+                    @(Html.Kendo().Grid<Telelinkedin.ViewModels.EducationViewModel>()
+                        .Name("edu")
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .Model(model => model.Id(p => p.Id))
+                            .PageSize(5)
+                            .Read(r => r.Action("GetEducations", "Admin", new { userId = "#=Id#" }))
+                            .Update(u => u.Action("UpdateEducation", "Admin"))
+                            .Destroy(del => del.Action("DeleteEducation", "Admin"))
+                            .Create(c => c.Action("CreateEducation", "Admin", new { userId = "#=Id#" }))
+                        )
+
+                        .Columns(columns =>
+                        {
+                            columns.Bound(o => o.Institution);
+                            columns.Bound(o => o.Specialty);
+                            columns.Bound(o => o.Description);
+                            columns.Bound(o => o.StartDate);
+                            columns.Bound(o => o.EndDate);
+                            columns.Command(c => { c.Edit(); c.Destroy(); });
+                        })
+                        .ToolBar(c => c.Create())
+                        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+                        .Pageable( p => p.Refresh(true))
+                        .Sortable()
+                        .ToClientTemplate())
+                </text>);
+                items.Add().Text("Skills").Content(@<text>
+            @(Html.Kendo().Grid<Telelinkedin.ViewModels.SkillViewModel>()
+                        .Name("skill")
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .Model(model => model.Id(p => p.Id))
+                            .PageSize(5)
+                            .Read(r => r.Action("GetSkills", "Admin", new { userId = "#=Id#" }))
+                            .Update(u => u.Action("UpdateSkill", "Admin"))
+                            .Destroy(del => del.Action("DeleteSkill", "Admin"))
+                            .Create(c => c.Action("CreateSkill", "Admin", new { userId = "#=Id#" }))
+                        )
+
+                        .Columns(columns =>
+                        {
+                            columns.Bound(o => o.Name);
+                            columns.Command(c => { c.Edit(); c.Destroy(); });
+                        })
+                        .ToolBar(c => c.Create())
+                        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+                        .Pageable( p => p.Refresh(true))
+                        .Sortable()
+                        .ToClientTemplate())
+                </text>);
+                items.Add().Text("Jobs").Content(@<text>
+            @(Html.Kendo().Grid<Telelinkedin.ViewModels.JobViewModel>()
+                        .Name("job")
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .Model(model => model.Id(p => p.Id))
+                            .PageSize(5)
+                            .Read(r => r.Action("GetJobs", "Admin", new { userId = "#=Id#" }))
+                            .Update(u => u.Action("UpdateJob", "Admin"))
+                            .Destroy(del => del.Action("DeleteJob", "Admin"))
+                            .Create(c => c.Action("CreateJob", "Admin", new { userId = "#=Id#" }))
+                        )
+
+                        .Columns(columns =>
+                        {
+                            columns.Bound(o => o.Employer);
+                            columns.Bound(o => o.Position);
+                            columns.Bound(o => o.Description);
+                            columns.Bound(o => o.StartDate);
+                            columns.Bound(o => o.EndDate);
+                            columns.Command(c => { c.Edit(); c.Destroy(); });
+                        })
+                        .ToolBar(c => c.Create())
+                        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+                        .Pageable( p => p.Refresh(true))
+                        .Sortable()
+                        
+                        .ToClientTemplate())
+                </text>);
+                items.Add().Text("Connections").Content(@<text>
+            @(Html.Kendo().Grid<Telelinkedin.ViewModels.ProfileConnectionViewModel>()
+                        .Name("conn")
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .Model(model => model.Id(p => p.Id))
+                            .PageSize(5)
+                            .Read(r => r.Action("GetConnections", "Admin", new { userId = "#=Id#" }))
+                            .Destroy(del => del.Action("DeleteConnection", "Admin", new { userId = "#=Id#"}))
+                            .Create(c => c.Action("CreateConnection", "Admin", new { userId = "#=Id#" }))
+                        )
+
+                        .Columns(columns =>
+                        {
+                            columns.Bound(o => o.Name);
+                            columns.Bound(o => o.Email);
+                            columns.Command(c => { c.Destroy(); });
+                        })
+                        .Editable(editable => editable.Mode(GridEditMode.PopUp))
+                        .Pageable( p => p.Refresh(true))
+                        .Sortable()
+                        .ToClientTemplate())
+                </text>);
+            }).ToClientTemplate())
+</script>

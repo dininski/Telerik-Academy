@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.JobViewModel>
+
+<p class="lead">Jobs</p>
+@if (!Model.Any())
+{
+    <div>No jobs have been entered</div>
+}
+else
+{
+    foreach (var job in @Model)
+    {
+        <h4>@Html.DisplayFor(j => job.Employer)</h4>
+        <span>@Html.DisplayFor(j => job.StartDate) - @Html.DisplayFor(j => job.EndDate)</span>
+        <div>@Html.DisplayFor(j => job.Description)</div>
+        <hr />
+    }
+}

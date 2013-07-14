@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Skills";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo().Grid<Telelinkedin.ViewModels.SkillViewModel>().Name("skills")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .Model(model => model.Id(m => m.Id))
+        .Read(read => read.Action("GetSkills", "Skills"))
+        .Destroy(del => del.Action("DeleteSkill", "Skills"))
+        .Create(cr => cr.Action("CreateSkill", "Skills"))
+    )
+
+    .ToolBar(toolbar => toolbar.Create().Text("Add skill"))
+
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Name);
+        columns.Command(cmd => { cmd.Destroy(); });
+    })
+
+    .Editable(editable => editable.Mode(GridEditMode.PopUp))
+    .Pageable()
+    .Sortable()
+)
+
+@Html.ActionLink("Back to profile", "Index", new { Controller = "Account" })

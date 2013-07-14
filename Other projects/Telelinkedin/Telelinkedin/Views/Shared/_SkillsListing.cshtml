@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.SkillViewModel>
+
+<div id="skills-listing">
+    <p class="lead">Skills</p>
+
+    @if (!Model.Any())
+    {
+        <div>No skills have been entered</div>
+    }
+    else
+    {
+        foreach (var skill in Model)
+        {
+            <h4>
+            @if (skill.AlreadyEndorsed)
+            {
+                @Html.ActionLink("-", "Unendorse", new { Controller = "Endorsement", skillId = skill.Id },
+                    new { title = "Remove endorsement", @class = "btn btn-error" })
+            }
+            else if (skill.CanBeEndorsed)
+            {
+                @Html.ActionLink("+", "Endorse", new { Controller = "Endorsement", skillId = skill.Id },
+                    new { title = "Endorse", @class = "btn btn-success" })
+            }
+
+            @Html.DisplayFor(s => skill.Name)</h4>
+            if (skill.Endorsements.Any())
+            {
+                <h5>Endorsed by:</h5>
+            }
+            <ol>
+                @foreach (var endorsement in skill.Endorsements)
+                {
+                <li>@Html.DisplayFor(e => endorsement.Name)</li>
+                }
+            </ol>
+            <hr />
+        }
+    }
+</div>
+
+@(Html.Kendo().Tooltip()
+                .For("#skills-listing")
+                .Filter("a")
+                .Position(TooltipPosition.Top)
+                .Width(80))

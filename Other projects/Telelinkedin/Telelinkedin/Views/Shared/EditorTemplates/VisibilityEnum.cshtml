@@ -1,0 +1,8 @@
+﻿@model Telelinkedin.Models.VisibilityState
+
+@using EnumerationEditing.Models
+
+@(
+ Html.Kendo().DropDownListFor(m => m)
+        .BindTo(Extensions.EnumToSelectList(typeof(Telelinkedin.Models.VisibilityState)))
+)

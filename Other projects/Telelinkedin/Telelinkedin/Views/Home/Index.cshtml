@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Telelinkedin.ViewModels.ProfileListViewModel>
+
+@{
+    ViewBag.Title = "telelinkedin";
+}
+
+<div class="row-fluid well no-padding">
+    <div class="span1"></div>
+    <div class="span4 text-center">
+        <img src="~/Images/main-page-icon.png" alt="Welcome image" />
+    </div>
+    <div class="span6 text-right">
+        <h1 class="main-page-header">
+            Telelinkedin @DateTime.Now.Year
+        </h1>
+        <p class="main-page-subtitle">
+            The social network for ninjas and nerds.
+            <br />
+            Skills, connections and endorsements.
+        </p>
+        @Html.ActionLink("Join", "Register", new { Controller = "Account" }, new { @class = "btn btn-large btn-success" })
+        @Html.ActionLink("About", "About", null, new { @class = "btn btn-large" })
+    </div>
+</div>
+
+<div class="row-fluid well no-padding">
+    <div class="span12">
+        @(Html.Kendo().Grid<Telelinkedin.ViewModels.ProfileListViewModel>().Name("profiles")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .Model(model => model.Id(m => m.Id))
+        .Read(read => read.Action("GetAccounts", "Account"))
+    )
+
+    .Columns(columns =>
+    {
+        columns.Bound(c => c.Name).ClientTemplate(@Html.ActionLink("#=Name#", "View",
+            new { Controller = "Account",id = "#=Id#" }).ToHtmlString());
+    })
+
+    .Pageable()
+    .Sortable()
+        )
+    </div>
+</div>
