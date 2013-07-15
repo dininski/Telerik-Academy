@@ -1,80 +1,366 @@
--- Problem 1 - Create a database with two tables: Persons(Id(PK), FirstName, LastName, SSN)
--- and Accounts(Id(PK), PersonId(FK), Balance). Insert few records for testing.
--- Write a stored procedure that selects the full names of all persons.
-CREATE DATABASE Company
-USE Company
-
-CREATE TABLE Persons(
-	Id int IDENTITY,
-	FirstName nvarchar(20),
-	LastName nvarchar(20),
-	SSN nvarchar(14),
-	CONSTRAINT PK_Persons PRIMARY KEY(Id)
+--1.
+ 
+CREATE TABLE Persons (
+        PersonsID INT IDENTITY,
+        FirstName NVARCHAR(50),
+        LastName NVARCHAR(50),
+        SSN NVARCHAR(50)
+        CONSTRAINT PK_PersonsID PRIMARY KEY(PersonsID)
 )
-
+ 
 CREATE TABLE Accounts (
-	Id int IDENTITY,
-	PersonId int,
-	Balance decimal,
-	CONSTRAINT PK_Accounts PRIMARY KEY(Id),
-	CONSTRAINT PK_Persons_Accounts FOREIGN KEY(PersonId)
-		REFERENCES Persons(Id)
+        AccountID INT IDENTITY,
+        PersonID INT,
+        Balance money
+        CONSTRAINT PK_AccountID PRIMARY KEY(AccountID)
+        CONSTRAINT FK_PersonID FOREIGN KEY(PersonID)
+                REFERENCES Persons(PersonID)
 )
-
-INSERT INTO Persons(FirstName, LastName, SSN)
-	VALUES ('Svetlin', 'Nakov', '123-456-789-01'),
-	('Niki', 'Kostov', '321-654-987-10'),
-	('Georgi', 'Georgiev', '123-123-123-12'),
-	('Doncho', 'Minkov', '111-222-333-44')
-	
-INSERT INTO Accounts(PersonId, Balance)
-	VALUES(1, 1000),
-	(2, 2000),
-	(3, 3000),
-	(4, 4000)
-GO
-
-CREATE PROC dbo.usp_SelectFullEmployeeName
+ 
+CREATE PROC dbo.usp_SelectPersonsNames
 AS
-	SELECT a.FirstName + ' ' + a.LastName as [Employee Name] FROM Persons a
+        SELECT p.FirstName + ' ' + p.LastName
+        FROM dbo.Persons p
 GO
-
-EXEC usp_SelectFullEmployeeName
-
--- Problem 2 - Create a stored procedure that accepts a number as a parameter and returns all persons who have more money in their accounts than the supplied number.
-GO
-CREATE PROC dbo.usp_SelectPersonsWithBalanceMore(@amount int = 0)
+ 
+EXEC dbo.usp_SelectPersonsNames
+ 
+ 
+--2.
+ 
+ALTER PROC dbo.usp_SelectMoreMoney (@leverageBalance INT = 200)
 AS
-	SELECT * FROM Persons p
-		JOIN Accounts a
-			ON p.Id = a.PersonId
-		WHERE a.Balance > @amount
+        SELECT p.FirstName + ' ' + p.LastName
+        FROM dbo.Persons p INNER JOIN dbo.Accounts a
+        ON p.PersonID = a.PersonID
+        WHERE a.Balance >= @leverageBalance
 GO
-
-EXEC usp_SelectPersonsWithBalanceMore 2200
-
--- Problem 3 - Create a function that accepts as parameters – sum, yearly interest rate and number of months. 
--- It should calculate and return the new sum. Write a SELECT to test whether the function works as expected.
-GO
-CREATE PROC dbo.usp_CalculateAfterInterest(@sum decimal, @yearlyInterest decimal, @numberOfMonths int, @result decimal OUTPUT)
+ 
+EXEC usp_SelectMoreMoney 400
+ 
+ 
+--3.
+ 
+CREATE PROC dbo.usp_CalculateNewSum (
+        @SUM INT = 200,
+        @interest INT = 10,
+        @monthsN INT = 24,
+        @RESULT INT OUTPUT
+        )
 AS
-	SET @result = @sum * (1 + (@yearlyInterest / 12) * @numberOfMonths)
-	RETURN @result
+        SET @RESULT = @SUM + (@monthsN/12)*((@interest*@SUM)/100)
 GO
-
-DECLARE @result decimal
-SET @result = 0
-EXEC usp_CalculateAfterInterest 100, 5, 12, @result OUTPUT
-SELECT @result
-
--- Problem 4 - Create a stored procedure that uses the function from the previous example
--- to give an interest to a person's account for one month. It should take the AccountId
--- and the interest rate as parameters.
-					
-
--- Problem Add two more stored procedures WithdrawMoney( AccountId, money) and DepositMoney (AccountId, money) that operate in transactions.
--- Problem Create another table – Logs(LogID, AccountID, OldSum, NewSum). Add a trigger to the Accounts table that enters a new entry into the Logs table every time the sum on an account changes.
--- Problem Define a function in the database TelerikAcademy that returns all Employee's names (first or middle or last name) and all town's names that are comprised of given set of letters. Example 'oistmiahf' will return 'Sofia', 'Smith', … but not 'Rob' and 'Guy'.
--- Problem Using database cursor write a T-SQL script that scans all employees and their addresses and prints all pairs of employees that live in the same town.
--- Problem * Write a T-SQL script that shows for each town a list of all employees that live in it.
--- Problem Define a .NET aggregate function StrConcat that takes as input a sequence of strings and return a single string that consists of the input strings separated by ','. For example the following SQL statement should return a single string:
+ 
+DECLARE @answer INT
+EXEC usp_CalculateNewSum 200, 10, 24, @answer OUTPUT
+SELECT @answer
+ 
+ 
+--4.
+ 
+CREATE PROC dbo.usp_GiveInterest (
+        @id INT = 4,
+        @interest INT,
+        @RESULT money OUTPUT
+        )
+ 
+        AS
+ 
+        DECLARE @sumz money
+        SET @sumz = (SELECT a.Balance
+                        FROM dbo.Accounts a
+                                INNER JOIN dbo.Persons p
+                                ON p.PersonID = a.PersonID
+                                        AND p.PersonID = @id)
+   
+        EXEC usp_CalculateNewSum
+                @sumz,
+                @interest,
+                24,
+                @RESULT OUTPUT         
+        GO
+       
+DECLARE @final money
+EXEC usp_GiveInterest 1, 10, @final OUTPUT
+SELECT @final
+ 
+ 
+--5.
+ 
+CREATE PROC dbo.usp_WithdrawMoney (
+        @AccountID INT,
+        @money money,
+        @RESULT money OUTPUT
+)
+AS
+        DECLARE @curBalance money
+        SET @curBalance = (
+                SELECT a.Balance
+                FROM dbo.Accounts a
+                WHERE a.AccountID = @AccountID
+                )
+        SET @RESULT = @curBalance - @money
+        UPDATE dbo.Accounts
+                SET Balance = @RESULT
+                WHERE(Accounts.AccountID = @AccountID)
+GO
+ 
+DECLARE @answer money
+EXEC usp_WithdrawMoney 1, 50, @answer OUTPUT
+SELECT @answer
+ 
+------------------
+ 
+CREATE PROC dbo.usp_DepositMoney (
+        @AccountID INT,
+        @money money,
+        @RESULT money OUTPUT
+)
+AS
+        DECLARE @curBalance money
+        SET @curBalance = (
+                SELECT a.Balance
+                FROM dbo.Accounts a
+                WHERE a.AccountID = @AccountID
+                )
+        SET @RESULT = @curBalance + @money
+        UPDATE dbo.Accounts
+                SET Balance = @RESULT
+                WHERE(Accounts.AccountID = @AccountID)
+GO
+ 
+DECLARE @answer money
+EXEC usp_DepositMoney 1, 50, @answer OUTPUT
+SELECT @answer
+ 
+ 
+--6.
+ 
+CREATE TABLE Logs(
+        LogID INT IDENTITY,
+        AccountID INT,
+        NewSum money,
+        CONSTRAINT PK_LogID PRIMARY KEY(LogID),
+        CONSTRAINT FK_AccountID FOREIGN KEY(AccountID)
+                REFERENCES Accounts(AccountID)
+)
+ 
+CREATE TRIGGER tr_AccountsUpdate ON dbo.Accounts FOR UPDATE
+AS
+        BEGIN
+        INSERT INTO dbo.Logs
+                SELECT a.AccountID AS AccountID,
+                a.Balance AS NewSum
+        FROM inserted a
+        END
+GO
+DECLARE @answer money
+EXEC usp_WithdrawMoney 4, 50, @answer OUTPUT
+SELECT @answer
+ 
+ 
+--7.
+ 
+--Divided the searches into different, each selecting a distinct tale of results,
+--instead of one table for all. Can easily combine them all if one needs to.
+-- Procedure to search through First Names
+CREATE PROC [dbo].[usp_FindNames](
+        @lettersToSearch NVARCHAR(50)
+        )
+        AS
+                DECLARE @valid bit
+                SET @valid = 0
+                                       
+                        SELECT e.FirstName AS [FIRST Names]
+                        FROM Employees e
+                        WHERE
+                                1 = (SELECT [dbo].[fn_NameContainingLetters](
+                                        e.FirstName,
+                                        @lettersToSearch)
+                                        )
+        GO
+ 
+--Procedure to search through Middle Names
+CREATE PROC [dbo].[usp_FindMiddleNames](
+        @lettersToSearch NVARCHAR(50)
+        )
+        AS
+                DECLARE @valid bit
+                SET @valid = 0
+                                       
+                        SELECT e.MiddleName AS [Middle Names]
+                        FROM Employees e
+                        WHERE
+                                1 = (SELECT [dbo].[fn_NameContainingLetters](
+                                        e.MiddleName,
+                                        @lettersToSearch)
+                                        )
+        GO
+ 
+--Procedure to search through Last Names
+CREATE PROC [dbo].[usp_FindLastNames](
+        @lettersToSearch NVARCHAR(50)
+        )
+        AS
+                DECLARE @valid bit
+                SET @valid = 0
+                                       
+                        SELECT e.LastName AS [LAST Names]
+                        FROM Employees e
+                        WHERE
+                                1 = (SELECT [dbo].[fn_NameContainingLetters](
+                                        e.LastName,
+                                        @lettersToSearch)
+                                        )
+        GO
+ 
+ 
+--Procedure to search through Towns
+CREATE PROC [dbo].[usp_FindTowns](
+        @lettersToSearch NVARCHAR(50)
+        )
+        AS
+                DECLARE @valid bit
+                SET @valid = 0
+                                       
+                        SELECT t.Name AS [Towns]
+                        FROM Towns t
+                        WHERE
+                                1 = (SELECT [dbo].[fn_NameContainingLetters](
+                                        t.Name,
+                                        @lettersToSearch)
+               
+ 
+-- The Function For Every String
+CREATE FUNCTION [dbo].[fn_NameContainingLetters](
+        @name NVARCHAR(50),
+        @letters NVARCHAR(50)
+        )
+        RETURNS bit
+AS
+BEGIN
+        DECLARE @contains bit
+        SET @contains = 1
+        DECLARE @curLetter NVARCHAR(1)
+        DECLARE @counter INT
+        SET @counter = 1
+ 
+        WHILE(@counter <= LEN(@name))
+                BEGIN
+                SET @curLetter = SUBSTRING(@name, @counter, 1)
+                IF (CHARINDEX(@curLetter, @letters) = 0)
+                        SET @contains = 0
+                SET @counter = @counter + 1
+                END
+        RETURN @contains
+END
+ 
+EXEC [dbo].[usp_FindNames] @letterstosearch = 'oistmiahf'
+EXEC [dbo].[usp_FindMiddleames] @letterstosearch = 'oistmiahf'
+EXEC [dbo].[usp_FindLastNames] @letterstosearch = 'oistmiahf'
+EXEC [dbo].[usp_FindTowns] @letterstosearch = 'oistmiahf'
+ 
+ 
+--8.
+ 
+DECLARE empCursor CURSOR READ_ONLY FOR
+        SELECT e.FirstName, e.LastName, t.Name,
+                o.FirstName, o.LastName
+        FROM Employees e
+                INNER JOIN Addresses a
+                        ON a.AddressID = e.AddressID
+                INNER JOIN Towns t
+                        ON t.TownID = a.TownID,
+        Employees o
+                INNER JOIN Addresses a1
+                        ON a1.AddressID = o.AddressID
+                INNER JOIN Towns t1
+                        ON t1.TownID = a1.TownID               
+ 
+        OPEN empCursor
+        DECLARE @firstName1 NVARCHAR(50)
+        DECLARE @lastName1 NVARCHAR(50)
+        DECLARE @town NVARCHAR(50)
+        DECLARE @firstName2 NVARCHAR(50)
+        DECLARE @lastName2 NVARCHAR(50)
+        FETCH NEXT FROM empCursor
+                INTO @firstName1, @lastName1, @town, @firstName2, @lastName2
+ 
+        WHILE @@FETCH_STATUS = 0
+                BEGIN
+                        PRINT @firstName1 + ' ' + @lastName1 +
+                                '     ' + @town + '      ' + @firstName2 + ' ' + @lastName2
+                        FETCH NEXT FROM empCursor
+                                INTO @firstName1, @lastName1, @town, @firstName2, @lastName2
+                END
+ 
+        CLOSE empCursor
+        DEALLOCATE empCursor
+ 
+ 
+--9.
+ 
+-- Create another table to hold people fromeach city, ordered by city
+CREATE TABLE UsersTowns (
+        ID INT IDENTITY,
+        FullName NVARCHAR(50),
+        TownName NVARCHAR(50)
+)
+INSERT INTO UsersTowns
+SELECT e.FirstName + ' ' + e.LastName, t.Name
+                FROM Employees e
+                        INNER JOIN Addresses a
+                                ON a.AddressID = e.AddressID
+                        INNER JOIN Towns t
+                                ON t.TownID = a.TownID
+                GROUP BY t.Name, e.FirstName, e.LastName
+ 
+ 
+ 
+-- Nested cursors to fetch info
+DECLARE @name NVARCHAR(50)
+        DECLARE @town NVARCHAR(50)
+ 
+        DECLARE empCursor1 CURSOR READ_ONLY FOR
+                SELECT DISTINCT ut.TownName
+                        FROM UsersTowns ut     
+ 
+        OPEN empCursor1
+        FETCH NEXT FROM empCursor1
+                INTO @town
+ 
+                WHILE @@FETCH_STATUS = 0
+                BEGIN
+                        PRINT @town
+ 
+                        DECLARE empCursor2 CURSOR READ_ONLY FOR
+                                SELECT ut.FullName
+                                FROM UsersTowns ut
+                                        WHERE ut.TownName = @town
+                        OPEN empCursor2
+                       
+                        FETCH NEXT FROM empCursor2
+                                INTO @name
+                               
+                                WHILE @@FETCH_STATUS = 0
+                                BEGIN
+                                        PRINT '   ' + @name
+                                        FETCH NEXT FROM empCursor2 INTO @name
+                                END
+ 
+                                CLOSE empCursor2
+                                DEALLOCATE empCursor2
+                        FETCH NEXT FROM empCursor1 INTO @town
+                END
+ 
+        CLOSE empCursor1
+        DEALLOCATE empCursor1
+ 
+ 
+--10.
+ 
+DECLARE @name nvarchar(MAX);
+SET @name = N'';
+SELECT @name+=e.FirstName+N','
+FROM Employees e
+SELECT LEFT(@name,LEN(@name)-1);
