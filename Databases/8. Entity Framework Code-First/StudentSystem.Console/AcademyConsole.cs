@@ -16,7 +16,7 @@ namespace StudentSystem.ConsoleDemo
 
             using (academy)
             {
-                var courses = academy.Courses.Include("Students").ToList();
+                var courses = academy.Courses.Include("Students").Include("Homeworks").ToList();
 
                 foreach (var course in courses)
                 {

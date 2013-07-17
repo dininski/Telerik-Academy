@@ -69,7 +69,6 @@ namespace Northwind.ConsoleDemos
 
             #region Problem 6 - Twin database
 
-
             #endregion
 
             #region Problem 7 - Two dbcontext - solved using Singleton pattern

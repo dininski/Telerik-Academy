@@ -4,12 +4,13 @@ namespace StudentSystem.Data.Migrations
     using StudentSystem.Data;
     using StudentSystem.Models;
     using System.Collections.Generic;
+    using System;
 
     internal sealed class Configuration : DbMigrationsConfiguration<AcademyContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(AcademyContext context)
@@ -32,7 +33,7 @@ namespace StudentSystem.Data.Migrations
                 Number = 2
             };
 
-            context.Courses.Add(new Course()
+            var CSharpCourse = new Course()
             {
                 Name = "C#",
                 Materials = "Nakov book",
@@ -40,9 +41,9 @@ namespace StudentSystem.Data.Migrations
                     studentGosho, studentPesho
                 },
                 Description = "C# Basics"
-            });
+            };
 
-            context.Courses.Add(new Course()
+            var JsCourse = new Course()
             {
                 Name = "Javascript",
                 Materials = "JS the good parts",
@@ -50,6 +51,18 @@ namespace StudentSystem.Data.Migrations
                     studentIvan
                 },
                 Description = "JS Part I"
+            };
+
+            context.Courses.Add(CSharpCourse);
+
+            context.Courses.Add(JsCourse);
+
+            context.Homeworks.Add(new Homework()
+            {
+                Course = CSharpCourse,
+                Student = studentPesho,
+                Content = "This is my homework",
+                TimeSent = DateTime.Now
             });
         }
     }

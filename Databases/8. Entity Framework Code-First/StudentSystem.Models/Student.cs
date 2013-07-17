@@ -1,6 +1,7 @@
 ﻿namespace StudentSystem.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Student
     {
@@ -13,8 +14,10 @@
             this.courses = new HashSet<Course>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public int Number { get; set; }
