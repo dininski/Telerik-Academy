@@ -7,26 +7,12 @@ using System.Data.Entity;
 using Northwind.Context;
 using System.Data.Entity.Validation;
 using System.Data.Metadata.Edm;
+using System.Data.Linq;
 
 namespace Northwind.DataAccessLayer
 {
     public static class NorthwindDAO
     {
-        public static class Northwind
-        {
-            private static NorthwindEntities db;
-
-            public static NorthwindEntities GetInstance()
-            {
-                if (db == null)
-                {
-                    db = new NorthwindEntities();
-                }
-
-                return db;
-            }
-        }
-
         public static void AddCustomer(string id, string name, string title, string phone,
             string fax, string address, string postalCode, string city, string region,
             string country, string company)
@@ -149,33 +135,77 @@ namespace Northwind.DataAccessLayer
             // TODO
         }
 
-        public static void DoubleDbContext()
+        public static void DoubleContext()
         {
-            NorthwindEntities firstDbContext = Northwind.GetInstance();
-            NorthwindEntities secondDbContext = Northwind.GetInstance();
-
-            using (firstDbContext)
+            using (NorthwindEntities northwindEntities1 = new NorthwindEntities())
             {
-                using (secondDbContext)
+                using (NorthwindEntities northwindEntities2 = new NorthwindEntities())
                 {
-                    Customer customer1 = firstDbContext.Customers.Find("CHOPS");
-                    customer1.Region = "CAN";
+                    Customer customerByFirstDataContext = northwindEntities1.Customers.Find("CHOPS");
+                    customerByFirstDataContext.Region = "SW";
 
-                    Customer customer2 = secondDbContext.Customers.Find("CHOPS");
-                    customer2.Region = "BUL";
+                    Customer customerBySecondDataContext = northwindEntities2.Customers.Find("CHOPS");
+                    customerBySecondDataContext.Region = "SSWW";
 
-                    firstDbContext.SaveChanges();
-                    secondDbContext.SaveChanges();
+                    northwindEntities1.SaveChanges();
+                    northwindEntities2.SaveChanges();
                 }
             }
-
         }
 
-        public static EntitySet GetEmployeesWithTerritories()
+        public static void Inheritance()
         {
-            // TODO
-            throw new NotImplementedException();
-            
+            NorthwindEntities northwindEntities = new NorthwindEntities();
+            int employeeID = 1;
+            Employee employee = northwindEntities.Employees.Find(employeeID);
+            // Property added at Northwind.Data ExtendedEmployee file
+            EntitySet<Territory> territories = employee.EntityTerritories;
+            Console.WriteLine("All territories for employee with ID {0} are:", employeeID);
+            foreach (var territory in territories)
+            {
+                Console.WriteLine(territory.TerritoryDescription);
+            }
+        }
+
+        public static void CreateOrder()
+        {
+            NorthwindEntities northwind = new NorthwindEntities();
+
+            using (northwind)
+            {
+                var order = new Order()
+                {
+                    CustomerID = "BOTTM",
+                    EmployeeID = 6,
+                    ShipCity = "Sofia",
+                    ShipCountry = "Bulgaria",
+                    ShippedDate = DateTime.Now,
+                    ShipPostalCode = "1000",
+                    ShipVia = 2
+                };
+
+                var orderDetail1 = new Order_Detail()
+                {
+                    Order = order,
+                    ProductID = 23,
+                    Quantity = 10,
+                    UnitPrice = 15
+                };
+
+                var orderDetail2 = new Order_Detail()
+                {
+                    Order = order,
+                    ProductID = 27,
+                    Quantity = 11,
+                    UnitPrice = 19
+                };
+
+                northwind.Orders.Add(order);
+                northwind.Order_Details.Add(orderDetail1);
+                northwind.Order_Details.Add(orderDetail2);
+
+                northwind.SaveChanges();
+            }
         }
     }
 }

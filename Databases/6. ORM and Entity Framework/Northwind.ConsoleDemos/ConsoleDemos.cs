@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Northwind.DataAccessLayer;
+using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
+using Northwind.Context;
 
 namespace Northwind.ConsoleDemos
 {
@@ -68,15 +71,45 @@ namespace Northwind.ConsoleDemos
             #endregion
 
             #region Problem 6 - Twin database
+            string createNorthwindCloneDBCommand = @"CREATE DATABASE NorthwindTwin ON PRIMARY 
+(NAME = NorthwindTwin, FILENAME = 'D:\NorthwindTwin.mdf', SIZE = 5MB, MAXSIZE = 10MB, FILEGROWTH = 10%) 
+LOG ON (NAME = NorthwindTwinLog, FILENAME = 'D:\NorthwindTwin.ldf', SIZE = 1MB, MAXSIZE = 5MB, FILEGROWTH = 10%)";
+            SqlConnection dbConnectionForCreatingDB =
+                new SqlConnection("Server=localhost;Database=master;Integrated Security=true");
+            dbConnectionForCreatingDB.Open();
+            using (dbConnectionForCreatingDB)
+            {
+                SqlCommand createDBCommand =
+                    new SqlCommand(createNorthwindCloneDBCommand, dbConnectionForCreatingDB);
+                createDBCommand.ExecuteNonQuery();
+            }
 
+            IObjectContextAdapter northwindContext = new NorthwindEntities();
+            string cloneNorthwindScript = northwindContext.ObjectContext.CreateDatabaseScript();
+            SqlConnection dbConnectionForCloningDB = new SqlConnection("Server=localhost;Database=NorthwindTwin;Integrated Security=true");
+            dbConnectionForCloningDB.Open();
+            using (dbConnectionForCloningDB)
+            {
+                SqlCommand cloneDBCommand = new SqlCommand(cloneNorthwindScript, dbConnectionForCloningDB);
+                cloneDBCommand.ExecuteNonQuery();
+            }
+
+            Console.WriteLine("Cloning done!");
             #endregion
 
             #region Problem 7 - Two dbcontext - solved using Singleton pattern
-            NorthwindDAO.DoubleDbContext();
+            Console.WriteLine("Using double context...");
+            NorthwindDAO.DoubleContext();
+            Console.WriteLine("Done");
             #endregion
 
             #region Problem 8 - Employee inheritance
+            NorthwindDAO.Inheritance();
+            #endregion
 
+            #region Problem 9 - 
+            NorthwindDAO.CreateOrder();
+            Console.WriteLine("Order added");
             #endregion
         }
     }
