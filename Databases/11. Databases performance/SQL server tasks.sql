@@ -57,3 +57,21 @@ CHECKPOINT; DBCC DROPCLEANBUFFERS;
 select * from Concerts
 	where [date] > '10-10-2010' AND [date] < '10-10-2012'
 
+-- task 3 - Add a full text index for the text column.
+-- Try to search with and without the full-text index and compare the speed.
+create fulltext catalog PerformersFullTextCatalog
+with accent_sensitivity = off
+
+create fulltext index on Concerts(Performer)
+key index PK_Concerts on PerformersFullTextCatalog
+with change_tracking auto
+
+CHECKPOINT; DBCC DROPCLEANBUFFERS;
+
+-- time taken - 0 sec
+SELECT * FROM Concerts
+WHERE CONTAINS(Performer, '123')
+
+-- time taken - 6 sec
+SELECT * FROM Concerts
+WHERE Performer LIKE '%123%'
