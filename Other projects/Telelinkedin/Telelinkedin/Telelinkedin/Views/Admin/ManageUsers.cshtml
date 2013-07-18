@@ -27,13 +27,13 @@
 
 <script id="inner" type="text/kendo-tmpl">
     @(Html.Kendo().TabStrip()
-            .Name("tabStrip")
+            .Name("tabStrip_#=Id#")
             .SelectedIndex(0)
             .Items(items =>
             {
                 items.Add().Text("Education").Content(@<text>
                     @(Html.Kendo().Grid<Telelinkedin.ViewModels.EducationViewModel>()
-                        .Name("edu")
+                        .Name("edu_#=Id#")
                         .DataSource(dataSource => dataSource
                             .Ajax()
                             .Model(model => model.Id(p => p.Id))
@@ -61,7 +61,7 @@
                 </text>);
                 items.Add().Text("Skills").Content(@<text>
             @(Html.Kendo().Grid<Telelinkedin.ViewModels.SkillViewModel>()
-                        .Name("skill")
+                        .Name("skill_#=Id#")
                         .DataSource(dataSource => dataSource
                             .Ajax()
                             .Model(model => model.Id(p => p.Id))
@@ -85,7 +85,7 @@
                 </text>);
                 items.Add().Text("Jobs").Content(@<text>
             @(Html.Kendo().Grid<Telelinkedin.ViewModels.JobViewModel>()
-                        .Name("job")
+                        .Name("job_#=Id#")
                         .DataSource(dataSource => dataSource
                             .Ajax()
                             .Model(model => model.Id(p => p.Id))
@@ -114,7 +114,7 @@
                 </text>);
                 items.Add().Text("Connections").Content(@<text>
             @(Html.Kendo().Grid<Telelinkedin.ViewModels.ProfileConnectionViewModel>()
-                        .Name("conn")
+                        .Name("conn_#=Id#")
                         .DataSource(dataSource => dataSource
                             .Ajax()
                             .Model(model => model.Id(p => p.Id))
