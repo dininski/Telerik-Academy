@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<university name="Students" xmlns:students="urn:academy.com:StudentsNamespace"
+                xmlns:exams="urn:academy.com:ExamsNamespace">
+  <student>
+    <name>Pesho Peshov</name>
+    <sex>Male</sex>
+    <birth_date>1.1.1975</birth_date>
+    <phone>555-123-123</phone>
+    <email>pesho@pesho.eu</email>
+    <course>4</course>
+    <specialty>Agriculture</specialty>
+    <faculty_number>A123123</faculty_number>
+    <exams>
+      <exam>
+        <name>Farming</name>
+        <tutor>Farmer Joe</tutor>
+        <score>5.5</score>
+      </exam>
+      <exam>
+        <name>Irigation</name>
+        <tutor>Ivan Ivanov</tutor>
+        <score>3.5</score>
+      </exam>
+    </exams>
+  </student>
+  <student>
+    <name>Goshka Goshkova</name>
+    <sex>Female</sex>
+    <birth_date>2.2.1995</birth_date>
+    <phone>555-555-55</phone>
+    <email>goshka@babastanka.bg</email>
+    <course>2</course>
+    <specialty>Mathematics</specialty>
+    <faculty_number>A111222</faculty_number>
+    <exams>
+      <exam>
+        <name>Arithmetics</name>
+        <tutor>Lyubo Ganev</tutor>
+        <score>3.0</score>
+      </exam>
+    </exams>
+  </student>
+</university>

@@ -1,0 +1,1 @@
+XML - eXtensible Markup Language - is a markup language designed to give a great amount of flexibility in marking up and passing around arbitrary data. In the web, XML is normally used for transporting data through feeds, API calls and the like. XML is also frequently used for configuration files for web frameworks such as Spring.

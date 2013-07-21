@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<default:students xmlns:default="http://www.sampleurl.com/students/">
+	<default:student>
+		<default:name>Pesho</default:name>
+		<default:sex>Male</default:sex>
+		<default:birth_date>1.1.1980</default:birthDate>
+		<default:phone>555-555-55</default:phone>
+		<default:email>pesho@gosho.eu</default:email>
+		<default:course>5</default:course>
+		<default:specialty>Agriculture</default:specialty>
+		<default:faculty_number>FN123456</default:faculty_number>
+	</default:student>
+</default:students>	
