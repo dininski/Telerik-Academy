@@ -10,7 +10,6 @@
     using MongoDB.Driver.Builders;
     using System.Collections;
 
-
     public class Dictionary : IEnumerable
     {
         private MongoCollection<Word> dict;

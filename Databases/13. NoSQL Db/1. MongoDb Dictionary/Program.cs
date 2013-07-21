@@ -19,6 +19,8 @@
 
             Dictionary dict = new Dictionary(dictionary);
 
+            Console.WriteLine("Welcome to MongoDb Dictionary");
+
             string userCommand = "";
             while (userCommand != "exit")
             {
