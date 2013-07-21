@@ -39,4 +39,6 @@ SELECT COUNT(*) FROM Concerts
 
 EXPLAIN PARTITIONS SELECT * FROM Concerts;
 
-SELECT * FROM `Concerts` partition (`p3`);
+SELECT * FROM `Concerts` partition (p0);
+
+SELECT * FROM `Concerts`;
