@@ -7,7 +7,8 @@
 
     var resultsPerPage = 10;
     var currentPage = 1;
-    
+    var currentInfoType = -1;
+
     var appViewState = Windows.UI.ViewManagement.ApplicationViewState;
     var ui = WinJS.UI;
 
@@ -17,8 +18,8 @@
             e.preventDefault();
             e.stopPropagation();
             var infoType = Data.infoTypes;
-            var test = Data.getInfo(resultsPerPage, ++currentPage, "us", infoType.box_office);
-            test.done();
+            var moreResults = Data.getInfo(resultsPerPage, ++currentPage, "us", eval("infoType." + currentInfoType));
+            moreResults.done();
         });
     };
 
@@ -29,6 +30,7 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
+            currentInfoType = options.groupKey;
             var listView = element.querySelector(".itemslist").winControl;
             var group = (options && options.groupKey) ? Data.resolveGroupReference(options.groupKey) : Data.groups.getAt(0);
             this._items = Data.getItemsFromGroup(group);
