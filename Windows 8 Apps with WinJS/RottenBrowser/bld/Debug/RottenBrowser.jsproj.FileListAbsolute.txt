@@ -7,3 +7,16 @@ C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrows
 C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles
 C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\LanguageQualifiers.txt
 C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\ProjectArchitectures.txt
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\resources.pri
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\AppxManifest.xml
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\RottenBrowser.build.appxrecipe
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\priconfig.xml
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\layout.resfiles
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.resfiles
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\LanguageQualifiers.txt
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\ProjectArchitectures.txt
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\priconfig.xml.intermediate
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\layout.resfiles.intermediate
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.resfiles.intermediate
+D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles.intermediate
