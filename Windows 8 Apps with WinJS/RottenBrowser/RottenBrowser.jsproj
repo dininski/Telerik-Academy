@@ -54,10 +54,14 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="css\default.css" />
+    <Content Include="images\icon.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\small-image.png" />
     <Content Include="images\smalllogo.png" />
+    <Content Include="images\splash.jpg" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
+    <Content Include="images\wide-icon.jpg" />
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />

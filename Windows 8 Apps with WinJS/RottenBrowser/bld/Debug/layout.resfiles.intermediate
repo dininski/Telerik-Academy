@@ -1,9 +1,13 @@
 css\default.css
 default.html
+images\icon.jpg
 images\logo.png
+images\small-image.png
 images\smalllogo.png
+images\splash.jpg
 images\splashscreen.png
 images\storelogo.png
+images\wide-icon.jpg
 js\data.js
 js\default.js
 js\navigator.js

@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="RottenBrowser" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="RottenBrowser" ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" />
+      <VisualElements DisplayName="RottenBrowser" Logo="images\icon.jpg" SmallLogo="images\small-image.png" Description="RottenBrowser" ForegroundText="dark" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" WideLogo="images\wide-icon.jpg" />
+        <SplashScreen Image="images\splash.jpg" />
       </VisualElements>
       <Extensions>
         <Extension Category="windows.search" />
