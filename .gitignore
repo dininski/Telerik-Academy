@@ -5,3 +5,5 @@
 *.ldf
 *.mdf
 *.coverage
+*\Debug
+*\Release
