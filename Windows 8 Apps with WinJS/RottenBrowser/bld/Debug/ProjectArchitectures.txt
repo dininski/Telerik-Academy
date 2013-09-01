@@ -1,1 +1,1 @@
-D:\GitNKolarov\dininski\Telerik-Academy-1\Windows 8 Apps with WinJS\RottenBrowser\RottenBrowser.jsproj;neutral
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\RottenBrowser.jsproj;neutral

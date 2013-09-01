@@ -61,6 +61,9 @@
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <Content Include="pages\searchedItem\searchedItem.css" />
+    <Content Include="pages\searchedItem\searchedItem.html" />
+    <Content Include="pages\searchedItem\searchedItem.js" />
     <Content Include="pages\itemDetail\itemDetail.css" />
     <Content Include="pages\itemDetail\itemDetail.html" />
     <Content Include="pages\itemDetail\itemDetail.js" />

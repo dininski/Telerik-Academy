@@ -88,21 +88,68 @@
                              addMovieToList(
                                  movieGroup,
                                  movieItem,
-                                 infoType.itemSubtitle + itemFieldData);
+                                 infoType.itemSubtitle + itemFieldData,
+                                 list);
                          }
                      }
                  })
         });
     }
 
-    function addMovieToList(movieGroup, movieItem, subtitle) {
-        list.push({
+    function search(queryText, resultsPerPage, searchResults) {
+        return new WinJS.Promise(function () {
+            makeGetRequest("http://api.rottentomatoes.com/api/public/v1.0/movies.json?q=" +
+                queryText + "&page_limit=" +
+                resultsPerPage + "&page=" +
+                currentPage + "&apikey=" + apiKey)
+                .then(function (xhr) {
+                    var responseJson = JSON.parse(xhr.response);
+                    var moviesData = responseJson.movies;
+
+                    var movieGroup = {
+                        key: "search-result",
+                        title: "Search results",
+                        subtitle: "",
+                        description: ""
+                    };
+
+                    for (var i = 0; i < moviesData.length; i++) {
+                        var movieItem = moviesData[i];
+                        addMovieToList(movieGroup, movieItem, "", searchResults);
+                    }
+                });
+        });
+    }
+
+    function addMovieToList(movieGroup, movieItem, subtitle, listToPush) {
+        listToPush.push({
             group: movieGroup,
             title: movieItem.title,
             subtitle: subtitle,
             description: movieItem.synopsis,
             backgroundImage: movieItem.posters.detailed,
-            content: movieItem.synopsis
+            content: movieItem.synopsis,
+            movieId: movieItem.id ? movieItem.id : null
+        });
+    }
+
+    function getMovieById(id) {
+        return new WinJS.Promise(function () {
+            var result = makeGetRequest("http://api.rottentomatoes.com/api/public/v1.0/movies/" +
+                id + ".json" +
+                "?apikey=" + apiKey)
+                .then(function (xhr) {
+                    var movieResponse = JSON.parse(xhr.response);
+
+                    document.querySelector(".titlearea .pagetitle").textContent = movieResponse.title;
+                    document.querySelector("article .item-title").textContent = movieResponse.title;
+                    document.querySelector("article .item-subtitle").textContent = movieResponse.genres[0];
+                    document.querySelector("article .item-image").src = movieResponse.posters.detailed;
+                    document.querySelector("article .item-image").style.display = "block";
+                    document.querySelector("article .item-image").alt = movieResponse.posters.detailed;
+                    document.querySelector("article .item-content").innerHTML = movieResponse.synopsis;
+                    document.querySelector(".content").focus();
+                });
         });
     }
 
@@ -114,7 +161,9 @@
         resolveGroupReference: resolveGroupReference,
         resolveItemReference: resolveItemReference,
         getInfo: getInfo,
-        infoTypes: infoType
+        infoTypes: infoType,
+        search: search,
+        getMovieById: getMovieById
     });
 
     // Get a reference for an item, using the group key and item title as a

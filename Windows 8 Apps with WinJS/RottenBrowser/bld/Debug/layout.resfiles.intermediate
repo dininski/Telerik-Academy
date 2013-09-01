@@ -16,6 +16,9 @@ pages\groupedItems\groupedItems.js
 pages\itemDetail\itemDetail.css
 pages\itemDetail\itemDetail.html
 pages\itemDetail\itemDetail.js
+pages\searchedItem\searchedItem.css
+pages\searchedItem\searchedItem.html
+pages\searchedItem\searchedItem.js
 pages\searchresults\searchresults.css
 pages\searchresults\searchresults.html
 pages\searchresults\searchresults.js
