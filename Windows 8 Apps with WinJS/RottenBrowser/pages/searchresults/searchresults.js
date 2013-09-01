@@ -21,6 +21,8 @@
     var utils = WinJS.Utilities;
     var maxSearchResultItems = 50;
     var searchPageURI = "/pages/searchresults/searchresults.html";
+    var searchPane = appModel.Search.SearchPane.getForCurrentView();
+    searchPane.placeholderText = "Search Rotten Movie";
 
     ui.Pages.define(searchPageURI, {
         _filters: [],
@@ -205,5 +207,5 @@
         }
     });
 
-    appModel.Search.SearchPane.getForCurrentView().onquerysubmitted = function (args) { nav.navigate(searchPageURI, args); };
+    searchPane.onquerysubmitted = function (args) { nav.navigate(searchPageURI, args); };
 })();
