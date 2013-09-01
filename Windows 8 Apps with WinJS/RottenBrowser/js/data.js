@@ -74,6 +74,17 @@
                          for (var i = 0; i < moviesData.length; i++) {
                              var movieItem = moviesData[i];
                              var itemFieldData = eval("movieItem." + infoType.itemSubtitleField) + infoType.itemSubtitleFooter;
+
+                             movieItem.synopsis += ". Starring: ";
+                             var abridged_cast_length = movieItem.abridged_cast.length;
+
+                             for (var j = 0; j < abridged_cast_length - 1; j++) {
+                                 var castMember = movieItem.abridged_cast[j];
+                                 movieItem.synopsis += castMember.name + ", ";
+                             }
+
+                             movieItem.synopsis += movieItem.abridged_cast[abridged_cast_length - 1].name;
+
                              addMovieToList(
                                  movieGroup,
                                  movieItem,
