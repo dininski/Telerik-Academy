@@ -1,8 +1,26 @@
-﻿(function () {
+﻿/// <reference path="//Microsoft.WinJS.1.0/js/ui.js" />
+/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
+/// <reference path="/js/data.js" />
+
+(function () {
     "use strict";
 
+    var resultsPerPage = 10;
+    var currentPage = 1;
+    
     var appViewState = Windows.UI.ViewManagement.ApplicationViewState;
     var ui = WinJS.UI;
+
+    function addButtonHandlers() {
+        var moreButton = document.getElementById("more-items");
+        moreButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var infoType = Data.infoTypes;
+            var test = Data.getInfo(resultsPerPage, ++currentPage, "us", infoType.box_office);
+            test.done();
+        });
+    };
 
     ui.Pages.define("/pages/groupDetail/groupDetail.html", {
         /// <field type="WinJS.Binding.List" />
@@ -19,6 +37,7 @@
                 function groupDataSelector(item) { return group; }
             );
 
+            addButtonHandlers();
             element.querySelector("header[role=banner] .pagetitle").textContent = group.title;
 
             listView.itemDataSource = pageList.dataSource;

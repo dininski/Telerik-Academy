@@ -2,6 +2,10 @@
 /// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
 (function () {
     "use strict";
+    var apiKey = "t95y7y8admstbtrezh9xbzyr";
+
+    var resultsPerPage = 10;
+    var currentPage = 1;
 
     var list = new WinJS.Binding.List();
     var groupedItems = list.createGrouped(
@@ -9,38 +13,82 @@
         function groupDataSelector(item) { return item.group; }
     );
 
-    getUpcomingMovies();
+    var infoType = {
+        box_office: {
+            key: "box_office",
+            title: "Box office movies",
+            subtitle: "Best box office movies",
+            description: "The highest grossing movies in the box office",
+            itemSubtitle: "Critics rating: ",
+            itemSubtitleField: "ratings.critics_rating"
+        },
+        upcoming: {
+            key: "upcoming",
+            title: "Upcoming movies",
+            subtitle: "Highly anticipated movies.",
+            description: "Some of the upcoming movies from Hollywood",
+            itemSubtitle: "Release date: ",
+            itemSubtitleField: "release_dates.theater"
+        }
+    };
 
-    function getUpcomingMovies() {
-        makeGetRequest("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?page_limit=16&page=1&country=us&apikey=t95y7y8admstbtrezh9xbzyr")
-            .then(function (xhr) {
-                var darkGray = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXY3B0cPoPAANMAcOba1BlAAAAAElFTkSuQmCC";
+    getInfo(resultsPerPage, currentPage, "us", infoType.box_office)
+        .done(getInfo(resultsPerPage, currentPage, "us", infoType.upcoming));
 
-                var upcomingMovie = {
-                    key: "upcoming",
-                    title: "Upcoming movies",
-                    subtitle: "A list of upcoming movies",
-                    backgroundImage: darkGray,
-                    description: "Expect in theaters soon"
-                }
-                ;
+    function getInfo(pageLimit, page, country, infoType) {
+        return new WinJS.Promise(function () {
+            makeGetRequest(
+                "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/" +
+                infoType.key + ".json?" +
+                "page_limit=" + pageLimit +
+                "&page=" + page +
+                "&country=" + country +
+                "&apikey=" + apiKey)
+                 .then(function (xhr) {
+                     var movieGroup = {
+                         key: infoType.key,
+                         title: infoType.title,
+                         subtitle: infoType.subtitle,
+                         description: infoType.description
+                     };
 
-                var responseJson = JSON.parse(xhr.response);
+                     var responseJson = JSON.parse(xhr.response);
+                     var moviesData = responseJson.movies;
+                     movieGroup.backgroundImage = moviesData[0].posters.original;
 
-                var upcomingMovies = responseJson.movies;
+                     if (!moviesData.total || moviesData.total >= page * pageLimit) {
+                         for (var i = 0; i < moviesData.length; i++) {
+                             var movieItem = moviesData[i];
+                             var itemFieldData = eval("movieItem." + infoType.itemSubtitleField);
+                             addMovieToList(
+                                 movieGroup,
+                                 movieItem,
+                                 infoType.itemSubtitle + itemFieldData);
+                         }
+                     }
+                 })
+        });
+    }
 
-                for (var i = 0; i < upcomingMovies.length; i++) {
+    function getItemFieldType(functionName, context) {
+        var args = Array.prototype.slice.call(arguments).splice(2);
+        var namespaces = functionName.split(".");
+        var func = namespaces.pop();
+        for (var i = 0; i < namespaces.length; i++) {
+            context = context[namespaces[i]];
+        }
+        return context[func].apply(this, args);
+    }
 
-                    list.push({
-                        group: upcomingMovie,
-                        title: upcomingMovies[i].title,
-                        subtitle: "Release date: " + upcomingMovies[i].release_dates.theater,
-                        description: upcomingMovies[i].synopsis,
-                        backgroundImage: upcomingMovies[i].posters.detailed,
-                        content: upcomingMovies[i].synopsis + "\n"
-                    });
-                }
-            });
+    function addMovieToList(movieGroup, movieItem, subtitle) {
+        list.push({
+            group: movieGroup,
+            title: movieItem.title,
+            subtitle: subtitle,
+            description: movieItem.synopsis,
+            backgroundImage: movieItem.posters.detailed,
+            content: movieItem.synopsis
+        });
     }
 
     WinJS.Namespace.define("Data", {
@@ -49,7 +97,9 @@
         getItemReference: getItemReference,
         getItemsFromGroup: getItemsFromGroup,
         resolveGroupReference: resolveGroupReference,
-        resolveItemReference: resolveItemReference
+        resolveItemReference: resolveItemReference,
+        getInfo: getInfo,
+        infoTypes: infoType
     });
 
     // Get a reference for an item, using the group key and item title as a

@@ -96,6 +96,13 @@
                 width: 220px;
             }
 
+
+.item-image-big {
+    width: 180px;
+    height: 257px;
+    float: left;
+}
+
 @media screen and (-ms-view-state: fullscreen-landscape), screen and (-ms-view-state: fullscreen-portrait), screen and (-ms-view-state: filled) {
     .groupeditemspage .groupeditemslist .item .item-overlay {
         background: rgba(0,0,0,0.65);
@@ -173,6 +180,12 @@
                 opacity: 0.6;
                 width: 202px;
             }
+
+    .item-image-big {
+        width: 60px;
+        height: 86px;
+        float: left;
+    }
 }
 
 @media screen and (-ms-view-state: fullscreen-portrait) {
@@ -185,10 +198,4 @@
         margin-left: 95px;
         margin-right: 25px;
     }
-}
-
-.item-image-big {
-    width: 180px;
-    height: 257px;
-    float: left;
 }

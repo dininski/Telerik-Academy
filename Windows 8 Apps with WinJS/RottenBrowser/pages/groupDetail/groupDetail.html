@@ -18,7 +18,9 @@
     <!-- These templates are used to display each item in the ListView declared below. -->
     <div class="headertemplate" data-win-control="WinJS.Binding.Template">
         <h2 class="group-subtitle" data-win-bind="textContent: subtitle"></h2>
-        <img class="group-image" src="#" data-win-bind="src: backgroundImage; alt: title" />
+        <div id="group-image-holder">
+            <img class="group-image" src="#" data-win-bind="src: backgroundImage; alt: title" />
+        </div>
         <h4 class="group-description" data-win-bind="innerHTML: description"></h4>
     </div>
     <div class="itemtemplate" data-win-control="WinJS.Binding.Template">
@@ -43,6 +45,9 @@
         <section aria-label="Main content" role="main">
             <div class="itemslist win-selectionstylefilled" aria-label="List of this group's items" data-win-control="WinJS.UI.ListView" data-win-options="{ selectionMode: 'none' }"></div>
         </section>
+        <footer role="navigation" style="text-align: right">
+            <button id="more-items">More...</button>
+        </footer>
     </div>
 </body>
 </html>
