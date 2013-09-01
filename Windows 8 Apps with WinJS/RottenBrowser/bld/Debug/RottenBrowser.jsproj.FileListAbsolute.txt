@@ -1,0 +1,9 @@
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\resources.pri
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\AppxManifest.xml
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bin\Debug\RottenBrowser.build.appxrecipe
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\priconfig.xml
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\layout.resfiles
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.resfiles
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\LanguageQualifiers.txt
+C:\Storage\projects\github\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\ProjectArchitectures.txt
