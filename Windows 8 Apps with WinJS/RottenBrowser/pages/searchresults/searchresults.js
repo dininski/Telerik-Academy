@@ -113,8 +113,8 @@
                 listView.layout = new ui.GridLayout();
 
                 // TODO: Change "App Name" to the name of your app.
-                document.querySelector(".titlearea .pagetitle").textContent = "App Name";
-                document.querySelector(".titlearea .pagesubtitle").textContent = "Results for “" + this._lastSearch + '”';
+                document.querySelector(".titlearea .pagetitle").textContent = "RottenBrowser";
+                document.querySelector(".titlearea .pagesubtitle").textContent = "Results for search: “" + this._lastSearch + '”';
             }
         },
 
