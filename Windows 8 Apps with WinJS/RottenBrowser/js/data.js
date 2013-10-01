@@ -83,7 +83,9 @@
                                  movieItem.synopsis += castMember.name + ", ";
                              }
 
-                             movieItem.synopsis += movieItem.abridged_cast[abridged_cast_length - 1].name;
+                             if (abridged_cast_length > 0) {
+                                 movieItem.synopsis += movieItem.abridged_cast[abridged_cast_length - 1].name;
+                             }
 
                              addMovieToList(
                                  movieGroup,
