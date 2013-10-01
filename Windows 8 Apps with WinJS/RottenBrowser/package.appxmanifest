@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="b240a82d-64e4-4082-a625-d31f8e8af9f1" Version="1.0.0.0" Publisher="CN=Vasil" />
+  <Identity Name="29954Dininski.RottenBrowser" Version="0.0.2.0" Publisher="CN=6257BDE4-59B4-4795-A316-015D027928B1" />
   <Properties>
-    <DisplayName>RottenBrowser</DisplayName>
-    <PublisherDisplayName>Vasil</PublisherDisplayName>
+    <DisplayName>Rotten Browser</DisplayName>
+    <PublisherDisplayName>Dininski</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="RottenBrowser" Logo="images\icon.jpg" SmallLogo="images\small-image.png" Description="RottenBrowser" ForegroundText="dark" BackgroundColor="#464646">
+      <VisualElements DisplayName="Rotten Browser" Logo="images\icon.jpg" SmallLogo="images\small-image.png" Description="RottenBrowser" ForegroundText="dark" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" WideLogo="images\wide-icon.jpg" />
         <SplashScreen Image="images\splash.jpg" />
       </VisualElements>

@@ -4,7 +4,7 @@
     "use strict";
     var apiKey = "t95y7y8admstbtrezh9xbzyr";
 
-    var resultsPerPage = 10;
+    var resultsPerPage = 16;
     var currentPage = 1;
     var country = "us";
 
@@ -44,10 +44,20 @@
         }
     };
 
-    getInfo(resultsPerPage, currentPage, country, infoType.box_office)
-        .then(getInfo(resultsPerPage, currentPage, country, infoType.upcoming)
-            .then(getInfo(resultsPerPage, currentPage, country, infoType.in_theaters)))
-        .done();
+    var connectionProfile = Windows.Networking.Connectivity.NetworkInformation.getInternetConnectionProfile();
+    var connectivityLevel = connectionProfile.getNetworkConnectivityLevel();
+    if (connectivityLevel !== 3) {
+        var md = new Windows.UI.Popups.MessageDialog("This app requires internet connectivity!");
+        md.commands.append(new Windows.UI.Popups.UICommand("Ok"));
+        md.showAsync().then(function (command) {
+            window.close();
+        });
+    } else {
+        getInfo(resultsPerPage, currentPage, country, infoType.box_office)
+            .then(getInfo(resultsPerPage, currentPage, country, infoType.upcoming))
+            .then(getInfo(resultsPerPage, currentPage, country, infoType.in_theaters))
+            .done();
+    }
 
     function getInfo(pageLimit, page, country, infoType) {
         return new WinJS.Promise(function () {
@@ -73,7 +83,7 @@
                      if (!moviesData.total || moviesData.total >= page * pageLimit) {
                          for (var i = 0; i < moviesData.length; i++) {
                              var movieItem = moviesData[i];
-                             var itemFieldData = eval("movieItem." + infoType.itemSubtitleField) + infoType.itemSubtitleFooter;
+                             var itemFieldData = eval('movieItem.' + infoType.itemSubtitleField) + infoType.itemSubtitleFooter;
 
                              movieItem.synopsis += ". Starring: ";
                              var abridged_cast_length = movieItem.abridged_cast.length;
@@ -137,7 +147,7 @@
 
     function getMovieById(id) {
         return new WinJS.Promise(function () {
-            var result = makeGetRequest("http://api.rottentomatoes.com/api/public/v1.0/movies/" +
+            makeGetRequest("http://api.rottentomatoes.com/api/public/v1.0/movies/" +
                 id + ".json" +
                 "?apikey=" + apiKey)
                 .then(function (xhr) {
