@@ -32,6 +32,15 @@
         }
     });
 
+    app.onsettings = function (args) {
+        args.detail.applicationcommands = {
+            "priv": {
+                title: "Privacy Policy", href: "pages/settings/privacy.html"
+            }
+        };
+        WinJS.UI.SettingsFlyout.populateSettings(args);
+    };
+
     app.oncheckpoint = function (args) {
         // TODO: This application is about to be suspended. Save any state
         // that needs to persist across suspensions here. If you need to 

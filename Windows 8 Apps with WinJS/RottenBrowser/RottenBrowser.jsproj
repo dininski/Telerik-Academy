@@ -67,6 +67,7 @@
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <Content Include="pages\settings\privacy.html" />
     <None Include="RottenBrowser_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="pages\searchedItem\searchedItem.css" />

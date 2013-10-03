@@ -44,8 +44,5 @@ C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.r
 C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.resfiles.intermediate
 C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles
 C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\pri.resfiles.intermediate
-C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\qualifiers.txt
-C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\qualifiers.txt.intermediate
-C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\resources.pri.xml
 C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\ProjectArchitectures.txt
+C:\Telerik-Academy\Windows 8 Apps with WinJS\RottenBrowser\bld\Debug\LanguageQualifiers.txt
