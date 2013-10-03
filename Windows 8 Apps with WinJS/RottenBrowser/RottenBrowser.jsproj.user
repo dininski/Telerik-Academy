@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ReferenceCachePath>C:\Users\Vasil\AppData\Local\Temp\RottenBrowser_refcache</ReferenceCachePath>
+    <ReferenceCachePath>C:\Users\N.Kolarov\AppData\Local\Temp\z4f34v2z_RottenBrowser_refcache</ReferenceCachePath>
     <ShowAllFiles>false</ShowAllFiles>
-    <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
-    <AppxBuildConfigurationSelection>neutral</AppxBuildConfigurationSelection>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>

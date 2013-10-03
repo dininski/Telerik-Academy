@@ -5,7 +5,7 @@
 (function () {
     "use strict";
 
-    var resultsPerPage = 16;
+    var resultsPerPage = 10;
     var currentPage = 1;
     var currentInfoType = -1;
 
@@ -18,7 +18,7 @@
             e.preventDefault();
             e.stopPropagation();
             var infoType = Data.infoTypes;
-            var moreResults = Data.getInfo(resultsPerPage, ++currentPage, "us", infoType[currentInfoType]);
+            var moreResults = Data.getInfo(resultsPerPage, ++currentPage, "us", eval("infoType." + currentInfoType));
             moreResults.done();
         });
     };
@@ -39,6 +39,7 @@
                 function groupDataSelector(item) { return group; }
             );
 
+            addButtonHandlers();
             element.querySelector("header[role=banner] .pagetitle").textContent = group.title;
 
             listView.itemDataSource = pageList.dataSource;

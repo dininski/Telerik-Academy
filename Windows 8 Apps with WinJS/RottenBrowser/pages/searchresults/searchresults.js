@@ -140,7 +140,7 @@
 
                 // TODO: Change "App Name" to the name of your app.
                 document.querySelector(".titlearea .pagetitle").textContent = "RottenBrowser";
-                document.querySelector(".titlearea .pagesubtitle").textContent = "Top " + maxSearchResultItems + " results for search: “" + this._lastSearch + '”';
+                document.querySelector(".titlearea .pagesubtitle").textContent = "Results for search: “" + this._lastSearch + '”';
             }
         },
 
