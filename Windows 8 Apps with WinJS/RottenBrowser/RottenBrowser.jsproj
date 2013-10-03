@@ -47,7 +47,9 @@
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>RottenBrowser_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>RottenBrowser_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>24D305027CEB4439F4789F718E030A1CEF17E4EB</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -65,6 +67,8 @@
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <None Include="RottenBrowser_StoreKey.pfx" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="pages\searchedItem\searchedItem.css" />
     <Content Include="pages\searchedItem\searchedItem.html" />
     <Content Include="pages\searchedItem\searchedItem.js" />
