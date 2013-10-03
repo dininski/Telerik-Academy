@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="29954Dininski.RottenBrowser" Version="0.0.2.0" Publisher="CN=6257BDE4-59B4-4795-A316-015D027928B1" />
+  <Identity Name="29954Dininski.RottenBrowser" Version="0.0.2.4" Publisher="CN=6257BDE4-59B4-4795-A316-015D027928B1" />
   <Properties>
     <DisplayName>Rotten Browser</DisplayName>
     <PublisherDisplayName>Dininski</PublisherDisplayName>
